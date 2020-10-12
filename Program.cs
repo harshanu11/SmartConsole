@@ -37,17 +37,25 @@ namespace SmartConsole
             Console.WriteLine(n1);  // output: 0 [A, B]
             Console.WriteLine(n2);  // output: 7 [A, B]
 
+
+            //The in ref out keyword causes arguments to be passed by reference. 
             int readonlyArgument = 44;
-            InArgExample(readonlyArgument);
+            RefOutInKeyword.InArgExample(readonlyArgument);
             Console.WriteLine(readonlyArgument);     // value is still 44
+
+            int number = 1;
+            // ref to pass reference of value type
+            RefOutInKeyword.Method(ref number);
+            Console.WriteLine(number);
+            // Output: 45
+
+            int initializeInMethod;
+            RefOutInKeyword.OutArgExample(out initializeInMethod);
+            Console.WriteLine(initializeInMethod);
         }
 
 
-            static void InArgExample(in int number)
-        {
-            // Uncomment the following line to see error CS8331
-            number = 19;
-        }
+
     }
     public struct MutablePoint
     {
@@ -75,5 +83,23 @@ namespace SmartConsole
         public override string ToString() => $"{Number} [{string.Join(", ", tags)}]";
     }
 
+    public class RefOutInKeyword
+    {
+        public static void Method(ref int refArgument)
+        {
+            refArgument = refArgument + 44;
+        }
+
+        public static void OutArgExample(out int number)
+        {
+            number = 44;
+        }
+
+        public static void InArgExample(in int number)
+        {
+            // Uncomment the following line to see error CS8331
+            // number = 19;
+        }
+    }
 
 }
