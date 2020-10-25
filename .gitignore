@@ -3,3 +3,6 @@
 ################################################################################
 
 /SmartConsoleTest/obj
+/SmartConsoleTest/bin/Debug/netcoreapp3.1
+/.vs/SmartConsole/v16
+/.vs/SmartConsole/DesignTimeBuild
