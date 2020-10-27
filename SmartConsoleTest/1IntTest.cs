@@ -12,20 +12,20 @@ namespace StaticConsoleTest
         {
             Int16 bal = Int16.MaxValue;
             Assert.Equal(65536, Math.Pow(2, 16));
-            double d = 0.42e2;
-            Console.WriteLine(d);  // output 42
 
-
-            float f = 134.45E-2f;
-            Console.WriteLine(f);  // output: 1.3445
-
-            decimal m = 1.5E6m;
-            Console.WriteLine(m);  // output: 1500000
         }
         [Fact]
         public void fourByte32BitInt32int()
         {
             Assert.Equal(4294967296, Math.Pow(2, 32));
+
+        }
+        [Fact]
+        public void AdvanceIntTest()
+        {
+            var decimalLiteral = 42;
+            var hexLiteral = 0x2A;
+            var binaryLiteral = 0b_0010_1010;
 
         }
     }
