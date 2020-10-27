@@ -15,8 +15,7 @@ namespace StaticConsoleTest
             double d = 0.42e2;
             Console.WriteLine(d);  // output 42
 
-            double dt = (double)dd.Millisecond*1e3+ (double)dd.Second * 1e5+ (double)dd.Minute * 1e7+ (double)dd.Hour * 1e9+ (double)dd.Day * 1e11
-                + (double)dd.Month * 1e13 + (double)dd.Year * 1e15;
+
             float f = 134.45E-2f;
             Console.WriteLine(f);  // output: 1.3445
 
