@@ -15,6 +15,9 @@ namespace SmartConsoleTest
             Assert.Equal(16*16, Math.Pow(2,8));// 256
             double charNum = Math.Pow(2, 16);//655536
             charNum = Math.Pow(2, 64);
+
+            var binaryLiteral = 0b_0010_1010; //42 in bin 0b 0010_1010
+            var hexLiteral = 0x2A; //42
         }
     } 
 }

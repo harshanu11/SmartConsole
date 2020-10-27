@@ -15,6 +15,8 @@ namespace BooleanTest
         [Fact]
         public void BitValue()
         {
+
+            // 2^1
             bool MyFirstBooleanFlag = new bool();
 
             Assert.False(MyFirstBooleanFlag);

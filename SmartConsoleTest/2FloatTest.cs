@@ -1,0 +1,6 @@
+﻿namespace SmartConsoleTest
+{
+    class FloatTest
+    {
+    }
+}
