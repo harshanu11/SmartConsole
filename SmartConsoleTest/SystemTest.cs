@@ -14,6 +14,20 @@ namespace SmartConsoleTest
             DateTime dd = DateTime.Now;
         }
         [Fact]
+        public void AddDate()
+        {
+
+            string st = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
+            DateTime dd = DateTime.Now;
+        }
+        [Fact]
+        public void DateToUtcToLocal()
+        {
+
+            string st = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
+            DateTime dd = DateTime.Now;
+        }
+        [Fact]
         public void RefTest() { }
         [Fact]
         public void OutTest() { }
