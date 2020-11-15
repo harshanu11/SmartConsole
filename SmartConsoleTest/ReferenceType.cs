@@ -40,7 +40,7 @@ namespace SmartConsoleTest
             Assert.NotEqual("s",r.str);
             Assert.NotEqual(dt, r.obj);
 
-            Assert.NotEqual(tr.GetHashCode(), tr1.GetHashCode());
+            Assert.Equal(tr.GetHashCode(), tr1.GetHashCode());
         }
     }
     public class ReferenceTypeVarible
