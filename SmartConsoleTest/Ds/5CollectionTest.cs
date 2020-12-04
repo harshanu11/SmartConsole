@@ -1,4 +1,5 @@
-﻿namespace SmartConsoleTest
+﻿using System.Collections.Generic;
+namespace SmartConsoleTest
 {
     public class CollectionTest
     {
@@ -38,5 +39,28 @@
             Console.WriteLine(Math.Abs(left_to_right - reght_to_left));
 
         }
+
+        public void StackProblem()
+        {
+            Stack<string> bracketStack = new Stack<string>();
+
+            bracketStack.Push("{");
+            string pop = bracketStack.Pop();
+        }
+        public void HashSet()
+        {
+            HashSet<int> my_first_hashSet = new HashSet<int>();
+
+            if (my_first_hashSet.Contains(9))
+            {
+                my_first_hashSet.Remove(9);
+            }
+            else
+            {
+                my_first_hashSet.Add(9);
+            }
+
+        }
+
     }
 }
