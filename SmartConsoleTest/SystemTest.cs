@@ -2,9 +2,9 @@
 using System.Globalization;
 using Xunit;
 
-namespace SmartConsoleTest
+namespace DateTest
 {
-    public class SystemTest
+    public class DateTest
     {
         [Fact]
         public void Date()
@@ -27,11 +27,5 @@ namespace SmartConsoleTest
             string st = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
             DateTime dd = DateTime.Now;
         }
-        [Fact]
-        public void RefTest() { }
-        [Fact]
-        public void OutTest() { }
-        [Fact]
-        public void InTest() { }
     }
 }

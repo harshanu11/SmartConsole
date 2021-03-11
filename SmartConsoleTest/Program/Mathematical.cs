@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace SmartConsoleTest.Program
+namespace Program
 {
     public class Mathematical
     {

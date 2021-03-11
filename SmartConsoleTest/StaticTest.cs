@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace StaticConsoleTest
+namespace ConsoleTips
 {
     public class StaticTest
     {

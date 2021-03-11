@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace SmartConsoleTest
+namespace ValueTypeTest
 {
     public class ValueType
     {

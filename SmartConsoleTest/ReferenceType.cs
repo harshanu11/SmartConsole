@@ -2,7 +2,7 @@
 using System.Threading;
 using Xunit;
 
-namespace SmartConsoleTest
+namespace ReferenceTypeTest
 {
     public class ReferenceType
     {

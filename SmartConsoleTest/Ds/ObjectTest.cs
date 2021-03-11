@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace SmartConsoleTest
+namespace ReferenceTypeTest
 {
     public class ObjectTest
     {

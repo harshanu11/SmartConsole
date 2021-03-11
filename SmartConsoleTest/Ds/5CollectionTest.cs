@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xunit;
 
-namespace SmartConsoleTest
+namespace CollectionTest
 {
     public class CollectionTest
     {

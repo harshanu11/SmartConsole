@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
+﻿using Xunit;
 
-namespace SmartConsoleTest.Program
+namespace Program
 {
     public class String
     {
@@ -19,7 +16,6 @@ namespace SmartConsoleTest.Program
         {
 
 			int myChecker = 0;
-			int myOp = 0;
 			for (int i = 0; i < palan.Length / 2; i++)
 			{
 				if (palan[i] == palan[palan.Length - 1 - i])

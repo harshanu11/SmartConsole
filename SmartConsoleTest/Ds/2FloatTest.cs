@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace SmartConsoleTest
+namespace Numeric
 {
     public class FloatTest
     {

@@ -2,7 +2,7 @@ using System;
 using System.Globalization;
 using Xunit;
 
-namespace StaticConsoleTest
+namespace Numeric
 {
     public class IntTest
     {

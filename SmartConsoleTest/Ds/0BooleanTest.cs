@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace BooleanTest
+namespace ValueTypeTest
 {
 
     public class Bool
