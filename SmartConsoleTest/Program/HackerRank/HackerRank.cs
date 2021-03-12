@@ -1,5 +1,7 @@
 ﻿using CollectionTest;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 using static CollectionTest.BinarySearchTree;
 
@@ -62,6 +64,29 @@ namespace Program
             var result = lca(nums.root, 1, 7);
             Assert.Equal(4, result.Data);
         }
+        [Fact]
+        public void JumpingOnCloudTest() 
+        {
+            int input = 0;
+            string str = "";
+            Console.WriteLine(CalculateJump(7, "0 0 1 0 0 1 0"));
+            Console.WriteLine(CalculateJump(7, "0 0 0 0 1 0"));
+            Assert.Equal(4, CalculateJump(7, "0 0 1 0 0 1 0"));
+            Assert.Equal(3, CalculateJump(7, "0 0 0 0 1 0"));
+        }
+        [Fact]
+        public void BalanceBracketTest()
+        {
+            string str = "";
+            str = "{[()]}";
+            Console.WriteLine(BalanceBracket(str));
+            Assert.Equal("YES", BalanceBracket(str));
+            str = "{[(]}}"; Console.WriteLine(BalanceBracket(str));
+            Assert.Equal("NO", BalanceBracket(str));
+            str = "{{[[(())]]}}"; Console.WriteLine(BalanceBracket(str));
+            Assert.Equal("YES", BalanceBracket(str));
+
+        }
 
         public static Node lca(Node root, int v1, int v2)
         {
@@ -74,6 +99,51 @@ namespace Program
                 return lca(root.Left, v1, v2);
             }
             return root;
+        }
+
+        public static int CalculateJump(int input, string str)
+        {
+            double[] arr = str.Split(' ').Select(s => Convert.ToDouble(s)).ToArray();
+            int i = 0;
+            int inc = 0;
+            while (i < arr.Length - 1)
+            {
+                if (i + 1 == arr.Length - 1 || arr[i + 2] == 1)
+                {
+                    i++;
+                    inc++;
+                }
+                else
+                {
+                    i += 2;
+                    inc++;
+                }
+            }
+            return inc;
+        }
+        public static string BalanceBracket(string str)
+        {
+            Stack<char> stack = new Stack<char>();
+            for (int i = 0; i < str.Length - 1; i++)
+            {
+                if (str[i] == '{' || str[i] == '(' || str[i] == '[')
+                {
+                    stack.Push(str[i]);
+                }
+                else
+                {
+                    if (stack.Count == 0) { return "NO"; }
+                    else
+                    {
+                        char pop = stack.Pop();
+                        if (str[i] == '}' && pop == '{') { return "YES"; }
+                        if (str[i] == ']' && pop == '[') { return "YES"; }
+                        if (str[i] == ')' && pop == '(') { return "YES"; }
+                    }
+                }
+            }
+            if (stack.Count == 0) { return "YES"; }
+            else { return "NO"; }
         }
     }
 }
