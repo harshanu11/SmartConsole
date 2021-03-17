@@ -2,7 +2,7 @@ using Xunit;
 
 namespace ConsoleTips
 {
-    public class StaticTest
+    public class ConsoleTipsTest
     {
         [Fact]
         public void CommonStaticReadyToUseTest()

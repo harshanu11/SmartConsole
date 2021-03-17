@@ -87,7 +87,34 @@ namespace Program
             Assert.Equal("YES", BalanceBracket(str));
 
         }
+        [Fact]
+        public void NoOfValleyTest() 
+        {
+            int count = 8;
+            string str = "UDDDUDUU";
+            Assert.Equal(1, NoOfValley(count, str));
+        }
+        [Fact]
+        public void NoOfSocksTest() 
+        {
+            int n = 9;
+            int[] arr = new int[] { 10, 20, 20, 10, 10, 30, 50, 10, 20 };
+            HashSet<int> hs = new HashSet<int>();
+            int numOfPair = 0;
 
+            for (int i = 0; i < 9; i++)
+            {
+                if (!hs.Contains(arr[i])) { hs.Add(arr[i]); }
+                else
+                {
+                    numOfPair++;
+                    hs.Remove(arr[i]);
+                }
+
+            }
+            Console.WriteLine(numOfPair);
+            Assert.Equal(3, numOfPair);
+        }
         public static Node lca(Node root, int v1, int v2)
         {
             if (v1 > root.Data && v2 > root.Data)
@@ -145,5 +172,29 @@ namespace Program
             if (stack.Count == 0) { return "YES"; }
             else { return "NO"; }
         }
+
+        public  int NoOfValley(int count, string str)
+        {
+            int valley = 0;
+            int increment = 0;
+            for (int i = 0; i < count; i++)
+            {
+                if (str[i] == 'U')
+                {
+                    if (increment == -1)
+                    {
+                        valley++;
+                    }
+
+                    increment++;
+                }
+                else if (str[i] == 'D')
+                {
+                    increment--;
+                }
+            }
+
+            return valley;
+        }        
     }
 }
