@@ -22,43 +22,42 @@ namespace CollectionTest
             nums.Insert(72);
         }
     }
+    public class TreeNode
+    {
+        public int Data;
+        public TreeNode Left;
+        public TreeNode Right;
+        public void DisplayNode()
+        {
+            Console.Write(Data + " ");
+        }
+        public TreeNode()
+        {
+
+        }
+        public TreeNode(int data)
+        {
+            TreeNode newNode = new TreeNode();
+            newNode.Data = data;
+        }
+    }
     public class BinarySearchTree
     {
-
-        public class Node
-        {
-            public int Data;
-            public Node Left;
-            public Node Right;
-            public void DisplayNode()
-            {
-                Console.Write(Data + " ");
-            }
-            public Node()
-            {
-
-            }
-            public Node(int data)
-            {
-                Node newNode = new Node();
-                newNode.Data = data;
-            }
-        }
-        public Node root;
+        public TreeNode root;
         public BinarySearchTree()
         {
             root = null;
         }
         public void Insert(int input)
         {
-            Node newNode = new Node();
+            TreeNode newNode = new TreeNode();
             newNode.Data = input;
             if (root == null)
                 root = newNode;
             else
             {
-                Node current = root;
-                Node parent;
+                TreeNode current = root;
+                TreeNode parent;
                 while (true)
                 {
                     parent = current;
@@ -83,15 +82,15 @@ namespace CollectionTest
                 }
             }
         }
-        public static Node insert(Node root, int data)
+        public static TreeNode insert(TreeNode root, int data)
         {
             if (root == null)
             {
-                return new Node(data);
+                return new TreeNode(data);
             }
             else
             {
-                Node cur;
+                TreeNode cur;
                 if (data <= root.Data)
                 {
                     cur = insert(root.Left, data);

@@ -2,7 +2,7 @@
 
 namespace Program
 {
-    public class String
+    public class StringProgramTest
     {
 		[Fact]
 		public void Palandrom()

@@ -7,9 +7,6 @@ namespace ReferenceTypeTest
         [Fact]
         public void CheckVariableAndObject()
         {
-
-
-
             MyObjectClass o = new MyObjectClass();
             MyObjectClass o1 = new MyObjectClass();
             MyObjectClass o2 = o;
@@ -21,7 +18,6 @@ namespace ReferenceTypeTest
     }
     public class MyObjectClass
     {
-
         public int Intprop = 0;
         public string MyProperty = "55";
     }

@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
-using static CollectionTest.BinarySearchTree;
 
 namespace Program
 {
@@ -115,7 +114,7 @@ namespace Program
             Console.WriteLine(numOfPair);
             Assert.Equal(3, numOfPair);
         }
-        public static Node lca(Node root, int v1, int v2)
+        public static TreeNode lca(TreeNode root, int v1, int v2)
         {
             if (v1 > root.Data && v2 > root.Data)
             {
