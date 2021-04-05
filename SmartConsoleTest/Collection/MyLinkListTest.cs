@@ -3,15 +3,6 @@ using Xunit;
 
 namespace CollectionTest
 {
-    // A linked list Node 
-    public class LLNode
-    {
-        public int data;
-        public LLNode nextNode;
-
-        // inserting the required data  
-        public LLNode(int data) => this.data = data;
-    }
     public class LinkListTest
     {
 
@@ -59,6 +50,24 @@ namespace CollectionTest
                     Console.WriteLine("Position out of range");
             }
             return head;
+        }
+
+        LLNode InsertAtSpecificPos_NickWhite(LLNode headNode,
+                            int position, int data)
+        {
+            var newNode = new LLNode(data);
+            var current_node = headNode;
+            int index = 0;
+
+            while (index < position-2)
+            {
+                current_node = current_node.nextNode;
+                index++;
+            }
+
+            newNode.nextNode = current_node.nextNode;
+            current_node.nextNode = newNode;
+            return headNode;
         }
 
          void PrintList(LLNode node)
@@ -118,6 +127,38 @@ namespace CollectionTest
             // insetion at end of the linked list  
             data = 15; pos = 7;
             head = InsertAtSpecificPos(head, pos, data);
+            Console.WriteLine("Linked list after" +
+                            " insertion of 15 at position 7: ");
+            PrintList(head);
+        }
+        [Fact]
+        public void LinkListInsertAtSpecificPos_nick_white_Test()
+        {
+
+            var head = GetNode(3);
+            head.nextNode = GetNode(5);
+            head.nextNode.nextNode = GetNode(8);
+            head.nextNode.nextNode.nextNode = GetNode(10);
+
+            Console.WriteLine("Linked list before insertion: ");
+            PrintList(head);
+
+            int data = 12, pos = 3;
+            head = InsertAtSpecificPos_NickWhite(head, pos, data);
+            Console.WriteLine("Linked list after" +
+                            " insertion of 12 at position 3: ");
+            PrintList(head);
+
+            // front of the linked list  
+            data = 1; pos = 1;
+            head = InsertAtSpecificPos_NickWhite(head, pos, data);
+            Console.WriteLine("Linked list after" +
+                            "insertion of 1 at position 1: ");
+            PrintList(head);
+
+            // insetion at end of the linked list  
+            data = 15; pos = 7;
+            head = InsertAtSpecificPos_NickWhite(head, pos, data);
             Console.WriteLine("Linked list after" +
                             " insertion of 15 at position 7: ");
             PrintList(head);
