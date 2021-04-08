@@ -64,7 +64,7 @@ namespace Program
             Assert.Equal(4, result.Data);
         }
         [Fact]
-        public void JumpingOnCloudTest() 
+        public void JumpingOnCloudTest()
         {
             int input = 0;
             string str = "";
@@ -87,14 +87,14 @@ namespace Program
 
         }
         [Fact]
-        public void NoOfValleyTest() 
+        public void NoOfValleyTest()
         {
             int count = 8;
             string str = "UDDDUDUU";
             Assert.Equal(1, NoOfValley(count, str));
         }
         [Fact]
-        public void NoOfSocksTest() 
+        public void NoOfSocksTest()
         {
             int n = 9;
             int[] arr = new int[] { 10, 20, 20, 10, 10, 30, 50, 10, 20 };
@@ -113,6 +113,24 @@ namespace Program
             }
             Console.WriteLine(numOfPair);
             Assert.Equal(3, numOfPair);
+        }
+        [Fact]
+        public void MinAbsDifferenceTest()
+        {
+            int arrLength = 10;
+            int[] arr = new int[] { -59, -36, -13, 1, -53, -92, -2, -96, -54, -75 };
+
+            long minAbs = 999999999;
+            Array.Sort(arr);
+
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                long currentAbs = Math.Abs(arr[i] - arr[i + 1]);
+                minAbs = Math.Min(minAbs, currentAbs);
+            }
+            Console.Write(minAbs);
+            Assert.Equal(1, minAbs);
+
         }
         public static TreeNode lca(TreeNode root, int v1, int v2)
         {
@@ -172,7 +190,7 @@ namespace Program
             else { return "NO"; }
         }
 
-        public  int NoOfValley(int count, string str)
+        public int NoOfValley(int count, string str)
         {
             int valley = 0;
             int increment = 0;
@@ -194,6 +212,6 @@ namespace Program
             }
 
             return valley;
-        }        
+        }
     }
 }

@@ -15,5 +15,11 @@ namespace Numeric
             charNum = Math.Pow(2, 64);
             Assert.Equal(2, System.Math.Sqrt(4));
         }
+        [Fact]
+        public void MathFunction() 
+        {
+            Assert.Equal(-7, Math.Min(-5, -7));
+            Assert.Equal(-5, Math.Max(-5, -7));
+        }
     } 
 }
