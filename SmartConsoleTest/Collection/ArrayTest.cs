@@ -134,6 +134,18 @@ namespace CollectionTest
 
 			long minAbs = 999999999;
 			Array.Sort(arr);
+
+			int index = Array.BinarySearch(arr, 0, arr.Length, -96);
+			int[] newArr;
+			//Array.Copy(newArr, 0, arr, 0, size);
+			//string v1 = Array.Find(arr,
+			//element => element.StartsWith("cam", StringComparison.Ordinal));
+			Array.Reverse(arr);
+			int[] marks = new int[] { 99, 98, 92, 97, 95 };
+			int[] score = marks;
+
+			//Array.IndexOf(marks,)
+
 		}
 	}
 }
