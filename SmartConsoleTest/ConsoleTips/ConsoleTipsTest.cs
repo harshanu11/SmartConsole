@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 
 namespace ConsoleTips
@@ -7,7 +8,10 @@ namespace ConsoleTips
         [Fact]
         public void CommonStaticReadyToUseTest()
         {
-            System.Console.WriteLine("This is onother ready to use static method");
+            Console.WriteLine("This is onother ready to use static method");
+            // for next line 
+            Console.WriteLine("\n");
+
         }
     }
 }
