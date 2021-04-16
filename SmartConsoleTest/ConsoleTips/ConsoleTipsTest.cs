@@ -11,6 +11,7 @@ namespace ConsoleTips
             Console.WriteLine("This is onother ready to use static method");
             // for next line 
             Console.WriteLine("\n");
+            Console.WriteLine("");
 
         }
     }

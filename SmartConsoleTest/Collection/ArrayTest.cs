@@ -10,48 +10,65 @@ namespace CollectionTest
         [Fact]
         public void TwoDArrayTest()
         {
-            int[,] arr = new int[3, 3];
-            int input = 1;
-            // load data 
-            for (int i1 = 0; i1 < 3; i1++)
+            Console.WriteLine("Start Now");
+
+            int[,] twoDarr = new int[4, 5];
+
+            for (int i = 0; i < 4; i++)
             {
-                for (int j1 = 0; j1 < 3; j1++)
+                for (int j = 0; j < 5; j++)
                 {
-                    arr[i1, j1] = input++;
+                    twoDarr[i, j] = i * j;
                 }
             }
-            // retreave data
-            for (int i1 = 0; i1 < 3; i1++)
+
+            Console.WriteLine("two d array is loaded");
+
+            Console.WriteLine("This is time to print it");
+
+            for (int i = 0; i < 4; i++)
             {
-                for (int j1 = 0; j1 < 3; j1++)
+                for (int j = 0; j < 5; j++)
                 {
-                    Console.Write(arr[i1, j1] + " ");
+                    Console.Write(twoDarr[i, j] + " ");
                 }
-                Console.WriteLine("\n");
+                Console.WriteLine("");
             }
-            Assert.Equal(9, arr.Length);
+
+            Console.WriteLine("Tow d array done");
+            Console.WriteLine("");
+
 
         }
         [Fact]
         public void JaggedArrayTest()
         {
-            int[][] arr = new int[3][];
-            int input = 1;
-            // load data
-            for (int i1 = 0; i1 < 3; i1++)
+            Console.WriteLine("now start to jagged array");
+
+            int[][] jaggedArray = new int[4][];
+
+            for (int i = 0; i < 4; i++)
             {
-                arr[i1] = new int[] { input, input + 1, input + 2 };
-                input += 2;
-            }
-            // retreave data 
-            for (int i1 = 0; i1 < 3; i1++)
-            {
-                for (int j1 = 0; j1 < 3; j1++)
+                jaggedArray[i] = new int[5];
+                for (int j = 0; j < 5; j++)
                 {
-                    Console.Write(arr[i1][j1] + " ");
+                    jaggedArray[i][j] = i + j;
                 }
-                Console.WriteLine("\n");
             }
+            Console.WriteLine("Jagged Array loaded now");
+            Console.WriteLine("Time to read data form jagged array");
+
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    Console.Write(jaggedArray[i][j] + " ");
+                }
+                Console.WriteLine(" ");
+            }
+
+            Console.WriteLine("Jagged arr reading is done now");
         }
 
         [Fact]
