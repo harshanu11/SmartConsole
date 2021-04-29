@@ -81,6 +81,7 @@ namespace CollectionTest
             int[] arr_source_copy = { 1, 3, 4 };
             int[] newArr = new int[3];
             string[] arr_temp = new string[] { "1", "2" };
+            string[] lenAndShift = Console.ReadLine().Split(' ');
 
             #endregion
 
@@ -114,6 +115,18 @@ namespace CollectionTest
             var convertToStr = string.Join("", new int[] { 1, 2 });
             #endregion
 
+        }
+        public static void RotateArray()
+        {
+            string[] lenAndShift = Console.ReadLine().Split(' ');
+            double len = Convert.ToDouble(lenAndShift[0]);
+            double shift = Convert.ToDouble(lenAndShift[1]);
+            Console.WriteLine(len);
+            Console.WriteLine(shift);
+            string[] a = Console.ReadLine().Split(' ');
+            string[] aNewStart = a.Skip(3).ToArray();
+           
+            //Array.Copy(a, 0, aNew, 0, 3);
         }
     }
 }

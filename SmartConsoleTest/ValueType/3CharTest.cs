@@ -18,7 +18,9 @@ namespace ValueTypeTest
             }
             char.ToUpper('d');
 
-
+            int a = Convert.ToInt16(Convert.ToString('2'));//2
+            a = (char)'2';//50
+            a = (int)'2';//50
         }
     }
 }

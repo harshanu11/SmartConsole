@@ -28,5 +28,12 @@ namespace Numeric
             var binaryLiteral = 0b_0010_1010;
 
         }
+        [Fact]
+        public void NumberMaxTest()
+        {
+            var maxint16 = Int16.MaxValue;
+            var maxint32Long = Int32.MaxValue;
+
+        }
     }
 }
