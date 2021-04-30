@@ -7,20 +7,24 @@ namespace ReferenceTypeTest
         [Fact]
         public void StringAlwaysCompareContentOfString()
         {
-                string MyFirstString = "str";
-                string MySecondString = new string("str".ToCharArray());// new char[] { 's','t','r'};
+            string MyFirstString = "str";
+            string MySecondString = new string("str".ToCharArray());// new char[] { 's','t','r'};
 
             object MyFirstStringObj = "str";// 
             object MySecondStringObj = "str";
-            object MyThirdStringObj = new string("str".ToCharArray()); 
+            object MyThirdStringObj = new string("str".ToCharArray());
+            string[] test = new string[2]; 
+            test[0] = "Hello ";
+            test[1] = "World!";
 
+            string result = string.Concat(test);
             // here .equals or == both check content inside srting 
             Assert.True(MyFirstString.Equals(MySecondString));
             Assert.True(MyFirstString == MySecondString);// though it is == but comparing value inside srtring
             // but reference is not a same so returning false only 
             Assert.False(ReferenceEquals(MyFirstString, MySecondString));
 
-
+            System.Console.WriteLine(string.IsNullOrEmpty("dgdgf"));
 
             Assert.True(ReferenceEquals(MyFirstStringObj, MySecondStringObj));
             Assert.False(ReferenceEquals(MyFirstStringObj, MyThirdStringObj));// not smae reference bcz used new

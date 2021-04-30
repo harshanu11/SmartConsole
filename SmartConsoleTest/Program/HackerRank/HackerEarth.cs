@@ -29,31 +29,23 @@ namespace Program
             int shiftVal = 0;
             if (len < shift)
             {
-                shiftVal = (int)(shift % len);
+                shift = (int)(shift % len);
             }
-            shiftVal = Convert.ToInt32(len - shiftVal);
+            shiftVal = Convert.ToInt32(len - shift);
             if (shiftVal < 0)
             {
                 shiftVal = Convert.ToInt32(len) + shiftVal;
             }
 
             string[] a = Console.ReadLine().Split(' ');
-            string[] aNewStart = a.Skip(shiftVal).ToArray();
-            string[] aNewEnd = a.Take(shiftVal).ToArray();
-            foreach (var item in aNewStart)
-            {
-                Console.Write(item + " ");
-            }
-            for (int i = 0; i < aNewEnd.Length; i++)
-            {
-                if (aNewEnd.Length - 1 == i)
-                {
-                    Console.Write(aNewEnd[i]);
-                }
-                else
-                    Console.Write(aNewEnd[i] + " ");
-            }
+            string[] aNewStart = a.Skip(shiftVal).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            string[] aNewEnd = a.Take(shiftVal).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+
             //Array.Copy(a, 0, aNew, 0, 3);
+            if (aNewStart.Length > 0)
+                Console.Write(String.Join(" ", aNewStart) + " ");
+            if (aNewEnd.Length > 0)
+                Console.Write(String.Join(" ", aNewEnd));
             Console.WriteLine("");
         }
     }

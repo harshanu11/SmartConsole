@@ -113,6 +113,13 @@ namespace CollectionTest
             int[] arrInt = Array.ConvertAll(arr_temp, Int32.Parse);
             Array.Resize(ref arr_temp, 10);
             var convertToStr = string.Join("", new int[] { 1, 2 });
+            string[] test = new string[2]; 
+            test[0] = "Hello ";
+            test[1] = "World!";
+
+            string result = String.Concat(test);// hello world
+            var resJoin = String.Join("", test);//Hello World!
+            resJoin = String.Join(",", test);//Hello ,World!
             #endregion
 
         }

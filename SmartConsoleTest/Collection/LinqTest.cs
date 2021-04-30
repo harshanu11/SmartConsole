@@ -45,6 +45,7 @@ namespace CollectionTest
         [Fact]
         public void ContainTest()
         {
+            
             string[] fruits = { "apple", "mango", "orange", "passionfruit", "passionfruit1", "grape" };
             var sdfsd = fruits.Contains("mango");
 
