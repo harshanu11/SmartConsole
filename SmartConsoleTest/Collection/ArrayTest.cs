@@ -13,7 +13,9 @@ namespace CollectionTest
             Console.WriteLine("Start Now");
 
             int[,] twoDarr = new int[4, 5];
-
+            // get length of array 
+            int rowLength = twoDarr.GetLength(0);
+            int ColLength = twoDarr.GetLength(1);
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 5; j++)
@@ -44,7 +46,6 @@ namespace CollectionTest
         public void JaggedArrayTest()
         {
             Console.WriteLine("now start to jagged array");
-
             int[][] jaggedArray = new int[4][];
 
             for (int i = 0; i < 4; i++)
@@ -52,9 +53,10 @@ namespace CollectionTest
                 jaggedArray[i] = new int[5];
                 for (int j = 0; j < 5; j++)
                 {
-                    jaggedArray[i][j] = i + j;
+                    jaggedArray[i][j] = -1*(i + j);
                 }
             }
+            Array.Sort(jaggedArray);
             Console.WriteLine("Jagged Array loaded now");
             Console.WriteLine("Time to read data form jagged array");
 

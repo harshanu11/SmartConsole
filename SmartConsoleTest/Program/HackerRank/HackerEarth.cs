@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -47,6 +48,40 @@ namespace Program
             if (aNewEnd.Length > 0)
                 Console.Write(String.Join(" ", aNewEnd));
             Console.WriteLine("");
+        }
+        //https://www.hackerearth.com/practice/codemonk/
+        public static int CalculateInversion()
+        {
+            int count = 0;
+            int Length = Convert.ToInt16(Console.ReadLine());
+            //Console.WriteLine(Length);
+            string[][] jaggedArr = new string[Length][];
+            List<string[]> arr = new List<string[]>();
+            for (int i = 0; i < Length; i++)
+            {
+                jaggedArr[i] = Console.ReadLine().Split(' ');
+            }
+
+            for (int i = 0; i < Length; i++)
+            {
+                for (int l = 0; l < Length; l++)
+                {
+                    for (int j = 0; j <= i; j++)
+                    {
+                        for (int k = 0; k <= l; k++)
+                        {
+
+                            if (Convert.ToInt16(jaggedArr[i][l]) < Convert.ToInt16(jaggedArr[j][k]))
+                            {
+                                count++;
+
+                            }
+                        }
+                    }
+                }
+            }
+            Console.WriteLine("");
+            return count;
         }
     }
 }
