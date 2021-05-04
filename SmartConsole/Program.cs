@@ -13,8 +13,7 @@ namespace SmartConsole
 
             for (int i = 0; i < T; i++)
             {
-                HackerEarth.RotateArray();
-
+                HackerEarth.CalculateBinaryRotation();
             }
 
         }

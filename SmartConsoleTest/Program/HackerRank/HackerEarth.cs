@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using Xunit;
 
 namespace Program
@@ -83,5 +84,94 @@ namespace Program
             Console.WriteLine("");
             return count;
         }
+
+        public static BigInteger CalculateBinaryRotation()
+        {
+            try
+            {
+                BigInteger response = 0;
+                var input1 = Console.ReadLine().Split(' ');
+                BigInteger N = Convert.ToInt64(input1[0]);
+                BigInteger K = Convert.ToInt64(input1[1]);
+                string strBin = Console.ReadLine();
+
+                return BinToIntMax(strBin, K);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error at CalculateBinaryRotation " + ex.Message);
+                throw ex;
+            }
+        }
+        public static BigInteger NextMax(string tempStr)
+        {
+            try
+            {
+
+                string bin = new String(tempStr);
+                BigInteger max = 0;
+                BigInteger k = 0;
+                string temp = "";
+                for (BigInteger i = 0; i < bin.Length; i++)
+                {
+                    char[] end = bin.Take(1).ToArray();
+                    char[] start = bin.Skip(1).ToArray();
+                    char[] concat = start.Concat(end).ToArray();
+                    bin = new string(concat);
+                    if (bin == tempStr)
+                    {
+                        k = i + 1;
+                        //Console.WriteLine(tempStr);
+                        break;
+                    }
+                }
+                //Console.WriteLine(k+" "+bin );
+                return k;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error at NextMax " + ex.Message);
+                throw ex;
+            }
+
+        }
+        public static BigInteger BinToIntMax(string bin, BigInteger K)
+        {
+            BigInteger max = 0;
+            BigInteger k = 0;
+            string temp = "";
+            for (BigInteger i = 0; i < bin.Length; i++)
+            {
+                char[] end = bin.Take(1).ToArray();
+                char[] start = bin.Skip(1).ToArray();
+                char[] concat = start.Concat(end).ToArray();
+                bin = new string(concat);
+                BigInteger _max = BinToDec(bin);
+                if (_max > max)
+                {
+                    max = _max;
+                    k = i + 1;
+                    temp = bin;
+                }
+            }
+            BigInteger nextRound = 0;
+            nextRound = (K - 1) * NextMax(temp);
+            return k + nextRound;
+        }
+        public static BigInteger BinToDec(string value)
+        {
+            // BigInteger can be found in the System.Numerics dll
+            BigInteger res = 0;
+
+            // I'm totally skipping error handling here
+            foreach (char c in value)
+            {
+                res <<= 1;
+                res += c == '1' ? 1 : 0;
+            }
+
+            return res;
+        }
+
     }
 }

@@ -84,11 +84,12 @@ namespace CollectionTest
             int[] newArr = new int[3];
             string[] arr_temp = new string[] { "1", "2" };
             string[] lenAndShift = Console.ReadLine().Split(' ');
+            stringArray.SetValue("Mango", 0);
+
 
             #endregion
 
-            #region Set
-            stringArray.SetValue("Mango", 0);
+            #region Compare
             #endregion
 
             #region SortReverse
@@ -122,6 +123,24 @@ namespace CollectionTest
             string result = String.Concat(test);// hello world
             var resJoin = String.Join("", test);//Hello World!
             resJoin = String.Join(",", test);//Hello ,World!
+            #endregion
+
+            #region Create
+
+            #endregion
+            #region Compare
+            #endregion
+            #region sortReverese
+
+            #endregion
+            #region Find
+
+            #endregion
+            #region Copy
+
+            #endregion
+            #region ConvertReesize
+
             #endregion
 
         }

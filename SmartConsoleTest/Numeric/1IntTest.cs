@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using System.Numerics;
 using Xunit;
 
 namespace Numeric
@@ -34,6 +35,20 @@ namespace Numeric
             var maxint16 = Int16.MaxValue;
             var maxint32Long = Int32.MaxValue;
 
+        }
+        public static BigInteger BinToDec(string value)
+        {
+            // BigInteger can be found in the System.Numerics dll
+            BigInteger res = 0;
+
+            // I'm totally skipping error handling here
+            foreach (char c in value)
+            {
+                res <<= 1;
+                res += c == '1' ? 1 : 0;
+            }
+
+            return res;
         }
     }
 }
