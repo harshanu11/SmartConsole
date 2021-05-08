@@ -10,7 +10,7 @@ namespace ReferenceTypeTest
         {
             #region Create
             string MyFirstString = "str";
-            string MySecondString = new string("str".ToCharArray());// new char[] { 's','t','r'};
+            string MySecondString = new string(new char[] { 's', 't', 'r' });// new char[] { 's','t','r'};
 
             object MyFirstStringObj = "str";// 
             object MySecondStringObj = "str";

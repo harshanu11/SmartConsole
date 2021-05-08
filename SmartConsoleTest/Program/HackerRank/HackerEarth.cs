@@ -135,6 +135,11 @@ namespace Program
             }
 
         }
+        static int rightRotate(int n, int d)
+        {
+            int INT_BITS = 32;
+            return (n >> d) | (n << (INT_BITS - d));
+        }
         public static BigInteger BinToIntMax(string bin, BigInteger K)
         {
             BigInteger max = 0;

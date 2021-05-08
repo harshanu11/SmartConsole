@@ -54,5 +54,6 @@ namespace SmartConsoleTest.Program
             Console.WriteLine(Convert.ToString(100, toBase: 10));//100
             Console.WriteLine(Convert.ToString(100, toBase: 16));//64
         }
+
     }
 }
