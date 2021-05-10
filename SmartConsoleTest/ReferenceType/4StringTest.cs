@@ -43,7 +43,7 @@ namespace ReferenceTypeTest
             #endregion
 
             #region sortReverese
-            string str = "";
+            string str = "fsfsfsfsfs";
             String ans = str.Substring(4, str.Length - 4) + str.Substring(0, 4);
             #endregion
 

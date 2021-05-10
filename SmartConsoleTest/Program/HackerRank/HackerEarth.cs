@@ -13,7 +13,7 @@ namespace Program
         public static void MainTest()
         {
 
-            int T = Convert.ToInt16(Console.ReadLine());
+            int T = 0;// Convert.ToInt16(Console.ReadLine());
 
             for (int i = 0; i < T; i++)
             {

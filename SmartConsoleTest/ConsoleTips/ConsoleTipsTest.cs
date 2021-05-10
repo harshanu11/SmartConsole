@@ -12,7 +12,7 @@ namespace ConsoleTips
             // for next line 
             Console.WriteLine("\n");
             Console.WriteLine("");
-            Console.ReadLine().Split(' ');
+            //Console.ReadLine().Split(' ');
 
         }
     }

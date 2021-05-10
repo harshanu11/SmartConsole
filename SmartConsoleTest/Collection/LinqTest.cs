@@ -55,7 +55,7 @@ namespace CollectionTest
         {
             int[] numArr = { 2, 3, 4, 5 };
             var data = numArr.Concat(numArr.Where(x => x != 0)).ToList();
-            Assert.Equal(6, data.Count);
+            Assert.Equal(8, data.Count);
         }
         [Fact]
         public void DefaultIfEmptyTest()

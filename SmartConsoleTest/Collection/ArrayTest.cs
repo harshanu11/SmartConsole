@@ -56,7 +56,7 @@ namespace CollectionTest
                     jaggedArray[i][j] = -1*(i + j);
                 }
             }
-            Array.Sort(jaggedArray);
+            //Array.Sort(jaggedArray);
             Console.WriteLine("Jagged Array loaded now");
             Console.WriteLine("Time to read data form jagged array");
 
