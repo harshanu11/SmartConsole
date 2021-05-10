@@ -71,6 +71,49 @@ namespace CollectionTest
             myStack.push(2);
             myStack.push(9);
         }
+        [Fact]
+        public void SortStackTest()
+        {
+            Stack<int> input = new Stack<int>();
+            input.Push(34);
+            input.Push(3);
+            input.Push(31);
+            input.Push(98);
+            input.Push(92);
+            input.Push(23);
+
+            // This is the temporary stack
+            Stack<int> tmpStack = sortstack(input);
+            Console.WriteLine("Sorted numbers are:");
+
+            while (tmpStack.Count > 0)
+            {
+                Console.Write(tmpStack.Pop() + " ");
+            }
+
+        }
+        public static Stack<int> sortstack(Stack<int> input)
+        {
+            Stack<int> tmpStack = new Stack<int>();
+            while (input.Count > 0)
+            {
+                // pop out the first element
+                int tmp = input.Pop();
+
+                // while temporary stack is not empty and
+                // top of stack is greater than temp
+                while (tmpStack.Count > 0 && tmpStack.Peek() > tmp)
+                {
+                    // pop from temporary stack and
+                    // push it to the input stack
+                    input.Push(tmpStack.Pop());
+                }
+
+                // push temp in tempory of stack
+                tmpStack.Push(tmp);
+            }
+            return tmpStack;
+        }
 
     }
     public class FixedMultiStack
