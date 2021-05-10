@@ -163,7 +163,50 @@ namespace CollectionTest
                             " insertion of 15 at position 7: ");
             PrintList(head);
         }
+        #region SimpleLL
+        public static void addToTail(LL head, int data)
+        {
+            LL end = new LL(data);
+            while (head.next != null)
+            {
+                head = head.next;
+            }
+
+            head.next = end;
+        }
+
+        public static void Print(LL head)
+        {
+            while (head.next != null)
+            {
+                head = head.next;
+                Console.WriteLine(head.data);
+            }
+        }
+
+        public static LL deleteLL(LL head, int data)
+        {
+            LL n= head;
+            if (n.data == data)
+            {
+                return head.next;
+            }
+
+            while (n.next != null)
+            {
+                if (n.next.data == data)
+                {
+                    n.next = n.next.next;
+                }
+                n = n.next;
+            }
+
+            return head;
+        }
+
+        #endregion
     }
+
 }
 
 

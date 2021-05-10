@@ -44,7 +44,7 @@ namespace ReferenceTypeTest
 
             #region sortReverese
             string str = "";
-            String ans = str.Substring(d, str.Length - d) + str.Substring(0, d);
+            String ans = str.Substring(4, str.Length - 4) + str.Substring(0, 4);
             #endregion
 
             #region Find

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CollectionTest;
+using System;
+using System.Linq;
 using Xunit;
 
 namespace SmartConsoleTest.Program
@@ -272,6 +274,55 @@ namespace SmartConsoleTest.Program
                 }
             }
             Console.WriteLine(isRotated);
+        }
+        #endregion
+        #region LinkList
+        public static LL RemoveSpecificDuplicate(LL head, int d)
+        {
+            LL n = head;
+            if (head.data == d)
+            {
+                return head.next;
+            }
+
+            while (n.next != null)
+            {
+                if (n.next.data == d)
+                {
+                    n.next = n.next.next;
+                }
+                n = n.next;
+            }
+
+            return head;
+        }
+        public static int FindKthFromEnd(LL head, int k)
+        {
+            int LengthOfLL = 0;
+            int response = 0;
+            LL n = head;
+            while (n.next != null)
+            {
+                LengthOfLL++;
+                n = n.next;
+            }
+            int countFromStart = LengthOfLL - k;
+            int counter = 0;
+            Console.WriteLine(countFromStart);
+
+            while (head.next != null)
+            {
+                if (counter == countFromStart)
+                {
+                    Console.WriteLine(head.data);
+                    break;
+                }
+                counter++;
+                head = head.next;
+            }
+
+
+            return response;
         }
         #endregion
     }
