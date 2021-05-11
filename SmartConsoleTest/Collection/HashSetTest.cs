@@ -14,6 +14,10 @@ namespace CollectionTest
             {
                 my_first_hashSet.Remove(9);
             }
+            else if (my_first_hashSet.Add(15))
+            {
+
+            }
             else
             {
                 my_first_hashSet.Add(9);
