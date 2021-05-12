@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SmartConsoleTest": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}

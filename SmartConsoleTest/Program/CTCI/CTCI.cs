@@ -3,13 +3,13 @@ using System;
 using System.Linq;
 using Xunit;
 
-namespace SmartConsoleTest.Program
+namespace CTCINs
 {
     public class CTCI
     {
         #region ArrayStr
 
-
+        [Fact]
         public void CheckDuplicateStr()
         {
             int[] c = new int[128];
@@ -69,7 +69,7 @@ namespace SmartConsoleTest.Program
             Console.WriteLine(ch.Length + (3 * 2));
             bool ans = true;
             int count1 = 0;
-            for (int i = 0; i < ch1.Length-2; i++)
+            for (int i = 0; i < ch1.Length - 2; i++)
             {
                 if (ch1[count1] == ' ')
                 {
