@@ -83,7 +83,7 @@ namespace CollectionTest
             int[] arr_source_copy = { 1, 3, 4 };
             int[] newArr = new int[3];
             string[] arr_temp = new string[] { "1", "2" };
-            string[] lenAndShift = Console.ReadLine().Split(' ');
+            //string[] lenAndShift = Console.ReadLine().Split(' ');
             stringArray.SetValue("Mango", 0);
             int[,] mat = {
             { 1, 2, 3, 4 },
