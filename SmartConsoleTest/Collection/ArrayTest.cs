@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
 using Xunit;
 
@@ -53,7 +52,7 @@ namespace CollectionTest
                 jaggedArray[i] = new int[5];
                 for (int j = 0; j < 5; j++)
                 {
-                    jaggedArray[i][j] = -1*(i + j);
+                    jaggedArray[i][j] = -1 * (i + j);
                 }
             }
             //Array.Sort(jaggedArray);
@@ -121,7 +120,7 @@ namespace CollectionTest
             int[] arrInt = Array.ConvertAll(arr_temp, Int32.Parse);
             Array.Resize(ref arr_temp, 10);
             var convertToStr = string.Join("", new int[] { 1, 2 });
-            string[] test = new string[2]; 
+            string[] test = new string[2];
             test[0] = "Hello ";
             test[1] = "World!";
 
@@ -158,7 +157,7 @@ namespace CollectionTest
             Console.WriteLine(shift);
             string[] a = Console.ReadLine().Split(' ');
             string[] aNewStart = a.Skip(3).ToArray();
-           
+
             //Array.Copy(a, 0, aNew, 0, 3);
         }
     }

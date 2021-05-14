@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 using System.Text;
 using Xunit;
 
@@ -247,6 +248,30 @@ namespace Program
                 }
             }
             return binary.ToString();
+        }
+        [Fact]
+        public  void BinToDec()
+        {
+            string value = "01001010";
+            // BigInteger can be found in the System.Numerics dll
+            BigInteger res = 0;
+
+            // I'm totally skipping error handling here
+            foreach (char c in value)
+            {
+                res <<= 1;
+                res += c == '1' ? 1 : 0;
+            }
+
+           // return res;
+        }
+        [Fact]
+        public void AdvanceBinaryTest()
+        {
+            var decimalLiteral = 42;
+            var hexLiteral = 0x2A;
+            var binaryLiteral = 0b_0010_1010;
+
         }
     }
     public class FlipBitToWin 
