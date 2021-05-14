@@ -2,7 +2,7 @@
 using System.Numerics;
 using Xunit;
 
-namespace SmartConsoleTest.Program
+namespace Program
 {
     public class ReadyToUse
     {
@@ -47,12 +47,69 @@ namespace SmartConsoleTest.Program
 
             return max;
         }
-        public static void AllReadyToUse() 
+        public static void AllReadyToUse()
         {
             Console.WriteLine(Convert.ToString(100, toBase: 2));//1100100
             Console.WriteLine(Convert.ToString(100, toBase: 8));//144
             Console.WriteLine(Convert.ToString(100, toBase: 10));//100
             Console.WriteLine(Convert.ToString(100, toBase: 16));//64
+        }
+        [Fact]
+        public void Palandrom()
+        {
+
+            Assert.Equal(1, CheckPalandromStr("abas7saba"));
+            Assert.Equal(0, CheckPalandromStr("abas7seaba"));
+            Assert.True(CheckPalandromInt(12321));
+        }
+
+        private int CheckPalandromStr(string palan)
+        {
+
+            int myChecker = 0;
+            for (int i = 0; i < palan.Length / 2; i++)
+            {
+                if (palan[i] == palan[palan.Length - 1 - i])
+                {
+                    myChecker += 1;
+                }
+            }
+
+            if (myChecker == palan.Length / 2)
+                return 1;
+            else
+                return 0;
+
+        }
+        private bool CheckPalandromInt(int palan)
+        {
+            int original = palan;
+            int reverse = 0;
+            while (palan != 0)
+            {
+                reverse = 10 * reverse + palan % 10;
+                palan /= 10;
+            }
+            return reverse == original;
+
+        }
+        [Fact]
+        public void Factorial()
+        {
+            int res = 1;
+            for (int i = 0; i < 10; i++)
+            {
+                res *= i;
+            }
+            // res;
+
+
+        }
+        [Fact]
+        public void Armstrong()
+        {
+            // 1 * 1 * 1 + 5 * 5 * 5 + 3 * 3 * 3 = 153
+
         }
 
     }

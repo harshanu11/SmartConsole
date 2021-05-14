@@ -11,6 +11,7 @@ namespace ReferenceTypeTest
             MyObjectClass o1 = new MyObjectClass();
             MyObjectClass o2 = o;
 
+            Assert.NotEqual(o1,o);
             Assert.True(o2.Equals(o));
             Assert.True(ReferenceEquals(o, o2));
             Assert.True(o2 == o);

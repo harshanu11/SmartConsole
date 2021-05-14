@@ -19,6 +19,9 @@ namespace Numeric
 
             long lng = Int64.MaxValue;
             Int64 lng64 = Int64.MaxValue;
+            int _id ;
+            bool result = Int32.TryParse(356.ToString(), out _id);
+
         }
     }
 }

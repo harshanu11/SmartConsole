@@ -23,6 +23,7 @@ namespace ReferenceTypeTest
             #endregion
 
             #region Compare
+            Assert.Equal("456", "456");
             Assert.True(MyFirstString.Equals(MySecondString));
             Assert.True(MyFirstString == MySecondString);// though it is == but comparing value inside srtring
             // but reference is not a same so returning false only 
@@ -44,7 +45,6 @@ namespace ReferenceTypeTest
 
             #region sortReverese
             string str = "fsfsfsfsfs";
-            String ans = str.Substring(4, str.Length - 4) + str.Substring(0, 4);
             #endregion
 
             #region Find
@@ -56,8 +56,10 @@ namespace ReferenceTypeTest
             #endregion
 
             #region ConvertReesize
+
             Convert.ToInt32("1001101", 2).ToString();
             "".ToCharArray();
+            String ans = str.Substring(4, str.Length - 4) + str.Substring(0, 4);
             #endregion
 
         }

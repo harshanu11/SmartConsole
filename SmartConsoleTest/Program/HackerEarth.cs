@@ -39,7 +39,7 @@ namespace Program
                 shiftVal = Convert.ToInt32(len) + shiftVal;
             }
 
-            string[] a = Console.ReadLine().Split(' ');
+            string[] a= new string[5];//=Console.ReadLine().Split(' ');
             string[] aNewStart = a.Skip(shiftVal).Where(x => !string.IsNullOrEmpty(x)).ToArray();
             string[] aNewEnd = a.Take(shiftVal).Where(x => !string.IsNullOrEmpty(x)).ToArray();
 
