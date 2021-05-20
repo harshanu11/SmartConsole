@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using Xunit;
 
 namespace ReferenceTypeTest
@@ -18,7 +19,6 @@ namespace ReferenceTypeTest
             string[] test = new string[2];
             test[0] = "Hello ";
             test[1] = "World!";
-
             string result = string.Concat(test);
             #endregion
 
@@ -40,7 +40,7 @@ namespace ReferenceTypeTest
             #endregion
 
             #region Set
-
+            string strUpp = "Hi this is upper case.test,".ToUpper();
             #endregion
 
             #region sortReverese
@@ -63,6 +63,66 @@ namespace ReferenceTypeTest
 
 
             #endregion
+
+        }
+        [Fact]
+        public void RegexTest() 
+        {
+            string myStr = "a";
+            Regex reg = new Regex("[a-z]");
+            Assert.True(reg.IsMatch(myStr));
+            myStr = "A";
+            Assert.False(reg.IsMatch(myStr));
+
+            // number check
+            myStr = "1";
+            reg = new Regex("[0-9]");
+            Assert.True(reg.IsMatch(myStr));
+            myStr = "A";
+            Assert.False(reg.IsMatch(myStr));
+
+            // make sure single char
+            reg = new Regex("^[a-z]$");
+            myStr = "aa";
+            Assert.False(reg.IsMatch(myStr));
+
+            // make sure five char
+            reg = new Regex("^[a-z]{5}$");
+            myStr = "aa";
+            Assert.False(reg.IsMatch(myStr));
+            myStr = "aaddg";
+            Assert.True(reg.IsMatch(myStr));
+
+            // make sure upper case as well 
+            reg = new Regex("^[a-zA-Z]{5}$");
+            myStr = "aaA";
+            Assert.False(reg.IsMatch(myStr));
+            myStr = "aaddD";
+            Assert.True(reg.IsMatch(myStr));
+
+            // make sure one to five range char
+            reg = new Regex("^[a-z]{1,5}$");
+            myStr = "aa";
+            Assert.True(reg.IsMatch(myStr));
+            myStr = "aaddg";
+            Assert.True(reg.IsMatch(myStr));
+
+            // email [a-zA-Z0-9]{1,5}@[a-zA-Z]{.com|.co|.in}
+            reg = new Regex("^[a-zA-Z0-9]{1,5}@[a-zA-Z]{.com|.co|.in}$");
+            myStr = "harsh.singh@abbc.com";
+            Assert.True(reg.IsMatch(myStr));
+
+
+            ///////////////////////////////// replace unused thing ////
+            string str = "hi,I @ am Harsh-";
+            Regex rgx = new Regex("[^a-zA-Z0-9]");
+            str = rgx.Replace(str, "");
+            Assert.Equal("hiIamHarsh", str); 
+
+            str = "hi,I @ am Harsh-";
+            rgx = new Regex("[^a-zA-Z0-9 -]");
+            str = rgx.Replace(str, "");
+            Assert.Equal("hiI  am Harsh-", str); 
 
         }
 
