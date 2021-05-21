@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using System.Text.RegularExpressions;
 using Xunit;
 
 namespace Program
@@ -57,10 +58,28 @@ namespace Program
         [Fact]
         public void Palandrom()
         {
-
+            
+            Assert.True(IsPalindrome("A man, a plan, a canal: Panama"));// witth regex firlter replace
             Assert.Equal(1, CheckPalandromStr("abas7saba"));
             Assert.Equal(0, CheckPalandromStr("abas7seaba"));
             Assert.True(CheckPalandromInt(12321));
+        }
+        public static bool IsPalindrome(string s)
+        {
+            bool yes = true;
+
+            Regex rg = new Regex("[^a-zA-Z0-9]");
+
+            s = rg.Replace(s.ToUpper(), "");
+            //Console.WriteLine(s);
+
+            for (int i = 0; i < s.Length / 2; i++)
+            {
+                if (s[i] != s[s.Length - 1 - i])
+                { yes = false; }
+            }
+
+            return yes;
         }
 
         private int CheckPalandromStr(string palan)
