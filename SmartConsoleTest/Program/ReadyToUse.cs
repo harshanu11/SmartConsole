@@ -200,7 +200,58 @@ namespace Program
                 input[start++] = tmp[i++];
             }
         }
+        public int BinarySearchFast1(int[] nums, int target)
+        {
+            if (nums.Length == 0)
+            {
+                return -1;
+            }
+            int left = 0;
+            int right = nums.Length - 1;
 
+            while (left <= right)
+            {
+                int mid = (right + left) / 2;
+                if (nums[mid] == target)
+                { return mid; }
+
+                else if (nums[mid] > target)
+                {
+                    right = right - 1;
+                }
+                else
+                {
+                    left = left + 1;
+                }
+            }
+            return -1;
+        }
+        public int BinarySearchFast2(int[] nums, int target)
+        {
+            if (nums.Length == 0)
+            {
+                return -1;
+            }
+            int left = 0;
+            int right = nums.Length - 1;
+
+            while (left <= right)
+            {
+                int mid = (right + left) / 2;
+                if (nums[mid] == target)
+                { return mid; }
+
+                else if (nums[mid] > target)
+                {
+                    right = mid - 1;
+                }
+                else
+                {
+                    left = mid + 1;
+                }
+            }
+            return -1;
+        }
         [Fact]
         public void RepetedCharTest() 
         {
