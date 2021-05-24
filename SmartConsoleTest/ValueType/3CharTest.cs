@@ -21,7 +21,7 @@ namespace ValueTypeTest
 
 
             #region Compare
-            if (char.IsLetter('c') && char.IsWhiteSpace('s') && char.IsLetterOrDigit('h'))
+            if (char.IsLetter('c') && char.IsWhiteSpace('s') && char.IsLetterOrDigit('h')&& char.IsUpper('A'))
             {
 
             }

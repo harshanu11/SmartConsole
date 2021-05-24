@@ -322,5 +322,27 @@ namespace Program
             return index;
         }
 
+        public string ToLowerCase(string s)
+        {
+            char[] c = new char[s.Length];
+            if (s.Length > 0)
+            {
+                for (int i = 0; i < s.Length; i++)
+                {
+                    if (char.IsUpper(s[i]))
+                    {
+                        c[i] = (char)(s[i] + 32);
+                    }
+                    else
+                    {
+                        c[i] = s[i];
+                    }
+                }
+                s = new String(c);
+                Console.WriteLine(s);
+            }
+            return s;
+        }
+
     }
 }
