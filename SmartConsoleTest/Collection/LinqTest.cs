@@ -10,6 +10,7 @@ namespace CollectionTest
         [Fact]
         public void AggrigateTest()
         {
+            //Find fruit grater then banana
             string[] fruits = { "apple", "mango", "orange", "passionfruit", "passionfruit1", "grape" };
             string longestName = fruits.Aggregate("banana", (longest, next) =>
             {
@@ -21,6 +22,10 @@ namespace CollectionTest
             });//PASSIONFRUIT1
 
             string joinFruit = fruits.Aggregate((a, b) => { return a + " ," + b; });//apple ,mango ,orange ,passionfruit ,passionfruit1 ,grape
+            joinFruit = fruits.Aggregate((a, b) => {
+                a = "";
+                return a + " ," + b;
+            });//a,grape
 
             int[] numArr = { 2, 3, 4, 5 };
             int mulResult = numArr.Aggregate((a, b) => a * b);//120

@@ -11,12 +11,18 @@ namespace ValueTypeTest
 
 
             #region Create
-            char.ToUpper('d');
 
-            int a = Convert.ToInt16(Convert.ToString('2'));//2
-            a = (char)'2';//50
-            a = (int)'2';//50
-            "str".ToCharArray();
+            string s = "hello";
+
+            foreach (var item in s)
+            {
+                if (item == 'h')
+                {
+                    //true
+                }
+            }
+
+
             #endregion
 
 
@@ -51,7 +57,11 @@ namespace ValueTypeTest
             #endregion
 
             #region ConvertReesize
-
+            char.ToUpper('d');
+            int a = Convert.ToInt16(Convert.ToString('2'));//2
+            a = (char)'2';//50
+            a = (int)'2';//50
+            "str".ToCharArray();
             #endregion
         }
     }
