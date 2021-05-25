@@ -125,7 +125,6 @@ namespace ReferenceTypeTest
             Assert.Equal("hiI  am Harsh-", str); 
 
         }
-
     }
 
 }

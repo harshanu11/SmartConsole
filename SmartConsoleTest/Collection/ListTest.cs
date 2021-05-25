@@ -12,9 +12,6 @@ namespace CollectionTest
             fruits.Add("mango");
             fruits.Add("apple");
             fruits.Add("lemon");
-
-            
-
         }
     }
 }

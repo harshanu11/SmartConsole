@@ -178,7 +178,7 @@ namespace Program
             return n;
         }
     }
-        public class BitMani
+    public class BitMani
     {
         public static void bin(long n)
         {
@@ -250,7 +250,7 @@ namespace Program
             return binary.ToString();
         }
         [Fact]
-        public  void BinToDec()
+        public void BinToDec()
         {
             string value = "01001010";
             // BigInteger can be found in the System.Numerics dll
@@ -263,7 +263,7 @@ namespace Program
                 res += c == '1' ? 1 : 0;
             }
 
-           // return res;
+            // return res;
         }
         [Fact]
         public void AdvanceBinaryTest()
@@ -274,7 +274,7 @@ namespace Program
 
         }
     }
-    public class FlipBitToWin 
+    public class FlipBitToWin
     {
         public static int flipBit(int a)
         {

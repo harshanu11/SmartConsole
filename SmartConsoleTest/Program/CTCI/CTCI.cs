@@ -27,6 +27,7 @@ namespace CTCINs
                 }
             }
         }
+        [Fact]
         public void CheckPermutationstr()
         {
             int[] c = new int[128];
@@ -89,7 +90,7 @@ namespace CTCINs
 
             Console.WriteLine(new String(ch1));
         }
-
+        [Fact]
         public void IsPalandromTest()
         {
 
@@ -104,7 +105,7 @@ namespace CTCINs
                 }
             }
         }
-
+        [Fact]
         public void PringMissingItemFormString()
         {
             string strOne = "Pale";
@@ -159,6 +160,7 @@ namespace CTCINs
 
             Console.WriteLine(oneEditCount);
         }
+        [Fact]
         public void FindDublicateAndDubCount()
         {
             string str0 = "adflksdaf";
@@ -198,6 +200,7 @@ namespace CTCINs
                 Console.WriteLine(outPut);
             }
         }
+        [Fact]
         public void RotateArrByClock90()
         {
 
@@ -251,6 +254,7 @@ namespace CTCINs
             }
 
         }
+        [Fact]
         public void CheckRotatedStrong()
         {
             string str1 = "waterbottle"; string strTest = "ottlewaterb";
@@ -277,6 +281,14 @@ namespace CTCINs
         }
         #endregion
         #region LinkList
+
+        [Fact]
+        public static void RemoveSpecificDuplicateTest()
+        {
+            LL head = new LL(8);
+            int d = 88;
+            RemoveSpecificDuplicate(head, d);
+        }
         public static LL RemoveSpecificDuplicate(LL head, int d)
         {
             LL n = head;
@@ -295,6 +307,13 @@ namespace CTCINs
             }
 
             return head;
+        }
+        [Fact]
+        public static void FindKthFromEndTest()
+        {
+            LL head = new LL(8);
+            int d = 88;
+            FindKthFromEnd(head, d);
         }
         public static int FindKthFromEnd(LL head, int k)
         {

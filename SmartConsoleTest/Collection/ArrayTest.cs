@@ -148,17 +148,5 @@ namespace CollectionTest
             #endregion
 
         }
-        public static void RotateArray()
-        {
-            string[] lenAndShift = Console.ReadLine().Split(' ');
-            double len = Convert.ToDouble(lenAndShift[0]);
-            double shift = Convert.ToDouble(lenAndShift[1]);
-            Console.WriteLine(len);
-            Console.WriteLine(shift);
-            string[] a = Console.ReadLine().Split(' ');
-            string[] aNewStart = a.Skip(3).ToArray();
-
-            //Array.Copy(a, 0, aNew, 0, 3);
-        }
     }
 }

@@ -20,8 +20,6 @@ namespace CollectionTest
             nums.Insert(67);
             nums.Insert(76);
             nums.Insert(72);
-
-
         }
 
         [Fact]
