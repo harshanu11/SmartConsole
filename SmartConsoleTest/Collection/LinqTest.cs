@@ -22,7 +22,8 @@ namespace CollectionTest
             });//PASSIONFRUIT1
 
             string joinFruit = fruits.Aggregate((a, b) => { return a + " ," + b; });//apple ,mango ,orange ,passionfruit ,passionfruit1 ,grape
-            joinFruit = fruits.Aggregate((a, b) => {
+            joinFruit = fruits.Aggregate((a, b) =>
+            {
                 a = "";
                 return a + " ," + b;
             });//a,grape
@@ -34,8 +35,15 @@ namespace CollectionTest
         [Fact]
         public void AnyAllAvgTest()
         {
+            List<Pet> pets1 = new List<Pet>{ new Pet { Name="Barley", Age=8 },
+                       new Pet { Name="Boots", Age=4 },
+                       new Pet { Name="Boots", Age=4 },
+                       new Pet { Name="Boots", Age=4 },
+                       new Pet { Name="Whiskers", Age=1 } };
             long?[] longs = { null, 10007L, 37L, 399846234235L };
             double? average = longs.Average();
+            var duplicate = pets1.GroupBy(x => x.Age).Any(x => x.Count() > 1);
+
             // This code produces the following output:
             //
             // The average is 133282081426.333.
@@ -50,7 +58,7 @@ namespace CollectionTest
         [Fact]
         public void ContainTest()
         {
-            
+
             string[] fruits = { "apple", "mango", "orange", "passionfruit", "passionfruit1", "grape" };
             var sdfsd = fruits.Contains("mango");
 
@@ -84,6 +92,39 @@ namespace CollectionTest
                 Console.WriteLine("\nName: {0}", pet.Name);
             }
 
+        }
+        [Fact]
+        public void GroupByTest()
+        {
+            List<Pet> pets1 = new List<Pet>{ new Pet { Name="Barley", Age=8 },
+                       new Pet { Name="Boots", Age=4 },
+                       new Pet { Name="Boots", Age=4 },
+                       new Pet { Name="Boots", Age=4 },
+                       new Pet { Name="Whiskers", Age=1 } };
+
+            var GraphD = pets1.GroupBy(x => x.Name, (key, group) => group.First()).ToList();// full collection obje
+            var GraphDName = pets1.GroupBy(x => x.Name).ToList();
+            var GraphDAge = pets1.GroupBy(x => x.Age).ToList();
+
+            var duplicate = pets1.GroupBy(x => x.Age).Any(x => x.Count() > 1);//x.Count() == 1)
+
+        }
+        [Fact]
+        public void EtcTest()
+        {
+            int[] numArr = { 2, 3, 0, 4, 5, 0 };
+            int[] seedArr = { 2, 3, 0 };
+
+            double avg = numArr.Average();
+            numArr.Append(5);
+            IEnumerable<string> query = numArr.Cast<string>().OrderBy(z => z);
+            var filter = numArr.Concat(numArr.Where(x => x != 0)).ToArray();// { 2, 3,0, 4, 5,0 ,2,3,4,5} 10
+            //Except
+            var except = numArr.Except(seedArr).ToArray();//4,5
+            //range
+            var range = Enumerable.Range(1, 10).ToArray();
+            //range
+            var rangeRepeat = Enumerable.Repeat("hello", 10).ToArray();
         }
     }
 

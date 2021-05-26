@@ -23,6 +23,10 @@ namespace ReferenceTypeTest
             #endregion
 
             #region Compare
+            if ("hello".Contains("H"))
+            {
+
+            }
             Assert.Equal("456", "456");
             Assert.True(MyFirstString.Equals(MySecondString));
             Assert.True(MyFirstString == MySecondString);// though it is == but comparing value inside srtring
