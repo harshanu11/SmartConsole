@@ -60,7 +60,7 @@ namespace ReferenceTypeTest
             #endregion
 
             #region ConvertReesize
-
+            string convertToStr = string.Join(",", new int[] { 1, 2 });
             Convert.ToInt32("1001101", 2).ToString();
             "".ToCharArray();
             String ans = str.Substring(4, str.Length - 4) + str.Substring(0, 4);

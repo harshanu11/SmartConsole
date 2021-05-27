@@ -7,47 +7,67 @@ namespace CollectionTest
 {
     public class LinqTest
     {
+        // select and selectmany return smae result for nasted object 
+        List<Employee> employees = new List<Employee>();
+        public LinqTest()
+        {
+
+            Employee emp1 = new Employee {Id=1,Age=35, Name = "Deepak", Skills = new List<string> { "C", "C++", "Java" } };
+            Employee emp2 = new Employee {Id=2,Age=35, Name = "Karan", Skills = new List<string> { "SQL Server", "C#", "ASP.NET" } };
+            Employee emp3 = new Employee {Id=7,Age=55, Name = "Lalit", Skills = new List<string> { "C#", "ASP.NET MVC", "Windows Azure", "SQL Server" } };
+            Employee emp3 = new Employee {Id=7,Age=55, Name = "we", Skills = new List<string> { "C#", "ASP.NET MVC", "Windows Azure", "SQL Server" } };
+
+            employees.Add(emp1);
+            employees.Add(emp2);
+            employees.Add(emp3);
+        }
+
         [Fact]
         public void AggrigateTest()
         {
             //Find fruit grater then banana
+            int[] numArr = { 2, 3, 4, 5 };
             string[] fruits = { "apple", "mango", "orange", "passionfruit", "passionfruit1", "grape" };
-            string longestName = fruits.Aggregate("banana", (longest, next) =>
+            string longestName = fruits.Aggregate("banana", (first, second) =>
             {
-                var data = next.Length > longest.Length ? next : longest;
+                var data = second.Length > first.Length ? second : first;
                 return data;
             }, (x) =>
             {
                 return x.ToUpper();
             });//PASSIONFRUIT1
 
+            longestName = fruits.Aggregate("passionfruit1", (first, second) =>
+            {
+                var data = second.Length > first.Length ? second : first;
+                return data;
+            }, (x) =>
+            {
+                return x.ToUpper();
+            });//PASSIONFRUIT1....
+
+
+
+
+            int mulResultAddtional = numArr.Aggregate(10, (a, b) => a * b);//1200
+
+
+
+
             string joinFruit = fruits.Aggregate((a, b) => { return a + " ," + b; });//apple ,mango ,orange ,passionfruit ,passionfruit1 ,grape
-            joinFruit = fruits.Aggregate((a, b) =>
+            var data  = fruits.Aggregate((a, b) =>
             {
                 a = "";
                 return a + " ," + b;
-            });//a,grape
+            }).ToArray();//a,grape
 
-            int[] numArr = { 2, 3, 4, 5 };
             int mulResult = numArr.Aggregate((a, b) => a * b);//120
-            int mulResultAddtional = numArr.Aggregate(10, (a, b) => a * b);//1200
-        }
-        [Fact]
-        public void AnyAllAvgTest()
-        {
-            List<Pet> pets1 = new List<Pet>{ new Pet { Name="Barley", Age=8 },
-                       new Pet { Name="Boots", Age=4 },
-                       new Pet { Name="Boots", Age=4 },
-                       new Pet { Name="Boots", Age=4 },
-                       new Pet { Name="Whiskers", Age=1 } };
-            long?[] longs = { null, 10007L, 37L, 399846234235L };
-            double? average = longs.Average();
-            var duplicate = pets1.GroupBy(x => x.Age).Any(x => x.Count() > 1);
 
-            // This code produces the following output:
-            //
-            // The average is 133282081426.333.
+
+
+            
         }
+
         [Fact]
         public void AppendTest()
         {
@@ -63,18 +83,11 @@ namespace CollectionTest
             var sdfsd = fruits.Contains("mango");
 
         }
-        [Fact]
-        public void ConcatTest()
-        {
-            int[] numArr = { 2, 3, 4, 5 };
-            var data = numArr.Concat(numArr.Where(x => x != 0)).ToList();
-            Assert.Equal(8, data.Count);
-        }
-        [Fact]
         public void DefaultIfEmptyTest()
         {
             Pet defaultPet = new Pet { Name = "Default Pet", Age = 0 };
 
+            List<Pet> pets2 = new List<Pet>();
             List<Pet> pets1 =
                 new List<Pet>{ new Pet { Name="Barley", Age=8 },
                        new Pet { Name="Boots", Age=4 },
@@ -85,7 +98,6 @@ namespace CollectionTest
                 Console.WriteLine("Name: {0}", pet.Name);
             }
 
-            List<Pet> pets2 = new List<Pet>();
 
             foreach (Pet pet in pets2.DefaultIfEmpty(defaultPet))
             {
@@ -125,6 +137,24 @@ namespace CollectionTest
             var range = Enumerable.Range(1, 10).ToArray();
             //range
             var rangeRepeat = Enumerable.Repeat("hello", 10).ToArray();
+
+
+
+            // Query using Select()
+            IEnumerable<List<String>> resultSelect = employees.Select(e => e.Skills);//"C,C++,Java,SQL Server,C#,ASP.NET,C#,ASP.NET MVC,Windows Azure,SQL Server"
+            // Query using SelectMany()
+            IEnumerable<string> resultSelectMany = employees.SelectMany(emp => emp.Skills);//"C,C++,Java,SQL Server,C#,ASP.NET,C#,ASP.NET MVC,Windows Azure,SQL Server"
+
+            var thenBy = employees.OrderBy(x => x.Age).ThenBy(x => x.Id).ThenBy(x => x.Id).ToArray();
+            var thenByDec = employees.OrderBy(x => x.Age).ThenByDescending(x => x.Id).ThenBy(x => x.Id).ToArray();
+
+
+            /// take takewhilw skip skipwhile
+            var takewhile = employees.TakeWhile(x => {
+
+                x = x;
+                return x.Name.Length >2;
+            }).ToArray();
         }
     }
 
@@ -132,5 +162,12 @@ namespace CollectionTest
     {
         public int Age { get; set; }
         public string Name { get; set; }
+    }
+    class Employee
+    {
+        public int Id { get; set; }
+        public int Age { get; set; }
+        public string Name { get; set; }
+        public List<string> Skills { get; set; }
     }
 }
