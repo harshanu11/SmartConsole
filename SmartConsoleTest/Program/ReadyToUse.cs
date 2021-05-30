@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CollectionTest;
+using System;
 using System.Numerics;
 using System.Text.RegularExpressions;
 using Xunit;
@@ -344,5 +345,89 @@ namespace Program
             return s;
         }
 
+        [Fact]
+        public void TwoPointerTest()
+        {
+            string s = "sdfsf"; string t="sfsf";
+            bool response = true;
+
+            int sPoint = s.Length - 1;
+            int tPoint = t.Length - 1;
+
+            int sSkip = 0;
+            int tSkip = 0;
+
+            while (sPoint >= 0 || tPoint >= 0)
+            {
+                while (sPoint >= 0)
+                {
+                    if (s[sPoint] == '#')
+                    {
+                        sSkip++;
+                        sPoint--;
+                    }
+                    else if (sSkip > 0)
+                    {
+                        sPoint--;
+                        sSkip--;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                while (tPoint >= 0)
+                {
+                    if ('#' == t[tPoint])
+                    {
+                        tSkip++;
+                        tPoint--;
+                    }
+                    else if (tSkip > 0)
+                    {
+                        tPoint--;
+                        tSkip--;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                if (sPoint >= 0 && tPoint >= 0 && s[sPoint] != t[tPoint])
+                {
+                    return false;
+                }
+                if ((sPoint >= 0) != (tPoint >= 0))
+                {
+                    return false;
+                }
+                tPoint--;
+                sPoint--;
+
+            }
+
+
+
+
+            return true;
+        }
+        [Fact]
+        public void SlowFastPointerTest() {
+            LLNode head = new LLNode(5) ;
+            if (head == null) { 
+               // return false;
+            }
+
+            LLNode Fast = head.nextNode;
+            LLNode Slow = head;
+
+            while (Slow != Fast)
+            {
+                if (Fast == null || Fast.nextNode == null) { }
+                    //return false;
+                Slow = Slow.nextNode;
+                Fast = Fast.nextNode.nextNode;
+            }
+        }
     }
 }

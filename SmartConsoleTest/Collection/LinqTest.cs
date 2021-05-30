@@ -15,7 +15,7 @@ namespace CollectionTest
             Employee emp1 = new Employee {Id=1,Age=35, Name = "Deepak", Skills = new List<string> { "C", "C++", "Java" } };
             Employee emp2 = new Employee {Id=2,Age=35, Name = "Karan", Skills = new List<string> { "SQL Server", "C#", "ASP.NET" } };
             Employee emp3 = new Employee {Id=7,Age=55, Name = "Lalit", Skills = new List<string> { "C#", "ASP.NET MVC", "Windows Azure", "SQL Server" } };
-            Employee emp3 = new Employee {Id=7,Age=55, Name = "we", Skills = new List<string> { "C#", "ASP.NET MVC", "Windows Azure", "SQL Server" } };
+            Employee emp4 = new Employee {Id=7,Age=55, Name = "we", Skills = new List<string> { "C#", "ASP.NET MVC", "Windows Azure", "SQL Server" } };
 
             employees.Add(emp1);
             employees.Add(emp2);
