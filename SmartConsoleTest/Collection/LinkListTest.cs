@@ -163,6 +163,49 @@ namespace CollectionTest
                             " insertion of 15 at position 7: ");
             PrintList(head);
         }
+        public LLNode MiddleNode(LLNode head)
+        {
+            LLNode fast = head;
+            LLNode slow = head;
+            while (fast != null && fast.nextNode != null)
+            {
+                fast = fast.nextNode.nextNode;
+                slow = slow.nextNode;
+            }
+            return slow;
+        }
+        public LLNode MergeTwoLists(LLNode l1, LLNode l2)
+        {
+            LLNode temp = new LLNode(0);
+            LLNode current_node = temp;
+
+            while (l1 != null && l2 != null)
+            {
+                if (l1.data < l2.data)
+                {
+                    current_node.nextNode = l1;
+                    l1 = l1.nextNode;
+                }
+                else
+                {
+                    current_node.nextNode = l2;
+                    l2 = l2.nextNode;
+                }
+                current_node = current_node.nextNode;
+            }
+            if (l1 != null)
+            {
+                current_node.nextNode = l1;
+                l1 = l1.nextNode;
+            }
+            if (l2 != null)
+            {
+                current_node.nextNode = l2;
+                l2 = l2.nextNode;
+            }
+            return temp.nextNode;
+
+        }
         #region SimpleLL
         public static void addToTail(LL head, int data)
         {

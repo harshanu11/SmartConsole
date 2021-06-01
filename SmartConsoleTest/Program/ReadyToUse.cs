@@ -395,11 +395,11 @@ namespace Program
                 }
                 if (sPoint >= 0 && tPoint >= 0 && s[sPoint] != t[tPoint])
                 {
-                    return false;
+                    //return false;
                 }
                 if ((sPoint >= 0) != (tPoint >= 0))
                 {
-                    return false;
+                   // return false;
                 }
                 tPoint--;
                 sPoint--;
@@ -407,9 +407,7 @@ namespace Program
             }
 
 
-
-
-            return true;
+           // return true;
         }
         [Fact]
         public void SlowFastPointerTest() {
