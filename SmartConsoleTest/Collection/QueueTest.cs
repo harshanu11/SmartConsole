@@ -13,7 +13,8 @@ namespace CollectionTest
             q.enQueue(1);
             q.enQueue(2);
             q.enQueue(3);
-
+            //q.Peek()  just peek without removing obj
+            //q.ToArray()
             Console.Write(q.deQueue() + " ");
             Console.Write(q.deQueue() + " ");
             Console.Write(q.deQueue());
