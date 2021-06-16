@@ -79,17 +79,16 @@ namespace CollectionTest
             Array stringArray = Array.CreateInstance(typeof(String), 6);
             int[] arr = new int[] { -59, -36, -13, 1, -53, -92, -2, -96, -54, -75 };
             int[] marks = new int[] { 99, 98, 92, 97, 95 };
-            int[] arr_source_copy = { 1, 3, 4 };
-            int[] newArr = new int[3];
+            int[] arr_source_copy = { 1, 3, 4 }; int[] newArr = new int[3];
             string[] arr_temp = new string[] { "1", "2" };
             //string[] lenAndShift = Console.ReadLine().Split(' ');
             stringArray.SetValue("Mango", 0);
             int[,] mat = {
-            { 1, 2, 3, 4 },
-            { 5, 6, 7, 8 },
-            { 9, 10, 11, 12 },
-            { 13, 14, 15, 16 }
-        };
+                            { 1, 2, 3, 4 },
+                            { 5, 6, 7, 8 },
+                            { 9, 10, 11, 12 },
+                            { 13, 14, 15, 16 }
+                         };
 
             #endregion
 
@@ -106,8 +105,7 @@ namespace CollectionTest
             int serchIndex = Array.IndexOf(marks, 97);
             int index = Array.BinarySearch(arr, 0, arr.Length, -96);
             string[] arr_Find = new string[] { "cam", "camcam" };
-            string v1 = Array.Find(arr_Find,
-            element => element.StartsWith("cam", StringComparison.Ordinal));
+            string v1 = Array.Find(arr_Find,element => element.StartsWith("cam", StringComparison.Ordinal));
             var element = marks.ElementAt(2);
 
             #endregion
