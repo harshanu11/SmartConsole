@@ -126,7 +126,14 @@ namespace ReferenceTypeTest
             str = "hi,I @ am Harsh-";
             rgx = new Regex("[^a-zA-Z0-9 -]");
             str = rgx.Replace(str, "");
-            Assert.Equal("hiI  am Harsh-", str); 
+            Assert.Equal("hiI  am Harsh-", str);
+
+            // split by regex
+            string pattern = "[a-z]+";
+            string input = "Abc1234Def5678Ghi9012Jklm";
+            string[] result = Regex.Split(input, pattern,
+                                          RegexOptions.IgnoreCase,
+                                          TimeSpan.FromMilliseconds(500));
 
         }
     }
