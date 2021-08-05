@@ -22,7 +22,6 @@ namespace CollectionTest
                     twoDarr[i, j] = i * j;
                 }
             }
-
             Console.WriteLine("two d array is loaded");
 
             Console.WriteLine("This is time to print it");
@@ -55,6 +54,8 @@ namespace CollectionTest
                     jaggedArray[i][j] = -1 * (i + j);
                 }
             }
+            var len0 =jaggedArray.GetLength(0);
+
             //Array.Sort(jaggedArray);
             Console.WriteLine("Jagged Array loaded now");
             Console.WriteLine("Time to read data form jagged array");
@@ -83,6 +84,7 @@ namespace CollectionTest
             string[] arr_temp = new string[] { "1", "2" };
             //string[] lenAndShift = Console.ReadLine().Split(' ');
             stringArray.SetValue("Mango", 0);
+            stringArray.GetValue(0);
             int[,] mat = {
                             { 1, 2, 3, 4 },
                             { 5, 6, 7, 8 },
@@ -115,11 +117,12 @@ namespace CollectionTest
             #endregion
 
             #region ConvertResize
+            int[] Aint = Array.ConvertAll(arr_temp, c => (int)Char.GetNumericValue(c[0]));
             int[] arrInt = Array.ConvertAll(arr_temp, Int32.Parse);
             Array.Resize(ref arr_temp, 10);
             var convertToStr = string.Join("", new int[] { 1, 2 });
             string[] test = new string[2];
-            test[0] = "Hello ";
+            test[0] = "Hello";
             test[1] = "World!";
 
             string result = String.Concat(test);// hello world
@@ -127,24 +130,11 @@ namespace CollectionTest
             resJoin = String.Join(",", test);//Hello ,World!
             #endregion
 
-            #region Create
-
-            #endregion
             #region Compare
             #endregion
-            #region sortReverese
-
-            #endregion
             #region Find
-
+            var data= Array.Find(test, x=>x== "Hello");// return Hello
             #endregion
-            #region Copy
-
-            #endregion
-            #region ConvertReesize
-
-            #endregion
-
         }
     }
 }
