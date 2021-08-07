@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -109,6 +110,7 @@ namespace CollectionTest
             string[] arr_Find = new string[] { "cam", "camcam" };
             string v1 = Array.Find(arr_Find,element => element.StartsWith("cam", StringComparison.Ordinal));
             var element = marks.ElementAt(2);
+            BubbleSort(new List<int>());
 
             #endregion
 
@@ -135,6 +137,35 @@ namespace CollectionTest
             #region Find
             var data= Array.Find(test, x=>x== "Hello");// return Hello
             #endregion
+        }
+
+        public void BubbleSort(List<int> a)
+        {
+            // Write your code here
+            int numberOfSwaps = 0;
+            for (int i = 0; i < a.Count; i++)
+            {
+                // Track number of elements swapped during a single array traversal
+
+                for (int j = 0; j < a.Count - 1; j++)
+                {
+                    // Swap adjacent elements if they are in decreasing order
+                    if (a[j] > a[j + 1])
+                    {
+                        var temp = a[j];
+                        a[j] = a[j + 1];
+                        a[j + 1] = temp;
+                        numberOfSwaps++;
+                    }
+                }
+
+                // If no elements were swapped during a traversal, array is sorted
+                if (numberOfSwaps == 0)
+                {
+                    break;
+                }
+
+            }
         }
     }
 }
