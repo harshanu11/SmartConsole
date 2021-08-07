@@ -4,7 +4,7 @@ using Xunit;
 
 namespace ReferenceTypeTest
 {
-    public class StringTest
+    public class StringRegexTest
     {
         [Fact]
         public void StringAlwaysCompareContentOfString()

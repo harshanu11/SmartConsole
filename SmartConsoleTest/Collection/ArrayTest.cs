@@ -95,9 +95,6 @@ namespace CollectionTest
 
             #endregion
 
-            #region Compare
-            #endregion
-
             #region SortReverse
             Array.Sort(arr);
             Array.Sort(arr, 2, 6);

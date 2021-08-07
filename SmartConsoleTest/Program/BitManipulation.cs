@@ -218,7 +218,6 @@ namespace Program
         // to String 
         public static String printBinary(double num)
         {
-            // Check Number is Between 0 to 1 or Not 
             if (num >= 1 || num <= 0)
                 return "ERROR";
 
@@ -227,14 +226,8 @@ namespace Program
 
             while (num > 0)
             {
-                /* Setting a limit on length: 32 characters, 
-                If the number cannot be represented 
-                accurately in binary with at most 32 
-                character */
                 if (binary.Length >= 32)
                     return "ERROR";
-
-                // Multiply by 2 in num to check it 1 or 0 
                 double r = num * 2;
                 if (r >= 1)
                 {
@@ -253,17 +246,12 @@ namespace Program
         public void BinToDec()
         {
             string value = "01001010";
-            // BigInteger can be found in the System.Numerics dll
             BigInteger res = 0;
-
-            // I'm totally skipping error handling here
             foreach (char c in value)
             {
                 res <<= 1;
                 res += c == '1' ? 1 : 0;
             }
-
-            // return res;
         }
         [Fact]
         public void AdvanceBinaryTest()
@@ -278,8 +266,6 @@ namespace Program
     {
         public static int flipBit(int a)
         {
-            /* If all bits are l, binary representation
-            of 'a' has all 1s */
             if (~a == 0)
             {
                 return 8 * sizeof(int);
@@ -288,35 +274,21 @@ namespace Program
             int currLen = 0, prevLen = 0, maxLen = 0;
             while (a != 0)
             {
-                // If Current bit is a 1
-                // then increment currLen++
                 if ((a & 1) == 1)
                 {
                     currLen++;
                 }
 
-                // If Current bit is a 0 then
-                // check next bit of a
                 else if ((a & 1) == 0)
                 {
-                    /* Update prevLen to 0 (if next bit is 0)
-                    or currLen (if next bit is 1). */
                     prevLen = (a & 2) == 0 ? 0 : currLen;
-
-                    // If two consecutively bits are 0
-                    // then currLen also will be 0.
                     currLen = 0;
                 }
 
-                // Update maxLen if required
                 maxLen = Math.Max(prevLen + currLen, maxLen);
-
-                // Remove last bit (Right shift)
                 a >>= 1;
             }
 
-            // We can always have a sequence of
-            // at least one 1, this is fliped bit
             return maxLen + 1;
         }
     }

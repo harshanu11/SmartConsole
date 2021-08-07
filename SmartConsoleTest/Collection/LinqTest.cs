@@ -46,13 +46,7 @@ namespace CollectionTest
                 return x.ToUpper();
             });//PASSIONFRUIT1....
 
-
-
-
             int mulResultAddtional = numArr.Aggregate(10, (a, b) => a * b);//1200
-
-
-
 
             string joinFruit = fruits.Aggregate((a, b) => { return a + " ," + b; });//apple ,mango ,orange ,passionfruit ,passionfruit1 ,grape
             var data  = fruits.Aggregate((a, b) =>
@@ -62,10 +56,6 @@ namespace CollectionTest
             }).ToArray();//a,grape
 
             int mulResult = numArr.Aggregate((a, b) => a * b);//120
-
-
-
-            
         }
 
         [Fact]

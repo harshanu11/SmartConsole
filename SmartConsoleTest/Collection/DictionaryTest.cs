@@ -14,6 +14,10 @@ namespace CollectionTest
             d.ContainsValue(5);
             d.ContainsKey(4);
             var data =d.Keys;
+            foreach (KeyValuePair<int,int> item in d)
+            {
+
+            }
         }
     }
 }
