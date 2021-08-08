@@ -12,56 +12,56 @@ namespace CollectionTest
             // Create the link list.
             string[] words =
                 { "the", "fox", "jumps", "over", "the", "dog" };
-            LinkedList<string> sentence = new LinkedList<string>(words);
-            llo.Display(sentence, "The linked list values:");
+            LinkedList<string> ll = new LinkedList<string>(words);
+            llo.Display(ll, "The linked list values:");
             Console.WriteLine("sentence.Contains(\"jumps\") = {0}",
-                sentence.Contains("jumps"));
+                ll.Contains("jumps"));
 
             // Add the word 'today' to the beginning of the linked list.
-            sentence.AddFirst("today");
-            llo.Display(sentence, "Test 1: Add 'today' to beginning of the list:");
+            ll.AddFirst("today");
+            llo.Display(ll, "Test 1: Add 'today' to beginning of the list:");
 
             // Move the first node to be the last node.
-            LinkedListNode<string> mark1 = sentence.First;
-            sentence.RemoveFirst();
-            sentence.AddLast(mark1);
-            llo.Display(sentence, "Test 2: Move first node to be last node:");
+            LinkedListNode<string> mark1 = ll.First;
+            ll.RemoveFirst();
+            ll.AddLast(mark1);
+            llo.Display(ll, "Test 2: Move first node to be last node:");
 
             // Change the last node to 'yesterday'.
-            sentence.RemoveLast();
-            sentence.AddLast("yesterday");
-            llo.Display(sentence, "Test 3: Change the last node to 'yesterday':");
+            ll.RemoveLast();
+            ll.AddLast("yesterday");
+            llo.Display(ll, "Test 3: Change the last node to 'yesterday':");
 
             // Move the last node to be the first node.
-            mark1 = sentence.Last;
-            sentence.RemoveLast();
-            sentence.AddFirst(mark1);
-            llo.Display(sentence, "Test 4: Move last node to be first node:");
+            mark1 = ll.Last;
+            ll.RemoveLast();
+            ll.AddFirst(mark1);
+            llo.Display(ll, "Test 4: Move last node to be first node:");
 
             // Indicate the last occurence of 'the'.
-            sentence.RemoveFirst();
-            LinkedListNode<string> current = sentence.FindLast("the");
+            ll.RemoveFirst();
+            LinkedListNode<string> current = ll.FindLast("the");
             llo.IndicateNode(current, "Test 5: Indicate last occurence of 'the':");
 
             // Add 'lazy' and 'old' after 'the' (the LinkedListNode named current).
-            sentence.AddAfter(current, "old");
-            sentence.AddAfter(current, "lazy");
+            ll.AddAfter(current, "old");
+            ll.AddAfter(current, "lazy");
             llo.IndicateNode(current, "Test 6: Add 'lazy' and 'old' after 'the':");
 
             // Indicate 'fox' node.
-            current = sentence.Find("fox");
+            current = ll.Find("fox");
             llo.IndicateNode(current, "Test 7: Indicate the 'fox' node:");
 
             // Add 'quick' and 'brown' before 'fox':
-            sentence.AddBefore(current, "quick");
-            sentence.AddBefore(current, "brown");
+            ll.AddBefore(current, "quick");
+            ll.AddBefore(current, "brown");
             llo.IndicateNode(current, "Test 8: Add 'quick' and 'brown' before 'fox':");
 
             // Keep a reference to the current node, 'fox',
             // and to the previous node in the list. Indicate the 'dog' node.
             mark1 = current;
             LinkedListNode<string> mark2 = current.Previous;
-            current = sentence.Find("dog");
+            current = ll.Find("dog");
             llo.IndicateNode(current, "Test 9: Indicate the 'dog' node:");
 
             // The AddBefore method throws an InvalidOperationException
@@ -69,7 +69,7 @@ namespace CollectionTest
             Console.WriteLine("Test 10: Throw exception by adding node (fox) already in the list:");
             try
             {
-                sentence.AddBefore(current, mark1);
+                ll.AddBefore(current, mark1);
             }
             catch (InvalidOperationException ex)
             {
@@ -80,35 +80,35 @@ namespace CollectionTest
             // Remove the node referred to by mark1, and then add it
             // before the node referred to by current.
             // Indicate the node referred to by current.
-            sentence.Remove(mark1);
-            sentence.AddBefore(current, mark1);
+            ll.Remove(mark1);
+            ll.AddBefore(current, mark1);
             llo.IndicateNode(current, "Test 11: Move a referenced node (fox) before the current node (dog):");
 
             // Remove the node referred to by current.
-            sentence.Remove(current);
+            ll.Remove(current);
             llo.IndicateNode(current, "Test 12: Remove current node (dog) and attempt to indicate it:");
 
             // Add the node after the node referred to by mark2.
-            sentence.AddAfter(mark2, current);
+            ll.AddAfter(mark2, current);
             llo.IndicateNode(current, "Test 13: Add node removed in test 11 after a referenced node (brown):");
 
             // The Remove method finds and removes the
             // first node that that has the specified value.
-            sentence.Remove("old");
-            llo.Display(sentence, "Test 14: Remove node that has the value 'old':");
+            ll.Remove("old");
+            llo.Display(ll, "Test 14: Remove node that has the value 'old':");
 
             // When the linked list is cast to ICollection(Of String),
             // the Add method adds a node to the end of the list.
-            sentence.RemoveLast();
-            ICollection<string> icoll = sentence;
+            ll.RemoveLast();
+            ICollection<string> icoll = ll;
             icoll.Add("rhinoceros");
-            llo.Display(sentence, "Test 15: Remove last node, cast to ICollection, and add 'rhinoceros':");
+            llo.Display(ll, "Test 15: Remove last node, cast to ICollection, and add 'rhinoceros':");
 
             Console.WriteLine("Test 16: Copy the list to an array:");
             // Create an array with the same number of
             // elements as the linked list.
-            string[] sArray = new string[sentence.Count];
-            sentence.CopyTo(sArray, 0);
+            string[] sArray = new string[ll.Count];
+            ll.CopyTo(sArray, 0);
 
             foreach (string s in sArray)
             {
@@ -116,11 +116,11 @@ namespace CollectionTest
             }
 
             // Release all the nodes.
-            sentence.Clear();
+            ll.Clear();
 
             Console.WriteLine();
             Console.WriteLine("Test 17: Clear linked list. Contains 'jumps' = {0}",
-                sentence.Contains("jumps"));
+                ll.Contains("jumps"));
         }
     
         [Fact]

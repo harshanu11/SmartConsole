@@ -42,10 +42,10 @@ namespace SmartConsoleTest
             hs.Contains(3);
             hs.Remove(3);
             #region LinkList
-            ll.AddFirst("today");
+            ll.AddFirst("today");//ll.RemoveFirst() ll.AddLast(mark1); ll.RemoveLast(); ll.AddAfter(current, "old"); .AddBefore(current, mark1); .Remove(mark1);ll.Clear();
             LinkedListNode<string> mark1 = ll.First;
             LinkedListNode<string> markPrev = ll.Last.Previous;
-            var current = ll.Find("fox");
+            var current = ll.Find("fox");// return fox as string
             if (ll.Contains("jumps"))
             {
                 ll.RemoveFirst();
@@ -55,6 +55,8 @@ namespace SmartConsoleTest
             ll.AddBefore(current, "quick");
             current = ll.Find("dog");
             ICollection<string> icoll = ll;
+            string[] sArray = new string[ll.Count];
+            ll.CopyTo(sArray, 0);
             #endregion
             stk.Push(4);
             stk.Pop();
@@ -103,4 +105,37 @@ namespace SmartConsoleTest
             #endregion
         }
     }
+    #region Helper
+    public class LinkedListNode
+    {
+        public int data
+        {
+            get;
+            set;
+        }
+
+        public LinkedListNode next;
+        public LinkedListNode(int data)
+        {
+            this.data = data;
+        }
+    }
+
+    public class TreetNode
+    {
+        public int data
+        {
+            get;
+            set;
+        }
+
+        public TreetNode left;
+        public TreetNode right;
+
+    }
+
+    public class GraphOps
+    {
+    }
+    #endregion
 }
