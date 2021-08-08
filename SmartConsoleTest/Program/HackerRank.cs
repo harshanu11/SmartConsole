@@ -53,7 +53,7 @@ namespace Program
         [Fact]
         public void LowestCommonAncestorTest()
         {
-            BinarySearchTree nums = new BinarySearchTree();
+            BinaryTree nums = new BinaryTree();
             nums.Insert(4);
             nums.Insert(2);
             nums.Insert(3);
