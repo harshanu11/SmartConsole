@@ -63,5 +63,32 @@
                 return root;
             }
         }
+        public virtual TreeNode sortedArrayToBST(int[] arr, int start, int end)
+        {
+
+            /* Base Case */
+            if (start > end)
+            {
+                return null;
+            }
+
+            int mid = (start + end) / 2;
+            TreeNode node = new TreeNode(arr[mid]);
+
+            node.Left = sortedArrayToBST(arr, start, mid - 1);
+
+            node.Right = sortedArrayToBST(arr, mid + 1, end);
+
+            return node;
+        }
+        public virtual void preOrder(TreeNode node)
+        {
+            if (node == null)
+            {
+                return;
+            }
+            preOrder(node.Left);
+            preOrder(node.Right);
+        }
     }
 }

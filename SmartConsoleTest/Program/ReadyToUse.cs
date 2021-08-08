@@ -422,7 +422,7 @@ namespace Program
             while (Slow != Fast)
             {
                 if (Fast == null || Fast.nextNode == null) { }
-                    //return false;
+                break;//return false;
                 Slow = Slow.nextNode;
                 Fast = Fast.nextNode.nextNode;
             }

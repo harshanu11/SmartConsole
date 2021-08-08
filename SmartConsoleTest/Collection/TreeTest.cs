@@ -5,7 +5,7 @@ namespace CollectionTest
 {
     public class TreeTest
     {
-        public TreeNodev1 rootBreathFirst;
+        public TreeNode rootBreathFirst;
         [Fact]
         public void InsertInBinaryTree()
         {
@@ -24,8 +24,8 @@ namespace CollectionTest
         }
         [Fact]
         public void TraverseDepthFirstTree() {
-            TreeNodev1 root;
-            BinaryTreev1 tree = new BinaryTreev1();
+            TreeNode root;
+            BinarySearchTree tree = new BinarySearchTree();
             int[] arr = new int[] { 1, 2, 3, 4, 5, 6, 7 };
             int n = arr.Length;
             root = tree.sortedArrayToBST(arr, 0, n - 1);
@@ -37,8 +37,8 @@ namespace CollectionTest
         [Fact]
         public void TraverseBreathFirstTree()
         {
-            TreeNodev1 root;
-            BinaryTreev1 tree = new BinaryTreev1();
+            TreeNode root;
+            BinarySearchTree tree = new BinarySearchTree();
             int[] arr = new int[] { 1, 2, 3, 4, 5, 6, 7 };
             int n = arr.Length;
             root = tree.sortedArrayToBST(arr, 0, n - 1);
@@ -48,19 +48,19 @@ namespace CollectionTest
             printPreorder(root);
 
 
-            rootBreathFirst = new TreeNodev1(1);
-            rootBreathFirst.left = new TreeNodev1(2);
-            rootBreathFirst.right = new TreeNodev1(3);
-            rootBreathFirst.left.left = new TreeNodev1(4);
-            rootBreathFirst.left.right = new TreeNodev1(5);
+            rootBreathFirst = new TreeNode(1);
+            rootBreathFirst.Left = new TreeNode(2);
+            rootBreathFirst.Right = new TreeNode(3);
+            rootBreathFirst.Left.Left = new TreeNode(4);
+            rootBreathFirst.Left.Right = new TreeNode(5);
 
             printLevelOrder();
         }
         [Fact]
         public void SortedArrayToBalanceTreeTest()
         {
-            TreeNodev1 root;
-            BinaryTreev1 tree = new BinaryTreev1();
+            TreeNode root;
+            BinarySearchTree tree = new BinarySearchTree();
             int[] arr = new int[] { 1, 2, 3, 4, 5, 6, 7 };
             int n = arr.Length;
             root = tree.sortedArrayToBST(arr, 0, n - 1);
@@ -69,32 +69,32 @@ namespace CollectionTest
         }
 
 
-        void printPostorder(TreeNodev1 node)
+        void printPostorder(TreeNode node)
         {
             if (node == null)
                 return;
 
-            printPostorder(node.left);
-            printPostorder(node.right);
+            printPostorder(node.Left);
+            printPostorder(node.Right);
         }
-        void printInorder(TreeNodev1 node)
+        void printInorder(TreeNode node)
         {
             if (node == null)
                 return;
 
-            printInorder(node.left);
-            printInorder(node.right);
+            printInorder(node.Left);
+            printInorder(node.Right);
         }
 
-        void printPreorder(TreeNodev1 node)
+        void printPreorder(TreeNode node)
         {
             if (node == null)
                 return;
 
-            printPreorder(node.left);
-            printPreorder(node.right);
+            printPreorder(node.Left);
+            printPreorder(node.Right);
         }
-        public virtual int height(TreeNodev1 root)
+        public virtual int height(TreeNode root)
         {
             if (root == null)
             {
@@ -103,8 +103,8 @@ namespace CollectionTest
             else
             {
                 /* compute height of each subtree */
-                int lheight = height(root.left);
-                int rheight = height(root.right);
+                int lheight = height(root.Left);
+                int rheight = height(root.Right);
 
                 /* use the larger one */
                 if (lheight > rheight)
@@ -126,7 +126,7 @@ namespace CollectionTest
                 printCurrentLevel(rootBreathFirst, i);
             }
         }
-        public virtual void printCurrentLevel(TreeNodev1 root, int level)
+        public virtual void printCurrentLevel(TreeNode root, int level)
         {
             if (root == null)
             {
@@ -134,70 +134,13 @@ namespace CollectionTest
             }
             if (level == 1)
             {
-                Console.Write(root.data + " ");
+                Console.Write(root.Data + " ");
             }
             else if (level > 1)
             {
-                printCurrentLevel(root.left, level - 1);
-                printCurrentLevel(root.right, level - 1);
+                printCurrentLevel(root.Left, level - 1);
+                printCurrentLevel(root.Right, level - 1);
             }
         }
-    }
-
-    public class TreeNodev1
-    {
-
-        public int data;
-        public TreeNodev1 left, right;
-
-        public TreeNodev1(int d)
-        {
-            data = d;
-            left = right = null;
-        }
-    }
-    public class BinaryTreev1
-    {
-
-        public static TreeNodev1 root;
-
-        /* A function that constructs Balanced Binary Search Tree
-		from a sorted array */
-        public virtual TreeNodev1 sortedArrayToBST(int[] arr, int start, int end)
-        {
-
-            /* Base Case */
-            if (start > end)
-            {
-                return null;
-            }
-
-            /* Get the middle element and make it root */
-            int mid = (start + end) / 2;
-            TreeNodev1 node = new TreeNodev1(arr[mid]);
-
-            /* Recursively construct the left subtree and make it
-			left child of root */
-            node.left = sortedArrayToBST(arr, start, mid - 1);
-
-            /* Recursively construct the right subtree and make it
-			right child of root */
-            node.right = sortedArrayToBST(arr, mid + 1, end);
-
-            return node;
-        }
-
-        /* A utility function to print preorder traversal of BST */
-        public virtual void preOrder(TreeNodev1 node)
-        {
-            if (node == null)
-            {
-                return;
-            }
-            Console.Write(node.data + " ");
-            preOrder(node.left);
-            preOrder(node.right);
-        }
-
     }
 }
