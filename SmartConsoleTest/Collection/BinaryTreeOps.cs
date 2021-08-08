@@ -1,9 +1,9 @@
 ﻿namespace CollectionTest
 {
-    public class BinaryTree
+    public class BinaryTreeOps
     {
         public TreeNode root;
-        public BinaryTree()
+        public BinaryTreeOps()
         {
             root = null;
         }

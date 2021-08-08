@@ -9,7 +9,7 @@ namespace CollectionTest
         [Fact]
         public void InsertInBinaryTree()
         {
-            BinaryTree nums = new BinaryTree();
+            BinaryTreeOps nums = new BinaryTreeOps();
             nums.Insert(50);
             nums.Insert(17);
             nums.Insert(23);
@@ -25,7 +25,7 @@ namespace CollectionTest
         [Fact]
         public void TraverseDepthFirstTree() {
             TreeNode root;
-            BinaryTree tree = new BinaryTree();
+            BinaryTreeOps tree = new BinaryTreeOps();
             int[] arr = new int[] { 1, 2, 3, 4, 5, 6, 7 };
             int n = arr.Length;
             root = tree.sortedArrayToBST(arr, 0, n - 1);
@@ -38,7 +38,7 @@ namespace CollectionTest
         public void TraverseBreathFirstTree()
         {
             TreeNode root;
-            BinaryTree tree = new BinaryTree();
+            BinaryTreeOps tree = new BinaryTreeOps();
             int[] arr = new int[] { 1, 2, 3, 4, 5, 6, 7 };
             int n = arr.Length;
             root = tree.sortedArrayToBST(arr, 0, n - 1);
@@ -60,7 +60,7 @@ namespace CollectionTest
         public void SortedArrayToBalanceTreeTest()
         {
             TreeNode root;
-            BinaryTree tree = new BinaryTree();
+            BinaryTreeOps tree = new BinaryTreeOps();
             int[] arr = new int[] { 1, 2, 3, 4, 5, 6, 7 };
             int n = arr.Length;
             root = tree.sortedArrayToBST(arr, 0, n - 1);
