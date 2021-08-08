@@ -285,25 +285,25 @@ namespace CTCINs
         [Fact]
         public static void RemoveSpecificDuplicateTest()
         {
-            LL head = new LL(8);
+            LLNode head = new LLNode(8);
             int d = 88;
             RemoveSpecificDuplicate(head, d);
         }
-        public static LL RemoveSpecificDuplicate(LL head, int d)
+        public static LLNode RemoveSpecificDuplicate(LLNode head, int d)
         {
-            LL n = head;
+            LLNode n = head;
             if (head.data == d)
             {
-                return head.next;
+                return head.nextNode;
             }
 
-            while (n.next != null)
+            while (n.nextNode != null)
             {
-                if (n.next.data == d)
+                if (n.nextNode.data == d)
                 {
-                    n.next = n.next.next;
+                    n.nextNode = n.nextNode.nextNode;
                 }
-                n = n.next;
+                n = n.nextNode;
             }
 
             return head;
@@ -311,25 +311,25 @@ namespace CTCINs
         [Fact]
         public static void FindKthFromEndTest()
         {
-            LL head = new LL(8);
+            LLNode head = new LLNode(8);
             int d = 88;
             FindKthFromEnd(head, d);
         }
-        public static int FindKthFromEnd(LL head, int k)
+        public static int FindKthFromEnd(LLNode head, int k)
         {
             int LengthOfLL = 0;
             int response = 0;
-            LL n = head;
-            while (n.next != null)
+            LLNode n = head;
+            while (n.nextNode != null)
             {
                 LengthOfLL++;
-                n = n.next;
+                n = n.nextNode;
             }
             int countFromStart = LengthOfLL - k;
             int counter = 0;
             Console.WriteLine(countFromStart);
 
-            while (head.next != null)
+            while (head.nextNode != null)
             {
                 if (counter == countFromStart)
                 {
@@ -337,7 +337,7 @@ namespace CTCINs
                     break;
                 }
                 counter++;
-                head = head.next;
+                head = head.nextNode;
             }
 
 

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CollectionTest
+﻿namespace CollectionTest
 {
     public class TreeNode
     {

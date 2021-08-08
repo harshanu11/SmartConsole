@@ -328,41 +328,41 @@ namespace CollectionTest
             nd.nextNode = end;
         }
         #region SimpleLL
-        public static void addToTail(LL head, int data)
+        public static void addToTail(LLNode head, int data)
         {
-            LL end = new LL(data);
-            while (head.next != null)
+            LLNode end = new LLNode(data);
+            while (head.nextNode != null)
             {
-                head = head.next;
+                head = head.nextNode;
             }
 
-            head.next = end;
+            head.nextNode = end;
         }
 
-        public static void Print(LL head)
+        public static void Print(LLNode head)
         {
-            while (head.next != null)
+            while (head.nextNode != null)
             {
-                head = head.next;
+                head = head.nextNode;
                 Console.WriteLine(head.data);
             }
         }
 
-        public static LL deleteLL(LL head, int data)
+        public static LLNode deleteLL(LLNode head, int data)
         {
-            LL n = head;
+            LLNode n = head;
             if (n.data == data)
             {
-                return head.next;
+                return head.nextNode;
             }
 
-            while (n.next != null)
+            while (n.nextNode != null)
             {
-                if (n.next.data == data)
+                if (n.nextNode.data == data)
                 {
-                    n.next = n.next.next;
+                    n.nextNode = n.nextNode.nextNode;
                 }
-                n = n.next;
+                n = n.nextNode;
             }
 
             return head;
