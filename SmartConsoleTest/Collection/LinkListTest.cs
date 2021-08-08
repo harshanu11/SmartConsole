@@ -1,70 +1,68 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace CollectionTest
 {
     public class LinkListTest
     {
-
-
+        LinkListOps llo = new LinkListOps();
         [Fact]
         public void InbuiltLL() {
             // Create the link list.
             string[] words =
                 { "the", "fox", "jumps", "over", "the", "dog" };
             LinkedList<string> sentence = new LinkedList<string>(words);
-            Display(sentence, "The linked list values:");
+            llo.Display(sentence, "The linked list values:");
             Console.WriteLine("sentence.Contains(\"jumps\") = {0}",
                 sentence.Contains("jumps"));
 
             // Add the word 'today' to the beginning of the linked list.
             sentence.AddFirst("today");
-            Display(sentence, "Test 1: Add 'today' to beginning of the list:");
+            llo.Display(sentence, "Test 1: Add 'today' to beginning of the list:");
 
             // Move the first node to be the last node.
             LinkedListNode<string> mark1 = sentence.First;
             sentence.RemoveFirst();
             sentence.AddLast(mark1);
-            Display(sentence, "Test 2: Move first node to be last node:");
+            llo.Display(sentence, "Test 2: Move first node to be last node:");
 
             // Change the last node to 'yesterday'.
             sentence.RemoveLast();
             sentence.AddLast("yesterday");
-            Display(sentence, "Test 3: Change the last node to 'yesterday':");
+            llo.Display(sentence, "Test 3: Change the last node to 'yesterday':");
 
             // Move the last node to be the first node.
             mark1 = sentence.Last;
             sentence.RemoveLast();
             sentence.AddFirst(mark1);
-            Display(sentence, "Test 4: Move last node to be first node:");
+            llo.Display(sentence, "Test 4: Move last node to be first node:");
 
             // Indicate the last occurence of 'the'.
             sentence.RemoveFirst();
             LinkedListNode<string> current = sentence.FindLast("the");
-            IndicateNode(current, "Test 5: Indicate last occurence of 'the':");
+            llo.IndicateNode(current, "Test 5: Indicate last occurence of 'the':");
 
             // Add 'lazy' and 'old' after 'the' (the LinkedListNode named current).
             sentence.AddAfter(current, "old");
             sentence.AddAfter(current, "lazy");
-            IndicateNode(current, "Test 6: Add 'lazy' and 'old' after 'the':");
+            llo.IndicateNode(current, "Test 6: Add 'lazy' and 'old' after 'the':");
 
             // Indicate 'fox' node.
             current = sentence.Find("fox");
-            IndicateNode(current, "Test 7: Indicate the 'fox' node:");
+            llo.IndicateNode(current, "Test 7: Indicate the 'fox' node:");
 
             // Add 'quick' and 'brown' before 'fox':
             sentence.AddBefore(current, "quick");
             sentence.AddBefore(current, "brown");
-            IndicateNode(current, "Test 8: Add 'quick' and 'brown' before 'fox':");
+            llo.IndicateNode(current, "Test 8: Add 'quick' and 'brown' before 'fox':");
 
             // Keep a reference to the current node, 'fox',
             // and to the previous node in the list. Indicate the 'dog' node.
             mark1 = current;
             LinkedListNode<string> mark2 = current.Previous;
             current = sentence.Find("dog");
-            IndicateNode(current, "Test 9: Indicate the 'dog' node:");
+            llo.IndicateNode(current, "Test 9: Indicate the 'dog' node:");
 
             // The AddBefore method throws an InvalidOperationException
             // if you try to add a node that already belongs to a list.
@@ -84,27 +82,27 @@ namespace CollectionTest
             // Indicate the node referred to by current.
             sentence.Remove(mark1);
             sentence.AddBefore(current, mark1);
-            IndicateNode(current, "Test 11: Move a referenced node (fox) before the current node (dog):");
+            llo.IndicateNode(current, "Test 11: Move a referenced node (fox) before the current node (dog):");
 
             // Remove the node referred to by current.
             sentence.Remove(current);
-            IndicateNode(current, "Test 12: Remove current node (dog) and attempt to indicate it:");
+            llo.IndicateNode(current, "Test 12: Remove current node (dog) and attempt to indicate it:");
 
             // Add the node after the node referred to by mark2.
             sentence.AddAfter(mark2, current);
-            IndicateNode(current, "Test 13: Add node removed in test 11 after a referenced node (brown):");
+            llo.IndicateNode(current, "Test 13: Add node removed in test 11 after a referenced node (brown):");
 
             // The Remove method finds and removes the
             // first node that that has the specified value.
             sentence.Remove("old");
-            Display(sentence, "Test 14: Remove node that has the value 'old':");
+            llo.Display(sentence, "Test 14: Remove node that has the value 'old':");
 
             // When the linked list is cast to ICollection(Of String),
             // the Add method adds a node to the end of the list.
             sentence.RemoveLast();
             ICollection<string> icoll = sentence;
             icoll.Add("rhinoceros");
-            Display(sentence, "Test 15: Remove last node, cast to ICollection, and add 'rhinoceros':");
+            llo.Display(sentence, "Test 15: Remove last node, cast to ICollection, and add 'rhinoceros':");
 
             Console.WriteLine("Test 16: Copy the list to an array:");
             // Create an array with the same number of
@@ -129,291 +127,77 @@ namespace CollectionTest
         public void LinkLisAppendToTailtTest()
         {
             LLNode MyLinkList = new LLNode(6);
-            appendToTail(MyLinkList, 464);
-            appendToTail(MyLinkList, 324);
-            appendToTail(MyLinkList, 322434324);
+            llo.appendToTail(MyLinkList, 464);
+            llo.appendToTail(MyLinkList, 324);
+            llo.appendToTail(MyLinkList, 322434324);
         }
 
         [Fact]
         public void LinkListInsertAtSpecificPosTest()
         {
 
-            var head = GetNode(3);
-            head.nextNode = GetNode(5);
-            head.nextNode.nextNode = GetNode(8);
-            head.nextNode.nextNode.nextNode = GetNode(10);
+            var head = llo.GetNode(3);
+            head.nextNode = llo.GetNode(5);
+            head.nextNode.nextNode = llo.GetNode(8);
+            head.nextNode.nextNode.nextNode = llo.GetNode(10);
 
             Console.WriteLine("Linked list before insertion: ");
-            PrintList(head);
+            llo.PrintList(head);
 
             int data = 12, pos = 3;
-            head = InsertAtSpecificPos(head, pos, data);
+            head = llo.InsertAtSpecificPos(head, pos, data);
             Console.WriteLine("Linked list after" +
                             " insertion of 12 at position 3: ");
-            PrintList(head);
+            llo.PrintList(head);
 
             // front of the linked list  
             data = 1; pos = 1;
-            head = InsertAtSpecificPos(head, pos, data);
+            head = llo.InsertAtSpecificPos(head, pos, data);
             Console.WriteLine("Linked list after" +
                             "insertion of 1 at position 1: ");
-            PrintList(head);
+            llo.PrintList(head);
 
             // insetion at end of the linked list  
             data = 15; pos = 7;
-            head = InsertAtSpecificPos(head, pos, data);
+            head = llo.InsertAtSpecificPos(head, pos, data);
             Console.WriteLine("Linked list after" +
                             " insertion of 15 at position 7: ");
-            PrintList(head);
+            llo.PrintList(head);
         }
         [Fact]
         public void LinkListInsertAtSpecificPos_nick_white_Test()
         {
 
-            var head = GetNode(3);
-            head.nextNode = GetNode(5);
-            head.nextNode.nextNode = GetNode(8);
-            head.nextNode.nextNode.nextNode = GetNode(10);
+            var head = llo.GetNode(3);
+            head.nextNode = llo.GetNode(5);
+            head.nextNode.nextNode = llo.GetNode(8);
+            head.nextNode.nextNode.nextNode = llo.GetNode(10);
 
             Console.WriteLine("Linked list before insertion: ");
-            PrintList(head);
+            llo.PrintList(head);
 
             int data = 12, pos = 3;
-            head = InsertAtSpecificPos_NickWhite(head, pos, data);
+            head = llo.InsertAtSpecificPos_NickWhite(head, pos, data);
             Console.WriteLine("Linked list after" +
                             " insertion of 12 at position 3: ");
-            PrintList(head);
+            llo.PrintList(head);
 
             // front of the linked list  
             data = 1; pos = 1;
-            head = InsertAtSpecificPos_NickWhite(head, pos, data);
+            head = llo.InsertAtSpecificPos_NickWhite(head, pos, data);
             Console.WriteLine("Linked list after" +
                             "insertion of 1 at position 1: ");
-            PrintList(head);
+            llo.PrintList(head);
 
             // insetion at end of the linked list  
             data = 15; pos = 7;
-            head = InsertAtSpecificPos_NickWhite(head, pos, data);
+            head = llo.InsertAtSpecificPos_NickWhite(head, pos, data);
             Console.WriteLine("Linked list after" +
                             " insertion of 15 at position 7: ");
-            PrintList(head);
+            llo.PrintList(head);
         }
-        public LLNode MiddleNode(LLNode head)
-        {
-            LLNode fast = head;
-            LLNode slow = head;
-            while (fast != null && fast.nextNode != null)
-            {
-                fast = fast.nextNode.nextNode;
-                slow = slow.nextNode;
-            }
-            return slow;
-        }
-        public LLNode MergeTwoLists(LLNode l1, LLNode l2)
-        {
-            LLNode temp = new LLNode(0);
-            LLNode current_node = temp;
-
-            while (l1 != null && l2 != null)
-            {
-                if (l1.data < l2.data)
-                {
-                    current_node.nextNode = l1;
-                    l1 = l1.nextNode;
-                }
-                else
-                {
-                    current_node.nextNode = l2;
-                    l2 = l2.nextNode;
-                }
-                current_node = current_node.nextNode;
-            }
-            if (l1 != null)
-            {
-                current_node.nextNode = l1;
-                l1 = l1.nextNode;
-            }
-            if (l2 != null)
-            {
-                current_node.nextNode = l2;
-                l2 = l2.nextNode;
-            }
-            return temp.nextNode;
-
-        }
-
-        // function to create and return a Node  
-        LLNode GetNode(int data) => new LLNode(data);
-
-        // function to insert a Node at required position  
-        LLNode InsertAtSpecificPos(LLNode headNode,
-                            int position, int data)
-        {
-            var head = headNode;
-            if (position < 1)
-                Console.WriteLine("Invalid position");
-
-            //if position is 1 then new node is  
-            // set infornt of head node 
-            //head node is changing. 
-            if (position == 1)
-            {
-                var newNode = new LLNode(data);
-                newNode.nextNode = headNode;
-                head = newNode;
-            }
-            else
-            {
-                while (position-- != 0)
-                {
-                    if (position == 1)
-                    {
-                        // adding Node at required position 
-                        LLNode newNode = GetNode(data);
-
-                        // Making the new Node to point to  
-                        // the old Node at the same position  
-                        newNode.nextNode = headNode.nextNode;
-
-                        // Replacing current with new Node  
-                        // to the old Node to point to the new Node  
-                        headNode.nextNode = newNode;
-                        break;
-                    }
-                    headNode = headNode.nextNode;
-                }
-                if (position != 1)
-                    Console.WriteLine("Position out of range");
-            }
-            return head;
-        }
-
-        LLNode InsertAtSpecificPos_NickWhite(LLNode headNode,
-                            int position, int data)
-        {
-            var newNode = new LLNode(data);
-            var current_node = headNode;
-            int index = 0;
-
-            while (index < position - 2)
-            {
-                current_node = current_node.nextNode;
-                index++;
-            }
-
-            newNode.nextNode = current_node.nextNode;
-            current_node.nextNode = newNode;
-            return headNode;
-        }
-
-        void PrintList(LLNode node)
-        {
-            while (node != null)
-            {
-                Console.Write(node.data);
-                node = node.nextNode;
-                if (node != null)
-                    Console.Write(",");
-            }
-            Console.WriteLine();
-        }
-
-        void appendToTail(LLNode nd, int d)
-        {
-            LLNode end = new LLNode(d);
-            while (nd.nextNode != null)
-            {
-                nd = nd.nextNode;
-            }
-            nd.nextNode = end;
-        }
-        #region SimpleLL
-        public static void addToTail(LLNode head, int data)
-        {
-            LLNode end = new LLNode(data);
-            while (head.nextNode != null)
-            {
-                head = head.nextNode;
-            }
-
-            head.nextNode = end;
-        }
-
-        public static void Print(LLNode head)
-        {
-            while (head.nextNode != null)
-            {
-                head = head.nextNode;
-                Console.WriteLine(head.data);
-            }
-        }
-
-        public static LLNode deleteLL(LLNode head, int data)
-        {
-            LLNode n = head;
-            if (n.data == data)
-            {
-                return head.nextNode;
-            }
-
-            while (n.nextNode != null)
-            {
-                if (n.nextNode.data == data)
-                {
-                    n.nextNode = n.nextNode.nextNode;
-                }
-                n = n.nextNode;
-            }
-
-            return head;
-        }
-
-        #endregion
-        #region InbuiltLL
-
-        private static void Display(LinkedList<string> words, string test)
-        {
-            Console.WriteLine(test);
-            foreach (string word in words)
-            {
-                Console.Write(word + " ");
-            }
-            Console.WriteLine();
-            Console.WriteLine();
-        }
-
-        private static void IndicateNode(LinkedListNode<string> node, string test)
-        {
-            Console.WriteLine(test);
-            if (node.List == null)
-            {
-                Console.WriteLine("Node '{0}' is not in the list.\n",
-                    node.Value);
-                return;
-            }
-
-            StringBuilder result = new StringBuilder("(" + node.Value + ")");
-            LinkedListNode<string> nodeP = node.Previous;
-
-            while (nodeP != null)
-            {
-                result.Insert(0, nodeP.Value + " ");
-                nodeP = nodeP.Previous;
-            }
-
-            node = node.Next;
-            while (node != null)
-            {
-                result.Append(" " + node.Value);
-                node = node.Next;
-            }
-
-            Console.WriteLine(result);
-            Console.WriteLine();
-        }
-        #endregion
+        
     }
-
 }
 
 

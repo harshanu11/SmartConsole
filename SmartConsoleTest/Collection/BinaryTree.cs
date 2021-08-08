@@ -3,7 +3,7 @@ using Xunit;
 
 namespace CollectionTest
 {
-    public class TreeTest
+    public class BinaryTree
     {
         public TreeNode rootBreathFirst;
         [Fact]
