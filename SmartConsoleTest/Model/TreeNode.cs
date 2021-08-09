@@ -11,8 +11,7 @@
         }
         public TreeNode(int data)
         {
-            TreeNode newNode = new TreeNode();
-            newNode.Data = data;
+            this.Data = data;
             Left = Right = null;
         }
     }
