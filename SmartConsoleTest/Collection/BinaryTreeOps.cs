@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CollectionTest
 {
@@ -101,6 +102,7 @@ namespace CollectionTest
 
             printPostorder(node.Left);
             printPostorder(node.Right);
+            Console.WriteLine(node.Data);
         }
         public void printInorder(TreeNode node)
         {
@@ -108,6 +110,7 @@ namespace CollectionTest
                 return;
 
             printInorder(node.Left);
+            Console.WriteLine(node.Data);
             printInorder(node.Right);
         }
 
@@ -116,6 +119,7 @@ namespace CollectionTest
             if (node == null)
                 return;
 
+            Console.WriteLine(node.Data);
             printPreorder(node.Left);
             printPreorder(node.Right);
         }
@@ -142,29 +146,23 @@ namespace CollectionTest
                 }
             }
         }
-        public virtual void printLevelOrder()
+
+        public virtual void printLevelOrder(TreeNode root)
         {
-            int h = height(rootBreathFirst);
-            int i;
-            for (i = 1; i <= h; i++)
+            Queue<TreeNode> queue = new Queue<TreeNode>();
+            queue.Enqueue(root);
+            while (queue.Count != 0)
             {
-                printCurrentLevel(rootBreathFirst, i);
-            }
-        }
-        public virtual void printCurrentLevel(TreeNode root, int level)
-        {
-            if (root == null)
-            {
-                return;
-            }
-            if (level == 1)
-            {
-                Console.Write(root.Data + " ");
-            }
-            else if (level > 1)
-            {
-                printCurrentLevel(root.Left, level - 1);
-                printCurrentLevel(root.Right, level - 1);
+                TreeNode tempNode = queue.Dequeue();
+                Console.Write(tempNode.Data + " ");
+                if (tempNode.Left != null)
+                {
+                    queue.Enqueue(tempNode.Left);
+                }
+                if (tempNode.Right != null)
+                {
+                    queue.Enqueue(tempNode.Right);
+                }
             }
         }
     }

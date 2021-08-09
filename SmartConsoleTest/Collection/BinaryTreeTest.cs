@@ -62,18 +62,13 @@ namespace CollectionTest
             int n = arr.Length;
             root = tree.sortedArrayToBST(arr, 0, n - 1);
 
-            bstObj.printPostorder(root);
-            bstObj.printInorder(root);
-            bstObj.printPreorder(root);
-
-
             bstObj.rootBreathFirst = new TreeNode(1);
             bstObj.rootBreathFirst.Left = new TreeNode(2);
             bstObj.rootBreathFirst.Right = new TreeNode(3);
             bstObj.rootBreathFirst.Left.Left = new TreeNode(4);
             bstObj.rootBreathFirst.Left.Right = new TreeNode(5);
 
-            bstObj.printLevelOrder();
+            bstObj.printLevelOrder(root);
         }
         [Fact]
         public void SortedArrayToBalanceTreeTest()
