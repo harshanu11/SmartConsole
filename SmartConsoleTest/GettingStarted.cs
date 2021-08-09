@@ -39,10 +39,8 @@ namespace SmartConsoleTest
             c1.SetValue('h', 1);
             c1.GetValue(0);
             tda.GetValue(0, 1);
-            hs.Add(3);
-            hs.Contains(3);
-            hs.Remove(3);
-            #region LinkList
+
+            #region LinkList CRUD
             ll.AddFirst("today");//ll.RemoveFirst() ll.AddLast(mark1); ll.RemoveLast(); ll.AddAfter(current, "old"); .AddBefore(current, mark1); .Remove(mark1);ll.Clear();
             LinkedListNode<string> mark1 = ll.First;
             LinkedListNode<string> markPrev = ll.Last.Previous;
@@ -64,10 +62,18 @@ namespace SmartConsoleTest
             llc.next.next.next = new LinkedListNode(3);
             llc.next.next.next.next = new LinkedListNode(4);
             #endregion
+            #region HsStackQueue
+            hs.Add(3);
+            hs.Contains(3);
+            hs.Remove(3);
             stk.Push(4);
             stk.Pop();
             q.Enqueue(3);
             q.Dequeue();
+            #endregion
+            #region BST CRUD
+
+            #endregion
             #endregion
 
             #region 3Traverse
@@ -102,6 +108,7 @@ namespace SmartConsoleTest
             #region 7Find
             var result = Array.Find(c1, x => x == 'x');
             String ans = str.Substring(4, str.Length - 4) + str.Substring(0, 4);
+            // bst find
             #endregion
 
             #region 8Recurrsion_BaclTracking
