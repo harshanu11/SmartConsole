@@ -10,17 +10,19 @@ namespace CollectionTest
         public void InsertInBinaryTree()
         {
             BinaryTreeOps nums = new BinaryTreeOps();
-            nums.Insert(50);
-            nums.Insert(17);
-            nums.Insert(23);
-            nums.Insert(12);
-            nums.Insert(19);
-            nums.Insert(54);
-            nums.Insert(9);
-            nums.Insert(14);
-            nums.Insert(67);
-            nums.Insert(76);
-            nums.Insert(72);
+            TreeNode root = new TreeNode(0);
+
+            nums.Insert(root,50);
+            nums.Insert(root,17);
+            nums.Insert(root,23);
+            nums.Insert(root,12);
+            nums.Insert(root,19);
+            nums.Insert(root,54);
+            nums.Insert(root,9);
+            nums.Insert(root,14);
+            nums.Insert(root,67);
+            nums.Insert(root,76);
+            nums.Insert(root,72);
         }
         [Fact]
         public void TraverseDepthFirstTree() {

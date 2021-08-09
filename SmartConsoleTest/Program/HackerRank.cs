@@ -54,13 +54,13 @@ namespace Program
         public void LowestCommonAncestorTest()
         {
             BinaryTreeOps nums = new BinaryTreeOps();
-            nums.Insert(4);
-            nums.Insert(2);
-            nums.Insert(3);
-            nums.Insert(1);
-            nums.Insert(7);
-            nums.Insert(6);
-            var result = lca(nums.root, 1, 7);
+            TreeNode root = new TreeNode(4);
+            nums.Insert(root,2);
+            nums.Insert(root,3);
+            nums.Insert(root,1);
+            nums.Insert(root,7);
+            nums.Insert(root,6);
+            var result = lca(root, 1, 7);
             Assert.Equal(4, result.Data);
         }
         [Fact]

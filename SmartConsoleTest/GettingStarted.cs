@@ -11,11 +11,11 @@ namespace SmartConsoleTest
         public void charIsLetterTest()
         {
 
-            #region Creating ds
+            #region 1Creating_ds
             #region Array 2d jagged sixe 3
             Array a = Array.CreateInstance(typeof(char), 25);
-            char[] c0 = new char[3] { 'x', 'y' ,'z'};
-            char[] c1 = { 'a', 'b','c' };
+            char[] c0 = new char[3] { 'x', 'y', 'z' };
+            char[] c1 = { 'a', 'b', 'c' };
             int[,] tda = { { 1, 2, 3 }, { 4, 5, 6 } };
             int[][] ja = { new int[] { 1, 2, 3 } };
             #endregion
@@ -25,6 +25,7 @@ namespace SmartConsoleTest
             string[] words =
                { "the", "fox", "jumps", "over", "the", "dog" };
             LinkedList<string> ll = new LinkedList<string>(words);
+            LinkedListNode llc = new LinkedListNode(0);
             Stack<int> stk = new Stack<int>();
             Queue<int> q = new Queue<int>();
             #endregion
@@ -34,7 +35,7 @@ namespace SmartConsoleTest
             #endregion
             #endregion
 
-            #region CRUD_DS
+            #region 2CRUD_DS
             c1.SetValue('h', 1);
             c1.GetValue(0);
             tda.GetValue(0, 1);
@@ -57,6 +58,11 @@ namespace SmartConsoleTest
             ICollection<string> icoll = ll;
             string[] sArray = new string[ll.Count];
             ll.CopyTo(sArray, 0);
+
+            llc.next = new LinkedListNode(1);
+            llc.next.next = new LinkedListNode(2);
+            llc.next.next.next = new LinkedListNode(3);
+            llc.next.next.next.next = new LinkedListNode(4);
             #endregion
             stk.Push(4);
             stk.Pop();
@@ -64,45 +70,53 @@ namespace SmartConsoleTest
             q.Dequeue();
             #endregion
 
-            #region Traverse
+            #region 3Traverse
+            while (llc != null)
+            {
+                var llcnode = llc;
+                Console.WriteLine(llcnode.data);
+                llc = llc.next;
+            }
 
             #endregion
 
-            #region SortReverseCopy
+            #region 4SortReverseCopy
             Array.Sort(c1); Array.Sort(c1, 1, 2);
             Array.Reverse(c1);
             Array.Copy(c1, 0, c1, 0, 3);
             ll.CopyTo(new string[100], 0);
             #endregion
 
-            #region Resize
+            #region 5Resize
             Array.Resize(ref c1, 10);
             int[] Aint = Array.ConvertAll(c1, c => (int)Char.GetNumericValue(c));
             string st = new string(c1);
             st = string.Join("", c1);
             #endregion
 
-            #region Find
+            #region 6Regex
+            Regex rx = new Regex("[a-z]");
+            Assert.True(rx.IsMatch("a"));
+            #endregion
+
+            #region 7Find
             var result = Array.Find(c1, x => x == 'x');
             String ans = str.Substring(4, str.Length - 4) + str.Substring(0, 4);
             #endregion
 
-            #region Recurrsion_BaclTracking
+            #region 8Recurrsion_BaclTracking
 
             #endregion
 
-            #region DynamicProgramming
+            #region 9DynamicProgramming
 
             #endregion
 
-            #region Divide N concore
+            #region 10Divide N concore
 
             #endregion
 
-            #region Regex
-            Regex rx = new Regex("[a-z]");
-            Assert.True(rx.IsMatch("a"));
-            #endregion
+
         }
     }
     #region Helper

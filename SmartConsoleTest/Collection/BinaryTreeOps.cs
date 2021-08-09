@@ -7,38 +7,28 @@
         {
             root = null;
         }
-        public void Insert(int input)
+
+        public TreeNode Insert(TreeNode root, int data)
         {
-            TreeNode newNode = new TreeNode();
-            newNode.Data = input;
+
             if (root == null)
-                root = newNode;
+            {
+                return new TreeNode(data);
+            }
             else
             {
-                TreeNode current = root;
-                TreeNode parent;
-                while (true)
+                TreeNode current;
+                if (data <=root.Data)
                 {
-                    parent = current;
-                    if (input < current.Data)
-                    {
-                        current = current.Left;
-                        if (current == null)
-                        {
-                            parent.Left = newNode;
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        current = current.Right;
-                        if (current == null)
-                        {
-                            parent.Right = newNode;
-                            break;
-                        }
-                    }
+                    current = Insert(root.Left,data);
+                    root.Left = current;
                 }
+                else
+                {
+                    current = Insert(root.Right, data);
+                    root.Right = current;
+                }
+                return root;
             }
         }
         public static TreeNode insert(TreeNode root, int data)
