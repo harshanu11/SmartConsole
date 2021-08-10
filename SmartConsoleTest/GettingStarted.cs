@@ -36,6 +36,7 @@ namespace SmartConsoleTest
             #endregion
 
             #region 2CRUD_DS
+            String.IsNullOrWhiteSpace("sd");
             c1.SetValue('h', 1);
             c1.GetValue(0);
             tda.GetValue(0, 1);
@@ -120,6 +121,10 @@ namespace SmartConsoleTest
             #endregion
 
             #region 10Divide N concore
+
+            #endregion
+
+            #region Draw timespace complexity
 
             #endregion
 

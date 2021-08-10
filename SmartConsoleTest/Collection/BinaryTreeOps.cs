@@ -5,6 +5,7 @@ namespace CollectionTest
 {
     public class BinaryTreeOps
     {
+        List<int> response = new List<int>();
         public TreeNode rootBreathFirst;
         public TreeNode root;
         public BinaryTreeOps()
@@ -112,6 +113,14 @@ namespace CollectionTest
             printInorder(node.Left);
             Console.WriteLine(node.Data);
             printInorder(node.Right);
+        }
+        public TreeNode GetInOrder(TreeNode node)
+        {
+            if (node == null) return node;
+            GetInOrder(node.Left);
+            response.Add(node.Data);
+            GetInOrder(node.Right);
+            return node;
         }
 
         public void printPreorder(TreeNode node)
