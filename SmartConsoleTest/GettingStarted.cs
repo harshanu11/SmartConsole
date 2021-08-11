@@ -8,7 +8,7 @@ namespace SmartConsoleTest
     public class GettingStarted
     {
         [Fact]
-        public void charIsLetterTest()
+        public void AllInOne()
         {
 
             #region 1Creating_ds
@@ -128,6 +128,21 @@ namespace SmartConsoleTest
 
             #endregion
 
+
+        }
+
+        [Fact]
+        public void QuickBook() 
+        {
+            #region Char
+            char[] carr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToLower().ToCharArray();
+
+            int[] carr26 = new int[26];
+            for (int i = 0; i < 26; i++)
+            {
+                carr26[i] = carr[i] - 'a';
+            }
+            #endregion
 
         }
     }
