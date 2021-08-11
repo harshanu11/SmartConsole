@@ -135,13 +135,16 @@ namespace SmartConsoleTest
         public void QuickBook() 
         {
             #region Char
-            char[] carr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToLower().ToCharArray();
+            char[] carrSmallCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToLower().ToCharArray();
 
-            int[] carr26 = new int[26];
+            int[] carr26SmallCase = new int[26];
+            int[] carr128Ascii = new int[128];
+            // get lowercase = char+32
             for (int i = 0; i < 26; i++)
             {
-                carr26[i] = carr[i] - 'a';
+                carr26SmallCase[i] = carrSmallCase[i] - 'a';
             }
+
             #endregion
 
         }
