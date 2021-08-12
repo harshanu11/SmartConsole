@@ -4,7 +4,8 @@ using Xunit;
 
 namespace CollectionTest
 {
-    public class QueueTest 
+
+    public class QueueTest
     {
         [Fact]
         public void MyFirstQueueTest()
