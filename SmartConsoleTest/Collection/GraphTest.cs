@@ -35,5 +35,71 @@ namespace CollectionTest
             else
                 Console.WriteLine("There is no path from " + u + " to " + v);
         }
+        [Fact]
+        public void GraphCRUDTest()
+        {
+            GraphNode graph = new GraphNode(6);
+            for (int i = 0; i < 6; i++)
+            {
+                graph.adjecent[i].AddLast(i);
+                if (i > 0)
+                {
+                    graph.adjecent[i - 1].AddLast(i);
+                }
+
+            }
+        }
+        [Fact]
+        public void BFSTest()
+        {
+
+            Console.WriteLine("Enter number of vertices and edges");
+
+            int v = 5;
+            int e = 6;
+
+            GraphNode graph = new GraphNode(v);
+            Console.WriteLine("Enter " + e + " edges");
+            int source = 0;
+            int destination = 0;
+            graph.addEdge(0, 1);
+            graph.addEdge(1, 2);
+            graph.addEdge(2, 3);
+            graph.addEdge(3, 4);
+            graph.addEdge(0, 4);
+            graph.addEdge(2, 4);
+
+            Console.WriteLine("Enter source and destination");
+
+            source = 0;
+            destination = 3;
+            var ans = graph.bfs(source, destination);
+            Console.WriteLine("possible " + graph.bfs(source, destination));
+        }
+        [Fact]
+        public void DFSTest()
+        {
+            int v = 5;
+            int e = 6;
+
+            GraphNode graph = new GraphNode(v);
+            Console.WriteLine("Enter " + e + " edges");
+            int source = 0;
+            int destination = 0;
+            graph.addEdge(0, 1);
+            graph.addEdge(1, 2);
+            graph.addEdge(2, 3);
+            graph.addEdge(3, 4);
+            graph.addEdge(0, 4);
+            graph.addEdge(2, 4);
+
+            Console.WriteLine("Enter source and destination");
+
+            source = 0;
+            destination = 3;
+            var ans = graph.bfs(source, destination);
+            Console.WriteLine("possible " + graph.bfs(source, destination));
+        }
     }
+
 }
