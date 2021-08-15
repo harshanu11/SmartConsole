@@ -12,7 +12,8 @@ namespace SmartConsole
         {
             decodeString(3, "mnes__ya_____mi");
             solution(3, "mnes__ya_____mi");
-            var ans = HowSumT(7, new int[] { 5, 3, 4,6,1 });
+            var ans = HowSumT(7, new int[] { 5, 3, 4, 6, 1 });
+            var ans1 = BestSumSumt(7, new int[] { 5, 3, 4 });
         }
         static Dictionary<int, int> memo = new Dictionary<int, int>();
         static Dictionary<string, int> memo1 = new Dictionary<string, int>();
@@ -90,7 +91,7 @@ namespace SmartConsole
                     {
                         if (sm + numbers[num] <= sum)
                         {
-                            table[sm + numbers[num]] += table[sm] + " "+ numbers[num];
+                            table[sm + numbers[num]] += table[sm] + " " + numbers[num];
                             if (sm + numbers[num] == 7)
                             {
                                 return table;
@@ -101,6 +102,18 @@ namespace SmartConsole
                 }
             }
             return table;
+        }
+        public static List<int> BestSumSumt(int n, int[] number)
+        {
+            if (n < 0) return null;
+            if (n == 0) return new List<int>();
+            List<int> shortest = new List<int>();
+
+            for (int num = 0; num < number.Length; num++)
+            {
+
+            }
+            return shortest;
         }
         public static String solution(int numberOfRows, String encodedString)
         {
