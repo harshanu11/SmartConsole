@@ -9,7 +9,6 @@ namespace CollectionTest
         [Fact]
         public void BasicTest(){
             Queue q = new Queue();
-            q.
         }
         [Fact]
         public void MyQueueWithStackTest()
