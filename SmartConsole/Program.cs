@@ -11,14 +11,14 @@ namespace SmartConsole
         public static void Main()
         {
 
-           // var an = CanConstructt("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd" });
+            //var an = CountConstruct("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd" });
+            var an = CountConstructt("purple", new String[] { "purp", "p", "ur", "le", "purpl" });
             CanConstructt("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd" });
             decodeString(3, "mnes__ya_____mi");
             solution(3, "mnes__ya_____mi");
             var ans = HowSumT(7, new int[] { 5, 3, 4, 6, 1 });
             var ans1 = BestSumSumt(7, new int[] { 5, 3, 4 });
         }
-
         static Dictionary<int, int> memo = new Dictionary<int, int>();
         static Dictionary<string, int> memo1 = new Dictionary<string, int>();
         public static bool CanSum(int n, int[] arr)
@@ -208,6 +208,45 @@ namespace SmartConsole
                         if (t + collection[c].Length < table.Length && str.Substring(t, collection[c].Length) == collection[c])
                         {
                             table[t + collection[c].Length] = true;
+                        }
+                    }
+                }
+            }
+
+            return table[str.Length];
+        }
+        public static int CountConstruct(string str, string[] collection)
+        {
+            int count = 0;
+            if (str == "") return 1;
+            for (int c = 0; c < collection.Length; c++)
+            {
+                if (str.IndexOf(collection[c]) == 0)
+                {
+                    var s = str.Substring(collection[c].Length);
+                    var res = CountConstruct(s, collection);
+                    count += res;
+                }
+
+            }
+            return count;
+        }
+        public static int CountConstructt(string str, string[] collection)
+        {
+            if (str == "") return 1;
+            int[] table = new int[str.Length + 1];
+            // seed val 
+            table[0] = 1;
+
+            for (int t = 0; t < table.Length; t++)
+            {
+                if (table[t] > 0)
+                {
+                    for (int c = 0; c < collection.Length; c++)
+                    {
+                        if (t + collection[c].Length < table.Length && str.Substring(t, collection[c].Length) == collection[c])
+                        {
+                            table[t + collection[c].Length] = table[t + collection[c].Length] + table[t];
                         }
                     }
                 }
