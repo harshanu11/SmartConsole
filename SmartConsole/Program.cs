@@ -56,52 +56,45 @@ namespace SmartConsole
             }
             return arrTab[n];
         }
-        public static List<int> HowSumt(int n, int[] arr)
+        public static List<int> HowSumt(int sumN, int[] numbers)
         {
-            if (n < 0) return null;
-            if (n == 0) return new List<int>();
+            if (sumN < 0) return null;
+            if (sumN == 0) return new List<int>();
 
-            for (int i = 0; i < arr.Length; i++)
+            for (int n = 0; n < numbers.Length; n++)
             {
-                int rem = n - arr[i];
-                var res = HowSumt(rem, arr);
+                int rem = sumN - numbers[n];
+                var res = HowSumt(rem, numbers);
                 if (res != null)
                 {
-                    res.Add(arr[i]);
+                    res.Add(numbers[n]);
                     return res;
                 }
             }
             return null;
         }
-        public static string[] HowSumT(int sum, int[] numbers)
+        public static string HowSumT(int sumN, int[] numbers)
         {
-            if (sum < 0) return null;
-            if (sum == 0) return new string[0];
+            if (sumN < 0) return null;
+            string[] table = new string[sumN + 1];
 
-
-            string[] table = new string[sum + 1];
-            // seed
+            // seed val 
             table[0] = "";
-
-            for (int sm = 0; sm < sum; sm++)
+            for (int t = 0; t < table.Length; t++)
             {
-                if (table[sm] != null)
+
+                if (table[t] != null)
                 {
-                    for (int num = 0; num < numbers.Length; num++)
+                    for (int n = 0; n < numbers.Length; n++)
                     {
-                        if (sm + numbers[num] <= sum)
+                        if (t + numbers[n] < table.Length)
                         {
-                            table[sm + numbers[num]] += table[sm] + " " + numbers[num];
-                            if (sm + numbers[num] == 7)
-                            {
-                                return table;
-                            }
-                            //table[sm + numbers[num]] += numbers[num] + " ";
+                            table[t + numbers[n]] = table[t + numbers[n]] + numbers[n] + " ";
                         }
                     }
                 }
             }
-            return table;
+            return table[sumN];
         }
         public static List<int> BestSumSumt(int n, int[] number)
         {
