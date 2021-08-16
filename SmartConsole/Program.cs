@@ -10,11 +10,15 @@ namespace SmartConsole
     {
         public static void Main()
         {
+
+           // var an = CanConstructt("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd" });
+            CanConstructt("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd" });
             decodeString(3, "mnes__ya_____mi");
             solution(3, "mnes__ya_____mi");
             var ans = HowSumT(7, new int[] { 5, 3, 4, 6, 1 });
             var ans1 = BestSumSumt(7, new int[] { 5, 3, 4 });
         }
+
         static Dictionary<int, int> memo = new Dictionary<int, int>();
         static Dictionary<string, int> memo1 = new Dictionary<string, int>();
         public static bool CanSum(int n, int[] arr)
@@ -169,6 +173,47 @@ namespace SmartConsole
                 }
             }
             return table[sumN];
+        }
+        public static bool CanConstruct(string str, string[] collection)
+        {
+            if (str == "") return true;
+            for (int c = 0; c < collection.Length; c++)
+            {
+                if (str.IndexOf(collection[c]) == 0)
+                {
+                    var s = str.Substring(collection[c].Length);
+                    var res = CanConstruct(s, collection);
+                    if (res == true)
+                    {
+                        return true;
+                    }
+                }
+
+            }
+            return false;
+        }
+        public static bool CanConstructt(string str, string[] collection)
+        {
+            if (str == "") return true;
+            bool[] table = new bool[str.Length + 1];
+            // seed val 
+            table[0] = true;
+
+            for (int t = 0; t < table.Length; t++)
+            {
+                if (table[t] == true)
+                {
+                    for (int c = 0; c < collection.Length; c++)
+                    {
+                        if (t + collection[c].Length < table.Length && str.Substring(t, collection[c].Length) == collection[c])
+                        {
+                            table[t + collection[c].Length] = true;
+                        }
+                    }
+                }
+            }
+
+            return table[str.Length];
         }
         public static String solution(int numberOfRows, String encodedString)
         {
