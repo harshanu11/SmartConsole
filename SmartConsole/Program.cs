@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace SmartConsole
 {
@@ -11,14 +12,79 @@ namespace SmartConsole
         public static void Main()
         {
 
+
+
             //var an = CountConstruct("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd" });
-            var an = CountConstructt("purple", new String[] { "purp", "p", "ur", "le", "purpl" });
+            var an = AllConstructt("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd" ,"ef","c"});
+            AllConstructt("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd" ,"ef","c"});
             CanConstructt("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd" });
             decodeString(3, "mnes__ya_____mi");
             solution(3, "mnes__ya_____mi");
             var ans = HowSumT(7, new int[] { 5, 3, 4, 6, 1 });
             var ans1 = BestSumSumt(7, new int[] { 5, 3, 4 });
         }
+        static List<List<string>> ans = new List<List<string>>();
+
+        public static List<string> AllConstruct(string str, string[] collection, List<string> ans)
+        {
+            if (str == "") return ans;
+            for (int c = 0; c < collection.Length; c++)
+            {
+                if (str.IndexOf(collection[c]) == 0)
+                {
+                    var s = str.Substring(collection[c].Length);
+                    ans.Add(collection[c]);
+                    var res = AllConstruct(s, collection, ans);
+                }
+
+            }
+            return ans;
+        }
+        public static List<string> AllConstructt(string str, string[] collection)
+        {
+
+            List<List<string>> table = new List<List<string>>();
+            for (int c = 0; c < str.Length + 1; c++)
+            {
+                table.Add(new List<string>());
+                //table[c].Add(null);
+                //table[c][0].Add(null);
+            }
+            // seed val
+            //table[0][0] = new List<string>();
+            table[0].Add("");
+            for (int t = 0; t < table.Count; t++)
+            {
+                if (table[t].Count > 0)
+                {
+                    for (int c = 0; c < collection.Length; c++)
+                    {
+                        if (t + collection[c].Length < table.Count && str.Substring(t, collection[c].Length) == collection[c])
+                        {
+                            string inp = "";
+                            if (table[t].Count > 0)
+                            {
+                                for (int nest = 0; nest < table[t].Count; nest++)
+                                {
+                                    inp = table[t][nest] + ",";
+                                    table[t + collection[c].Length].Add(inp + collection[c]);
+                                    inp = "";
+                                }
+                            }
+                            else
+                            {
+                                table[t + collection[c].Length].Add(inp + collection[c]);
+
+                            }
+                        }
+                    }
+                }
+            }
+            return table[str.Length];
+
+        }
+
+
         static Dictionary<int, int> memo = new Dictionary<int, int>();
         static Dictionary<string, int> memo1 = new Dictionary<string, int>();
         public static bool CanSum(int n, int[] arr)
