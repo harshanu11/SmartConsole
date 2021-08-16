@@ -96,17 +96,79 @@ namespace SmartConsole
             }
             return table[sumN];
         }
-        public static List<int> BestSumSumt(int n, int[] number)
+        public static List<int> BestSumSumt(int sumN, int[] numbers)
         {
-            if (n < 0) return null;
-            if (n == 0) return new List<int>();
-            List<int> shortest = new List<int>();
+            if (sumN < 0) return null;
 
-            for (int num = 0; num < number.Length; num++)
+            List<List<int>> table = new List<List<int>>(sumN + 1);
+            for (int i = 0; i < sumN + 1; i++)
             {
-
+                table.Add(null);
             }
-            return shortest;
+            // seed val 
+            table[0] = new List<int>();
+
+            for (int t = 0; t < table.Count; t++)
+            {
+                if (table[t] != null)
+                {
+                    for (int n = 0; n < numbers.Length; n++)
+                    {
+                        if (t + numbers[n] < table.Count)
+                        {
+                            var l = new List<int>();
+                            l.Add(numbers[n]);
+                            if (table[t].Count > 0)
+                            {
+                                l.AddRange(table[t]);
+                            }
+                            if (table[t + numbers[n]] == null || table[t + numbers[n]].Count > l.Count)
+                            {
+                                table[t + numbers[n]] = l;
+                            }
+                        }
+
+                    }
+                }
+            }
+            return table[sumN];
+        }
+        public static List<int> BestSumSumtt(int sumN, int[] numbers)
+        {
+            if (sumN < 0) return null;
+
+            List<List<int>> table = new List<List<int>>(sumN + 1);
+            for (int i = 0; i < sumN + 1; i++)
+            {
+                table.Add(null);
+            }
+            // seed val 
+            table[0] = new List<int>();
+
+            for (int t = 0; t < table.Count; t++)
+            {
+                if (table[t] != null)
+                {
+                    for (int n = 0; n < numbers.Length; n++)
+                    {
+                        if (t + numbers[n] < table.Count)
+                        {
+                            var l = new List<int>();
+                            l.Add(numbers[n]);
+                            if (table[t].Count > 0)
+                            {
+                                l.AddRange(table[t]);
+                            }
+                            if (table[t + numbers[n]] == null || table[t + numbers[n]].Count > l.Count)
+                            {
+                                table[t + numbers[n]] = l;
+                            }
+                        }
+
+                    }
+                }
+            }
+            return table[sumN];
         }
         public static String solution(int numberOfRows, String encodedString)
         {
