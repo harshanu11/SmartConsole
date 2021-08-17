@@ -20,9 +20,13 @@ namespace SmartConsole
             CanConstructt("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd" });
             decodeString(3, "mnes__ya_____mi");
             solution(3, "mnes__ya_____mi");
-            var ans = HowSumT(7, new int[] { 5, 3, 4, 6, 1 });
+            var ans = AllSum(8, new int[] { 2, 3, 5,8});
+            var ertert = allSumList;
             var ans1 = BestSumSumt(7, new int[] { 5, 3, 4 });
         }
+
+        static List<List<int>> allSumList = new List<List<int>>();
+        
 
         static List<string> ans = new List<string>();
         static Dictionary<int, int> memo = new Dictionary<int, int>();
@@ -66,7 +70,7 @@ namespace SmartConsole
             }
             return arrTab[n];
         }
-        public static List<int> HowSumt(int sumN, int[] numbers)
+        public static List<int> HowSum(int sumN, int[] numbers)
         {
             if (sumN < 0) return null;
             if (sumN == 0) return new List<int>();
@@ -74,7 +78,7 @@ namespace SmartConsole
             for (int n = 0; n < numbers.Length; n++)
             {
                 int rem = sumN - numbers[n];
-                var res = HowSumt(rem, numbers);
+                var res = HowSum(rem, numbers);
                 if (res != null)
                 {
                     res.Add(numbers[n]);
@@ -105,6 +109,28 @@ namespace SmartConsole
                 }
             }
             return table[sumN];
+        }
+        public static List<int> BestSum(int sumN, int[] numbers)
+        {
+            if (sumN < 0) return null;
+            if (sumN == 0) { return new List<int>(); };
+            List<int> shortest = null;
+            for (int n = 0; n < numbers.Length; n++)
+            {
+                int remender = sumN - numbers[n];
+                var remenderCombination = BestSum(remender, numbers);
+                if (remenderCombination != null)
+                {
+                    remenderCombination.Add(numbers[n]);
+                    var combination = remenderCombination;
+                    // ans.Add(numbers[n]);
+                    if (shortest == null || combination.Count < shortest.Count)
+                    {
+                        shortest = combination;
+                    }
+                }
+            }
+            return shortest;
         }
         public static List<int> BestSumSumt(int sumN, int[] numbers)
         {
@@ -179,6 +205,31 @@ namespace SmartConsole
                 }
             }
             return table[sumN];
+        }
+        public static List<int> AllSum(int sumN, int[] numbers)
+        {
+            if (sumN < 0) return null;
+            if (sumN == 0) { return new List<int>(); };
+            List<int> shortest = null;
+            List<List<int>> ansq = new List<List<int>>();
+            for (int n = 0; n < numbers.Length; n++)
+            {
+                int remender = sumN - numbers[n];
+                var remenderCombination = AllSum(remender, numbers);
+                if (remenderCombination != null)
+                {
+                    remenderCombination.Add(numbers[n]);
+                    var combination = remenderCombination;
+                    ansq.Add(combination);
+                    allSumList = ansq;
+                    // ans.Add(numbers[n]);
+                    if (shortest == null || combination.Count < shortest.Count)
+                    {
+                        shortest = combination;
+                    }
+                }
+            }
+            return shortest;
         }
         public static bool CanConstruct(string str, string[] collection)
         {
@@ -279,7 +330,6 @@ namespace SmartConsole
         }
         public static List<string> AllConstructt(string str, string[] collection)
         {
-
             List<List<string>> table = new List<List<string>>();
             for (int c = 0; c < str.Length + 1; c++)
             {
@@ -315,7 +365,6 @@ namespace SmartConsole
                 }
             }
             return table[str.Length];
-
         }
         public static String solution(int numberOfRows, String encodedString)
         {
