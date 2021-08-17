@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace SmartConsoleTest.Dp
@@ -15,8 +16,10 @@ namespace SmartConsoleTest.Dp
             var ertert = DpOps.allSumList;
             var ans1 = DpOps.BestSumSumt(7, new int[] { 5, 3, 4 });
 
-            countHopt(4, new int[] { 1, 2, 3 });//DistinctOccurrences("banana", new string[] {"ban" ,"b","ba"});
-
+            countHop(4, new int[] { 1, 2, 3 });
+            countHopt(4, new int[] { 1, 2, 3 });
+            MinNumberOfCoins(new int[] { 3, 3, 6 }, 3, 6);
+            MinNumberOfCoinst(new int[] { 3, 3, 6 }, 3, 6);
         }
 
         [Fact]
@@ -63,6 +66,59 @@ namespace SmartConsoleTest.Dp
 
             }
             return table[num];
+        }
+        public static List<string> MinNumberOfCoinst(int[] coins, int numberOfCoins, int value)
+        {
+            if (value == 0) return new List<string>();
+            if (value < 0) return null;
+
+            List<string> table = new List<string>();
+            // fill the table 
+            for (int t = 0; t < value + 1; t++)
+            {
+                table.Add(null);
+            }
+            // seed value
+            table[0] = "";
+
+            for (int t = 0; t < table.Count; t++)
+            {
+                if (table[t] != null)
+                {
+                    for (int c = 0; c < coins.Length; c++)
+                    {
+                        if (coins[c] + t < table.Count)
+                        {
+                            table[t + coins[c]] += "[" + table[t] + coins[c] + "]";
+                        }
+                    }
+                }
+            }
+            return table;
+        }
+
+        public static List<int> MinNumberOfCoins(int[] coins, int numberOfCoins, int value)
+        {
+            if (value < 0) return null;
+            if (value == 0) return new List<int>();
+            List<int> minSum = new List<int>();
+            for (int c = 0; c < numberOfCoins; c++)
+            {
+                int remender = value - coins[c];
+                var remCombination = MinNumberOfCoins(coins, numberOfCoins, remender);
+                if (remCombination != null)
+                {
+                    remCombination.Add(coins[c]);
+                    var combination = remCombination;
+                    if (minSum.Count == 0 || combination.Count < minSum.Count)
+                    {
+                        minSum = combination;
+                    }
+                    // return minSum;
+                }
+            }
+            Console.Write("Not Possible");
+            return minSum;
         }
     }
 }
