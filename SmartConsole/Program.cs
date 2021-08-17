@@ -15,7 +15,7 @@ namespace SmartConsole
 
 
             //var an = CountConstruct("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd" });
-            var an = AllConstruct("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd", "ef", "c" }, "", "", new List<string>());
+            var an = AllConstruct("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd", "ef", "c" });
             AllConstructt("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd", "ef", "c" });
             CanConstructt("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd" });
             decodeString(3, "mnes__ya_____mi");
@@ -260,7 +260,7 @@ namespace SmartConsole
 
             return table[str.Length];
         }
-        public static string AllConstruct(string str, string[] collection, string a, string b, List<string> u)
+        public static string AllConstruct(string str, string[] collection)
         {
             if (str == "")
             {
@@ -272,7 +272,7 @@ namespace SmartConsole
                 {
                     var s = str.Substring(collection[c].Length);
                     ans.Add(collection[c]);//s + "," + 
-                    ans.Add(AllConstruct(s, collection, collection[c], s, ans));
+                    ans.Add(AllConstruct(s, collection));
                 }
             }
             return "";
