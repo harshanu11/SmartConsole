@@ -4,7 +4,6 @@ namespace SmartConsoleTest.Dp
 {
     public class DpOps
     {
-        public static List<string> ans = new List<string>();
 
         public static bool CanSum(int n, int[] arr)
         {
@@ -250,22 +249,30 @@ namespace SmartConsoleTest.Dp
 
             return table[str.Length];
         }
-        public static string AllConstruct(string str, string[] collection)
+        
+        public static List<List<string>> ansv1 = new List<List<string>>();
+
+        public static List<string> AllConstructv1(string str, string[] collection)
         {
+         List<List<string>> _ans = new List<List<string>>();
             if (str == "")
             {
-                return "";
+                return new List<string>();
             };
             for (int c = 0; c < collection.Length; c++)
             {
                 if (str.IndexOf(collection[c]) == 0)
                 {
-                    var s = str.Substring(collection[c].Length);
-                    ans.Add(collection[c]);//s + "," + 
-                    ans.Add(AllConstruct(s, collection));
+                    var remender = str.Substring(collection[c].Length);
+                    var remenderCombination = AllConstructv1(remender, collection);
+
+                    remenderCombination.Add(collection[c]);//s + "," + 
+                    var combination = remenderCombination;
+                    _ans.Add(combination);
+                    ansv1 = _ans;
                 }
             }
-            return "";
+            return ansv1[0];
         }
         public static List<string> AllConstructt(string str, string[] collection)
         {

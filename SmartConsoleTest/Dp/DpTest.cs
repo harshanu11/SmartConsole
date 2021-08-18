@@ -9,7 +9,8 @@ namespace SmartConsoleTest.Dp
         [Fact]
         public void DPCant()
         {
-            var an = DpOps.AllConstruct("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd", "ef", "c" });
+            var ddd = DpOps.ansv1;
+            var an = DpOps.AllConstructv1("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd", "ef", "c" });
             DpOps.AllConstructt("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd", "ef", "c" });
             DpOps.CanConstructt("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd" });
             var allsum = DpOps.allSumList;
@@ -27,6 +28,7 @@ namespace SmartConsoleTest.Dp
         public void DPGeek()
         {
             countHopt(4, new int[] { 1, 2, 3 });//DistinctOccurrences("banana", new string[] {"ban" ,"b","ba"});
+            var ans = MaxAmount(new int[] { 5, 3, 7, 10 }, 0);
 
         }
         public static int countHop(int num, int[] hops)
@@ -251,6 +253,31 @@ namespace SmartConsoleTest.Dp
                 }
             }
             return false;
+        }
+        static List<long> sums = new List<long>();
+        public static long MaxAmount(int[] coins, int max)
+        {
+
+            if (coins.Length == 0) return max;
+            for (int c = 0; c < coins.Length / 2; c++)
+            {
+                var remender = coins[0] + coins[coins.Length - 1];
+                sums.Add(remender);
+                var temp = new int[coins.Length / 2];
+                if (temp.Length >= 2)
+                {
+                    for (int tt = 0; tt < temp.Length; tt++)
+                    {
+                        temp[tt] = coins[tt + 1];
+                    }
+                    var remeCombination = MaxAmount(temp, remender);
+                }
+                if (max < remender)
+                {
+                    max = remender;
+                }
+            }
+            return max;
         }
     }
 }
