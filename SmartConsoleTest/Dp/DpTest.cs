@@ -12,6 +12,7 @@ namespace SmartConsoleTest.Dp
             var an = DpOps.AllConstruct("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd", "ef", "c" });
             DpOps.AllConstructt("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd", "ef", "c" });
             DpOps.CanConstructt("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd" });
+            var allsum = DpOps.allSumList;
             var ans = DpOps.AllSum(8, new int[] { 2, 3, 5, 8 });
             var ertert = DpOps.allSumList;
             var ans1 = DpOps.BestSumSumt(7, new int[] { 5, 3, 4 });
@@ -119,6 +120,137 @@ namespace SmartConsoleTest.Dp
             }
             Console.Write("Not Possible");
             return minSum;
+        }
+        static List<int> HowMumNumberOfCoins(int[] coins, int numberOfCoins, int value)
+        {
+            if (value < 0) return null;
+            if (value == 0) return new List<int>();
+            for (int c = 0; c < numberOfCoins; c++)
+            {
+                int remender = value - coins[c];
+                var isAllowed = HowMumNumberOfCoins(coins, numberOfCoins, remender);
+                if (isAllowed != null)
+                {
+                    isAllowed.Add(coins[c]);
+                    return isAllowed;
+                }
+            }
+            Console.Write("Not Possible");
+            return null;
+        }
+        static bool isminimumNumberOfCoins(int[] coins, int numberOfCoins, int value)
+        {
+            if (value < 0) return false;
+            if (value == 0) return true;
+            for (int c = 0; c < numberOfCoins; c++)
+            {
+                int remender = value - coins[c];
+                var isAllowed = isminimumNumberOfCoins(coins, numberOfCoins, remender);
+                if (isAllowed)
+                {
+                    return true;
+                }
+            }
+            Console.Write("Not Possible");
+            return false;
+        }
+
+        public static List<string> AllMinimumJumpsT(int[] arr, int num)
+        {
+            List<List<string>> table = new List<List<string>>();
+            // fill the table 
+            for (int t = 0; t < arr.Length + 1; t++)
+            {
+                table.Add(new List<string>());
+            }
+            // seed val
+            table[0].Add("");
+            for (int t = 0; t < table.Count; t++)
+            {
+                if (table[t].Count > 0)
+                {
+                    string input = "";
+                    for (int n = 0; n < arr.Length; n++)
+                    {
+                        if (t + arr[n] < table.Count)
+                        {
+                            if (table[t].Count > 0)
+                            {
+                                for (int tt = 0; tt < table[t].Count; tt++)
+                                {
+                                    table[t + arr[n]].Add(table[t][tt] + "," + arr[n]);
+                                }
+                            }
+                            else
+                            {
+                                table[t + arr[n]].Add(input + arr[n]);
+                            }
+                        }
+
+                    }
+                }
+            }
+            return table[11];
+        }
+
+        static List<List<int>> allSumList = new List<List<int>>();
+        public static List<int> AllMinimumJumps(int[] arr, int num)
+        {
+            List<List<int>> _allSumList = new List<List<int>>();
+            if (arr[arr.Length - 1] == num) return new List<int>();
+            if (arr[arr.Length - 1] < num) return null;
+            var bestJump = new List<int>();
+            for (int n = 0; n < arr.Length; n++)
+            {
+                var remender = num + arr[n];
+                var remenderCombination = AllMinimumJumps(arr, remender);
+                if (remenderCombination != null)
+                {
+                    remenderCombination.Add(arr[n]);
+                    var combination = remenderCombination;
+                    _allSumList.Add(combination);
+                    allSumList = _allSumList;
+                    if (bestJump.Count == 0 || combination.Count < bestJump.Count)
+                    {
+                        bestJump = combination;
+                    }
+                }
+            }
+            return bestJump;
+        }
+
+        public static List<int> HowMinimumJumps(int[] arr, int num)
+        {
+            if (arr[arr.Length - 1] == num) return new List<int>();
+            if (arr[arr.Length - 1] < num) return null;
+
+            for (int n = 0; n < arr.Length; n++)
+            {
+                var remender = num + arr[n];
+                var result = HowMinimumJumps(arr, num + arr[n]);
+                if (result != null)
+                {
+                    result.Add(arr[n]);
+                    return result;
+                }
+            }
+            return null;
+        }
+
+        public static bool IsminimumJumps(int[] arr, int num)
+        {
+            if (arr[arr.Length - 1] == num) return true;
+            if (arr[arr.Length - 1] < num) return false;
+
+            for (int n = 0; n < arr.Length; n++)
+            {
+                var result = IsminimumJumps(arr, num + arr[n]);
+                if (result)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

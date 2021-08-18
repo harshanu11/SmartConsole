@@ -4,7 +4,6 @@ namespace SmartConsoleTest.Dp
 {
     public class DpOps
     {
-        public static List<List<int>> allSumList = new List<List<int>>();
         public static List<string> ans = new List<string>();
 
         public static bool CanSum(int n, int[] arr)
@@ -145,6 +144,8 @@ namespace SmartConsoleTest.Dp
             }
             return table[sumN];
         }
+
+        public static List<List<int>> allSumList = new List<List<int>>();
         public static List<int> AllSum(int sumN, int[] numbers)
         {
             if (sumN < 0) return null;
