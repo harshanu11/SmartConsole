@@ -86,6 +86,7 @@ namespace CollectionTest
             //string[] lenAndShift = Console.ReadLine().Split(' ');
             stringArray.SetValue("Mango", 0);
             stringArray.GetValue(0);
+			char[][] board = new char[4][];
             int[,] mat = {
                             { 1, 2, 3, 4 },
                             { 5, 6, 7, 8 },
@@ -112,6 +113,11 @@ namespace CollectionTest
             #endregion
 
             #region Copy
+            for (int i = 0; i < 4; i++)
+            {
+                board[i] = new char[4];
+                Array.Fill(board[i], '.');
+            }
             Array.Copy(arr_source_copy, 0, newArr, 0, 3);
             #endregion
 
