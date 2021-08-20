@@ -62,6 +62,135 @@ namespace CollectionTest
 
 			return distance;
 		}
-	
+        public List<int> bfsOfGraph(int V, List<List<int>> adj)
+        {
+            //boolean list to mark all the vertices as not visited.
+            bool[] visited = new bool[V];
+
+            int s = 0;
+            //initially we mark first vertex as visited(true).
+            visited[s] = true;
+
+            List<int> res = new List<int>();
+
+            //creating a queue for BFS and pushing first vertex in queue.
+            Queue<int> q = new Queue<int>();
+            q.Enqueue(s);
+
+            while (q.Count != 0)
+            {
+                //adding front element in output list and popping it from queue.
+                s = q.Peek();
+                q.Dequeue();
+                res.Add(s);
+
+                //traversing over all the connected components of front element.
+
+                foreach (var v in adj[s])
+                {
+
+                    //if they aren't visited, we mark them visited and add to queue.
+                    if (!visited[v])
+                    {
+                        visited[v] = true;
+                        q.Enqueue(v);
+                    }
+                }
+            }
+            //returning the output list.
+            return res;
+        }
+        private void dfs(int ch, ref bool[] vis, ref List<int> ans, ref List<List<int>> adj)
+        {
+            //marking vertex as visited and adding it to output list.
+            vis[ch] = true;
+            ans.Add(ch);
+
+            //iterating over connected components of the vertex and if any 
+            //of them is not visited then calling the function recursively.
+            for (int i = 0; i < adj[ch].Count; i++)
+                if (!vis[adj[ch][i]])
+                    dfs(adj[ch][i], ref vis, ref ans, ref adj);
+        }
+        //Function to return a list containing the DFS traversal of the graph.
+        public List<int> dfsList(int V, List<List<int>> adj)
+        {
+            //using a boolean list to mark all the vertices as not visited.
+            bool[] vis = new bool[V];
+            for (int i = 0; i < V; i++) vis[i] = false;
+            List<int> ans = new List<int>();
+            dfs(0, ref vis, ref ans, ref adj);
+
+            //returning the output list.
+            return ans;
+        }
+
+		private bool dfsUtil(int source, int destination, bool[] vis)
+		{
+			if (source == destination)
+			{
+				return true;
+			}
+
+			foreach (int neighbor in adjecent[source])
+			{
+				if (!vis[neighbor])
+				{
+					vis[neighbor] = true;
+					bool isConnected = dfsUtil(neighbor, destination, vis);
+					if (isConnected)
+					{
+						return true;
+					}
+				}
+			}
+
+			return false;
+		}
+
+		public virtual bool dfsStack(int source, int destination)
+		{
+			bool[] vis = new bool[adjecent.Length];
+			vis[source] = true;
+			Stack<int> stack = new Stack<int>();
+
+			stack.Push(source);
+
+			while (stack.Count > 0)
+			{
+				int cur = stack.Pop();
+
+				if (cur == destination)
+				{
+					return true;
+				}
+
+				foreach (int neighbor in adjecent[cur])
+				{
+					if (!vis[neighbor])
+					{
+						vis[neighbor] = true;
+						stack.Push(neighbor);
+					}
+				}
+			}
+
+			return false;
+		}
+
+		public virtual bool dfsR(int source, int destination)
+		{
+			bool[] vis = new bool[adjecent.Length];
+			vis[source] = true;
+
+			return dfsUtil(source, destination, vis);
+		}
+
 	}
+    public class GraphNodeList 
+    {
+        private int V;
+        public List<List<int>> adjecent;
+
+    }
 }

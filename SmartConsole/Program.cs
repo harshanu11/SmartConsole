@@ -17,25 +17,7 @@ namespace SmartConsole
             var ans = subsequenceCount("banana", new string[] { "b", "ba", "a","an","ban","ana" });
         }
 
-        public static bool subsequenceCount(string str, string[] subStr)
-        {
-            if (str == "") return true;
-            //if (str.Length < subStr.Length) return false;
-            for (int c = 0; c < subStr.Length; c++)
-            {
-                if (str.IndexOf(subStr[c]) == 0 )
-                {
-                    var remender = str.Substring(subStr[c].Length);
-                    var remenderCombination = subsequenceCount(remender, subStr);
-                    if (remenderCombination)
-                    {
-                        return true;
-                    }
-                }
-            }
 
-            return false;
-        }
         public static String solution(int numberOfRows, String encodedString)
         {
             int originalLength = encodedString.Length;

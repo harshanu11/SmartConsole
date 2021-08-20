@@ -97,7 +97,8 @@ namespace CollectionTest
 
             source = 0;
             destination = 3;
-            var ans = graph.bfs(source, destination);
+            GraphNodeList gl = new GraphNodeList();
+            var ans = graph.dfsList(source, gl.adjecent);
             Console.WriteLine("possible " + graph.bfs(source, destination));
         }
     }
