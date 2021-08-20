@@ -81,7 +81,7 @@ namespace CollectionTest
             Array stringArray = Array.CreateInstance(typeof(String), 6);
             int[] arr = new int[] { -59, -36, -13, 1, -53, -92, -2, -96, -54, -75 };
             int[] marks = new int[] { 99, 98, 92, 97, 95 };
-            int[] arr_source_copy = { 1, 3, 4 }; int[] newArr = new int[3];
+            int[] arr_source_copy = { 1, 3, 4 }; int[] newArr = new int[4];
             string[] arr_temp = new string[] { "1", "2" };
             //string[] lenAndShift = Console.ReadLine().Split(' ');
             stringArray.SetValue("Mango", 0);
@@ -108,7 +108,7 @@ namespace CollectionTest
             string[] arr_Find = new string[] { "cam", "camcam" };
             string v1 = Array.Find(arr_Find,element => element.StartsWith("cam", StringComparison.Ordinal));
             var element = marks.ElementAt(2);
-            BubbleSort(new List<int>());
+            SortingAlgo.BubbleSort(arr);
 
             #endregion
 
@@ -142,33 +142,6 @@ namespace CollectionTest
             #endregion
         }
 
-        public void BubbleSort(List<int> a)
-        {
-            // Write your code here
-            int numberOfSwaps = 0;
-            for (int i = 0; i < a.Count; i++)
-            {
-                // Track number of elements swapped during a single array traversal
-
-                for (int j = 0; j < a.Count - 1; j++)
-                {
-                    // Swap adjacent elements if they are in decreasing order
-                    if (a[j] > a[j + 1])
-                    {
-                        var temp = a[j];
-                        a[j] = a[j + 1];
-                        a[j + 1] = temp;
-                        numberOfSwaps++;
-                    }
-                }
-
-                // If no elements were swapped during a traversal, array is sorted
-                if (numberOfSwaps == 0)
-                {
-                    break;
-                }
-
-            }
-        }
+        
     }
 }

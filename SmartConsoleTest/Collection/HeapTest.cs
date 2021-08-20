@@ -19,9 +19,13 @@ namespace CollectionTest
         {
             HeapOps ob = new HeapOps();
 
-            int[] arr = { 10, 5, 3, 2, 4 };
+            //int[] arr = { 10, 5, 3, 2, 4 ,0};
+            //int n = arr.Length;
+            //ob.insertNode(arr,5, n);
+
+            int[] arr = { 50, 40, 45, 30, 20, 10, 0 };
             int n = arr.Length;
-            ob.insertNode(arr,1, n);
+            ob.insertNode(arr, 60, n-1);
 
         }
         [Fact]
