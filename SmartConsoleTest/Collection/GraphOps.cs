@@ -8,135 +8,12 @@ using System.Collections.Generic;
 
 namespace CollectionTest
 {
-	public class Graph
-	{
+    
 
-		private LinkedList<int>[] adj;
-
-		public Graph(int v)
-		{
-			adj = new LinkedList<int>[v];
-			for (int i = 0; i < v; i++)
-			{
-				adj[i] = new LinkedList<int>();
-			}
-		}
-
-		public virtual void addEdge(int source, int destination)
-		{
-			adj[source].AddLast(destination);
-			adj[destination].AddLast(source);
-		}
-
-		public virtual int bfs(int source, int destination)
-		{
-
-			bool[] vis = new bool[adj.Length];
-			int[] parent = new int[adj.Length];
-			Queue<int> q = new Queue<int>();
-
-			q.Enqueue(source);
-			parent[source] = -1;
-			vis[source] = true;
-			int cur = 0;
-			while (q.Count > 0)
-			{
-				cur = q.Dequeue();
-				if (cur == destination)
-				{
-					break;
-				}
-
-				foreach (int neighbor in adj[cur])
-				{
-					if (!vis[neighbor])
-					{
-						vis[neighbor] = true;
-						q.Enqueue(neighbor);
-						parent[neighbor] = cur;
-					}
-				}
-			}
-
-			cur = destination;
-			int distance = 0;
-
-
-			while (parent[cur] != -1)
-			{
-				Console.Write(cur + " -> ");
-				cur = parent[cur];
-				distance++;
-			}
-
-			return distance;
-		}
-
-		private bool dfsUtil(int source, int destination, bool[] vis)
-		{
-			if (source == destination)
-			{
-				return true;
-			}
-
-			foreach (int neighbor in adj[source])
-			{
-				if (!vis[neighbor])
-				{
-					vis[neighbor] = true;
-					bool isConnected = dfsUtil(neighbor, destination, vis);
-					if (isConnected)
-					{
-						return true;
-					}
-				}
-			}
-
-			return false;
-		}
-
-		public virtual bool dfsStack(int source, int destination)
-		{
-			bool[] vis = new bool[adj.Length];
-			vis[source] = true;
-			Stack<int> stack = new Stack<int>();
-
-			stack.Push(source);
-
-			while (stack.Count > 0)
-			{
-				int cur = stack.Pop();
-
-				if (cur == destination)
-				{
-					return true;
-				}
-
-				foreach (int neighbor in adj[cur])
-				{
-					if (!vis[neighbor])
-					{
-						vis[neighbor] = true;
-						stack.Push(neighbor);
-					}
-				}
-			}
-
-			return false;
-		}
-
-		public virtual bool dfs(int source, int destination)
-		{
-			bool[] vis = new bool[adj.Length];
-			vis[source] = true;
-
-			return dfsUtil(source, destination, vis);
-		}
-	}
-	public class GraphOps
+    public class GraphOps
     {
-        private int V; 
-        private LinkedList<int>[] adj; 
+        private int V;
+        private LinkedList<int>[] adj;
         public GraphOps(int v)
         {
             V = v;
@@ -186,6 +63,61 @@ namespace CollectionTest
 
             // If BFS is complete without visited d
             return false;
+        }
+
+        void dfs(int u, ref List<List<int>> adj, ref List<bool> vis)
+        {
+            //marking current vertex as visited.
+            vis[u] = true;
+
+            //iterating over the adjacent vertices.
+            foreach (var v in adj[u])
+            {
+                //if any vertex is not visited, we call dfs function recursively.
+                if (!vis[v])
+                    dfs(v, ref adj, ref vis);
+            }
+        }
+
+        //Function to find a Mother Vertex in the Graph.
+        public int findMotherVertex(int V, ref List<List<int>> adj)
+        {
+            //boolean list to mark the visited nodes and initially all are
+            //initialized as not visited.
+            List<bool> vis = new List<bool>();
+            for (int i = 0; i < V; i++) vis.Add(false);
+
+            //variable to store last finished vertex (or mother vertex).
+            int v = -1;
+
+            //iterating over all the vertices
+            for (int i = 0; i < V; i++)
+            {
+                //if current vertex is not visited, we call the dfs 
+                //function and then update the variable v.
+                if (!vis[i])
+                {
+                    dfs(i, ref adj, ref vis);
+                    v = i;
+                }
+            }
+
+            //we reset all the vertices as not visited.
+
+            for (int i = 0; i < V; i++) vis[i] = false;
+
+            //calling the dfs function to do DFS beginning from v to check
+            //if all vertices are reachable from it or not.
+            dfs(v, ref adj, ref vis);
+
+            //iterating on boolean list and returning -1 if
+            //any vertex is not visited.
+            foreach (var i in vis)
+                if (!i)
+                    return -1;
+
+            //returning mother vertex.
+            return v;
         }
 
     }

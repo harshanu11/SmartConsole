@@ -101,6 +101,22 @@ namespace CollectionTest
             var ans = graph.dfsList(source, gl.adjecent);
             Console.WriteLine("possible " + graph.bfs(source, destination));
         }
+        [Fact]
+        public void MotherVertixTest()
+        {
+
+            GraphOps g = new GraphOps(4);
+            g.addEdge(0, 1);
+            g.addEdge(0, 2);
+            g.addEdge(1, 2);
+            g.addEdge(2, 0);
+            g.addEdge(2, 3);
+            g.addEdge(3, 3);
+            int u = 1;
+            int v = 3;
+            GraphNodeList gl = new GraphNodeList();
+            g.findMotherVertex(0, ref gl.adjecent);
+        }
     }
 
 }

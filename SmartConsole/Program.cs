@@ -14,7 +14,7 @@ namespace SmartConsole
             //decodeString(3, "mnes__ya_____mi");
             //solution(3, "mnes__ya_____mi");
             //var ans = isminimumNumberOfCoins(new int[] { 2, 5, 3, 6 },4, 1);
-            var ans = subsequenceCount("banana", new string[] { "b", "ba", "a","an","ban","ana" });
+            //var ans = subsequenceCount("banana", new string[] { "b", "ba", "a","an","ban","ana" });
         }
 
 
