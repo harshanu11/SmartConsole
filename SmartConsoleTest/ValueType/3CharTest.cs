@@ -13,7 +13,7 @@ namespace ValueTypeTest
             #region Create
 
             string s = "hello";
-            var getNum = (int)Char.GetNumericValue('c');
+            var getNum = (int)Char.GetNumericValue('C');
             foreach (var item in s)
             {
                 if (item == 'h')
