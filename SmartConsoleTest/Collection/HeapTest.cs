@@ -25,7 +25,7 @@ namespace CollectionTest
 
             int[] arr = { 50, 40, 45, 30, 20, 10, 0 };
             int n = arr.Length;
-            ob.insertNode(arr, 60, n-1);
+            ob.insertNode(arr, n-1, 60);
 
         }
         [Fact]

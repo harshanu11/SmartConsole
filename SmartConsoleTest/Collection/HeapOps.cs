@@ -67,13 +67,9 @@
         // Function to insert a new node to the Heap
         public void insertNode(int[] arr, int n, int Key)
         {
-            // Increase the size of Heap by 1
             n = n + 1;
-
-            // Insert the element at end of Heap
             arr[n - 1] = Key;
             int i = n-1;
-
             while (i > 1)
             {
                 int parant = i / 2;
@@ -84,27 +80,15 @@
                     arr[i] = temp;
                     i = parant;
                 }
-                else
-                {
-                    return;
-                }
+                else return;
             }
         }
         public int deleteRoot(int[] arr, int n)
         {
-            // Get the last element
             int lastElement = arr[n - 1];
-
-            // Replace root with first element
             arr[0] = lastElement;
-
-            // Decrease size of heap by 1
             n = n - 1;
-
-            // heapify the root node
             heapify(arr, n, 0);
-
-            // return new size of Heap
             return n;
         }
     }
