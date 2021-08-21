@@ -194,23 +194,14 @@ namespace CollectionTest
         {
             s = new Stack();
         }
-
-        // Prints minimum element of MyStack
         public void getMin()
         {
-            // Get the minimum number
-            // in the entire stack
             if (s.Count == 0)
                 Console.WriteLine("Stack is empty");
-
-            // variable minEle stores the minimum
-            // element in the stack.
             else
                 Console.WriteLine("Minimum Element in the " +
                                 " stack is: " + minEle);
         }
-
-        // prints top element of MyStack
         public void Peek()
         {
             if (s.Count == 0)
@@ -218,20 +209,13 @@ namespace CollectionTest
                 Console.WriteLine("Stack is empty ");
                 return;
             }
-
-            int t = (int)s.Peek(); // Top element.
-
+            int t = (int)s.Peek(); 
             Console.Write("Top Most Element is: ");
-
-            // If t < minEle means minEle stores
-            // value of t.
             if (t < minEle)
                 Console.WriteLine(minEle);
             else
                 Console.WriteLine(t);
         }
-
-        // Removes the top element from MyStack
         public void Pop()
         {
             if (s.Count == 0)
@@ -242,9 +226,6 @@ namespace CollectionTest
 
             Console.Write("Top Most Element Removed: ");
             int t = (int)s.Pop();
-
-            // Minimum will change as the minimum element
-            // of the stack is being removed.
             if (t < minEle)
             {
                 Console.WriteLine(minEle);
@@ -254,8 +235,6 @@ namespace CollectionTest
             else
                 Console.WriteLine(t);
         }
-
-        // Insert new number into MyStack
         public void Push(int x)
         {
             if (s.Count == 0)
@@ -265,8 +244,6 @@ namespace CollectionTest
                 Console.WriteLine("Number Inserted: " + x);
                 return;
             }
-
-            // If new number is less than original minEle
             if (x < minEle)
             {
                 s.Push(2 * x - minEle);

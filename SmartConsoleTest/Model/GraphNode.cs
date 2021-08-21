@@ -102,17 +102,12 @@ namespace CollectionTest
         }
         private void dfs(int ch, ref bool[] vis, ref List<int> ans, ref List<List<int>> adj)
         {
-            //marking vertex as visited and adding it to output list.
             vis[ch] = true;
             ans.Add(ch);
-
-            //iterating over connected components of the vertex and if any 
-            //of them is not visited then calling the function recursively.
             for (int i = 0; i < adj[ch].Count; i++)
                 if (!vis[adj[ch][i]])
                     dfs(adj[ch][i], ref vis, ref ans, ref adj);
         }
-        //Function to return a list containing the DFS traversal of the graph.
         public List<int> dfsList(int V, List<List<int>> adj)
         {
             //using a boolean list to mark all the vertices as not visited.
@@ -120,8 +115,6 @@ namespace CollectionTest
             for (int i = 0; i < V; i++) vis[i] = false;
             List<int> ans = new List<int>();
             dfs(0, ref vis, ref ans, ref adj);
-
-            //returning the output list.
             return ans;
         }
 
