@@ -279,5 +279,16 @@ namespace SmartConsoleTest.Dp
             }
             return max;
         }
+
+        public static bool SubSeq(string source, string target, int s, int t)
+        {
+            if (s == source.Length) return true;
+            if (t == target.Length) return false;
+            if (source[s] == target[t])
+            {
+                return SubSeq(source, target, s + 1, t + 1);
+            }
+            return SubSeq(source, target, s, t + 1);
+        }
     }
 }
