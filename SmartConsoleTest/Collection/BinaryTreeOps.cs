@@ -134,25 +134,13 @@ namespace CollectionTest
         }
         public virtual int height(TreeNode root)
         {
-            if (root == null)
-            {
-                return 0;
-            }
+            if (root == null) return 0;
             else
             {
-                /* compute height of each subtree */
                 int lheight = height(root.Left);
                 int rheight = height(root.Right);
-
-                /* use the larger one */
-                if (lheight > rheight)
-                {
-                    return (lheight + 1);
-                }
-                else
-                {
-                    return (rheight + 1);
-                }
+                if (lheight > rheight) return (lheight + 1);
+                else return(rheight + 1);
             }
         }
 
