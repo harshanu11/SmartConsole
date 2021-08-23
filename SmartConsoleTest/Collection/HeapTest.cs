@@ -18,11 +18,6 @@ namespace CollectionTest
         public void HeapAddTest()
         {
             HeapOps ob = new HeapOps();
-
-            //int[] arr = { 10, 5, 3, 2, 4 ,0};
-            //int n = arr.Length;
-            //ob.insertNode(arr,5, n);
-
             int[] arr = { 50, 40, 45, 30, 20, 10, 0 };
             int n = arr.Length;
             ob.insertNode(arr, n-1, 60);

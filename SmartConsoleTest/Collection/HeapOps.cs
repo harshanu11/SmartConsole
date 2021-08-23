@@ -7,7 +7,6 @@
         {
             int n = arr.Length;
 
-            // Build heap (rearrange array)
             for (int h = 0; h < n / 2; h++)
             {
                 heapify(arr, n, h);
@@ -26,18 +25,12 @@
             //}
             for (int i = n - 1; i > 0; i--)
             {
-                // Move current root to end
                 int temp = arr[0];
                 arr[0] = arr[i];
                 arr[i] = temp;
-
-                // call max heapify on the reduced heap
                 heapify(arr, i, 0);
             }
         }
-
-        // To heapify a subtree rooted with node i which is
-        // an index in arr[]. n is size of heap
         void heapify(int[] arr, int n, int i)
         {
             int largest = i; // Initialize largest as root
@@ -63,8 +56,6 @@
                 heapify(arr, n, largest);
             }
         }
-
-        // Function to insert a new node to the Heap
         public void insertNode(int[] arr, int n, int Key)
         {
             n = n + 1;
