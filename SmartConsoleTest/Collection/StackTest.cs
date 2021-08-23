@@ -382,32 +382,15 @@ namespace CollectionTest
     }
     public class StackUsingArrayList
     {
-        /// <summary>
-        /// ArrayList representation of the stack </summary>
         internal ArrayList stackList;
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
         internal StackUsingArrayList()
         {
             stackList = new ArrayList();
         }
-
-        /// <summary>
-        /// Adds value to the end of list which is the top for stack
-        /// </summary>
-        /// <param name="value">
-        ///            value to be added </param>
         internal virtual void push(int value)
         {
             stackList.Add(value);
         }
-
-        /// <summary>
-        /// Pops last element of list which is indeed the top for Stack
-        /// </summary>
-        /// <returns> Element popped </returns>
         internal virtual int pop()
         {
 
@@ -423,11 +406,6 @@ namespace CollectionTest
                 return -1;
             }
         }
-
-        /// <summary>
-        /// Checks for empty Stack
-        /// </summary>
-        /// <returns> true if stack is empty </returns>
         internal virtual bool Empty
         {
             get
@@ -442,11 +420,6 @@ namespace CollectionTest
                 }
             }
         }
-
-        /// <summary>
-        /// Top element of stack
-        /// </summary>
-        /// <returns> top element of stack </returns>
         internal virtual int peek()
         {
             return Convert.ToInt32(stackList[stackList.Count - 1]);
