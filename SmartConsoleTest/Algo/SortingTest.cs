@@ -8,13 +8,23 @@ namespace CollectionTest
         [Fact]
         public void MergeSorTest()
         {
-			MergeSortOps ms = new MergeSortOps();
+		
 			int[] arr = { 12, 11, 13, 5, 6, 7 };
 			Console.WriteLine("Given Array");
-			ms.printArray(arr);
-			ms.sort(arr, 0, arr.Length - 1);
+            SortingAlgo.mergesort(arr, 0, arr.Length - 1);
 			Console.WriteLine("\nSorted array");
-			ms.printArray(arr);
 		}
+        [Fact]
+        public void BubbleSortTest()
+        {
+            int[] arr = { 12, 11, 13, 5, 6 };
+            SortingAlgo.BubbleSort(arr);
+        }
+        [Fact]
+        public void InsertionSortTest()
+        {
+            int[] arr = { 12, 11, 13, 5, 6 };
+            SortingAlgo.Insertionsort(arr);
+        }
     }
 }
