@@ -15,6 +15,7 @@ namespace SmartConsoleTest.Dp
             DpOps.CanConstructt("abcdef", new String[] { "ab", "abc", "cd", "def", "abcd" });
             var allsum = DpOps.allSumList;
             var ans = DpOps.AllSum(8, new int[] { 2, 3, 5, 8 });
+             var ansa = DpOps.HowSum(8, new int[] { 2, 3, 5, 8 });
             var ertert = DpOps.allSumList;
             var ans1 = DpOps.BestSumSumt(7, new int[] { 5, 3, 4 });
 
