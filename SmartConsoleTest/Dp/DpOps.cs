@@ -65,20 +65,22 @@ namespace SmartConsoleTest.Dp
         {
             if (sumN < 0) return null;
             string[] table = new string[sumN + 1];
-
-            // seed val 
             table[0] = "";
             for (int t = 0; t < table.Length; t++)
             {
-
                 if (table[t] != null)
                 {
                     for (int n = 0; n < numbers.Length; n++)
                     {
                         if (t + numbers[n] < table.Length)
                         {
-                            table[t + numbers[n]] = table[t + numbers[n]] + numbers[n] + " ";
+                            table[t + numbers[n]] = table[t + numbers[n]] + numbers[n];
                         }
+                        if (t + numbers[n] == sumN)
+                        {
+                            break;
+                        }
+
                     }
                 }
             }
@@ -272,7 +274,11 @@ namespace SmartConsoleTest.Dp
                     ansv1 = _ans;
                 }
             }
-            return ansv1[0];
+            if (ansv1.Count > 0)
+            {
+                return ansv1[0];
+            }
+            return null;
         }
         public static List<string> AllConstructt(string str, string[] collection)
         {
