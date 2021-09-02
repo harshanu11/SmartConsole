@@ -14,6 +14,16 @@ namespace SmartConsole
         }
         static List<List<int>> allC = new List<List<int>>();
         static List<List<string>> allCs = new List<List<string>>();
+        public static bool SubSeq(string source, string target, int s, int t)
+        {
+            if (s == source.Length) return true;
+            if (t == target.Length) return false;
+            if (source[s] == target[t])
+            {
+                return SubSeq(source, target, s + 1, t + 1);
+            }
+            return SubSeq(source, target, s, t + 1);
+        }
         public static List<string> AllConstructt(string str, string[] collection)
         {
             List<List<string>> table = new List<List<string>>();
