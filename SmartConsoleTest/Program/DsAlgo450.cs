@@ -82,5 +82,29 @@ namespace SmartConsoleTest.Program
             }
         }
         #endregion
+        #region Binary Search Tree
+
+        [Fact]
+        public void A_FindVal_in_bst_Traverse()
+        {
+            BSTNode tree = new BSTNode();
+
+            /* Let us create following BST
+                  50
+               /     \
+              30      70
+             /  \    /  \
+           20   40  60   80 */
+            tree.Insert(tree,50);
+            tree.Insert(tree,30);
+            tree.Insert(tree,20);
+            tree.Insert(tree,40);
+            tree.Insert(tree,70);
+            tree.Insert(tree,60);
+            tree.Insert(tree,80);
+
+            // Print inorder traversal of the BST
+        }
+        #endregion
     }
 }
