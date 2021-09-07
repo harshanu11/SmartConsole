@@ -58,9 +58,8 @@
         }
         public void insertNode(int[] arr, int n, int Key)
         {
-            n = n + 1;
-            arr[n - 1] = Key;
-            int i = n-1;
+            arr[n] = Key;
+            int i = n;
             while (i > 1)
             {
                 int parant = i / 2;

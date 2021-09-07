@@ -94,12 +94,15 @@ namespace CollectionTest
             graph.addEdge(2, 4);
 
             Console.WriteLine("Enter source and destination");
-
             source = 0;
             destination = 3;
-            GraphNodeList gl = new GraphNodeList();
-            var ans = graph.dfsList(source, gl.adjecent);
-            Console.WriteLine("possible " + graph.bfs(source, destination));
+            GraphNodeList gl = new GraphNodeList(5);
+            gl.AddEdge(0, 1);
+            gl.AddEdge(1, 2);
+            gl.AddEdge(2, 3);
+            gl.AddEdge(3, 4);
+            gl.AddEdge(0, 4);
+            gl.AddEdge(2, 4);
         }
         [Fact]
         public void MotherVertixTest()
@@ -114,8 +117,8 @@ namespace CollectionTest
             g.addEdge(3, 3);
             int u = 1;
             int v = 3;
-            GraphNodeList gl = new GraphNodeList();
-            g.findMotherVertex(0, ref gl.adjecent);
+            GraphNodeList gl = new GraphNodeList(5);
+            gl.AddEdge(0, 3);
         }
     }
 

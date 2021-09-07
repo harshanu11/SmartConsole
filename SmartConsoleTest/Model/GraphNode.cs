@@ -184,6 +184,20 @@ namespace CollectionTest
     {
         private int V;
         public List<List<int>> adjecent;
+        public GraphNodeList(int v)
+        {
+			adjecent = new List<List<int>>();
+			V = v;
+            for (int ver = 0; ver < V; ver++)
+            {
+				adjecent.Add(new List<int>());
+            }
+        }
+		public void AddEdge(int source, int destination) 
+		{
+			adjecent[source].Add(destination);
+			adjecent[destination].Add(source);
+		}
 
     }
 }
