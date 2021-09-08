@@ -6,105 +6,57 @@ namespace SmartConsoleTest.Program
 {
     public class DsAlgo450
     {
-        #region Array
-        [Fact]
-        public void A_ReverseString()
-        {
-            var inStr = "12345".ToCharArray();
-            var opStr = "54321";
-            int start = 0;
-            int end = inStr.Length - 1;
-            while (start < end)
-            {
-                var temp = inStr[start];
-                inStr[start] = inStr[end];
-                inStr[end] = temp;
-                start++;
-                end--;
-            }
-            Assert.Equal(new string(inStr), opStr);
-            // swap via recursion 
-            // temp var
-
-        }
-        #endregion
-        #region String
+        #region 1array
 
         #endregion
-        #region Searching & Sorting
-        [Fact]
-        public void A_FindFirst_Last_occer_of_x()
-        {
-            // find 5 first and last occerence
-            int[] inArr = { 1, 3, 5, 5, 5, 5, 67, 123, 125 };
-        }
+        #region 2Bit Manipulation
+
         #endregion
-        #region LinkedList
-        [Fact]
-        public void A_Reverse_itrative_recursive_LLTest()
-        {
-            LLNode llReverse = new LLNode(1);
-            llReverse.nextNode = new LLNode(2);
-            llReverse.nextNode = new LLNode(3);
-            llReverse.nextNode = new LLNode(4);
-            LLNode head = llReverse;
-            while (head != null)
-            {
-                //1-2-3-4-null
-                //2-1-3-4-null
-                //2-
+        #region 3BackTracking
 
-            }
-        }
         #endregion
-        #region Binary Tree
+        #region 4BT
 
-        [Fact]
-        public void A_LeverOrder_Traverse()
-        {
-            TreeNode tree = new TreeNode();
-            tree.Data = 1;
-            tree.Left = new TreeNode();
-            tree.Left.Data = 2;
-            tree.Right = new TreeNode();
-            tree.Right.Data = 3;
-            tree.Left.Left = new TreeNode();
-            tree.Left.Left.Data = 4;
-            tree.Right.Right = new TreeNode();
-            tree.Right.Right.Data = 5;
-
-            TreeNode head = tree;
-            Stack<int> st = new Stack<int>();
-            st.Push(head.Data);
-            while (st.Count != 0)
-            {
-
-            }
-        }
         #endregion
-        #region Binary Search Tree
+        #region 5BST
 
-        [Fact]
-        public void A_FindVal_in_bst_Traverse()
-        {
-            BSTNode tree = new BSTNode();
-
-            /* Let us create following BST
-                  50
-               /     \
-              30      70
-             /  \    /  \
-           20   40  60   80 */
-            tree.Insert(tree,50);
-            tree.Insert(tree,30);
-            tree.Insert(tree,20);
-            tree.Insert(tree,40);
-            tree.Insert(tree,70);
-            tree.Insert(tree,60);
-            tree.Insert(tree,80);
-
-            // Print inorder traversal of the BST
-        }
         #endregion
+        #region 6Complexity
+
+        #endregion
+        #region 7DP
+
+        #endregion
+        #region 8Graph
+
+        #endregion
+        #region 9Greedy
+
+        #endregion
+        #region 10Heap
+
+        #endregion
+        #region 11LinkedList
+
+        #endregion
+        #region 12Matrix
+
+        #endregion
+        #region 13Math
+
+        #endregion
+        #region 14String
+
+        #endregion
+        #region 15Stack & Queue
+
+        #endregion
+        #region 16Searching & Sorting
+
+        #endregion
+        #region 17Trie
+
+        #endregion
+
     }
 }
