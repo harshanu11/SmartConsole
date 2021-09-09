@@ -1,6 +1,8 @@
 ﻿using CollectionTest;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Xunit;
 
 namespace SmartConsoleTest.Program
@@ -9,11 +11,9 @@ namespace SmartConsoleTest.Program
     {
         #region 1array
         #region rvereseArray
-        static void rvereseArray(int[] arr,
-                int start, int end)
+        static void rvereseArray(int[] arr,int start, int end)
         {
             int temp;
-
             while (start < end)
             {
                 temp = arr[start];
@@ -23,53 +23,31 @@ namespace SmartConsoleTest.Program
                 end--;
             }
         }
-
-        /* Utility that prints out an
-        array on a line */
-        static void printArray(int[] arr,
-                                int size)
-        {
-            for (int i = 0; i < size; i++)
-                Console.Write(arr[i] + " ");
-
-            Console.WriteLine();
-        }
-
-        // Driver function
-        public static void Main()
+        [Fact]
+        public void rvereseArrayTest()
         {
             int[] arr = { 1, 2, 3, 4, 5, 6 };
-            printArray(arr, 6);
             rvereseArray(arr, 0, 5);
             Console.Write("Reversed array is \n");
-            printArray(arr, 6);
         }
         #endregion
         #region Find the maximum and minimum element in an array
-        /* Class Pair is used to return
-	two values from getMinMax() */
         class Pair
         {
             public int min;
             public int max;
         }
 
-        static Pair getMinMax(int[] arr, int n)
+        static Pair getMinMax1(int[] arr, int n)
         {
             Pair minmax = new Pair();
             int i;
-
-            /* If there is only one element
-            then return it as min and max both*/
             if (n == 1)
             {
                 minmax.max = arr[0];
                 minmax.min = arr[0];
                 return minmax;
             }
-
-            /* If there are more than one elements,
-            then initialize min and max*/
             if (arr[0] > arr[1])
             {
                 minmax.max = arr[0];
@@ -95,12 +73,12 @@ namespace SmartConsoleTest.Program
             return minmax;
         }
 
-        // Driver Code
-        public static void Main(String[] args)
+        [Fact]
+        public void getMinMaxTest()
         {
             int[] arr = { 1000, 11, 445, 1, 330, 3000 };
             int arr_size = 6;
-            Pair minmax = getMinMax(arr, arr_size);
+            Pair minmax = getMinMax1(arr, arr_size);
             Console.Write("Minimum element is {0}",
                                     minmax.min);
             Console.Write("\nMaximum element is {0}",
@@ -197,7 +175,6 @@ namespace SmartConsoleTest.Program
         #region Move all the negative elements to one side of the array 
         static void rearrange(int[] arr, int n)
         {
-
             int j = 0, temp;
             for (int i = 0; i < n; i++)
             {
@@ -211,21 +188,13 @@ namespace SmartConsoleTest.Program
             }
         }
 
-        // A utility function to print an array
-        static void printArray(int[] arr, int n)
-        {
-            for (int i = 0; i < n; i++)
-                Console.Write(arr[i] + " ");
-        }
-
-        // Driver code
-        public static void Main()
+        [Fact]
+        public void rearrangeNegative()
         {
             int[] arr = { -1, 2, -3, 4, 5, 6, -7, 8, 9 };
             int n = arr.Length;
 
             rearrange(arr, n);
-            printArray(arr, n);
         }
         #endregion
         #endregion
@@ -245,22 +214,13 @@ namespace SmartConsoleTest.Program
 
         #endregion
         #region Find the two non-repeating elements in an array of repeating elements
-        // This function sets the values of
-        // *x and *y to non-repeating elements
-        // in an array arr[] of size n
         static void UniqueNumbers2(int[] arr, int n)
         {
             int sum = 0;
             for (int i = 0; i < n; i++)
             {
-
-                // Xor all the elements of the array
-                // all the elements occuring twice will
-                // cancel out each other remaining
-                // two unnique numbers will be xored
                 sum = (sum ^ arr[i]);
             }
-
             // Bitwise & the sum with it's 2's Complement
             // Bitwise & will give us the sum containing
             // only the rightmost set bit
@@ -301,8 +261,8 @@ namespace SmartConsoleTest.Program
                             + sum2);
         }
 
-        // Driver Code
-        static public void Main()
+        [Fact]
+        public void UniqueNumbers2Test()
         {
             int[] arr = { 2, 3, 7, 9, 11, 2, 3, 11 };
             int n = arr.Length;
@@ -311,12 +271,8 @@ namespace SmartConsoleTest.Program
         }
         #endregion
         #region Count number of bits to be flipped to convert A to B
-        //Complete this function
-        //Function to count set bits
-        public int countSetBits(int n)
+        public int countSetBits1(int n)
         {
-
-            //We use a counter variable.
             int count = 0;
             while (n > 0)
             {
@@ -329,11 +285,7 @@ namespace SmartConsoleTest.Program
                 n >>= 1;
             }
             return count;
-
         }
-
-
-        // Function to find number of bits needed to be flipped to convert A to B
         public int countBitsFlip(int a, int b)
         {
 
@@ -342,7 +294,7 @@ namespace SmartConsoleTest.Program
             int ans = a ^ b;
 
             //returning the number of set bits in resultant.
-            return countSetBits(ans);
+            return countSetBits1(ans);
 
         }
 
@@ -352,8 +304,6 @@ namespace SmartConsoleTest.Program
         {
             n += 1;
             int count = 0;
-
-            //Counting set bits from 1 to n.
             for (int x = 2; x / 2 < n; x = x * 2)
             {
                 //Total count of pairs of 0s and 1s.
@@ -369,8 +319,6 @@ namespace SmartConsoleTest.Program
                 if (remainder > x / 2)
                     count += remainder - x / 2;
             }
-
-            //returning count of set bits.
             return count;
         }
         #endregion
@@ -408,7 +356,7 @@ namespace SmartConsoleTest.Program
         // Function returns true if the
         // move taken is valid else 
         // it will return false.
-        static bool isSafe(int row, int col, int[,] m,
+        static bool isSafe1(int row, int col, int[,] m,
                               int n, bool[,] visited)
         {
             if (row == -1 || row == n || col == -1 ||
@@ -447,7 +395,7 @@ namespace SmartConsoleTest.Program
             // paths in lexicographical order
 
             // Check if downward move is valid
-            if (isSafe(row + 1, col, m, n, visited))
+            if (isSafe1(row + 1, col, m, n, visited))
             {
                 path += 'D';
                 printPathUtil(row + 1, col, m, n,
@@ -456,7 +404,7 @@ namespace SmartConsoleTest.Program
             }
 
             // Check if the left move is valid
-            if (isSafe(row, col - 1, m, n, visited))
+            if (isSafe1(row, col - 1, m, n, visited))
             {
                 path += 'L';
                 printPathUtil(row, col - 1, m, n,
@@ -465,7 +413,7 @@ namespace SmartConsoleTest.Program
             }
 
             // Check if the right move is valid
-            if (isSafe(row, col + 1, m, n, visited))
+            if (isSafe1(row, col + 1, m, n, visited))
             {
                 path += 'R';
                 printPathUtil(row, col + 1, m, n,
@@ -474,7 +422,7 @@ namespace SmartConsoleTest.Program
             }
 
             // Check if the upper move is valid
-            if (isSafe(row - 1, col, m, n, visited))
+            if (isSafe1(row - 1, col, m, n, visited))
             {
                 path += 'U';
                 printPathUtil(row - 1, col, m, n,
@@ -525,7 +473,7 @@ namespace SmartConsoleTest.Program
         already placed in columns from 0 to col -1.
         So we need to check only left side for
         attacking queens */
-        static bool isSafe(int[,] board, int row, int col,
+        static bool isSafe2(int[,] board, int row, int col,
                         int N)
         {
             int i, j;
@@ -575,7 +523,7 @@ namespace SmartConsoleTest.Program
             {
                 /* Check if queen can be placed on
                 board[i,col] */
-                if (isSafe(board, i, col, N))
+                if (isSafe2(board, i, col, N))
                 {
                     /* Place this queen in board[i,col] */
                     board[i, col] = 1;
@@ -612,9 +560,8 @@ namespace SmartConsoleTest.Program
             solveNQUtil(board, 0, n);
             return result;
         }
-
-        // Driver code
-        public static void Main()
+        [Fact]
+        public static void TestNQueen()
         {
             int n = 4;
             List<List<int>> res = solveNQ(n);
@@ -665,7 +612,7 @@ namespace SmartConsoleTest.Program
         }
 
         // main function
-        public static void Main(string[] args)
+        public void WordBreakBTrackTest(string[] args)
         {
             string str1 = "iloveicecreamandmango"; // for first test case
             string str2 = "ilovesamsungmobile"; // for second test case
@@ -907,8 +854,8 @@ namespace SmartConsoleTest.Program
             return true;
         }
 
-        // Driver code
-        static void Main()
+        [Fact]
+        static void SudokuTest()
         {
             int[,] grid = { { 3, 0, 6, 5, 0, 8, 4, 0, 0 },
                    { 5, 2, 0, 0, 0, 0, 0, 0, 0 },
@@ -930,11 +877,11 @@ namespace SmartConsoleTest.Program
 
         #region 4BT
         #region level order traversal
-        public class Node
+        public class NodeBT1
         {
             public int data;
-            public Node left, right;
-            public Node(int item)
+            public NodeBT1 left, right;
+            public NodeBT1(int item)
             {
                 data = item;
                 left = right = null;
@@ -942,18 +889,16 @@ namespace SmartConsoleTest.Program
         }
 
         // Root of the Binary Tree
-        public Node root;
+        public NodeBT1 root1;
 
-        public void BinaryTree()
+        public void BinaryTree1()
         {
-            root = null;
+            root1 = null;
         }
 
-        /* function to print level order
-        traversal of tree*/
         public virtual void printLevelOrder()
         {
-            int h = height(root);
+            int h = height1(root1);
             int i;
             for (i = 1; i <= h; i++)
             {
@@ -961,21 +906,17 @@ namespace SmartConsoleTest.Program
             }
         }
 
-        /* Compute the "height" of a tree --
-        the number of nodes along the longest
-        path from the root node down to the
-        farthest leaf node.*/
-        public virtual int height(Node root)
+        public int height1(NodeBT1 root)
         {
-            if (root == null)
+            if (root1 == null)
             {
                 return 0;
             }
             else
             {
                 /* compute height of each subtree */
-                int lheight = height(root.left);
-                int rheight = height(root.right);
+                int lheight = height1(root.left);
+                int rheight = height1(root.right);
 
                 /* use the larger one */
                 if (lheight > rheight)
@@ -1007,19 +948,17 @@ namespace SmartConsoleTest.Program
             }
         }
 
-        // Driver Code
-        public static void Main(string[] args)
+        [Fact]
+        public  void LevelOrderTest()
         {
-            GFG tree = new GFG();
-            tree.root = new Node(1);
-            tree.root.left = new Node(2);
-            tree.root.right = new Node(3);
-            tree.root.left.left = new Node(4);
-            tree.root.left.right = new Node(5);
-
+            this.root1 = new NodeBT1(1);
+            this.root1.left = new NodeBT1(2);
+            this.root1.right = new NodeBT1(3);
+            this.root1.left.left = new NodeBT1(4);
+            this.root1.left.right = new NodeBT1(5);
             Console.WriteLine("Level order traversal " +
                                 "of binary tree is ");
-            tree.printLevelOrder();
+            this.printLevelOrder();
         }
         #endregion
         #region Reverse Level Order traversal
@@ -3993,11 +3932,7 @@ each other */
         #region Maximum and minimum of an array using minimum number of comparisons
         /* Class Pair is used to return
 	two values from getMinMax() */
-        class Pair
-        {
-            public int min;
-            public int max;
-        }
+
 
         static Pair getMinMax(int[] arr, int n)
         {
