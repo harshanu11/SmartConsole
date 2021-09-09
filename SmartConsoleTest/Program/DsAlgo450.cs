@@ -3135,18 +3135,18 @@ each other */
         static String sortString(String str)
         {
 
-            char[] charArray = str.toCharArray();
-            Arrays.sort(charArray);
+            char[] charArray = str.ToCharArray();
+            Array.Sort(charArray);
 
             // convert char array back to string
-            str = String.valueOf(charArray);
+            str = new string(charArray);
 
             return str;
         }
 
         // this method compares each character of the result with 
         // individual characters of the first and second string
-        static boolean shuffleCheck(String first, String second, String result)
+        static bool shuffleCheck(String first, String second, String result)
         {
 
             // sort each string to make comparison easier
@@ -3158,17 +3158,17 @@ each other */
             int i = 0, j = 0, k = 0;
 
             // iterate through all characters of result
-            while (k != result.length())
+            while (k != result.Length)
             {
 
                 // check if first character of result matches
                 // with first character of first string
-                if (i < first.length() && first.charAt(i) == result.charAt(k))
+                if (i < first.Length && first[i] == result[k])
                     i++;
 
                 // check if first character of result matches
                 // with the first character of second string
-                else if (j < second.length() && second.charAt(j) == result.charAt(k))
+                else if (j < second.Length && second[j] == result[k])
                     j++;
 
                 // if the character doesn't match
@@ -3183,7 +3183,7 @@ each other */
 
             // after accessing all characters of result
             // if either first or second has some characters left
-            if (i < first.length() || j < second.length())
+            if (i < first.Length || j < second.Length)
             {
                 return false;
             }
@@ -3200,17 +3200,17 @@ each other */
 
             // call the method to check if result string is
             // shuffle of the string first and second
-            for (String result : results)
-            {
-                if (checkLength(first, second, result) == true && shuffleCheck(first, second, result) == true)
-                {
-                    System.out.println(result + " is a valid shuffle of " + first + " and " + second);
-                }
-                else
-                {
-                    System.out.println(result + " is not a valid shuffle of " + first + " and " + second);
-                }
-            }
+            //for (String result : results)
+            //{
+            //    if (checkLength(first, second, result) == true && shuffleCheck(first, second, result) == true)
+            //    {
+            //        System.out.println(result + " is a valid shuffle of " + first + " and " + second);
+            //    }
+            //    else
+            //    {
+            //        System.out.println(result + " is not a valid shuffle of " + first + " and " + second);
+            //    }
+            //}
         }
         #endregion
         #endregion
@@ -3224,58 +3224,58 @@ each other */
         #endregion
         #region Implement 2 stack in an array
         //Function to push an integer into the stack1.
-        public void push1(int x, TwoStack sq)
-        {
-            //if there is space between the top of both stacks 
-            //we push the element at top1+1.
-            if (sq.top1 < sq.top2 - 1)
-            {
-                sq.top1++;
-                sq.arr[sq.top1] = x;
-            }
-        }
+        //public void push1(int x, TwoStack sq)
+        //{
+        //    //if there is space between the top of both stacks 
+        //    //we push the element at top1+1.
+        //    if (sq.top1 < sq.top2 - 1)
+        //    {
+        //        sq.top1++;
+        //        sq.arr[sq.top1] = x;
+        //    }
+        //}
 
-        //Function to push an integer into the stack2.
-        public void push2(int x, TwoStack sq)
-        {
-            //if there is space between the top of both stacks 
-            //we push the element at top2-1.
-            if (sq.top1 < sq.top2 - 1)
-            {
-                sq.top2--;
-                sq.arr[sq.top2] = x;
-            }
-        }
+        ////Function to push an integer into the stack2.
+        //public void push2(int x, TwoStack sq)
+        //{
+        //    //if there is space between the top of both stacks 
+        //    //we push the element at top2-1.
+        //    if (sq.top1 < sq.top2 - 1)
+        //    {
+        //        sq.top2--;
+        //        sq.arr[sq.top2] = x;
+        //    }
+        //}
 
-        //Function to remove an element from top of the stack1.
-        public int pop1(TwoStack sq)
-        {
-            //if top1==-1, stack1 is empty so we return -1 else we 
-            //return the top element of stack1.
-            if (sq.top1 >= 0)
-            {
-                int x = sq.arr[sq.top1];
-                sq.top1--;
-                return x;
-            }
-            else
-                return -1;
-        }
+        ////Function to remove an element from top of the stack1.
+        //public int pop1(TwoStack sq)
+        //{
+        //    //if top1==-1, stack1 is empty so we return -1 else we 
+        //    //return the top element of stack1.
+        //    if (sq.top1 >= 0)
+        //    {
+        //        int x = sq.arr[sq.top1];
+        //        sq.top1--;
+        //        return x;
+        //    }
+        //    else
+        //        return -1;
+        //}
 
-        //Function to remove an element from top of the stack2.
-        public int pop2(TwoStack sq)
-        {
-            //if top2==size of array, stack2 is empty so we return -1 else we 
-            //return the top element of stack2.
-            if (sq.top2 < sq.size)
-            {
-                int x = sq.arr[sq.top2];
-                sq.top2++;
-                return x;
-            }
-            else
-                return -1;
-        }
+        ////Function to remove an element from top of the stack2.
+        //public int pop2(TwoStack sq)
+        //{
+        //    //if top2==size of array, stack2 is empty so we return -1 else we 
+        //    //return the top element of stack2.
+        //    if (sq.top2 < sq.size)
+        //    {
+        //        int x = sq.arr[sq.top2];
+        //        sq.top2++;
+        //        return x;
+        //    }
+        //    else
+        //        return -1;
+        //}
         #endregion
         #region Implement "N" stacks in an Array
         // A c# class to represent k stacks in a single array of size n
@@ -3376,8 +3376,8 @@ each other */
 
         }
 
-        // Driver program
-        public static void Main(string[] args)
+        [Fact]
+        public static void ImplementNStackTest()
         {
             // Let us create 3 stacks in an array of size 10
             int k = 3, n = 10;
@@ -3514,23 +3514,23 @@ each other */
             return ms.mid.data;
         }
 
-        // Driver code
-        public static void Main(String[] args)
+        [Fact]
+        public void FindMiddleElementStack()
         {
-            GFG ob = new GFG();
-            myStack ms = ob.createMyStack();
-            ob.push(ms, 11);
-            ob.push(ms, 22);
-            ob.push(ms, 33);
-            ob.push(ms, 44);
-            ob.push(ms, 55);
-            ob.push(ms, 66);
-            ob.push(ms, 77);
+            
+            myStack ms = createMyStack();
+            push(ms, 11);
+            push(ms, 22);
+            push(ms, 33);
+            push(ms, 44);
+            push(ms, 55);
+            push(ms, 66);
+            push(ms, 77);
 
-            Console.WriteLine("Item popped is " + ob.pop(ms));
-            Console.WriteLine("Item popped is " + ob.pop(ms));
+            Console.WriteLine("Item popped is " + pop(ms));
+            Console.WriteLine("Item popped is " + pop(ms));
             Console.WriteLine("Middle Element is "
-                            + ob.findMiddle(ms));
+                            + findMiddle(ms));
         }
         #endregion
         #endregion
@@ -3565,7 +3565,8 @@ each other */
         }
 
         // Driver code
-        public static void Main()
+        [Fact]
+        public  void FindfirstandlastpositionsTest()
         {
             int[] arr = { 1, 2, 2, 2, 2, 3,
                     4, 7, 8, 8 };
@@ -3588,7 +3589,7 @@ each other */
             return -1;
         }
         // Driver code
-        public static void Main()
+        public void FixedPointTest()
         {
             int[] arr = { -10, -1, 0, 3, 10, 11, 30, 50, 100 };
             int n = arr.Length;
@@ -3647,8 +3648,8 @@ each other */
             return i - 1;
         }
 
-        // Driver Code
-        static public void Main()
+       [Fact]
+         public void floorSqrtTest()
         {
             int x = 11;
             Console.WriteLine(floorSqrt(x));
@@ -3696,8 +3697,8 @@ each other */
             return minmax;
         }
 
-        // Driver Code
-        public static void Main(String[] args)
+        [Fact]
+        public void getMinMaxTest()
         {
             int[] arr = { 1000, 11, 445, 1, 330, 3000 };
             int arr_size = 6;
