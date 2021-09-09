@@ -255,8 +255,8 @@ namespace SmartConsoleTest.Program._450
             return mirror;
         }
 
-        // Driver code
-        public static void Main()
+       [Fact]
+        public void inorderTest()
         {
 
             BTNode1 tree = createNode(5);

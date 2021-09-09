@@ -1,106 +1,72 @@
-﻿using System;
+﻿using CollectionTest;
+using System;
 using System.Collections.Generic;
 using Xunit;
 
 namespace SmartConsoleTest.Program._450
 {
-    public class Trie450 
+    public class Trie450
     {
         #region Construct a trie from scratch
-        public class Trie
+        TrieNode rootTrie;
+        void insert(string key)
         {
-            static readonly int ALPHABET_SIZE = 26;
-            class TrieNode
+            int level;
+            int length = key.Length;
+            int index;
+            TrieNode pCrawl = rootTrie;
+            for (level = 0; level < length; level++)
             {
-                public TrieNode[] children = new TrieNode[ALPHABET_SIZE];
+                index = key[level] - 'a';
+                if (pCrawl.children[index] == null)
+                    pCrawl.children[index] = new TrieNode();
 
-                // isEndOfWord is true if the node represents
-                // end of a word
-                public bool isEndOfWord;
-
-                public TrieNode()
-                {
-                    isEndOfWord = false;
-                    for (int i = 0; i < ALPHABET_SIZE; i++)
-                        children[i] = null;
-                }
-            };
-            static TrieNode root;
-            static void insert(String key)
-            {
-                int level;
-                int length = key.Length;
-                int index;
-
-                TrieNode pCrawl = root;
-
-                for (level = 0; level < length; level++)
-                {
-                    index = key[level] - 'a';
-                    if (pCrawl.children[index] == null)
-                        pCrawl.children[index] = new TrieNode();
-
-                    pCrawl = pCrawl.children[index];
-                }
-
-                // mark last node as leaf
-                pCrawl.isEndOfWord = true;
+                pCrawl = pCrawl.children[index];
             }
-            static bool search(String key)
+
+            pCrawl.isEndOfWord = true;
+        }
+        bool search(string key)
+        {
+            int level;
+            int length = key.Length;
+            int index;
+            TrieNode pCrawl = rootTrie;
+
+            for (level = 0; level < length; level++)
             {
-                int level;
-                int length = key.Length;
-                int index;
-                TrieNode pCrawl = root;
+                index = key[level] - 'a';
 
-                for (level = 0; level < length; level++)
-                {
-                    index = key[level] - 'a';
+                if (pCrawl.children[index] == null)
+                    return false;
 
-                    if (pCrawl.children[index] == null)
-                        return false;
-
-                    pCrawl = pCrawl.children[index];
-                }
-
-                return (pCrawl.isEndOfWord);
+                pCrawl = pCrawl.children[index];
             }
-            [Fact]
-            public static void CreateTrie()
-            {
-                // Input keys (use only 'a'
-                // through 'z' and lower case)
-                String[] keys = {"the", "a", "there", "answer",
-                        "any", "by", "bye", "their"};
 
-                String[] output = { "Not present in trie", "Present in trie" };
+            return (pCrawl.isEndOfWord);
+        }
+        [Fact]
+        public void CreateTrie()
+        {
+            string[] keys = {"the", "a", "there", "answer","any", "by", "bye", "their"};
+            string[] output = { "Not present in trie", "Present in trie" };
+            rootTrie = new TrieNode();
+            int i;
+            for (i = 0; i < keys.Length; i++)
+                insert(keys[i]);
+            if (search("the") == true)
+                Console.WriteLine("the --- " + output[1]);
+            else Console.WriteLine("the --- " + output[0]);
+            if (search("these") == true)
+                Console.WriteLine("these --- " + output[1]);
+            else Console.WriteLine("these --- " + output[0]);
+            if (search("their") == true)
+                Console.WriteLine("their --- " + output[1]);
+            else Console.WriteLine("their --- " + output[0]);
+            if (search("thaw") == true)
+                Console.WriteLine("thaw --- " + output[1]);
+            else Console.WriteLine("thaw --- " + output[0]);
 
-
-                root = new TrieNode();
-
-                // Construct trie
-                int i;
-                for (i = 0; i < keys.Length; i++)
-                    insert(keys[i]);
-
-                // Search for different keys
-                if (search("the") == true)
-                    Console.WriteLine("the --- " + output[1]);
-                else Console.WriteLine("the --- " + output[0]);
-
-                if (search("these") == true)
-                    Console.WriteLine("these --- " + output[1]);
-                else Console.WriteLine("these --- " + output[0]);
-
-                if (search("their") == true)
-                    Console.WriteLine("their --- " + output[1]);
-                else Console.WriteLine("their --- " + output[0]);
-
-                if (search("thaw") == true)
-                    Console.WriteLine("thaw --- " + output[1]);
-                else Console.WriteLine("thaw --- " + output[0]);
-
-            }
         }
         #endregion
         #region Find shortest unique prefix for every word in a given list
@@ -202,29 +168,7 @@ namespace SmartConsoleTest.Program._450
         }
         #endregion
         #region Word Break Problem | (Trie solution)
-        internal const int ALPHABET_SIZE = 26;
 
-        // trie node
-        internal class TrieNode
-        {
-            internal TrieNode[] children;
-
-            // isEndOfWord is true if the node
-            // represents end of a word
-            internal bool isEndOfWord;
-
-            // Constructor of TrieNode
-            internal TrieNode()
-            {
-                children = new TrieNode[ALPHABET_SIZE];
-                for (int i = 0; i < ALPHABET_SIZE; i++)
-                {
-                    children[i] = null;
-                }
-
-                isEndOfWord = false;
-            }
-        }
         internal static void insert(TrieNode root, string key)
         {
             TrieNode pCrawl = root;
