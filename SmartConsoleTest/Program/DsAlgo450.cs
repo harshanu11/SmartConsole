@@ -1,5 +1,6 @@
 ﻿using CollectionTest;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace SmartConsoleTest.Program
     {
         #region 1array
         #region rvereseArray
-        static void rvereseArray(int[] arr,int start, int end)
+        static void rvereseArray(int[] arr, int start, int end)
         {
             int temp;
             while (start < end)
@@ -902,7 +903,7 @@ namespace SmartConsoleTest.Program
             int i;
             for (i = 1; i <= h; i++)
             {
-                printCurrentLevel(root, i);
+                printCurrentLevel(root1, i);
             }
         }
 
@@ -931,7 +932,7 @@ namespace SmartConsoleTest.Program
         }
 
         /* Print nodes at the current level */
-        public virtual void printCurrentLevel(Node root, int level)
+        public virtual void printCurrentLevel(NodeBT1 root, int level)
         {
             if (root == null)
             {
@@ -949,7 +950,7 @@ namespace SmartConsoleTest.Program
         }
 
         [Fact]
-        public  void LevelOrderTest()
+        public void LevelOrderTest()
         {
             this.root1 = new NodeBT1(1);
             this.root1.left = new NodeBT1(2);
@@ -962,13 +963,12 @@ namespace SmartConsoleTest.Program
         }
         #endregion
         #region Reverse Level Order traversal
-        class BinaryTree
+        public class BinaryTree
         {
-            Node root;
+            public NodeBT1 root;
 
-            /* Function to print REVERSE
-            level order traversal a tree*/
-            void reverseLevelOrder(Node node)
+
+            void reverseLevelOrder(NodeBT1 node)
             {
                 int h = height(node);
                 int i;
@@ -981,8 +981,8 @@ namespace SmartConsoleTest.Program
                 }
             }
 
-            /* Print nodes at a given level */
-            void printGivenLevel(Node node, int level)
+
+            void printGivenLevel(NodeBT1 node, int level)
             {
                 if (node == null)
                     return;
@@ -999,7 +999,7 @@ namespace SmartConsoleTest.Program
             the number of nodes along the longest
             path from the root node down to the
             farthest leaf node.*/
-            int height(Node node)
+            int height(NodeBT1 node)
             {
                 if (node == null)
                     return 0;
@@ -1017,18 +1017,18 @@ namespace SmartConsoleTest.Program
                 }
             }
 
-            // Driver Code
-            static public void Main(String[] args)
+            [Fact]
+            public void ReverseTraversalTest()
             {
                 BinaryTree tree = new BinaryTree();
 
                 // Let us create trees shown
                 // in above diagram
-                tree.root = new Node(1);
-                tree.root.left = new Node(2);
-                tree.root.right = new Node(3);
-                tree.root.left.left = new Node(4);
-                tree.root.left.right = new Node(5);
+                tree.root = new NodeBT1(1);
+                tree.root.left = new NodeBT1(2);
+                tree.root.right = new NodeBT1(3);
+                tree.root.left.left = new NodeBT1(4);
+                tree.root.left.right = new NodeBT1(5);
 
                 Console.WriteLine("Level Order traversal " +
                                     "of binary tree is : ");
@@ -1037,52 +1037,45 @@ namespace SmartConsoleTest.Program
         }
         #endregion
         #region Height of a tree
-        public class BinaryTree
+
+        int maxDepth(NodeBT1 node)
         {
-            Node root;
-
-            /* Compute the "maxDepth" of a tree -- the number of
-            nodes along the longest path from the root node
-            down to the farthest leaf node.*/
-            int maxDepth(Node node)
+            if (node == null)
+                return 0;
+            else
             {
-                if (node == null)
-                    return 0;
+                /* compute the depth of each subtree */
+                int lDepth = maxDepth(node.left);
+                int rDepth = maxDepth(node.right);
+
+                /* use the larger one */
+                if (lDepth > rDepth)
+                    return (lDepth + 1);
                 else
-                {
-                    /* compute the depth of each subtree */
-                    int lDepth = maxDepth(node.left);
-                    int rDepth = maxDepth(node.right);
-
-                    /* use the larger one */
-                    if (lDepth > rDepth)
-                        return (lDepth + 1);
-                    else
-                        return (rDepth + 1);
-                }
+                    return (rDepth + 1);
             }
+        }
 
-            /* Driver code */
-            public static void Main(String[] args)
-            {
-                BinaryTree tree = new BinaryTree();
+        [Fact]
+        public void TreeHeight()
+        {
+            BinaryTree tree = new BinaryTree();
 
-                tree.root = new Node(1);
-                tree.root.left = new Node(2);
-                tree.root.right = new Node(3);
-                tree.root.left.left = new Node(4);
-                tree.root.left.right = new Node(5);
+            tree.root = new NodeBT1(1);
+            tree.root.left = new NodeBT1(2);
+            tree.root.right = new NodeBT1(3);
+            tree.root.left.left = new NodeBT1(4);
+            tree.root.left.right = new NodeBT1(5);
 
-                Console.WriteLine("Height of tree is : " +
-                                            tree.maxDepth(tree.root));
-            }
+            Console.WriteLine("Height of tree is : " +
+                                        maxDepth(tree.root));
         }
         #endregion
         #region Diameter of a tree
         class Solution
         {
             // Function to find the diameter of a Binary Tree.
-            int diameterUtil(Node n, ref int dia)
+            int diameterUtil(NodeBT1 n, ref int dia)
             {
                 // if node becomes null, we return 0.
                 if (n == null) return 0;
@@ -1099,7 +1092,7 @@ namespace SmartConsoleTest.Program
                 return 1 + Math.Max(l, r);
             }
             // Function to return the diameter of a Binary Tree.
-            public int diameter(Node root)
+            public int diameter(NodeBT1 root)
             {
                 int dia = 0;
                 // calling the function to find the result.
@@ -1113,34 +1106,28 @@ namespace SmartConsoleTest.Program
         // Helper function that allocates
         // a new node with the given data
         // and null left and right pointers
-        public static node createNode(int val)
+        public static NodeBT1 createNode(int val)
         {
-            node newNode = new node();
-            newNode.val = val;
+            NodeBT1 newNode = new NodeBT1(0);
+            newNode.data = val;
             newNode.left = null;
             newNode.right = null;
             return newNode;
         }
 
         // Helper function to print Inorder traversal
-        public static void inorder(node root)
+        public static void inorder(NodeBT1 root)
         {
             if (root == null)
             {
                 return;
             }
             inorder(root.left);
-            Console.Write("{0:D} ", root.val);
+            Console.Write("{0:D} ", root.data);
             inorder(root.right);
         }
 
-        // mirrorify function takes two trees,
-        // original tree and a mirror tree
-        // It recurses on both the trees,
-        // but when original tree recurses on left,
-        // mirror tree recurses on right and
-        // vice-versa
-        public static node mirrorify(node root)
+        public static NodeBT1 mirrorify(NodeBT1 root)
         {
             if (root == null)
             {
@@ -1149,17 +1136,17 @@ namespace SmartConsoleTest.Program
             }
 
             // Create new mirror node from original tree node
-            node mirror = createNode(root.val);
+            NodeBT1 mirror = createNode(root.data);
             mirror.right = mirrorify(root.left);
             mirror.left = mirrorify(root.right);
             return mirror;
         }
 
         // Driver code
-        public static void Main(string[] args)
+        public static void Main()
         {
 
-            node tree = createNode(5);
+            NodeBT1 tree = createNode(5);
             tree.left = createNode(3);
             tree.right = createNode(6);
             tree.left.left = createNode(2);
@@ -1168,7 +1155,7 @@ namespace SmartConsoleTest.Program
             // Print inorder traversal of the input tree
             Console.Write("Inorder of original tree: ");
             inorder(tree);
-            node mirror = null;
+            NodeBT1 mirror = null;
             mirror = mirrorify(tree);
 
             // Print inorder traversal of the mirror tree
@@ -1179,14 +1166,18 @@ namespace SmartConsoleTest.Program
         #endregion
 
         #region 5BST
+        public class BinarySearchTree
+        {
+            public BSTSNode1 root;
+        }
         #region Fina a value in a BST
 
-        public class Node
+        public class BSTSNode1
         {
             public int key;
-            public Node left, right;
+            public BSTSNode1 left, right;
 
-            public Node(int item)
+            public BSTSNode1(int item)
             {
                 key = item;
                 left = right = null;
@@ -1194,30 +1185,23 @@ namespace SmartConsoleTest.Program
         }
 
         // Root of BST
-        Node root;
+        BSTSNode1 rootbst;
 
-        // Constructor
-        BinarySearchTree()
-        {
-            root = null;
-        }
 
         // This method mainly calls insertRec()
         void insert(int key)
         {
-            root = insertRec(root, key);
+            rootbst = insertRec(rootbst, key);
         }
 
-        // A recursive function to insert
-        // a new key in BST
-        Node insertRec(Node root, int key)
+        BSTSNode1 insertRec(BSTSNode1 root, int key)
         {
 
             // If the tree is empty,
             // return a new node
             if (root == null)
             {
-                root = new Node(key);
+                root = new BSTSNode1(key);
                 return root;
             }
 
@@ -1234,12 +1218,9 @@ namespace SmartConsoleTest.Program
         // This method mainly calls InorderRec()
         void inorder()
         {
-            inorderRec(root);
+            inorderRec(rootbst);
         }
-
-        // A utility function to
-        // do inorder traversal of BST
-        void inorderRec(Node root)
+        void inorderRec(BSTSNode1 root)
         {
             if (root != null)
             {
@@ -1248,62 +1229,53 @@ namespace SmartConsoleTest.Program
                 inorderRec(root.right);
             }
         }
-
-        // Driver Code
-        public static void Main(String[] args)
+        [Fact]
+        public void FindValInBstTest()
         {
-            BinarySearchTree tree = new BinarySearchTree();
-
             /* Let us create following BST
                 50
             /	 \
             30	 70
             / \ / \
         20 40 60 80 */
-            tree.insert(50);
-            tree.insert(30);
-            tree.insert(20);
-            tree.insert(40);
-            tree.insert(70);
-            tree.insert(60);
-            tree.insert(80);
+            insert(50);
+            insert(30);
+            insert(20);
+            insert(40);
+            insert(70);
+            insert(60);
+            insert(80);
 
             // Print inorder traversal of the BST
-            tree.inorder();
+            inorder();
         }
         #endregion
         #region Deletion of a node in a BST
         public TreeNode DeleteNode(TreeNode root, int key)
         {
-            // 1. find element
-            // 2. case 1: node has not children
-            // 3. case 2: node has only right or left child
-            // 4. case 3: node has both children then get min value from right side and
-            //         set in place of found node, then remove it from tree
-
             if (root == null)
                 return null;
 
-            if (root.val > key)
-                root.left = DeleteNode(root.left, key);
-            else if (root.val < key)
-                root.right = DeleteNode(root.right, key);
+            if (root.Data > key)
+                root.Left = DeleteNode(root.Left, key);
+            else if (root.Data < key)
+                root.Right = DeleteNode(root.Right, key);
             else
             {
                 // case 1
-                if (root.left == null && root.right == null)
+                if (root.Left == null && root.Right == null)
                     return null;
                 // case 2
-                else if (root.left == null)
-                    return root.right;
-                else if (root.right == null)
-                    return root.left;
+                else if (root.Left == null)
+                    return root.Right;
+                else if (root.Right == null)
+                    return root.Left;
                 else
                 {
                     // case 3
-                    var minElement = GetMinElement(root.right);
-                    root.val = minElement.val;
-                    root.right = DeleteNode(root.right, root.val);
+                    var minElement = GetMinElement(root.Right);
+                    root.Data = minElement.Data;
+                    root.Right = DeleteNode(root.Right, root.Data);
                 }
             }
 
@@ -1314,87 +1286,62 @@ namespace SmartConsoleTest.Program
         {
             var current = root;
 
-            while (current.left != null)
-                current = current.left;
+            while (current.Left != null)
+                current = current.Left;
 
             return current;
         }
         #endregion
         #region Find min and max value in a BST
-        public static Node head;
-
-        /* Given a binary search tree and a number,
-        inserts a new node with the given number in
-        the correct place in the tree. Returns the new
-        root pointer which the caller should then use
-        (the standard trick to avoid using reference
-        parameters). */
-        public virtual Node insert(Node node, int data)
+        public static BSTNode head;
+        public virtual BSTNode insert(BSTNode node, int data)
         {
-
-            /* 1. If the tree is empty, return a new,	
-            single node */
             if (node == null)
             {
-                return (new Node(data));
+                return (new BSTNode(data));
             }
             else
             {
-
-                /* 2. Otherwise, recur down the tree */
-                if (data <= node.data)
+                if (data <= node.Data)
                 {
-                    node.left = insert(node.left, data);
+                    node.Left = insert(node.Left, data);
                 }
                 else
                 {
-                    node.right = insert(node.right, data);
+                    node.Right = insert(node.Right, data);
                 }
-
-                /* return the (unchanged) node pointer */
                 return node;
             }
         }
-
-        /* Given a non-empty binary search tree,
-        return the minimum data value found in that
-        tree. Note that the entire tree does not need
-        to be searched. */
-        public virtual int minvalue(Node node)
+        public virtual int minvalue(BSTNode node)
         {
-            Node current = node;
+            BSTNode current = node;
 
             /* loop down to find the leftmost leaf */
-            while (current.left != null)
+            while (current.Left != null)
             {
-                current = current.left;
+                current = current.Left;
             }
-            return (current.data);
+            return (current.Data);
         }
-
-        // Driver program to test above functions
-        public static void Main(string[] args)
+        [Fact]
+        public void FindMinMaxTest()
         {
-            BinaryTree tree = new BinaryTree();
-            Node root = null;
-            root = tree.insert(root, 4);
-            tree.insert(root, 2);
-            tree.insert(root, 1);
-            tree.insert(root, 3);
-            tree.insert(root, 6);
-            tree.insert(root, 5);
+            BSTNode root = null;
+            root = insert(root, 4);
+            insert(root, 2);
+            insert(root, 1);
+            insert(root, 3);
+            insert(root, 6);
+            insert(root, 5);
 
-            Console.WriteLine("Minimum value of BST is " + tree.minvalue(root));
+            Console.WriteLine("Minimum value of BST is " + minvalue(root));
         }
         #endregion
         #region Find inorder successor and inorder predecessor in a BST
-        static Node pre = new Node(), suc = new Node();
+        static BSTNode pre = new BSTNode(), suc = new BSTNode();
 
-        // This function finds predecessor and
-        // successor of key in BST. It sets pre
-        // and suc as predecessor and successor
-        // respectively
-        static void findPreSuc(Node root, int key)
+        static void findPreSuc(BSTNode root, int key)
         {
 
             // Base case
@@ -1402,66 +1349,61 @@ namespace SmartConsoleTest.Program
                 return;
 
             // If key is present at root
-            if (root.key == key)
+            if (root.Data == key)
             {
 
                 // The maximum value in left
                 // subtree is predecessor
-                if (root.left != null)
+                if (root.Left != null)
                 {
-                    Node tmp = root.left;
-                    while (tmp.right != null)
-                        tmp = tmp.right;
+                    BSTNode tmp = root.Left;
+                    while (tmp.Right != null)
+                        tmp = tmp.Right;
 
                     pre = tmp;
                 }
 
                 // The minimum value in
-                // right subtree is successor
-                if (root.right != null)
+                if (root.Right != null)
                 {
-                    Node tmp = root.right;
+                    BSTNode tmp = root.Right;
 
-                    while (tmp.left != null)
-                        tmp = tmp.left;
+                    while (tmp.Left != null)
+                        tmp = tmp.Left;
 
                     suc = tmp;
                 }
                 return;
             }
 
-            // If key is smaller than
-            // root's key, go to left subtree
-            if (root.key > key)
+            if (root.Data > key)
             {
                 suc = root;
-                findPreSuc(root.left, key);
+                findPreSuc(root.Left, key);
             }
 
             // Go to right subtree
             else
             {
                 pre = root;
-                findPreSuc(root.right, key);
+                findPreSuc(root.Right, key);
             }
         }
 
-        // A utility function to insert a
-        // new node with given key in BST
-        static Node insert(Node node, int key)
+        static BSTNode insert1(BSTNode node, int key)
         {
             if (node == null)
-                return new Node(key);
-            if (key < node.key)
-                node.left = insert(node.left, key);
+                return new BSTNode(key);
+            if (key < node.Data)
+                node.Left = insert1(node.Left, key);
             else
-                node.right = insert(node.right, key);
+                node.Right = insert1(node.Right, key);
 
             return node;
         }
 
-        // Driver code
-        public static void Main(String[] args)
+        [Fact]
+        public void InorderSuccessor()
         {
 
             // Key to be searched in BST
@@ -1476,7 +1418,7 @@ namespace SmartConsoleTest.Program
             *	 20 40 60 80
             */
 
-            Node root = new Node();
+            BSTNode root = new BSTNode();
             root = insert(root, 50);
             insert(root, 30);
             insert(root, 20);
@@ -1487,75 +1429,60 @@ namespace SmartConsoleTest.Program
 
             findPreSuc(root, key);
             if (pre != null)
-                Console.WriteLine("Predecessor is " + pre.key);
+                Console.WriteLine("Predecessor is " + pre.Data);
             else
                 Console.WriteLine("No Predecessor");
 
             if (suc != null)
-                Console.WriteLine("Successor is " + suc.key);
+                Console.WriteLine("Successor is " + suc.Data);
             else
                 Console.WriteLine("No Successor");
         }
         #endregion
         #region Check if a tree is a BST or not 
-        public class BinaryTree
+
+        public virtual bool BST
         {
-            //Root of the Binary Tree
-            public Node root;
-
-            /* can give min and max value according to your code or
-            can write a function to find min and max value of tree. */
-
-            /* returns true if given search tree is binary
-            search tree (efficient version) */
-            public virtual bool BST
+            get
             {
-                get
-                {
-                    return isBSTUtil(root, int.MinValue, int.MaxValue);
-                }
+                return isBSTUtil(rootbst, int.MinValue, int.MaxValue);
+            }
+        }
+
+        public virtual bool isBSTUtil(BSTSNode1 node, int min, int max)
+        {
+            /* an empty tree is BST */
+            if (node == null)
+            {
+                return true;
             }
 
-            /* Returns true if the given tree is a BST and its
-            values are >= min and <= max. */
-            public virtual bool isBSTUtil(Node node, int min, int max)
+            /* false if this node violates the min/max constraints */
+            if (node.key < min || node.key > max)
             {
-                /* an empty tree is BST */
-                if (node == null)
-                {
-                    return true;
-                }
-
-                /* false if this node violates the min/max constraints */
-                if (node.data < min || node.data > max)
-                {
-                    return false;
-                }
-
-                /* otherwise check the subtrees recursively
-                tightening the min/max constraints */
-                // Allow only distinct values
-                return (isBSTUtil(node.left, min, node.data - 1) && isBSTUtil(node.right, node.data + 1, max));
+                return false;
             }
 
-            /* Driver program to test above functions */
-            public static void Main(string[] args)
-            {
-                BinaryTree tree = new BinaryTree();
-                tree.root = new Node(4);
-                tree.root.left = new Node(2);
-                tree.root.right = new Node(5);
-                tree.root.left.left = new Node(1);
-                tree.root.left.right = new Node(3);
+            return (isBSTUtil(node.left, min, node.key - 1) && isBSTUtil(node.right, node.key + 1, max));
+        }
 
-                if (tree.BST)
-                {
-                    Console.WriteLine("IS BST");
-                }
-                else
-                {
-                    Console.WriteLine("Not a BST");
-                }
+        [Fact]
+        public void IsBstTest()
+        {
+            BinarySearchTree tree = new BinarySearchTree();
+            tree.root = new BSTSNode1(4);
+            tree.root.left = new BSTSNode1(2);
+            tree.root.right = new BSTSNode1(5);
+            tree.root.left.left = new BSTSNode1(1);
+            tree.root.left.right = new BSTSNode1(3);
+
+            if (isBSTUtil(tree.root, int.MinValue, int.MaxValue))
+            {
+                Console.WriteLine("IS BST");
+            }
+            else
+            {
+                Console.WriteLine("Not a BST");
             }
         }
         #endregion
@@ -1590,8 +1517,6 @@ namespace SmartConsoleTest.Program
         #endregion
         #region Knapsack Problem
 
-        // A utility function that returns
-        // maximum of two integers
         static int max(int a, int b)
         {
             return (a > b) ? a : b;
@@ -1628,8 +1553,8 @@ namespace SmartConsoleTest.Program
             return K[n, W];
         }
 
-        // Driver code
-        static void Main()
+        [Fact]
+        static void KnapsackTestDp()
         {
             int[] val = new int[] { 60, 100, 120 };
             int[] wt = new int[] { 10, 20, 30 };
@@ -1656,8 +1581,8 @@ namespace SmartConsoleTest.Program
                 + binomialCoeff(n - 1, k);
         }
 
-        /* Driver program to test above function */
-        public static void Main()
+        [Fact]
+        public void binomialCoeffTest()
         {
             int n = 5, k = 2;
             Console.Write("Value of C(" + n + "," + k + ") is "
@@ -1696,8 +1621,8 @@ namespace SmartConsoleTest.Program
             return P[n, k];
         }
 
-        // Driver Code
-        public static void Main()
+        [Fact]
+        public void permutationCoeffTest()
         {
             int n = 10, k = 2;
             Console.WriteLine("Value of P( " + n +
@@ -1725,8 +1650,8 @@ namespace SmartConsoleTest.Program
             return res;
         }
 
-        // Driver Code
-        public static void Main()
+        [Fact]
+        public void catalanTest()
         {
             for (int i = 0; i < 10; i++)
                 Console.Write(catalan(i) + " ");
@@ -1739,77 +1664,102 @@ namespace SmartConsoleTest.Program
 
         #endregion
         #region Implement BFS algorithm 
-        // No. of vertices	
-        private int _V;
-
-        //Adjacency Lists
-        LinkedList<int>[] _adj;
-
-        public Graph(int V)
+        public class GraphNode1
         {
-            _adj = new LinkedList<int>[V];
-            for (int i = 0; i < _adj.Length; i++)
+            // No. of vertices	
+            private int _V;
+
+            //Adjacency Lists
+            LinkedList<int>[] _adj;
+
+            public GraphNode1(int V)
             {
-                _adj[i] = new LinkedList<int>();
-            }
-            _V = V;
-        }
-
-        // Function to add an edge into the graph
-        public void AddEdge(int v, int w)
-        {
-            _adj[v].AddLast(w);
-
-        }
-
-        // Prints BFS traversal from a given source s
-        public void BFS(int s)
-        {
-
-            // Mark all the vertices as not
-            // visited(By default set as false)
-            bool[] visited = new bool[_V];
-            for (int i = 0; i < _V; i++)
-                visited[i] = false;
-
-            // Create a queue for BFS
-            LinkedList<int> queue = new LinkedList<int>();
-
-            // Mark the current node as
-            // visited and enqueue it
-            visited[s] = true;
-            queue.AddLast(s);
-
-            while (queue.Any())
-            {
-
-                // Dequeue a vertex from queue
-                // and print it
-                s = queue.First();
-                Console.Write(s + " ");
-                queue.RemoveFirst();
-
-                // Get all adjacent vertices of the
-                // dequeued vertex s. If a adjacent
-                // has not been visited, then mark it
-                // visited and enqueue it
-                LinkedList<int> list = _adj[s];
-
-                foreach (var val in list)
+                _adj = new LinkedList<int>[V];
+                for (int i = 0; i < _adj.Length; i++)
                 {
-                    if (!visited[val])
+                    _adj[i] = new LinkedList<int>();
+                }
+                _V = V;
+            }
+            public void AddEdge(int v, int w)
+            {
+                _adj[v].AddLast(w);
+
+            }
+            public void BFS(int s)
+            {
+
+                // Mark all the vertices as not
+                // visited(By default set as false)
+                bool[] visited = new bool[_V];
+                for (int i = 0; i < _V; i++)
+                    visited[i] = false;
+
+                // Create a queue for BFS
+                LinkedList<int> queue = new LinkedList<int>();
+
+                // Mark the current node as
+                // visited and enqueue it
+                visited[s] = true;
+                queue.AddLast(s);
+
+                while (queue.Any())
+                {
+
+                    // Dequeue a vertex from queue
+                    // and print it
+                    s = queue.First();
+                    Console.Write(s + " ");
+                    queue.RemoveFirst();
+
+                    // Get all adjacent vertices of the
+                    // dequeued vertex s. If a adjacent
+                    // has not been visited, then mark it
+                    // visited and enqueue it
+                    LinkedList<int> list = _adj[s];
+
+                    foreach (var val in list)
                     {
-                        visited[val] = true;
-                        queue.AddLast(val);
+                        if (!visited[val])
+                        {
+                            visited[val] = true;
+                            queue.AddLast(val);
+                        }
                     }
                 }
             }
-        }
+            void DFSUtil(int v, bool[] visited)
+            {
+                // Mark the current node as visited
+                // and print it
+                visited[v] = true;
+                Console.Write(v + " ");
 
-        // Driver code
-        static void Main(string[] args)
+                // Recur for all the vertices
+                // adjacent to this vertex
+                List<int> vList = adj[v];
+                foreach (var n in vList)
+                {
+                    if (!visited[n])
+                        DFSUtil(n, visited);
+                }
+            }
+            public void DFS(int v)
+            {
+                // Mark all the vertices as not visited
+                // (set as false by default in c#)
+                bool[] visited = new bool[V];
+
+                // Call the recursive helper function
+                // to print DFS traversal
+                DFSUtil(v, visited);
+            }
+
+        }
+        [Fact]
+        public void BfsGraphTest()
         {
-            Graph g = new Graph(4);
+            GraphNode1 g = new GraphNode1(4);
 
             g.AddEdge(0, 1);
             g.AddEdge(0, 2);
@@ -1825,62 +1775,10 @@ namespace SmartConsoleTest.Program
         }
         #endregion
         #region Implement DFS Algo 
-        private int V; // No. of vertices
-
-        // Array of lists for
-        // Adjacency List Representation
-        private List<int>[] adj;
-
-        // Constructor
-        Graph(int v)
+        [Fact]
+        public static void DfsGraphTest()
         {
-            V = v;
-            adj = new List<int>[v];
-            for (int i = 0; i < v; ++i)
-                adj[i] = new List<int>();
-        }
-
-        // Function to Add an edge into the graph
-        void AddEdge(int v, int w)
-        {
-            adj[v].Add(w); // Add w to v's list.
-        }
-
-        // A function used by DFS
-        void DFSUtil(int v, bool[] visited)
-        {
-            // Mark the current node as visited
-            // and print it
-            visited[v] = true;
-            Console.Write(v + " ");
-
-            // Recur for all the vertices
-            // adjacent to this vertex
-            List<int> vList = adj[v];
-            foreach (var n in vList)
-            {
-                if (!visited[n])
-                    DFSUtil(n, visited);
-            }
-        }
-
-        // The function to do DFS traversal.
-        // It uses recursive DFSUtil()
-        void DFS(int v)
-        {
-            // Mark all the vertices as not visited
-            // (set as false by default in c#)
-            bool[] visited = new bool[V];
-
-            // Call the recursive helper function
-            // to print DFS traversal
-            DFSUtil(v, visited);
-        }
-
-        // Driver Code
-        public static void Main(String[] args)
-        {
-            Graph g = new Graph(4);
+            GraphNode1 g = new GraphNode1(4);
 
             g.AddEdge(0, 1);
             g.AddEdge(0, 2);
@@ -1901,17 +1799,6 @@ namespace SmartConsoleTest.Program
         private readonly int V;
         private readonly List<List<int>> adj;
 
-        public Graph(int V)
-        {
-            this.V = V;
-            adj = new List<List<int>>(V);
-
-            for (int i = 0; i < V; i++)
-                adj.Add(new List<int>());
-        }
-
-        // This function is a variation of DFSUtil() in
-        // https://www.geeksforgeeks.org/archives/18212
         private bool isCyclicUtil(int i, bool[] visited,
                                         bool[] recStack)
         {
@@ -1938,15 +1825,11 @@ namespace SmartConsoleTest.Program
             return false;
         }
 
-        private void addEdge(int sou, int dest)
+        public void addEdge(int sou, int dest)
         {
             adj[sou].Add(dest);
         }
 
-        // Returns true if the graph contains a
-        // cycle, else false.
-        // This function is a variation of DFS() in
-        // https://www.geeksforgeeks.org/archives/18212
         private bool isCyclic()
         {
 
@@ -1965,118 +1848,46 @@ namespace SmartConsoleTest.Program
             return false;
         }
 
-        // Driver code
-        public static void Main(String[] args)
+        [Fact]
+        public void isCyclicTest()
         {
-            Graph graph = new Graph(4);
-            graph.addEdge(0, 1);
-            graph.addEdge(0, 2);
-            graph.addEdge(1, 2);
-            graph.addEdge(2, 0);
-            graph.addEdge(2, 3);
-            graph.addEdge(3, 3);
+            GraphNode1 g = new GraphNode1(4);
+            //graph.addEdge(0, 1);
+            //graph.addEdge(0, 2);
+            //graph.addEdge(1, 2);
+            //graph.addEdge(2, 0);
+            //graph.addEdge(2, 3);
+            //graph.addEdge(3, 3);
 
-            if (graph.isCyclic())
-                Console.WriteLine("Graph contains cycle");
-            else
-                Console.WriteLine("Graph doesn't "
-                                        + "contain cycle");
+            //if (graph.isCyclic())
+            //    Console.WriteLine("Graph contains cycle");
+            //else
+            //    Console.WriteLine("Graph doesn't "
+            //                            + "contain cycle");
         }
         #endregion
-        #region Detect Cycle in UnDirected Graph using BFS/DFS Algo 
-        private int V; // No. of vertices
-
-        // Adjacency List Represntation
-        private List<int>[] adj;
-
-        // Constructor
-        Graph(int v)
-        {
-            V = v;
-            adj = new List<int>[v];
-            for (int i = 0; i < v; ++i)
-                adj[i] = new List<int>();
-        }
-
-        // Function to add an edge into the graph
-        void addEdge(int v, int w)
-        {
-            adj[v].Add(w);
-            adj[w].Add(v);
-        }
-
-        // A recursive function that uses visited[]
-        // and parent to detect cycle in subgraph
-        // reachable from vertex v.
-        Boolean isCyclicUtil(int v, Boolean[] visited,
-                            int parent)
-        {
-            // Mark the current node as visited
-            visited[v] = true;
-
-            // Recur for all the vertices
-            // adjacent to this vertex
-            foreach (int i in adj[v])
-            {
-                // If an adjacent is not visited,
-                // then recur for that adjacent
-                if (!visited[i])
-                {
-                    if (isCyclicUtil(i, visited, v))
-                        return true;
-                }
-
-                // If an adjacent is visited and
-                // not parent of current vertex,
-                // then there is a cycle.
-                else if (i != parent)
-                    return true;
-            }
-            return false;
-        }
-
-        // Returns true if the graph contains
-        // a cycle, else false.
-        Boolean isCyclic()
-        {
-            // Mark all the vertices as not visited
-            // and not part of recursion stack
-            Boolean[] visited = new Boolean[V];
-            for (int i = 0; i < V; i++)
-                visited[i] = false;
-
-            // Call the recursive helper function
-            // to detect cycle in different DFS trees
-            for (int u = 0; u < V; u++)
-
-                // Don't recur for u if already visited
-                if (!visited[u])
-                    if (isCyclicUtil(u, visited, -1))
-                        return true;
-
-            return false;
-        }
+        #region Detect Cycle in UnDirected Graph using BFS/DFS Algo      
 
         // Driver Code
-        public static void Main(String[] args)
+        public static void UnDirectedCyclicTeat(String[] args)
         {
             // Create a graph given in the above diagram
-            Graph g1 = new Graph(5);
-            g1.addEdge(1, 0);
-            g1.addEdge(0, 2);
-            g1.addEdge(2, 1);
-            g1.addEdge(0, 3);
-            g1.addEdge(3, 4);
-            if (g1.isCyclic())
-                Console.WriteLine("Graph contains cycle");
-            else
-                Console.WriteLine("Graph doesn't contains cycle");
+            GraphNode1 g = new GraphNode1(5);
+            //g1.addEdge(1, 0);
+            //g1.addEdge(0, 2);
+            //g1.addEdge(2, 1);
+            //g1.addEdge(0, 3);
+            //g1.addEdge(3, 4);
+            //if (g1.isCyclic())
+            //    Console.WriteLine("Graph contains cycle");
+            //else
+            //    Console.WriteLine("Graph doesn't contains cycle");
 
-            Graph g2 = new Graph(3);
-            g2.addEdge(0, 1);
-            g2.addEdge(1, 2);
-            if (g2.isCyclic())
-                Console.WriteLine("Graph contains cycle");
+            //GraphNode1 g = new GraphNode1(3);
+            //g2.addEdge(0, 1);
+            //g2.addEdge(1, 2);
+            //if (g2.isCyclic())
+            Console.WriteLine("Graph contains cycle");
             else
                 Console.WriteLine("Graph doesn't contains cycle");
         }
@@ -2110,8 +1921,8 @@ namespace SmartConsoleTest.Program
             }
         }
 
-        // Driver Code
-        public static void Main()
+        [Fact]
+        public void printMaxActivitiesTest()
         {
             int[] s = { 1, 3, 0, 5, 8, 5 };
             int[] f = { 2, 4, 6, 7, 9, 9 };
@@ -2228,26 +2039,20 @@ namespace SmartConsoleTest.Program
         #endregion
         #region Huffman Coding
         //checked utube
+
+
         #endregion
         #region Water Connection Problem
         // number of houses and number
         // of pipes
         static int n, p;
 
-        // Array rd stores the
-        // ending vertex of pipe
         static int[] rd = new int[1100];
 
-        // Array wd stores the value
-        // of diameters between two pipes
         static int[] wt = new int[1100];
 
-        // Array cd stores the
-        // starting end of pipe
         static int[] cd = new int[1100];
 
-        // arraylist a, b, c are used
-        // to store the final output
         static List<int> a =
                 new List<int>();
 
@@ -2317,8 +2122,8 @@ namespace SmartConsoleTest.Program
                     + b[j] + " " + c[j]);
         }
 
-        // Driver code
-        public static void Main(String[] args)
+        [Fact]
+        public void WaterConnectionProblem()
         {
             n = 9;
             p = 6;
@@ -2350,8 +2155,6 @@ namespace SmartConsoleTest.Program
             }
         }
 
-        // Comparison function to sort Item according
-        // to val/weight ratio
         class cprCompare : IComparer
         {
             public int Compare(Object x, Object y)
@@ -2410,8 +2213,8 @@ namespace SmartConsoleTest.Program
             return totalVal;
         }
 
-        // Driver code
-        static void Main(string[] args)
+        [Fact]
+        static void FracKnapSackJobTest()
         {
             item[] arr = { new item(60, 10),
                 new item(100, 20),
@@ -2427,9 +2230,6 @@ namespace SmartConsoleTest.Program
         #region Implement a Maxheap/MinHeap using arrays and recursion.
         public class BuildHeap
         {
-
-            // To heapify a subtree rooted with node i which is
-            // an index in arr[].Nn is size of heap
             static void heapify(int[] arr, int n, int i)
             {
                 int largest = i; // Initialize largest as root
@@ -2456,7 +2256,6 @@ namespace SmartConsoleTest.Program
                 }
             }
 
-            // Function to build a Max-Heap from the Array
             static void buildHeap(int[] arr, int n)
             {
                 // Index of last non-leaf node
@@ -2470,9 +2269,6 @@ namespace SmartConsoleTest.Program
                     heapify(arr, n, i);
                 }
             }
-
-            // A utility function to print the array
-            // representation of Heap
             static void printHeap(int[] arr, int n)
             {
                 Console.WriteLine("Array representation of Heap is:");
@@ -2482,9 +2278,8 @@ namespace SmartConsoleTest.Program
 
                 Console.WriteLine();
             }
-
-            // Driver Code
-            public static void Main()
+            [Fact]
+            public static void BuildHeapTest()
             {
                 // Binary Tree Representation
                 // of input array
@@ -2507,10 +2302,8 @@ namespace SmartConsoleTest.Program
         }
         #endregion
         #region Sort an Array using heap. (HeapSort)
-        // Method to find the maximum for
-        // each and every contiguous subarray
-        // of size k.
-        static void printKMax(int[] arr, int n, int k)
+
+        void printKMax(int[] arr, int n, int k)
         {
             int j, max;
 
@@ -2527,9 +2320,8 @@ namespace SmartConsoleTest.Program
                 Console.Write(max + " ");
             }
         }
-
-        // Driver method
-        public static void Main()
+        [Fact]
+        public void SortArrayusingheap()
         {
             int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
             int k = 3;
@@ -2537,29 +2329,10 @@ namespace SmartConsoleTest.Program
         }
         #endregion
         #region Maximum of all subarrays of size k.
-        // Method to find the maximum for
-        // each and every contiguous subarray
-        // of size k.
-        static void printKMax(int[] arr, int n, int k)
-        {
-            int j, max;
 
-            for (int i = 0; i <= n - k; i++)
-            {
 
-                max = arr[i];
-
-                for (j = 1; j < k; j++)
-                {
-                    if (arr[i + j] > max)
-                        max = arr[i + j];
-                }
-                Console.Write(max + " ");
-            }
-        }
-
-        // Driver method
-        public static void Main()
+        [Fact]
+        public void aximumAllSubarraySsizek()
         {
             int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
             int k = 3;
@@ -2581,8 +2354,8 @@ namespace SmartConsoleTest.Program
                 Console.Write(arr[i] + " ");
         }
 
-        // Driver code
-        public static void Main(String[] args)
+        [Fact]
+        public void kLargestTest()
         {
             int[] arr = new int[] { 1, 23, 12, 9,
                                 30, 2, 50 };
@@ -2593,8 +2366,7 @@ namespace SmartConsoleTest.Program
         #region Kth smallest and largest element in an unsorted array
         // Function to return k'th smallest
         // element in a given array
-        public static int kthSmallest(int[] arr,
-                                    int k)
+        public static int kthSmallest(int[] arr, int k)
         {
 
             // Sort the given array
@@ -2605,8 +2377,8 @@ namespace SmartConsoleTest.Program
             return arr[k - 1];
         }
 
-        // driver program
-        public static void Main()
+        [Fact]
+        public static void kthSmallestTest()
         {
             int[] arr = new int[] { 12, 3, 5,
                                 7, 19 };
@@ -2619,172 +2391,127 @@ namespace SmartConsoleTest.Program
 
         #region 11LinkedList
         #region Write a Program to reverse the Linked List. (Both Iterative and recursive)
-        // Driver Code
-        static void Main(string[] args)
+        [Fact]
+        public void LLReverseTest()
         {
-            LinkedList list = new LinkedList();
-            list.AddNode(new LinkedList.Node(85));
-            list.AddNode(new LinkedList.Node(15));
-            list.AddNode(new LinkedList.Node(4));
-            list.AddNode(new LinkedList.Node(20));
+            LinkedList<int> list = new LinkedList<int>();
+            list.AddLast(new LinkedList<int>().AddLast(85));
+            list.AddLast(new LinkedList<int>().AddLast(15));
+            list.AddLast(new LinkedList<int>().AddLast(4));
+            list.AddLast(new LinkedList<int>().AddLast(20));
 
             // List before reversal
             Console.WriteLine("Given linked list:");
-            list.PrintList();
+            //PrintList();
 
             // Reverse the list
-            list.ReverseList();
+            //SReverseList();
 
             // List after reversal
             Console.WriteLine("Reversed linked list:");
-            list.PrintList();
+            //list.PrintList();
         }
-
-
-        // function to add a new node at
-        // the end of the list
-        public void AddNode(Node node)
-        {
-            if (head == null)
-                head = node;
-            else
-            {
-                Node temp = head;
-                while (temp.next != null)
-                {
-                    temp = temp.next;
-                }
-                temp.next = node;
-            }
-        }
-
-        // function to reverse the list
-        public void ReverseList()
-        {
-            Node prev = null, current = head, next = null;
-            while (current != null)
-            {
-                next = current.next;
-                current.next = prev;
-                prev = current;
-                current = next;
-            }
-            head = prev;
-        }
-
-        // function to print the list data
-        public void PrintList()
-        {
-            Node current = head;
-            while (current != null)
-            {
-                Console.Write(current.data + " ");
-                current = current.next;
-            }
-            Console.WriteLine();
-        }
-
 
         #endregion
         #region Reverse a Linked List in group of Given Size. [Very Imp]
-        Node head; // head of list
+        ////LLNode head; // head of list
 
-        /* Linked list Node*/
-        class Node
-        {
-            public int data;
-            public Node next;
-            public Node(int d)
-            {
-                data = d;
-                next = null;
-            }
-        }
+        ///* Linked list Node*/
+        //class LLNode
+        //{
+        //    public int data;
+        //    public Node next;
+        //    public LLNode(int d)
+        //    {
+        //        data = d;
+        //        next = null;
+        //    }
+        //}
 
-        Node reverse(Node head, int k)
-        {
-            if (head == null)
-                return null;
-            Node current = head;
-            Node next = null;
-            Node prev = null;
+        //LLNode reverse(LLNode head, int k)
+        //{
+        //    if (head == null)
+        //        return null;
+        //    LLNode current = head;
+        //    LLNode next = null;
+        //    LLNode prev = null;
 
-            int count = 0;
+        //    int count = 0;
 
-            /* Reverse first k nodes of linked list */
-            while (count < k && current != null)
-            {
-                next = current.next;
-                current.next = prev;
-                prev = current;
-                current = next;
-                count++;
-            }
+        //    /* Reverse first k nodes of linked list */
+        //    while (count < k && current != null)
+        //    {
+        //        next = current.next;
+        //        current.next = prev;
+        //        prev = current;
+        //        current = next;
+        //        count++;
+        //    }
 
-            /* next is now a pointer to (k+1)th node
-                Recursively call for the list starting from
-            current. And make rest of the list as next of
-            first node */
-            if (next != null)
-                head.next = reverse(next, k);
+        //    /* next is now a pointer to (k+1)th node
+        //        Recursively call for the list starting from
+        //    current. And make rest of the list as next of
+        //    first node */
+        //    if (next != null)
+        //        head.next = reverse(next, k);
 
-            // prev is now head of input list
-            return prev;
-        }
+        //    // prev is now head of input list
+        //    return prev;
+        //}
 
-        /* Utility functions */
+        ///* Utility functions */
 
-        /* Inserts a new Node at front of the list. */
-        public void push(int new_data)
-        {
-            /* 1 & 2: Allocate the Node &
-                    Put in the data*/
-            Node new_node = new Node(new_data);
+        ///* Inserts a new Node at front of the list. */
+        //public void push(int new_data)
+        //{
+        //    /* 1 & 2: Allocate the Node &
+        //            Put in the data*/
+        //    Node new_node = new Node(new_data);
 
-            /* 3. Make next of new Node as head */
-            new_node.next = head;
+        //    /* 3. Make next of new Node as head */
+        //    new_node.next = head;
 
-            /* 4. Move the head to point to new Node */
-            head = new_node;
-        }
+        //    /* 4. Move the head to point to new Node */
+        //    head = new_node;
+        //}
 
-        /* Function to print linked list */
-        void printList()
-        {
-            Node temp = head;
-            while (temp != null)
-            {
-                Console.Write(temp.data + " ");
-                temp = temp.next;
-            }
-            Console.WriteLine();
-        }
+        ///* Function to print linked list */
+        //void printList()
+        //{
+        //    Node temp = head;
+        //    while (temp != null)
+        //    {
+        //        Console.Write(temp.data + " ");
+        //        temp = temp.next;
+        //    }
+        //    Console.WriteLine();
+        //}
 
-        /* Driver code*/
-        public static void Main(String[] args)
-        {
-            LinkedList llist = new LinkedList();
+        ///* Driver code*/
+        //public static void Main(String[] args)
+        //{
+        //    LinkedList llist = new LinkedList();
 
-            /* Constructed Linked List is 1->2->3->4->5->6->
-            7->8->8->9->null */
-            llist.push(9);
-            llist.push(8);
-            llist.push(7);
-            llist.push(6);
-            llist.push(5);
-            llist.push(4);
-            llist.push(3);
-            llist.push(2);
-            llist.push(1);
+        //    /* Constructed Linked List is 1->2->3->4->5->6->
+        //    7->8->8->9->null */
+        //    llist.push(9);
+        //    llist.push(8);
+        //    llist.push(7);
+        //    llist.push(6);
+        //    llist.push(5);
+        //    llist.push(4);
+        //    llist.push(3);
+        //    llist.push(2);
+        //    llist.push(1);
 
-            Console.WriteLine("Given Linked List");
-            llist.printList();
+        //    Console.WriteLine("Given Linked List");
+        //    llist.printList();
 
-            llist.head = llist.reverse(llist.head, 3);
+        //    llist.head = llist.reverse(llist.head, 3);
 
-            Console.WriteLine("Reversed list");
-            llist.printList();
-        }
+        //    Console.WriteLine("Reversed list");
+        //    llist.printList();
+        //}
         #endregion
         #region Write a program to Detect loop in a linked list.
         public bool detectLoop(Node head)
@@ -2812,150 +2539,150 @@ namespace SmartConsoleTest.Program
         #endregion
         #region Write a program to Delete loop in a linked list.
         //Complete this function
-        public void removeLoop(Node head)
-        {
-            //using two pointers and moving one pointer(slow) by one node and 
-            //another pointer(fast) by two nodes in each iteration.
-            Node fast = head.next;
-            Node slow = head;
+        //public void removeLoop(Node head)
+        //{
+        //    //using two pointers and moving one pointer(slow) by one node and 
+        //    //another pointer(fast) by two nodes in each iteration.
+        //    Node fast = head.next;
+        //    Node slow = head;
 
-            while (fast != slow)
-            {
-                //if the node pointed by first pointer(fast) or the node 
-                //next to it is null, then loop is not present so we return 0.
-                if (fast == null || fast.next == null)
-                    return;
+        //    while (fast != slow)
+        //    {
+        //        //if the node pointed by first pointer(fast) or the node 
+        //        //next to it is null, then loop is not present so we return 0.
+        //        if (fast == null || fast.next == null)
+        //            return;
 
-                fast = fast.next.next;
-                slow = slow.next;
-            }
-            //both pointers now point to the same node in the loop.
+        //        fast = fast.next.next;
+        //        slow = slow.next;
+        //    }
+        //    //both pointers now point to the same node in the loop.
 
-            int size = 1;
-            fast = fast.next;
-            //we start iterating the loop with first pointer and continue till 
-            //both pointers point to same node again.
-            while (fast != slow)
-            {
-                fast = fast.next;
-                //incrementing the counter which stores length of loop..
-                size += 1;
-            }
+        //    int size = 1;
+        //    fast = fast.next;
+        //    //we start iterating the loop with first pointer and continue till 
+        //    //both pointers point to same node again.
+        //    while (fast != slow)
+        //    {
+        //        fast = fast.next;
+        //        //incrementing the counter which stores length of loop..
+        //        size += 1;
+        //    }
 
-            //updating the pointers again to starting node.
-            slow = head;
-            fast = head;
+        //    //updating the pointers again to starting node.
+        //    slow = head;
+        //    fast = head;
 
-            //moving pointer (fast) by (size-1) nodes.
-            for (int i = 0; i < size - 1; i++)
-                fast = fast.next;
+        //    //moving pointer (fast) by (size-1) nodes.
+        //    for (int i = 0; i < size - 1; i++)
+        //        fast = fast.next;
 
-            //now we keep iterating with both pointers till fast reaches a node such
-            //that the next node is pointed by slow. At this situation slow is at
-            //the node where loop starts and first at last node so we simply 
-            //update the link part of first.
-            while (fast.next != slow)
-            {
-                fast = fast.next;
-                slow = slow.next;
-            }
-            //storing null in link part of the last node.
-            fast.next = null;
-        }
+        //    //now we keep iterating with both pointers till fast reaches a node such
+        //    //that the next node is pointed by slow. At this situation slow is at
+        //    //the node where loop starts and first at last node so we simply 
+        //    //update the link part of first.
+        //    while (fast.next != slow)
+        //    {
+        //        fast = fast.next;
+        //        slow = slow.next;
+        //    }
+        //    //storing null in link part of the last node.
+        //    fast.next = null;
+        //}
         #endregion
         #region Find the starting point of the loop. 
 
-        class Node
-        {
-            public int key;
-            public Node next;
-        };
+        //class Node
+        //{
+        //    public int key;
+        //    public Node next;
+        //};
 
-        static Node newNode(int key)
-        {
-            Node temp = new Node();
-            temp.key = key;
-            temp.next = null;
-            return temp;
-        }
+        //static Node newNode(int key)
+        //{
+        //    Node temp = new Node();
+        //    temp.key = key;
+        //    temp.next = null;
+        //    return temp;
+        //}
 
-        // A utility function to
-        // print a linked list
-        static void printList(Node head)
-        {
-            while (head != null)
-            {
-                Console.Write(head.key + " ");
-                head = head.next;
-            }
-            Console.WriteLine();
-        }
+        //// A utility function to
+        //// print a linked list
+        //static void printList(Node head)
+        //{
+        //    while (head != null)
+        //    {
+        //        Console.Write(head.key + " ");
+        //        head = head.next;
+        //    }
+        //    Console.WriteLine();
+        //}
 
-        // Function to detect and remove loop
-        // in a linked list that may contain loop
-        static Node detectAndRemoveLoop(Node head)
-        {
-            // If list is empty or has
-            // only one node without loop
-            if (head == null || head.next == null)
-                return null;
+        //// Function to detect and remove loop
+        //// in a linked list that may contain loop
+        //static Node detectAndRemoveLoop(Node head)
+        //{
+        //    // If list is empty or has
+        //    // only one node without loop
+        //    if (head == null || head.next == null)
+        //        return null;
 
-            Node slow = head, fast = head;
+        //    Node slow = head, fast = head;
 
-            // Move slow and fast 1
-            // and 2 steps ahead
-            // respectively.
-            slow = slow.next;
-            fast = fast.next.next;
+        //    // Move slow and fast 1
+        //    // and 2 steps ahead
+        //    // respectively.
+        //    slow = slow.next;
+        //    fast = fast.next.next;
 
-            // Search for loop using
-            // slow and fast pointers
-            while (fast != null &&
-                    fast.next != null)
-            {
-                if (slow == fast)
-                    break;
-                slow = slow.next;
-                fast = fast.next.next;
-            }
+        //    // Search for loop using
+        //    // slow and fast pointers
+        //    while (fast != null &&
+        //            fast.next != null)
+        //    {
+        //        if (slow == fast)
+        //            break;
+        //        slow = slow.next;
+        //        fast = fast.next.next;
+        //    }
 
-            // If loop does not exist
-            if (slow != fast)
-                return null;
+        //    // If loop does not exist
+        //    if (slow != fast)
+        //        return null;
 
-            // If loop exists. Start slow from
-            // head and fast from meeting point.
-            slow = head;
-            while (slow != fast)
-            {
-                slow = slow.next;
-                fast = fast.next;
-            }
+        //    // If loop exists. Start slow from
+        //    // head and fast from meeting point.
+        //    slow = head;
+        //    while (slow != fast)
+        //    {
+        //        slow = slow.next;
+        //        fast = fast.next;
+        //    }
 
-            return slow;
-        }
+        //    return slow;
+        //}
 
-        // Driver code
-        public static void Main(String[] args)
-        {
-            Node head = newNode(50);
-            head.next = newNode(20);
-            head.next.next = newNode(15);
-            head.next.next.next = newNode(4);
-            head.next.next.next.next = newNode(10);
+        //// Driver code
+        //public static void Main(String[] args)
+        //{
+        //    Node head = newNode(50);
+        //    head.next = newNode(20);
+        //    head.next.next = newNode(15);
+        //    head.next.next.next = newNode(4);
+        //    head.next.next.next.next = newNode(10);
 
-            // Create a loop for testing
-            head.next.next.next.next.next =
-                                head.next.next;
+        //    // Create a loop for testing
+        //    head.next.next.next.next.next =
+        //                        head.next.next;
 
-            Node res = detectAndRemoveLoop(head);
+        //    Node res = detectAndRemoveLoop(head);
 
-            if (res == null)
-                Console.Write("Loop does not exist");
-            else
-                Console.Write("Loop starting node is " +
-                            res.key);
-        }
+        //    if (res == null)
+        //        Console.Write("Loop does not exist");
+        //    else
+        //        Console.Write("Loop starting node is " +
+        //                    res.key);
+        //}
         #endregion
         #endregion
 
@@ -3901,8 +3628,6 @@ each other */
         }
         #endregion
         #region square root of an integer
-        // Returns floor of
-        // square root of x
         static int floorSqrt(int x)
         {
             // Base cases
@@ -3930,10 +3655,6 @@ each other */
         }
         #endregion
         #region Maximum and minimum of an array using minimum number of comparisons
-        /* Class Pair is used to return
-	two values from getMinMax() */
-
-
         static Pair getMinMax(int[] arr, int n)
         {
             Pair minmax = new Pair();
@@ -3993,11 +3714,7 @@ each other */
         #region Construct a trie from scratch
         public class Trie
         {
-
-            // Alphabet size (# of symbols)
             static readonly int ALPHABET_SIZE = 26;
-
-            // trie node
             class TrieNode
             {
                 public TrieNode[] children = new TrieNode[ALPHABET_SIZE];
@@ -4013,12 +3730,7 @@ each other */
                         children[i] = null;
                 }
             };
-
             static TrieNode root;
-
-            // If not present, inserts key into trie
-            // If the key is prefix of trie node,
-            // just marks leaf node
             static void insert(String key)
             {
                 int level;
@@ -4039,9 +3751,6 @@ each other */
                 // mark last node as leaf
                 pCrawl.isEndOfWord = true;
             }
-
-            // Returns true if key
-            // presents in trie, else false
             static bool search(String key)
             {
                 int level;
@@ -4061,9 +3770,8 @@ each other */
 
                 return (pCrawl.isEndOfWord);
             }
-
-            // Driver
-            public static void Main()
+            [Fact]
+            public static void CreateTrie()
             {
                 // Input keys (use only 'a'
                 // through 'z' and lower case)
@@ -4147,10 +3855,6 @@ each other */
                     pCrawl = pCrawl.child[index];
                 }
             }
-
-            // This function prints unique prefix for every word stored
-            // in Trie. Prefixes one by one are stored in prefix[].
-            // 'ind' is current index of prefix[]
             static void findPrefixesUtil(TrieNode root, char[] prefix,
                                 int ind)
             {
@@ -4178,9 +3882,6 @@ each other */
                     }
                 }
             }
-
-            // Function to print all prefixes that uniquely
-            // represent all words in arr[0..n-1]
             static void findPrefixes(String[] arr, int n)
             {
                 // Construct a Trie of all words
@@ -4229,10 +3930,6 @@ each other */
                 isEndOfWord = false;
             }
         }
-
-        // If not present, inserts key into trie
-        // If the key is prefix of trie node, just
-        // marks leaf node
         internal static void insert(TrieNode root, string key)
         {
             TrieNode pCrawl = root;
@@ -4251,9 +3948,6 @@ each other */
             // Mark last node as leaf
             pCrawl.isEndOfWord = true;
         }
-
-        // Returns true if key presents in trie, else
-        // false
         internal static bool search(TrieNode root, string key)
         {
             TrieNode pCrawl = root;
@@ -4270,10 +3964,6 @@ each other */
             }
             return (pCrawl != null && pCrawl.isEndOfWord);
         }
-
-        // Returns true if string can be segmented
-        // into space separated words, otherwise
-        // returns false
         internal static bool wordBreak(string str, TrieNode root)
         {
             int size = str.Length;
@@ -4377,29 +4067,22 @@ each other */
         #region Implement a Phone Directory
         class TrieNode
         {
-            // Each Trie Node contains a Map 'child'
-            // where each alphabet points to a Trie
-            // Node.
+
             public Dictionary<char, TrieNode> child;
 
-            // 'isLast' is true if the node represents
-            // end of a contact
             public bool isLast;
 
             // Default Constructor
             public TrieNode()
             {
                 child = new Dictionary<char, TrieNode>();
-
-                // Initialize all the Trie nodes with NULL
                 for (char i = 'a'; i <= 'z'; i++)
                     child.Add(i, null);
-
                 isLast = false;
             }
         }
 
-        class Trie
+        public class Trie
         {
             public TrieNode root;
 
@@ -4532,24 +4215,21 @@ each other */
             }
         }
 
-        // Driver code
-        public class GFG
+        [Fact]
+        public void PhoneDirectoryTest()
         {
-            public static void Main(String[] args)
-            {
-                Trie trie = new Trie();
+            Trie trie = new Trie();
 
-                String[] contacts = { "gforgeeks", "geeksquiz" };
+            String[] contacts = { "gforgeeks", "geeksquiz" };
 
-                trie.insertIntoTrie(contacts);
+            trie.insertIntoTrie(contacts);
 
-                String query = "gekk";
+            String query = "gekk";
 
-                // Note that the user will enter 'g' then 'e' so
-                // first display all the strings with prefix as 'g'
-                // and then all the strings with prefix as 'ge'
-                trie.displayContacts(query);
-            }
+            // Note that the user will enter 'g' then 'e' so
+            // first display all the strings with prefix as 'g'
+            // and then all the strings with prefix as 'ge'
+            trie.displayContacts(query);
         }
         #endregion
         #region Print unique rows in a given boolean matrix
@@ -4594,8 +4274,8 @@ each other */
             }
         }
 
-        // Driver code
-        static void Main()
+        [Fact]
+        public void findUniqueRowsTest()
         {
             int[,] M = { { 0, 1, 0, 0, 1 },
                  { 1, 0, 1, 1, 0 },
