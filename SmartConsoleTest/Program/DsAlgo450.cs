@@ -1737,22 +1737,22 @@ namespace SmartConsoleTest.Program
 
                 // Recur for all the vertices
                 // adjacent to this vertex
-                List<int> vList = adj[v];
-                foreach (var n in vList)
-                {
-                    if (!visited[n])
-                        DFSUtil(n, visited);
-                }
+                //List<int> vList = adj[v];
+                //foreach (var n in vList)
+                //{
+                //    if (!visited[n])
+                //        DFSUtil(n, visited);
+                //}
             }
             public void DFS(int v)
             {
                 // Mark all the vertices as not visited
-                // (set as false by default in c#)
-                bool[] visited = new bool[V];
+                //// (set as false by default in c#)
+                //bool[] visited = new bool[V];
 
-                // Call the recursive helper function
-                // to print DFS traversal
-                DFSUtil(v, visited);
+                //// Call the recursive helper function
+                //// to print DFS traversal
+                //DFSUtil(v, visited);
             }
 
         }
@@ -1887,9 +1887,9 @@ namespace SmartConsoleTest.Program
             //g2.addEdge(0, 1);
             //g2.addEdge(1, 2);
             //if (g2.isCyclic())
-            Console.WriteLine("Graph contains cycle");
-            else
-                Console.WriteLine("Graph doesn't contains cycle");
+            //Console.WriteLine("Graph contains cycle");
+            //else
+            //    Console.WriteLine("Graph doesn't contains cycle");
         }
         #endregion
         #endregion
@@ -2514,27 +2514,27 @@ namespace SmartConsoleTest.Program
         //}
         #endregion
         #region Write a program to Detect loop in a linked list.
-        public bool detectLoop(Node head)
-        {
-            //using two pointers and moving one pointer(slow) by one node and 
-            //another pointer(fast) by two nodes in each iteration.
-            Node fast = head.next;
-            Node slow = head;
+        //public bool detectLoop(Node head)
+        //{
+        //    //using two pointers and moving one pointer(slow) by one node and 
+        //    //another pointer(fast) by two nodes in each iteration.
+        //    Node fast = head.next;
+        //    Node slow = head;
 
-            while (fast != slow)
-            {
-                //if the node pointed by first pointer(fast) or the node 
-                //next to it is null, we return false.
-                if (fast == null || fast.next == null)
-                    return false;
+        //    while (fast != slow)
+        //    {
+        //        //if the node pointed by first pointer(fast) or the node 
+        //        //next to it is null, we return false.
+        //        if (fast == null || fast.next == null)
+        //            return false;
 
-                fast = fast.next.next;
-                slow = slow.next;
-            }
-            //if we reach here it means both the pointers fast and slow point to 
-            //same node which shows the presence of loop so we return true.
-            return true;
-        }
+        //        fast = fast.next.next;
+        //        slow = slow.next;
+        //    }
+        //    //if we reach here it means both the pointers fast and slow point to 
+        //    //same node which shows the presence of loop so we return true.
+        //    return true;
+        //}
 
         #endregion
         #region Write a program to Delete loop in a linked list.
@@ -2727,7 +2727,7 @@ namespace SmartConsoleTest.Program
 
         // Function that returns index of row
         // with maximum number of 1s.
-        public static int rowWithMax1s(int[][] mat)
+        public int rowWithMax1s(int[][] mat)
         {
             // Initialize max values
             int max_row_index = 0, max = -1;
@@ -2748,8 +2748,8 @@ namespace SmartConsoleTest.Program
             return max_row_index;
         }
 
-        // Driver Code
-        public static void Main(string[] args)
+        [Fact]
+        public void rowWithMax1sTest()
         {
             int[][] mat = new int[][]
             {
@@ -2800,8 +2800,8 @@ namespace SmartConsoleTest.Program
             }
         }
 
-        // Driver code
-        public static void Main()
+        [Fact]
+        public void printMatTest()
         {
             int[,] mat = { { 5, 4, 7 },
                         { 1, 3, 8 },
@@ -2870,8 +2870,8 @@ namespace SmartConsoleTest.Program
             }
         }
 
-        // Driver Code
-        public static void Main()
+        [Fact]
+        public void spiralPrintTest()
         {
             int R = 3;
             int C = 6;
@@ -2985,8 +2985,8 @@ namespace SmartConsoleTest.Program
             return rowVector;
         }
 
-        // Driver code
-        public static void Main(String[] args)
+        [Fact]
+        public void binaryMedianTest()
         {
             int r = 3, c = 3;
             int[,] m = {{1,3,5},
@@ -3022,32 +3022,32 @@ namespace SmartConsoleTest.Program
         }
         #endregion
         #region Check whether a String is Palindrome or not
-        void isPalindrome(char str[])
-        {
-            // Start from leftmost and rightmost corners of str
-            int l = 0;
-            int h = strlen(str) - 1;
+        //public void isPalindrome(char str[])
+        //{
+        //    // Start from leftmost and rightmost corners of str
+        //    int l = 0;
+        //    int h = strlen(str) - 1;
 
-            // Keep comparing characters while they are same
-            while (h > l)
-            {
-                if (str[l++] != str[h--])
-                {
-                    printf("%s is not a palindrome\n", str);
-                    return;
-                }
-            }
-            printf("%s is a palindrome\n", str);
-        }
+        //    // Keep comparing characters while they are same
+        //    while (h > l)
+        //    {
+        //        if (str[l++] != str[h--])
+        //        {
+        //            printf("%s is not a palindrome\n", str);
+        //            return;
+        //        }
+        //    }
+        //    //printf("%s is a palindrome\n", str);
+        //}
 
         // Driver program to test above function
-        int main()
-        {
-            isPalindrome("abba");
-            isPalindrome("abbccbba");
-            isPalindrome("geeks");
-            return 0;
-        }
+        //int main()
+        //{
+        //    isPalindrome("abba");
+        //    isPalindrome("abbccbba");
+        //    isPalindrome("geeks");
+        //    return 0;
+        //}
         #endregion
         #region Find Duplicate characters in a string
         static int NO_OF_CHARS = 256;
@@ -3077,8 +3077,8 @@ namespace SmartConsoleTest.Program
                                 "count = " + count[i]);
         }
 
-        // Driver Method
-        public static void Main()
+        [Fact]
+        public void printDupsTest()
         {
             String str = "test string";
             printDups(str);
@@ -3100,8 +3100,8 @@ each other */
                                         != -1);
         }
 
-        // Driver method
-        public static void Main()
+        [Fact]
+        public static void areRotationsTest()
         {
             String str1 = "FGABCDE";
             String str2 = "ABCDEFG";
@@ -3117,9 +3117,9 @@ each other */
         #region Write a Program to check whether a string is a valid shuffle of two strings or not
 
         // length of result string should be equal to sum of two strings
-        static boolean checkLength(String first, String second, String result)
+        static bool checkLength(String first, String second, String result)
         {
-            if (first.length() + second.length() != result.length())
+            if (first.Length + second.Length != result.Length)
             {
                 return false;
             }
@@ -3517,7 +3517,7 @@ each other */
         [Fact]
         public void FindMiddleElementStack()
         {
-            
+
             myStack ms = createMyStack();
             push(ms, 11);
             push(ms, 22);
@@ -3566,7 +3566,7 @@ each other */
 
         // Driver code
         [Fact]
-        public  void FindfirstandlastpositionsTest()
+        public void FindfirstandlastpositionsTest()
         {
             int[] arr = { 1, 2, 2, 2, 2, 3,
                     4, 7, 8, 8 };
@@ -3648,8 +3648,8 @@ each other */
             return i - 1;
         }
 
-       [Fact]
-         public void floorSqrtTest()
+        [Fact]
+        public void floorSqrtTest()
         {
             int x = 11;
             Console.WriteLine(floorSqrt(x));
@@ -3698,7 +3698,7 @@ each other */
         }
 
         [Fact]
-        public void getMinMaxTest()
+        public void getMinMaxTest1()
         {
             int[] arr = { 1000, 11, 445, 1, 330, 3000 };
             int arr_size = 6;
@@ -3999,8 +3999,8 @@ each other */
             return false;
         }
 
-        // Driver code
-        public static void Main(string[] args)
+        [Fact]
+        public void wordBreakTest()
         {
             string[] dictionary = new string[] { "mobile", "samsung", "sam", "sung", "ma", "mango", "icecream", "and", "go", "i", "like", "ice", "cream" };
 
@@ -4066,31 +4066,31 @@ each other */
 
         #endregion
         #region Implement a Phone Directory
-        class TrieNode
+        public class TrieNode1
         {
 
-            public Dictionary<char, TrieNode> child;
+            public Dictionary<char, TrieNode1> child;
 
             public bool isLast;
 
             // Default Constructor
-            public TrieNode()
+            public TrieNode1()
             {
-                child = new Dictionary<char, TrieNode>();
+                child = new Dictionary<char, TrieNode1>();
                 for (char i = 'a'; i <= 'z'; i++)
                     child.Add(i, null);
                 isLast = false;
             }
         }
 
-        public class Trie
+        public class Trie1
         {
-            public TrieNode root;
+            public TrieNode1 root;
 
             // Insert all the Contacts into the Trie
             public void insertIntoTrie(String[] contacts)
             {
-                root = new TrieNode();
+                root = new TrieNode1();
                 int n = contacts.Length;
                 for (int i = 0; i < n; i++)
                 {
@@ -4104,16 +4104,16 @@ each other */
                 int len = s.Length;
 
                 // 'itr' is used to iterate the Trie Nodes
-                TrieNode itr = root;
+                TrieNode1 itr = root;
                 for (int i = 0; i < len; i++)
                 {
                     // Check if the s[i] is already present in
                     // Trie
-                    TrieNode nextNode = itr.child[s[i]];
+                    TrieNode1 nextNode = itr.child[s[i]];
                     if (nextNode == null)
                     {
                         // If not found then create a new TrieNode
-                        nextNode = new TrieNode();
+                        nextNode = new TrieNode1();
 
                         // Insert into the Dictionary
                         if (itr.child.ContainsKey(s[i]))
@@ -4137,7 +4137,7 @@ each other */
             // going through current node. String 'prefix'
             // represents string corresponding to the path from
             // root to curNode.
-            public void displayContactsUtil(TrieNode curNode,
+            public void displayContactsUtil(TrieNode1 curNode,
                                             String prefix)
             {
 
@@ -4151,7 +4151,7 @@ each other */
                 // This is similar to performing DFS on a graph
                 for (char i = 'a'; i <= 'z'; i++)
                 {
-                    TrieNode nextNode = curNode.child[i];
+                    TrieNode1 nextNode = curNode.child[i];
                     if (nextNode != null)
                     {
                         displayContactsUtil(nextNode, prefix + i);
@@ -4161,65 +4161,65 @@ each other */
 
             // Display suggestions after every character enter by
             // the user for a given string 'str'
-            public void displayContacts(String str)
-            {
-                TrieNode prevNode = root;
+            //public void displayContacts(String str)
+            //{
+            //    TrieNode1 prevNode = root;
 
-                // 'flag' denotes whether the string entered
-                // so far is present in the Contact List
+            //    // 'flag' denotes whether the string entered
+            //    // so far is present in the Contact List
 
-                String prefix = "";
-                int len = str.Length;
+            //    String prefix = "";
+            //    int len = str.Length;
 
-                // Display the contact List for string formed
-                // after entering every character
-                int i;
-                for (i = 0; i < len; i++)
-                {
-                    // 'str' stores the string entered so far
-                    prefix += str[i];
+            //    // Display the contact List for string formed
+            //    // after entering every character
+            //    int i;
+            //    for (i = 0; i < len; i++)
+            //    {
+            //        // 'str' stores the string entered so far
+            //        prefix += str[i];
 
-                    // Get the last character entered
-                    char lastChar = prefix[i];
+            //        // Get the last character entered
+            //        char lastChar = prefix[i];
 
-                    // Find the Node corresponding to the last
-                    // character of 'str' which is pointed by
-                    // prevNode of the Trie
-                    TrieNode curNode = prevNode.child[lastChar];
+            //        // Find the Node corresponding to the last
+            //        // character of 'str' which is pointed by
+            //        // prevNode of the Trie
+            //        TrieNode curNode = prevNode.child[lastChar];
 
-                    // If nothing found, then break the loop as
-                    // no more prefixes are going to be present.
-                    if (curNode == null)
-                    {
-                        Console.WriteLine("\nNo Results Found for'"
-                                                + prefix + "'");
-                        i++;
-                        break;
-                    }
+            //        // If nothing found, then break the loop as
+            //        // no more prefixes are going to be present.
+            //        if (curNode == null)
+            //        {
+            //            Console.WriteLine("\nNo Results Found for'"
+            //                                    + prefix + "'");
+            //            i++;
+            //            break;
+            //        }
 
-                    // If present in trie then display all
-                    // the contacts with given prefix.
-                    Console.WriteLine("Suggestions based on '"
-                                        + prefix + "' are");
-                    displayContactsUtil(curNode, prefix);
+            //        // If present in trie then display all
+            //        // the contacts with given prefix.
+            //        Console.WriteLine("Suggestions based on '"
+            //                            + prefix + "' are");
+            //        displayContactsUtil(curNode, prefix);
 
-                    // Change prevNode for next prefix
-                    prevNode = curNode;
-                }
+            //        // Change prevNode for next prefix
+            //        prevNode = curNode;
+            //    }
 
-                for (; i < len; i++)
-                {
-                    prefix += str[i];
-                    Console.WriteLine("\nNo Results Found for '"
-                                                + prefix + "'");
-                }
-            }
+            //    for (; i < len; i++)
+            //    {
+            //        prefix += str[i];
+            //        Console.WriteLine("\nNo Results Found for '"
+            //                                    + prefix + "'");
+            //    }
+            //}
         }
 
         [Fact]
         public void PhoneDirectoryTest()
         {
-            Trie trie = new Trie();
+            Trie1 trie = new Trie1();
 
             String[] contacts = { "gforgeeks", "geeksquiz" };
 
@@ -4230,7 +4230,7 @@ each other */
             // Note that the user will enter 'g' then 'e' so
             // first display all the strings with prefix as 'g'
             // and then all the strings with prefix as 'ge'
-            trie.displayContacts(query);
+            //trie.displayContacts(query);
         }
         #endregion
         #region Print unique rows in a given boolean matrix
