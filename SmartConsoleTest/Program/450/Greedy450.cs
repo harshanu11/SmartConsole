@@ -8,24 +8,15 @@ namespace DSA450
 {
     public class Greedy450 
     {
-        #region Activity Selection Problem
-        public static void printMaxActivities(int[] s,
-                                    int[] f, int n)
+        #region Activity Selection Problem Nmeeting problem
+        void printMaxActivities(int[] s,int[] f, int n)
         {
             int i, j;
-
             Debug.Write("Following activities are selected : ");
-
-            // The first activity always gets selected
             i = 0;
             Debug.Write(i + " ");
-
-            // Consider rest of the activities
             for (j = 1; j < n; j++)
             {
-                // If this activity has start time greater than or
-                // equal to the finish time of previously selected
-                // activity, then select it
                 if (s[j] >= f[i])
                 {
                     Debug.Write(j + " ");
@@ -40,7 +31,6 @@ namespace DSA450
             int[] s = { 1, 3, 0, 5, 8, 5 };
             int[] f = { 2, 4, 6, 7, 9, 9 };
             int n = s.Length;
-
             printMaxActivities(s, f, n);
         }
         #endregion
@@ -54,24 +44,16 @@ namespace DSA450
                     return 0;
                 }
 
-                // CompareTo() method
                 return (y.profit).CompareTo(x.profit);
 
             }
         }
 
-
         public class Job
         {
-
-            // Each job has a unique-id,
-            // profit and deadline
-            char id;
+            public char id;
             public int deadline, profit;
-
-            // Constructors
             public Job() { }
-
             public Job(char id, int deadline, int profit)
             {
                 this.id = id;
@@ -79,75 +61,48 @@ namespace DSA450
                 this.profit = profit;
             }
 
-            // Function to schedule the jobs take 2
-            // arguments arraylist and no of jobs to schedule
-            void printJobScheduling(List<Job> arr, int t)
+        }
+        void printJobScheduling(List<Job> arr, int t)
+        {
+            int n = arr.Count;
+            GFG gg = new GFG();
+            arr.Sort(gg);
+            bool[] result = new bool[t];
+            char[] job = new char[t];
+            for (int i = 0; i < n; i++)
             {
-                // Length of array
-                int n = arr.Count;
-
-                GFG gg = new GFG();
-                // Sort all jobs according to
-                // decreasing order of profit
-                arr.Sort(gg);
-
-                // To keep track of free time slots
-                bool[] result = new bool[t];
-
-                // To store result (Sequence of jobs)
-                char[] job = new char[t];
-
-                // Iterate through all given jobs
-                for (int i = 0; i < n; i++)
+                for (int j = Math.Min(t - 1, arr[i].deadline - 1); j >= 0; j--)
                 {
-                    // Find a free slot for this job
-                    // (Note that we start from the
-                    // last possible slot)
-                    for (int j
-                        = Math.Min(t - 1, arr[i].deadline - 1);
-                        j >= 0; j--)
+                    if (result[j] == false)
                     {
-
-                        // Free slot found
-                        if (result[j] == false)
-                        {
-                            result[j] = true;
-                            job[j] = arr[i].id;
-                            break;
-                        }
+                        result[j] = true;
+                        job[j] = arr[i].id;
+                        break;
                     }
                 }
-
-                // Print the sequence
-                foreach (char jb in job)
-                {
-                    Debug.Write(jb + " ");
-                }
-                Debug.WriteLine("");
             }
-
-            [Fact]
-            static public void SequencingProblemTest()
+            foreach (char jb in job)
             {
-
-                List<Job> arr = new List<Job>();
-
-                arr.Add(new Job('a', 2, 100));
-                arr.Add(new Job('b', 1, 19));
-                arr.Add(new Job('c', 2, 27));
-                arr.Add(new Job('d', 1, 25));
-                arr.Add(new Job('e', 3, 15));
-
-                // Function call
-                Debug.WriteLine("Following is maximum "
-                                + "profit sequence of jobs");
-
-                Job job = new Job();
-
-                // Calling function
-                job.printJobScheduling(arr, 3);
-
+                Debug.Write(jb + " ");
             }
+            Debug.WriteLine("");
+        }
+
+        [Fact]
+        public void SequencingProblemTest()
+        {
+
+            List<Job> arr = new List<Job>();
+
+            arr.Add(new Job('a', 2, 100));
+            arr.Add(new Job('b', 1, 19));
+            arr.Add(new Job('c', 2, 27));
+            arr.Add(new Job('d', 1, 25));
+            arr.Add(new Job('e', 3, 15));
+            Debug.WriteLine("Following is maximum " + "profit sequence of jobs");
+            Job job = new Job();
+            printJobScheduling(arr, 3);
+
         }
         #endregion
         #region Huffman Coding
@@ -267,17 +222,14 @@ namespace DSA450
                 this.weight = weight;
             }
         }
-
         class cprCompare : IComparer
         {
             public int Compare(Object x, Object y)
             {
                 item item1 = (item)x;
                 item item2 = (item)y;
-                double cpr1 = (double)item1.value /
-                            (double)item1.weight;
-                double cpr2 = (double)item2.value /
-                            (double)item2.weight;
+                double cpr1 = (double)item1.value / (double)item1.weight;
+                double cpr2 = (double)item2.value /(double)item2.weight;
 
                 if (cpr1 < cpr2)
                     return 1;
@@ -285,34 +237,21 @@ namespace DSA450
                 return cpr1 > cpr2 ? -1 : 0;
             }
         }
-
-        // Main greedy function to solve problem
         static double FracKnapSack(item[] items, int w)
         {
-
-            // Sort items based on cost per units
             cprCompare cmp = new cprCompare();
             Array.Sort(items, cmp);
-
-
-            // Traverse items, if it can fit,
-            // take it all, else take fraction
             double totalVal = 0f;
             int currW = 0;
 
             foreach (item i in items)
             {
                 float remaining = w - currW;
-
-                // If the whole item can be
-                // taken, take it
                 if (i.weight <= remaining)
                 {
                     totalVal += (double)i.value;
                     currW += i.weight;
                 }
-
-                // dd fraction untill we run out of space
                 else
                 {
                     if (remaining == 0)
