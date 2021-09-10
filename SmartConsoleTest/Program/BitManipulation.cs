@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Numerics;
 using System.Text;
 using Xunit;
@@ -13,52 +14,52 @@ namespace Program
             int N = 1201, M = 8, i = 3, j = 6;
             Console.Write("N = " + N + "(");
             BitMani.bin(N);
-            Console.WriteLine(")");
+            Debug.WriteLine(")");
 
             // print original bitset
             Console.Write("M = " + M + "(");
             BitMani.bin(M);
-            Console.WriteLine(")");
+            Debug.WriteLine(")");
 
             // Call function to 
             // insert M to N
             N = BitMani.insertion(N, M, i, j);
-            Console.WriteLine("After inserting M " +
+            Debug.WriteLine("After inserting M " +
                               "into N from 3 to 6");
 
             // Print the inserted bitset
             Console.Write("N = " + N + "(");
             BitMani.bin(N);
-            Console.WriteLine(")");
+            Debug.WriteLine(")");
         }
         [Fact]
         public void BinaryToStringTest()
         {
             double num1 = 0.625; // Input value in Decimal 
             String output = BinaryToString.printBinary(num1);
-            Console.WriteLine("(0 " + output + ") in base 2");
+            Debug.WriteLine("(0 " + output + ") in base 2");
 
             double num2 = 0.72;
             output = BinaryToString.printBinary(num2);
-            Console.WriteLine("(" + output + ") ");
+            Debug.WriteLine("(" + output + ") ");
         }
         [Fact]
         public void FlipBitToWinTest()
         {
             // input 1
-            Console.WriteLine(FlipBitToWin.flipBit(13));
+            Debug.WriteLine(FlipBitToWin.flipBit(13));
 
             // input 2
-            Console.WriteLine(FlipBitToWin.flipBit(1775));
+            Debug.WriteLine(FlipBitToWin.flipBit(1775));
 
             // input 3
-            Console.WriteLine(FlipBitToWin.flipBit(15));
+            Debug.WriteLine(FlipBitToWin.flipBit(15));
         }
         [Fact]
         public void NextNumberWithSame1Test()
         {
             int n = 5; // input 1
-            Console.WriteLine(NextNumberWithSame1.getNext(n));
+            Debug.WriteLine(NextNumberWithSame1.getNext(n));
 
             n = 8; // input 2
             Console.Write(NextNumberWithSame1.getNext(n));
@@ -68,7 +69,7 @@ namespace Program
         {
             int a = 10;
             int b = 20;
-            Console.WriteLine(FlipIntAtoB.FlippedCount(a, b));
+            Debug.WriteLine(FlipIntAtoB.FlippedCount(a, b));
         }
         [Fact]
         public void PairwiseSwapTest()

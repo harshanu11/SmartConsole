@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using Xunit;
 
 namespace ReferenceTypeTest
@@ -31,11 +32,11 @@ namespace ReferenceTypeTest
 			o2.num = 2;
 			o1.cl2.num2 = 11;
 			o2.cl2.num2 = 22;
-			Console.WriteLine(o1.num);
-			Console.WriteLine(o2.num);
-			Console.WriteLine(o1.cl2.num2);
-			Console.WriteLine(o2.cl2.num2);
-			Console.WriteLine("Hello");
+			Debug.WriteLine(o1.num);
+			Debug.WriteLine(o2.num);
+			Debug.WriteLine(o1.cl2.num2);
+			Debug.WriteLine(o2.cl2.num2);
+			Debug.WriteLine("Hello");
 		}
     }
     public class MyObjectClass

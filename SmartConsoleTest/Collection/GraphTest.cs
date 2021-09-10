@@ -1,7 +1,4 @@
-﻿
-// C# program to check if there is
-// exist a path between two vertices
-// of a graph.
+﻿using System.Diagnostics;
 using System;
 using Xunit;
 
@@ -25,15 +22,15 @@ namespace CollectionTest
             int u = 1;
             int v = 3;
             if (g.isReachable(u, v))
-                Console.WriteLine("There is a path from " + u + " to " + v);
+                Debug.WriteLine("There is a path from " + u + " to " + v);
             else
-                Console.WriteLine("There is no path from " + u + " to " + v);
+                Debug.WriteLine("There is no path from " + u + " to " + v);
             u = 3;
             v = 1;
             if (g.isReachable(u, v))
-                Console.WriteLine("There is a path from " + u + " to " + v);
+                Debug.WriteLine("There is a path from " + u + " to " + v);
             else
-                Console.WriteLine("There is no path from " + u + " to " + v);
+                Debug.WriteLine("There is no path from " + u + " to " + v);
         }
         [Fact]
         public void GraphCRUDTest()
@@ -53,13 +50,13 @@ namespace CollectionTest
         public void BFSTest()
         {
 
-            Console.WriteLine("Enter number of vertices and edges");
+            Debug.WriteLine("Enter number of vertices and edges");
 
             int v = 5;
             int e = 6;
 
             GraphNode graph = new GraphNode(v);
-            Console.WriteLine("Enter " + e + " edges");
+            Debug.WriteLine("Enter " + e + " edges");
             int source = 0;
             int destination = 0;
             graph.addEdge(0, 1);
@@ -69,12 +66,12 @@ namespace CollectionTest
             graph.addEdge(0, 4);
             graph.addEdge(2, 4);
 
-            Console.WriteLine("Enter source and destination");
+            Debug.WriteLine("Enter source and destination");
 
             source = 0;
             destination = 3;
             var ans = graph.bfs(source, destination);
-            Console.WriteLine("possible " + graph.bfs(source, destination));
+            Debug.WriteLine("possible " + graph.bfs(source, destination));
         }
         [Fact]
         public void DFSTest()
@@ -83,7 +80,7 @@ namespace CollectionTest
             int e = 6;
 
             GraphNode graph = new GraphNode(v);
-            Console.WriteLine("Enter " + e + " edges");
+            Debug.WriteLine("Enter " + e + " edges");
             int source = 0;
             int destination = 0;
             graph.addEdge(0, 1);
@@ -93,7 +90,7 @@ namespace CollectionTest
             graph.addEdge(0, 4);
             graph.addEdge(2, 4);
 
-            Console.WriteLine("Enter source and destination");
+            Debug.WriteLine("Enter source and destination");
             source = 0;
             destination = 3;
             GraphNodeList gl = new GraphNodeList(5);

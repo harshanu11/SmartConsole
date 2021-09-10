@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using Xunit;
 
 namespace DSA450
@@ -117,7 +118,7 @@ namespace DSA450
                 // Overflow check
                 if (Full)
                 {
-                    Console.WriteLine("Stack Overflow");
+                    Debug.WriteLine("Stack Overflow");
                     return;
                 }
 
@@ -140,7 +141,7 @@ namespace DSA450
                 // Underflow check
                 if (isEmpty(sn))
                 {
-                    Console.WriteLine("Stack Underflow");
+                    Debug.WriteLine("Stack Underflow");
                     return int.MaxValue;
                 }
 
@@ -186,9 +187,9 @@ namespace DSA450
             ks.push(9, 0);
             ks.push(7, 0);
 
-            Console.WriteLine("Popped element from stack 2 is " + ks.pop(2));
-            Console.WriteLine("Popped element from stack 1 is " + ks.pop(1));
-            Console.WriteLine("Popped element from stack 0 is " + ks.pop(0));
+            Debug.WriteLine("Popped element from stack 2 is " + ks.pop(2));
+            Debug.WriteLine("Popped element from stack 1 is " + ks.pop(1));
+            Debug.WriteLine("Popped element from stack 0 is " + ks.pop(0));
         }
         #endregion
         #region find the middle element of a stack
@@ -267,7 +268,7 @@ namespace DSA450
             /* Stack underflow */
             if (ms.count == 0)
             {
-                Console.WriteLine("Stack is empty");
+                Debug.WriteLine("Stack is empty");
                 return -1;
             }
 
@@ -297,7 +298,7 @@ namespace DSA450
         {
             if (ms.count == 0)
             {
-                Console.WriteLine("Stack is empty now");
+                Debug.WriteLine("Stack is empty now");
                 return -1;
             }
             return ms.mid.data;
@@ -316,9 +317,9 @@ namespace DSA450
             push(ms, 66);
             push(ms, 77);
 
-            Console.WriteLine("Item popped is " + pop(ms));
-            Console.WriteLine("Item popped is " + pop(ms));
-            Console.WriteLine("Middle Element is "
+            Debug.WriteLine("Item popped is " + pop(ms));
+            Debug.WriteLine("Item popped is " + pop(ms));
+            Debug.WriteLine("Middle Element is "
                             + findMiddle(ms));
         }
         #endregion

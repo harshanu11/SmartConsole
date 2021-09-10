@@ -10,7 +10,7 @@ namespace CollectionTest
         [Fact]
         public void TwoDArrayTest()
         {
-            Console.WriteLine("Start Now");
+            Debug.WriteLine("Start Now");
 
             int[,] twoDarr = new int[4, 5];
             // get length of array 
@@ -23,9 +23,9 @@ namespace CollectionTest
                     twoDarr[i, j] = i * j;
                 }
             }
-            Console.WriteLine("two d array is loaded");
+            Debug.WriteLine("two d array is loaded");
 
-            Console.WriteLine("This is time to print it");
+            Debug.WriteLine("This is time to print it");
 
             for (int i = 0; i < 4; i++)
             {
@@ -33,18 +33,18 @@ namespace CollectionTest
                 {
                     Console.Write(twoDarr[i, j] + " ");
                 }
-                Console.WriteLine("");
+                Debug.WriteLine("");
             }
 
-            Console.WriteLine("Tow d array done");
-            Console.WriteLine("");
+            Debug.WriteLine("Tow d array done");
+            Debug.WriteLine("");
 
 
         }
         [Fact]
         public void JaggedArrayTest()
         {
-            Console.WriteLine("now start to jagged array");
+            Debug.WriteLine("now start to jagged array");
             int[][] jaggedArray = new int[4][];
 
             for (int i = 0; i < 4; i++)
@@ -58,8 +58,8 @@ namespace CollectionTest
             var len0 =jaggedArray.GetLength(0);
 
             //Array.Sort(jaggedArray);
-            Console.WriteLine("Jagged Array loaded now");
-            Console.WriteLine("Time to read data form jagged array");
+            Debug.WriteLine("Jagged Array loaded now");
+            Debug.WriteLine("Time to read data form jagged array");
 
 
             for (int i = 0; i < 4; i++)
@@ -68,10 +68,10 @@ namespace CollectionTest
                 {
                     Console.Write(jaggedArray[i][j] + " ");
                 }
-                Console.WriteLine(" ");
+                Debug.WriteLine(" ");
             }
 
-            Console.WriteLine("Jagged arr reading is done now");
+            Debug.WriteLine("Jagged arr reading is done now");
         }
 
         [Fact]

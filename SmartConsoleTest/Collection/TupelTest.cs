@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using Xunit;
 
 namespace CollectionTest
@@ -8,9 +9,9 @@ namespace CollectionTest
         [Fact]
         public void BasicTupleTest()
         {
-            Console.WriteLine(MyFirstTuple().Item1);
+            Debug.WriteLine(MyFirstTuple().Item1);
             (double, int) t1 = (4.5, 5);
-            Console.WriteLine(t1.Item1);
+            Debug.WriteLine(t1.Item1);
 
         }
         public static (int, int) MyFirstTuple()

@@ -1,4 +1,5 @@
-﻿using CollectionTest;
+﻿using System.Diagnostics;
+using CollectionTest;
 using System;
 using System.Numerics;
 using System.Text.RegularExpressions;
@@ -51,10 +52,10 @@ namespace Program
         }
         public static void AllReadyToUse()
         {
-            Console.WriteLine(Convert.ToString(100, toBase: 2));//1100100
-            Console.WriteLine(Convert.ToString(100, toBase: 8));//144
-            Console.WriteLine(Convert.ToString(100, toBase: 10));//100
-            Console.WriteLine(Convert.ToString(100, toBase: 16));//64
+            Debug.WriteLine(Convert.ToString(100, toBase: 2));//1100100
+            Debug.WriteLine(Convert.ToString(100, toBase: 8));//144
+            Debug.WriteLine(Convert.ToString(100, toBase: 10));//100
+            Debug.WriteLine(Convert.ToString(100, toBase: 16));//64
         }
         [Fact]
         public void Palandrom()
@@ -72,7 +73,7 @@ namespace Program
             Regex rg = new Regex("[^a-zA-Z0-9]");
 
             s = rg.Replace(s.ToUpper(), "");
-            //Console.WriteLine(s);
+            //Debug.WriteLine(s);
 
             for (int i = 0; i < s.Length / 2; i++)
             {
@@ -147,7 +148,7 @@ namespace Program
                     { swap(numbers, j, j - 1); }
                 }
             }
-            Console.WriteLine(string.Join(",", new int[] { 20, 12, 45, 19, 91, 55 }));
+            Debug.WriteLine(string.Join(",", new int[] { 20, 12, 45, 19, 91, 55 }));
         }
         public static void swap(int[] array, int from, int to)
         {
@@ -267,7 +268,7 @@ namespace Program
                     charCount++;
                 }
             }
-            Console.WriteLine("count of character 'a' " + charCount);
+            Debug.WriteLine("count of character 'a' " + charCount);
 
             //a more elegant way of counting occurrence of character in String using foreach loop
             charCount = 0; //resetting character count
@@ -279,7 +280,7 @@ namespace Program
                     charCount++;
                 }
             }
-            Console.WriteLine("count of character 'a' " + charCount);
+            Debug.WriteLine("count of character 'a' " + charCount);
         }
         [Fact]
         public void FirstNonRepetedCharTest() 
@@ -287,7 +288,7 @@ namespace Program
             string str = "geeksforgeeks";
             int index = firstNonRepeating(str);
 
-            Console.WriteLine(index == -1 ? "Either " + "all characters are repeating or string " +
+            Debug.WriteLine(index == -1 ? "Either " + "all characters are repeating or string " +
             "is empty" : "First non-repeating character"
             + " is " + str[index]);
 
@@ -340,7 +341,7 @@ namespace Program
                     }
                 }
                 s = new String(c);
-                Console.WriteLine(s);
+                Debug.WriteLine(s);
             }
             return s;
         }

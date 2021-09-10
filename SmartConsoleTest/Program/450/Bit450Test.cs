@@ -1,5 +1,6 @@
 ﻿using System;
 using Xunit;
+using System.Diagnostics;
 
 namespace DSA450
 {
@@ -48,7 +49,7 @@ namespace DSA450
             }
 
             // Print the the two unique numbers
-            Console.WriteLine("The non-repeating "
+            Debug.WriteLine("The non-repeating "
                             + "elements are " + sum1 + " and "
                             + sum2);
         }

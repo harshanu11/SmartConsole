@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using Xunit;
 
 namespace DSA450
@@ -76,7 +77,7 @@ namespace DSA450
         new int[] {1, 1, 1, 1},
         new int[] {0, 0, 0, 0}
             };
-            Console.WriteLine("Index of row with maximum 1s is " +
+            Debug.WriteLine("Index of row with maximum 1s is " +
                                             rowWithMax1s(mat));
         }
         #endregion
@@ -114,7 +115,7 @@ namespace DSA450
             {
                 for (int j = 0; j < n; j++)
                     Console.Write(mat[i, j] + " ");
-                Console.WriteLine();
+                Debug.WriteLine();
             }
         }
 
@@ -126,12 +127,12 @@ namespace DSA450
                         { 2, 9, 6 } };
             int n = 3;
 
-            Console.WriteLine("Original Matrix:");
+            Debug.WriteLine("Original Matrix:");
             printMat(mat, n);
 
             sortMat(mat, n);
 
-            Console.WriteLine("Matrix After Sorting:");
+            Debug.WriteLine("Matrix After Sorting:");
             printMat(mat, n);
         }
         #endregion
@@ -311,7 +312,7 @@ namespace DSA450
             {2,6,9},
             {3,6,9} };
 
-            Console.WriteLine("Median is " +
+            Debug.WriteLine("Median is " +
                                 binaryMedian(m, r, c));
         }
         #endregion

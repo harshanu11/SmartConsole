@@ -1,4 +1,5 @@
-﻿using CollectionTest;
+﻿using System.Diagnostics;
+using CollectionTest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace Program
                     Console.Write(arr[i1][j1] + " ");
                 }
 
-                Console.WriteLine("\n");
+                Debug.WriteLine("\n");
             }
 
             int right_to_left = 0;
@@ -45,9 +46,9 @@ namespace Program
                 l--;
             }
 
-            Console.WriteLine(right_to_left);
-            Console.WriteLine(left_to_right);
-            Console.WriteLine(Math.Abs(left_to_right - right_to_left));
+            Debug.WriteLine(right_to_left);
+            Debug.WriteLine(left_to_right);
+            Debug.WriteLine(Math.Abs(left_to_right - right_to_left));
             Assert.Equal(0, Math.Abs(left_to_right - right_to_left));
         }
         [Fact]
@@ -68,8 +69,8 @@ namespace Program
         {
             int input = 0;
             string str = "";
-            Console.WriteLine(CalculateJump(7, "0 0 1 0 0 1 0"));
-            Console.WriteLine(CalculateJump(7, "0 0 0 0 1 0"));
+            Debug.WriteLine(CalculateJump(7, "0 0 1 0 0 1 0"));
+            Debug.WriteLine(CalculateJump(7, "0 0 0 0 1 0"));
             Assert.Equal(4, CalculateJump(7, "0 0 1 0 0 1 0"));
             Assert.Equal(3, CalculateJump(7, "0 0 0 0 1 0"));
         }
@@ -78,11 +79,11 @@ namespace Program
         {
             string str = "";
             str = "{[()]}";
-            Console.WriteLine(BalanceBracket(str));
+            Debug.WriteLine(BalanceBracket(str));
             Assert.Equal("YES", BalanceBracket(str));
-            str = "{[(]}}"; Console.WriteLine(BalanceBracket(str));
+            str = "{[(]}}"; Debug.WriteLine(BalanceBracket(str));
             Assert.Equal("NO", BalanceBracket(str));
-            str = "{{[[(())]]}}"; Console.WriteLine(BalanceBracket(str));
+            str = "{{[[(())]]}}"; Debug.WriteLine(BalanceBracket(str));
             Assert.Equal("YES", BalanceBracket(str));
 
         }
@@ -111,7 +112,7 @@ namespace Program
                 }
 
             }
-            Console.WriteLine(numOfPair);
+            Debug.WriteLine(numOfPair);
             Assert.Equal(3, numOfPair);
         }
         [Fact]

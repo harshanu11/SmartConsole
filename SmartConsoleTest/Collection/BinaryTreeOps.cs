@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CollectionTest
 {
@@ -103,7 +104,7 @@ namespace CollectionTest
 
             printPostorder(node.Left);
             printPostorder(node.Right);
-            Console.WriteLine(node.Data);
+            Debug.WriteLine(node.Data);
         }
         public void printInorder(TreeNode node)
         {
@@ -111,7 +112,7 @@ namespace CollectionTest
                 return;
 
             printInorder(node.Left);
-            Console.WriteLine(node.Data);
+            Debug.WriteLine(node.Data);
             printInorder(node.Right);
         }
         public TreeNode GetInOrder(TreeNode node)
@@ -128,7 +129,7 @@ namespace CollectionTest
             if (node == null)
                 return;
 
-            Console.WriteLine(node.Data);
+            Debug.WriteLine(node.Data);
             printPreorder(node.Left);
             printPreorder(node.Right);
         }

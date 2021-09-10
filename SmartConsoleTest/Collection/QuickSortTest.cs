@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using Xunit;
 
 namespace CollectionTest
@@ -50,10 +51,10 @@ namespace CollectionTest
             int[] numbers = new int[] { 4, 1, 3, 9, 7 };
 
 
-            Console.WriteLine("QuickSort By Recursive Method");
+            Debug.WriteLine("QuickSort By Recursive Method");
             SortQuick(numbers, 0, max - 1);
             for (int i = 0; i < max; i++)
-                Console.WriteLine(numbers[i]);
+                Debug.WriteLine(numbers[i]);
         }
     }
 }

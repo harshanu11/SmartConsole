@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using Xunit;
 
 namespace SmartConsoleTest
@@ -8,18 +9,18 @@ namespace SmartConsoleTest
     {
         public GarbageCollection()
         {
-            Console.WriteLine("Object created");
+            Debug.WriteLine("Object created");
 
         }
         public void Dispose()
         {
-            Console.WriteLine("u r out of scope");
+            Debug.WriteLine("u r out of scope");
             //call disposble pattern for cleaning managed or unmanaged memory 
             GC.SuppressFinalize(this);// it ll remove current obj for finalize queue and destroy it
         }
         ~GarbageCollection()
         {
-            Console.WriteLine("Object ll destroy buy gc or call GC.Collect() for immediate clearance");
+            Debug.WriteLine("Object ll destroy buy gc or call GC.Collect() for immediate clearance");
         }
     }
     public class GarbageCollectionTest

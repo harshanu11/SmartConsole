@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -59,7 +60,7 @@ namespace CollectionTest
         {
             var head = headNode;
             if (position < 1)
-                Console.WriteLine("Invalid position");
+                Debug.WriteLine("Invalid position");
 
             //if position is 1 then new node is  
             // set infornt of head node 
@@ -91,7 +92,7 @@ namespace CollectionTest
                     headNode = headNode.nextNode;
                 }
                 if (position != 1)
-                    Console.WriteLine("Position out of range");
+                    Debug.WriteLine("Position out of range");
             }
             return head;
         }
@@ -123,7 +124,7 @@ namespace CollectionTest
                 if (node != null)
                     Console.Write(",");
             }
-            Console.WriteLine();
+            Debug.WriteLine();
         }
 
         public void appendToTail(LLNode nd, int d)
@@ -152,7 +153,7 @@ namespace CollectionTest
             while (head.nextNode != null)
             {
                 head = head.nextNode;
-                Console.WriteLine(head.data);
+                Debug.WriteLine(head.data);
             }
         }
 
@@ -181,21 +182,21 @@ namespace CollectionTest
 
         public  void Display(LinkedList<string> words, string test)
         {
-            Console.WriteLine(test);
+            Debug.WriteLine(test);
             foreach (string word in words)
             {
                 Console.Write(word + " ");
             }
-            Console.WriteLine();
-            Console.WriteLine();
+            Debug.WriteLine();
+            Debug.WriteLine();
         }
 
         public  void IndicateNode(LinkedListNode<string> node, string test)
         {
-            Console.WriteLine(test);
+            Debug.WriteLine(test);
             if (node.List == null)
             {
-                Console.WriteLine("Node '{0}' is not in the list.\n",
+                Debug.WriteLine("Node '{0}' is not in the list.\n",
                     node.Value);
                 return;
             }
@@ -216,8 +217,8 @@ namespace CollectionTest
                 node = node.Next;
             }
 
-            Console.WriteLine(result);
-            Console.WriteLine();
+            Debug.WriteLine(result);
+            Debug.WriteLine();
         }
         #endregion
     }

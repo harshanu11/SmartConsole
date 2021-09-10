@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Text.RegularExpressions;
 using Xunit;
 
@@ -34,7 +35,7 @@ namespace ReferenceTypeTest
             Assert.False(ReferenceEquals(MyFirstString, MySecondString));
             // here .equals or == both check content inside srting 
 
-            System.Console.WriteLine(string.IsNullOrEmpty("dgdgf"));
+            System.Debug.WriteLine(string.IsNullOrEmpty("dgdgf"));
             Assert.True(ReferenceEquals(MyFirstStringObj, MySecondStringObj));
             Assert.False(ReferenceEquals(MyFirstStringObj, MyThirdStringObj));// not smae reference bcz used new
             Assert.True(MyFirstStringObj.Equals(MySecondStringObj));

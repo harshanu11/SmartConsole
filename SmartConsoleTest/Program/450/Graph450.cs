@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -133,7 +134,7 @@ namespace DSA450
             g.AddEdge(2, 3);
             g.AddEdge(3, 3);
 
-            Console.WriteLine(
+            Debug.WriteLine(
                 "Following is Depth First Traversal "
                 + "(starting from vertex 2)");
 
@@ -206,9 +207,9 @@ namespace DSA450
             //graph.addEdge(3, 3);
 
             //if (graph.isCyclic())
-            //    Console.WriteLine("Graph contains cycle");
+            //    Debug.WriteLine("Graph contains cycle");
             //else
-            //    Console.WriteLine("Graph doesn't "
+            //    Debug.WriteLine("Graph doesn't "
             //                            + "contain cycle");
         }
         #endregion
@@ -225,17 +226,17 @@ namespace DSA450
             //g1.addEdge(0, 3);
             //g1.addEdge(3, 4);
             //if (g1.isCyclic())
-            //    Console.WriteLine("Graph contains cycle");
+            //    Debug.WriteLine("Graph contains cycle");
             //else
-            //    Console.WriteLine("Graph doesn't contains cycle");
+            //    Debug.WriteLine("Graph doesn't contains cycle");
 
             //GraphNode1 g = new GraphNode1(3);
             //g2.addEdge(0, 1);
             //g2.addEdge(1, 2);
             //if (g2.isCyclic())
-            //Console.WriteLine("Graph contains cycle");
+            //Debug.WriteLine("Graph contains cycle");
             //else
-            //    Console.WriteLine("Graph doesn't contains cycle");
+            //    Debug.WriteLine("Graph doesn't contains cycle");
         }
         #endregion
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using Xunit;
 
 namespace DSA450
@@ -28,7 +29,7 @@ namespace DSA450
             }
             if (first != -1)
             {
-                Console.WriteLine("First "
+                Debug.WriteLine("First "
                                 + "Occurrence = " + first);
                 Console.Write("Last "
                             + "Occurrence = " + last);
@@ -125,7 +126,7 @@ namespace DSA450
         public void floorSqrtTest()
         {
             int x = 11;
-            Console.WriteLine(floorSqrt(x));
+            Debug.WriteLine(floorSqrt(x));
         }
         #endregion
         #region Maximum and minimum of an array using minimum number of comparisons

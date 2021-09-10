@@ -55,17 +55,17 @@ namespace DSA450
             for (i = 0; i < keys.Length; i++)
                 insert(keys[i]);
             if (search("the") == true)
-                Console.WriteLine("the --- " + output[1]);
-            else Console.WriteLine("the --- " + output[0]);
+                Debug.WriteLine("the --- " + output[1]);
+            else Debug.WriteLine("the --- " + output[0]);
             if (search("these") == true)
-                Console.WriteLine("these --- " + output[1]);
-            else Console.WriteLine("these --- " + output[0]);
+                Debug.WriteLine("these --- " + output[1]);
+            else Debug.WriteLine("these --- " + output[0]);
             if (search("their") == true)
-                Console.WriteLine("their --- " + output[1]);
-            else Console.WriteLine("their --- " + output[0]);
+                Debug.WriteLine("their --- " + output[1]);
+            else Debug.WriteLine("their --- " + output[0]);
             if (search("thaw") == true)
-                Console.WriteLine("thaw --- " + output[1]);
-            else Console.WriteLine("thaw --- " + output[0]);
+                Debug.WriteLine("thaw --- " + output[1]);
+            else Debug.WriteLine("thaw --- " + output[0]);
 
         }
         #endregion
@@ -281,7 +281,7 @@ namespace DSA450
             public void displayContactsUtil(TrieNode1 curNode, String prefix)
             {
                 if (curNode.isLast)
-                    Console.WriteLine(prefix);
+                    Debug.WriteLine(prefix);
                 for (char i = 'a'; i <= 'z'; i++)
                 {
                     TrieNode1 nextNode = curNode.child[i];
@@ -308,11 +308,11 @@ namespace DSA450
                     TrieNode1 curNode = prevNode.child[lastChar];
                     if (curNode == null)
                     {
-                        Console.WriteLine("\nNo Results Found for'"+ prefix + "'");
+                        Debug.WriteLine("\nNo Results Found for'"+ prefix + "'");
                         i++;
                         break;
                     }
-                    Console.WriteLine("Suggestions based on '"+ prefix + "' are");
+                    Debug.WriteLine("Suggestions based on '"+ prefix + "' are");
                     displayContactsUtil(curNode, prefix);
 
                     prevNode = curNode;
@@ -321,7 +321,7 @@ namespace DSA450
                 for (; i < len; i++)
                 {
                     prefix += str[i];
-                    Console.WriteLine("\nNo Results Found for '" + prefix + "'");
+                    Debug.WriteLine("\nNo Results Found for '" + prefix + "'");
                 }
             }
 
@@ -361,7 +361,7 @@ namespace DSA450
                 {
                     for (int j = 0; j < COL; j++)
                         Console.Write(M[i, j] + " ");
-                    Console.WriteLine();
+                    Debug.WriteLine();
                 }
             }
         }

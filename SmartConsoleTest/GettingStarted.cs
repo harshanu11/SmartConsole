@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using Xunit;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -81,7 +82,7 @@ namespace SmartConsoleTest
             while (llc != null)
             {
                 var llcnode = llc;
-                Console.WriteLine(llcnode.data);
+                Debug.WriteLine(llcnode.data);
                 llc = llc.next;
             }
 

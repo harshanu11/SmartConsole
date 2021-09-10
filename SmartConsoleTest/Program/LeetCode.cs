@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -23,7 +24,7 @@ namespace Program
             int[] arr = { 1, 9, 3, 10, 4, 20, 2 };
             int n = arr.Length;
 
-            Console.WriteLine("Length of the Longest " +
+            Debug.WriteLine("Length of the Longest " +
                               "contiguous subsequence is " +
                               findLongestConseqSubseq(arr, n));
 

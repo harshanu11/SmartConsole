@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using Xunit;
 
 namespace DSA450
@@ -73,7 +74,7 @@ namespace DSA450
             int W = 50;
             int n = val.Length;
 
-            Console.WriteLine(knapSack(W, wt, val, n));
+            Debug.WriteLine(knapSack(W, wt, val, n));
         }
         #endregion
         #region Binomial CoefficientProblem
@@ -137,7 +138,7 @@ namespace DSA450
         public void permutationCoeffTest()
         {
             int n = 10, k = 2;
-            Console.WriteLine("Value of P( " + n +
+            Debug.WriteLine("Value of P( " + n +
                             "," + k + ")" + " is " +
                             permutationCoeff(n, k));
         }

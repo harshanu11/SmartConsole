@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Text;
 using Xunit;
 
@@ -292,11 +293,11 @@ namespace CTCINs
         [Fact]
         public void CompressTest()
         {
-            Console.WriteLine(compress("aabcccccaaa"));
-            Console.WriteLine(compress("aabbcc"));
-            Console.WriteLine(compress("aaaaaaaaaaaaaaaaaaaaa"));
-            Console.WriteLine(compress("abcdefg"));
-            Console.WriteLine(compress("a"));
+            Debug.WriteLine(compress("aabcccccaaa"));
+            Debug.WriteLine(compress("aabbcc"));
+            Debug.WriteLine(compress("aaaaaaaaaaaaaaaaaaaaa"));
+            Debug.WriteLine(compress("abcdefg"));
+            Debug.WriteLine(compress("a"));
         }
         #endregion
         #region Qus6
@@ -377,7 +378,7 @@ namespace CTCINs
                 new int[] {6, 7, 8, 9, 0}
             };
             Printer.printArray(rotate(a));
-            Console.WriteLine();
+            Debug.WriteLine();
             rotateInPlace(a);
             Printer.printArray(a);
         }
@@ -506,7 +507,7 @@ namespace CTCINs
                 {
                     Console.Write(col + " ");
                 }
-                Console.WriteLine();
+                Debug.WriteLine();
             }
         }
         [Fact]

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Xunit;
@@ -87,7 +88,7 @@ namespace CollectionTest
 
             // This is the temporary stack
             Stack<int> tmpStack = sortstack(input);
-            Console.WriteLine("Sorted numbers are:");
+            Debug.WriteLine("Sorted numbers are:");
 
             while (tmpStack.Count > 0)
             {
@@ -197,30 +198,30 @@ namespace CollectionTest
         public void getMin()
         {
             if (s.Count == 0)
-                Console.WriteLine("Stack is empty");
+                Debug.WriteLine("Stack is empty");
             else
-                Console.WriteLine("Minimum Element in the " +
+                Debug.WriteLine("Minimum Element in the " +
                                 " stack is: " + minEle);
         }
         public void Peek()
         {
             if (s.Count == 0)
             {
-                Console.WriteLine("Stack is empty ");
+                Debug.WriteLine("Stack is empty ");
                 return;
             }
             int t = (int)s.Peek(); 
             Console.Write("Top Most Element is: ");
             if (t < minEle)
-                Console.WriteLine(minEle);
+                Debug.WriteLine(minEle);
             else
-                Console.WriteLine(t);
+                Debug.WriteLine(t);
         }
         public void Pop()
         {
             if (s.Count == 0)
             {
-                Console.WriteLine("Stack is empty");
+                Debug.WriteLine("Stack is empty");
                 return;
             }
 
@@ -228,12 +229,12 @@ namespace CollectionTest
             int t = (int)s.Pop();
             if (t < minEle)
             {
-                Console.WriteLine(minEle);
+                Debug.WriteLine(minEle);
                 minEle = 2 * minEle - t;
             }
 
             else
-                Console.WriteLine(t);
+                Debug.WriteLine(t);
         }
         public void Push(int x)
         {
@@ -241,7 +242,7 @@ namespace CollectionTest
             {
                 minEle = x;
                 s.Push(x);
-                Console.WriteLine("Number Inserted: " + x);
+                Debug.WriteLine("Number Inserted: " + x);
                 return;
             }
             if (x < minEle)
@@ -253,7 +254,7 @@ namespace CollectionTest
             else
                 s.Push(x);
 
-            Console.WriteLine("Number Inserted: " + x);
+            Debug.WriteLine("Number Inserted: " + x);
         }
     }
 
@@ -293,7 +294,7 @@ namespace CollectionTest
         {
             if (s.Count == 0)
             {
-                Console.WriteLine("Stack underflow!!");
+                Debug.WriteLine("Stack underflow!!");
             }
 
             int top = s.Peek();
@@ -327,7 +328,7 @@ namespace CollectionTest
         {
             if (top == max - 1)
             {
-                Console.WriteLine("Stack Overflow");
+                Debug.WriteLine("Stack Overflow");
                 return;
             }
             else
@@ -340,12 +341,12 @@ namespace CollectionTest
         {
             if (top == -1)
             {
-                Console.WriteLine("Stack is Empty");
+                Debug.WriteLine("Stack is Empty");
                 return -1;
             }
             else
             {
-                Console.WriteLine("{0} popped from stack ", ele[top]);
+                Debug.WriteLine("{0} popped from stack ", ele[top]);
                 return ele[top--];
             }
         }
@@ -354,12 +355,12 @@ namespace CollectionTest
         {
             if (top == -1)
             {
-                Console.WriteLine("Stack is Empty");
+                Debug.WriteLine("Stack is Empty");
                 return -1;
             }
             else
             {
-                Console.WriteLine("{0} popped from stack ", ele[top]);
+                Debug.WriteLine("{0} popped from stack ", ele[top]);
                 return ele[top];
             }
         }
@@ -368,14 +369,14 @@ namespace CollectionTest
         {
             if (top == -1)
             {
-                Console.WriteLine("Stack is Empty");
+                Debug.WriteLine("Stack is Empty");
                 return;
             }
             else
             {
                 for (int i = 0; i <= top; i++)
                 {
-                    Console.WriteLine("{0} pushed into stack", ele[i]);
+                    Debug.WriteLine("{0} pushed into stack", ele[i]);
                 }
             }
         }

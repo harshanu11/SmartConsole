@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Xunit;
 
 namespace CollectionTest
@@ -78,7 +79,7 @@ namespace CollectionTest
             int[] arr = new int[] { 1, 2, 3, 4, 5, 6, 7 };
             int n = arr.Length;
             root = tree.sortedArrayToBST(arr, 0, n - 1);
-            Console.WriteLine("Preorder traversal of constructed BST");
+            Debug.WriteLine("Preorder traversal of constructed BST");
             tree.preOrder(root);
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Collections;
 using Xunit;
 
@@ -36,8 +37,8 @@ namespace CollectionTest
             q.enqueue(40);
             q.enqueue(50);
             q.dequeue();
-            Console.WriteLine("Queue Front : " + q.front.key);
-            Console.WriteLine("Queue Rear : " + q.rear.key);
+            Debug.WriteLine("Queue Front : " + q.front.key);
+            Debug.WriteLine("Queue Rear : " + q.rear.key);
 
         }
 
@@ -53,8 +54,8 @@ namespace CollectionTest
             q.queueEnqueue(40);
             q.queueEnqueue(50);
             q.queueDequeue();
-            Console.WriteLine("Queue Front : " + QueueArrayNode.front);
-            Console.WriteLine("Queue Rear : " + QueueArrayNode.rear);
+            Debug.WriteLine("Queue Front : " + QueueArrayNode.front);
+            Debug.WriteLine("Queue Rear : " + QueueArrayNode.rear);
 
         }
     }

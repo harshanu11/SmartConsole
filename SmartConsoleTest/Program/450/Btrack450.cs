@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -263,7 +264,7 @@ namespace DSA450
 
                         // Add this element to previous prefix
                         ans += prefix;
-                        Console.WriteLine(ans);
+                        Debug.WriteLine(ans);
                         return;
                     }
                     wordBreakUtil(n - i, s.Substring(i, n - i), dict, ans + prefix + " ");
@@ -281,11 +282,11 @@ namespace DSA450
 
             // List of strings in dictionary
             IList<string> dict = new List<string> { "mobile", "samsung", "sam", "sung", "man", "mango", "icecream", "and", "go", "i", "love", "ice", "cream" };
-            Console.WriteLine("First Test:");
+            Debug.WriteLine("First Test:");
 
             // call to the method
             wordBreak(n1, dict, str1);
-            Console.WriteLine("\nSecond Test:");
+            Debug.WriteLine("\nSecond Test:");
 
             // call to the method
             wordBreak(n2, dict, str2);
@@ -476,7 +477,7 @@ namespace DSA450
             {
                 for (int j = 0; j < N; j++)
                     Console.Write(grid[i, j] + " ");
-                Console.WriteLine();
+                Debug.WriteLine();
             }
         }
 
@@ -530,7 +531,7 @@ namespace DSA450
             if (solveSuduko(grid, 0, 0))
                 print(grid);
             else
-                Console.WriteLine("No Solution exists");
+                Debug.WriteLine("No Solution exists");
         }
         #endregion
     }

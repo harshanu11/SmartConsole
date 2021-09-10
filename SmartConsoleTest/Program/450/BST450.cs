@@ -1,4 +1,5 @@
-﻿using CollectionTest;
+﻿using System.Diagnostics;
+using CollectionTest;
 using System;
 using Xunit;
 
@@ -65,7 +66,7 @@ namespace DSA450
             if (root != null)
             {
                 inorderRec(root.left);
-                Console.WriteLine(root.key);
+                Debug.WriteLine(root.key);
                 inorderRec(root.right);
             }
         }
@@ -175,7 +176,7 @@ namespace DSA450
             insert(root, 6);
             insert(root, 5);
 
-            Console.WriteLine("Minimum value of BST is " + minvalue(root));
+            Debug.WriteLine("Minimum value of BST is " + minvalue(root));
         }
         #endregion
         #region Find inorder successor and inorder predecessor in a BST
@@ -269,14 +270,14 @@ namespace DSA450
 
             findPreSuc(root, key);
             if (pre != null)
-                Console.WriteLine("Predecessor is " + pre.Data);
+                Debug.WriteLine("Predecessor is " + pre.Data);
             else
-                Console.WriteLine("No Predecessor");
+                Debug.WriteLine("No Predecessor");
 
             if (suc != null)
-                Console.WriteLine("Successor is " + suc.Data);
+                Debug.WriteLine("Successor is " + suc.Data);
             else
-                Console.WriteLine("No Successor");
+                Debug.WriteLine("No Successor");
         }
         #endregion
         #region Check if a tree is a BST or not 
@@ -318,11 +319,11 @@ namespace DSA450
 
             if (isBSTUtil(tree.root, int.MinValue, int.MaxValue))
             {
-                Console.WriteLine("IS BST");
+                Debug.WriteLine("IS BST");
             }
             else
             {
-                Console.WriteLine("Not a BST");
+                Debug.WriteLine("Not a BST");
             }
         }
         #endregion

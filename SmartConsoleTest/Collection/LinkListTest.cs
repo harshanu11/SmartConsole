@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -14,7 +15,7 @@ namespace CollectionTest
                 { "the", "fox", "jumps", "over", "the", "dog" };
             LinkedList<string> ll = new LinkedList<string>(words);
             llo.Display(ll, "The linked list values:");
-            Console.WriteLine("sentence.Contains(\"jumps\") = {0}",
+            Debug.WriteLine("sentence.Contains(\"jumps\") = {0}",
                 ll.Contains("jumps"));
 
             // Add the word 'today' to the beginning of the linked list.
@@ -66,16 +67,16 @@ namespace CollectionTest
 
             // The AddBefore method throws an InvalidOperationException
             // if you try to add a node that already belongs to a list.
-            Console.WriteLine("Test 10: Throw exception by adding node (fox) already in the list:");
+            Debug.WriteLine("Test 10: Throw exception by adding node (fox) already in the list:");
             try
             {
                 ll.AddBefore(current, mark1);
             }
             catch (InvalidOperationException ex)
             {
-                Console.WriteLine("Exception message: {0}", ex.Message);
+                Debug.WriteLine("Exception message: {0}", ex.Message);
             }
-            Console.WriteLine();
+            Debug.WriteLine();
 
             // Remove the node referred to by mark1, and then add it
             // before the node referred to by current.
@@ -104,7 +105,7 @@ namespace CollectionTest
             icoll.Add("rhinoceros");
             llo.Display(ll, "Test 15: Remove last node, cast to ICollection, and add 'rhinoceros':");
 
-            Console.WriteLine("Test 16: Copy the list to an array:");
+            Debug.WriteLine("Test 16: Copy the list to an array:");
             // Create an array with the same number of
             // elements as the linked list.
             string[] sArray = new string[ll.Count];
@@ -112,14 +113,14 @@ namespace CollectionTest
 
             foreach (string s in sArray)
             {
-                Console.WriteLine(s);
+                Debug.WriteLine(s);
             }
 
             // Release all the nodes.
             ll.Clear();
 
-            Console.WriteLine();
-            Console.WriteLine("Test 17: Clear linked list. Contains 'jumps' = {0}",
+            Debug.WriteLine();
+            Debug.WriteLine("Test 17: Clear linked list. Contains 'jumps' = {0}",
                 ll.Contains("jumps"));
         }
     
@@ -141,26 +142,26 @@ namespace CollectionTest
             head.nextNode.nextNode = llo.GetNode(8);
             head.nextNode.nextNode.nextNode = llo.GetNode(10);
 
-            Console.WriteLine("Linked list before insertion: ");
+            Debug.WriteLine("Linked list before insertion: ");
             llo.PrintList(head);
 
             int data = 12, pos = 3;
             head = llo.InsertAtSpecificPos(head, pos, data);
-            Console.WriteLine("Linked list after" +
+            Debug.WriteLine("Linked list after" +
                             " insertion of 12 at position 3: ");
             llo.PrintList(head);
 
             // front of the linked list  
             data = 1; pos = 1;
             head = llo.InsertAtSpecificPos(head, pos, data);
-            Console.WriteLine("Linked list after" +
+            Debug.WriteLine("Linked list after" +
                             "insertion of 1 at position 1: ");
             llo.PrintList(head);
 
             // insetion at end of the linked list  
             data = 15; pos = 7;
             head = llo.InsertAtSpecificPos(head, pos, data);
-            Console.WriteLine("Linked list after" +
+            Debug.WriteLine("Linked list after" +
                             " insertion of 15 at position 7: ");
             llo.PrintList(head);
         }
@@ -173,26 +174,26 @@ namespace CollectionTest
             head.nextNode.nextNode = llo.GetNode(8);
             head.nextNode.nextNode.nextNode = llo.GetNode(10);
 
-            Console.WriteLine("Linked list before insertion: ");
+            Debug.WriteLine("Linked list before insertion: ");
             llo.PrintList(head);
 
             int data = 12, pos = 3;
             head = llo.InsertAtSpecificPos_NickWhite(head, pos, data);
-            Console.WriteLine("Linked list after" +
+            Debug.WriteLine("Linked list after" +
                             " insertion of 12 at position 3: ");
             llo.PrintList(head);
 
             // front of the linked list  
             data = 1; pos = 1;
             head = llo.InsertAtSpecificPos_NickWhite(head, pos, data);
-            Console.WriteLine("Linked list after" +
+            Debug.WriteLine("Linked list after" +
                             "insertion of 1 at position 1: ");
             llo.PrintList(head);
 
             // insetion at end of the linked list  
             data = 15; pos = 7;
             head = llo.InsertAtSpecificPos_NickWhite(head, pos, data);
-            Console.WriteLine("Linked list after" +
+            Debug.WriteLine("Linked list after" +
                             " insertion of 15 at position 7: ");
             llo.PrintList(head);
         }

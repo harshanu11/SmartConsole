@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -85,13 +86,13 @@ namespace CollectionTest
 
             foreach (Pet pet in pets1.DefaultIfEmpty(defaultPet))
             {
-                Console.WriteLine("Name: {0}", pet.Name);
+                Debug.WriteLine("Name: {0}", pet.Name);
             }
 
 
             foreach (Pet pet in pets2.DefaultIfEmpty(defaultPet))
             {
-                Console.WriteLine("\nName: {0}", pet.Name);
+                Debug.WriteLine("\nName: {0}", pet.Name);
             }
 
         }

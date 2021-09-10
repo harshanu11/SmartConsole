@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using Xunit;
 
 namespace DSA450
@@ -76,7 +77,7 @@ namespace DSA450
             this.btRoot.right = new BTNode1(3);
             this.btRoot.left.left = new BTNode1(4);
             this.btRoot.left.right = new BTNode1(5);
-            Console.WriteLine("Level order traversal " +
+            Debug.WriteLine("Level order traversal " +
                                 "of binary tree is ");
             this.printLevelOrder();
         }
@@ -149,7 +150,7 @@ namespace DSA450
                 tree.root.left.left = new BTNode1(4);
                 tree.root.left.right = new BTNode1(5);
 
-                Console.WriteLine("Level Order traversal " +
+                Debug.WriteLine("Level Order traversal " +
                                     "of binary tree is : ");
                 tree.reverseLevelOrder(tree.root);
             }
@@ -186,7 +187,7 @@ namespace DSA450
             tree.root.left.left = new BTNode1(4);
             tree.root.left.right = new BTNode1(5);
 
-            Console.WriteLine("Height of tree is : " +
+            Debug.WriteLine("Height of tree is : " +
                                         maxDepth(tree.root));
         }
         #endregion

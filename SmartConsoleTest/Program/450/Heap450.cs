@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using Xunit;
 
 namespace DSA450
@@ -48,12 +49,12 @@ namespace DSA450
             }
             static void printHeap(int[] arr, int n)
             {
-                Console.WriteLine("Array representation of Heap is:");
+                Debug.WriteLine("Array representation of Heap is:");
 
                 for (int i = 0; i < n; ++i)
                     Console.Write(arr[i] + " ");
 
-                Console.WriteLine();
+                Debug.WriteLine();
             }
             [Fact]
             public static void BuildHeapTest()

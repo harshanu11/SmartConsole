@@ -1,4 +1,5 @@
-﻿using CollectionTest;
+﻿using System.Diagnostics;
+using CollectionTest;
 using System;
 using System.Linq;
 using Xunit;
@@ -23,7 +24,7 @@ namespace CTCINs
             {
                 if (c[i] > 0)
                 {
-                    Console.WriteLine((char)i);
+                    Debug.WriteLine((char)i);
                 }
             }
         }
@@ -49,7 +50,7 @@ namespace CTCINs
                 }
             }
 
-            Console.WriteLine(ans);
+            Debug.WriteLine(ans);
         }
         [Fact]
         public void FindReplaceTesr()
@@ -67,7 +68,7 @@ namespace CTCINs
                 }
             }
             char[] ch1 = new char[ch.Length + (3 * 2)];
-            Console.WriteLine(ch.Length + (3 * 2));
+            Debug.WriteLine(ch.Length + (3 * 2));
             bool ans = true;
             int count1 = 0;
             for (int i = 0; i < ch1.Length - 2; i++)
@@ -88,7 +89,7 @@ namespace CTCINs
                 count1++;
             }
 
-            Console.WriteLine(new String(ch1));
+            Debug.WriteLine(new String(ch1));
         }
         [Fact]
         public void IsPalandromTest()
@@ -146,7 +147,7 @@ namespace CTCINs
                 {
                     if (alphabaet[i] == 1)
                     {
-                        Console.WriteLine((char)i);
+                        Debug.WriteLine((char)i);
                         missing = (char)i;
                         editCount++;
                         if (editCount > 1)
@@ -158,7 +159,7 @@ namespace CTCINs
                 }
             }
 
-            Console.WriteLine(oneEditCount);
+            Debug.WriteLine(oneEditCount);
         }
         [Fact]
         public void FindDublicateAndDubCount()
@@ -185,7 +186,7 @@ namespace CTCINs
             }
             if (!checkDuplicate)
             {
-                Console.WriteLine(input);
+                Debug.WriteLine(input);
             }
             else
             {
@@ -197,7 +198,7 @@ namespace CTCINs
                         outPut += Convert.ToString((char)i) + alphabet[i];
                     }
                 }
-                Console.WriteLine(outPut);
+                Debug.WriteLine(outPut);
             }
         }
         [Fact]
@@ -221,7 +222,7 @@ namespace CTCINs
                 {
                     Console.Write(imgArr[i, j]);
                 }
-                Console.WriteLine();
+                Debug.WriteLine();
             }
 
             for (int i = 0; i < 3; i++)
@@ -242,14 +243,14 @@ namespace CTCINs
                     imgArr[i, 3 - j - 1] = temp;
                 }
             }
-            Console.WriteLine("---------------");
+            Debug.WriteLine("---------------");
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
                     Console.Write(imgArr[i, j]);
                 }
-                Console.WriteLine();
+                Debug.WriteLine();
 
             }
 
@@ -260,7 +261,7 @@ namespace CTCINs
             string str1 = "waterbottle"; string strTest = "ottlewaterb";
 
             string[] strCollection = new string[str1.Length];
-            //Console.WriteLine(str1);
+            //Debug.WriteLine(str1);
             for (int i = 0; i < str1.Length; i++)
             {
                 //var charCollection =str1.ToCharArray();
@@ -277,7 +278,7 @@ namespace CTCINs
                     break;
                 }
             }
-            Console.WriteLine(isRotated);
+            Debug.WriteLine(isRotated);
         }
         #endregion
         #region LinkList
@@ -327,13 +328,13 @@ namespace CTCINs
             }
             int countFromStart = LengthOfLL - k;
             int counter = 0;
-            Console.WriteLine(countFromStart);
+            Debug.WriteLine(countFromStart);
 
             while (head.nextNode != null)
             {
                 if (counter == countFromStart)
                 {
-                    Console.WriteLine(head.data);
+                    Debug.WriteLine(head.data);
                     break;
                 }
                 counter++;

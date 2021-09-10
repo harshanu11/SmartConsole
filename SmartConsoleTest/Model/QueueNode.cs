@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Collections;
 
 namespace CollectionTest
@@ -34,7 +35,7 @@ namespace CollectionTest
             // if first stack is empty 
             if (s1.Count == 0)
             {
-                Console.WriteLine("Q is Empty");
+                Debug.WriteLine("Q is Empty");
 
             }
 

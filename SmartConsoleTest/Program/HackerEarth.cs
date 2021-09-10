@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -25,8 +26,8 @@ namespace Program
             string[] lenAndShift = Console.ReadLine().Split(' ');
             double len = Convert.ToDouble(lenAndShift[0]);
             double shift = Convert.ToDouble(lenAndShift[1]);
-            //Console.WriteLine(len);
-            //Console.WriteLine(shift);
+            //Debug.WriteLine(len);
+            //Debug.WriteLine(shift);
 
             int shiftVal = 0;
             if (len < shift)
@@ -48,14 +49,14 @@ namespace Program
                 Console.Write(String.Join(" ", aNewStart) + " ");
             if (aNewEnd.Length > 0)
                 Console.Write(String.Join(" ", aNewEnd));
-            Console.WriteLine("");
+            Debug.WriteLine("");
         }
         //https://www.hackerearth.com/practice/codemonk/
         public static int CalculateInversion()
         {
             int count = 0;
             int Length = Convert.ToInt16(Console.ReadLine());
-            //Console.WriteLine(Length);
+            //Debug.WriteLine(Length);
             string[][] jaggedArr = new string[Length][];
             List<string[]> arr = new List<string[]>();
             for (int i = 0; i < Length; i++)
@@ -81,7 +82,7 @@ namespace Program
                     }
                 }
             }
-            Console.WriteLine("");
+            Debug.WriteLine("");
             return count;
         }
 
@@ -99,7 +100,7 @@ namespace Program
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error at CalculateBinaryRotation " + ex.Message);
+                Debug.WriteLine("Error at CalculateBinaryRotation " + ex.Message);
                 throw ex;
             }
         }
@@ -121,16 +122,16 @@ namespace Program
                     if (bin == tempStr)
                     {
                         k = i + 1;
-                        //Console.WriteLine(tempStr);
+                        //Debug.WriteLine(tempStr);
                         break;
                     }
                 }
-                //Console.WriteLine(k+" "+bin );
+                //Debug.WriteLine(k+" "+bin );
                 return k;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error at NextMax " + ex.Message);
+                Debug.WriteLine("Error at NextMax " + ex.Message);
                 throw ex;
             }
 

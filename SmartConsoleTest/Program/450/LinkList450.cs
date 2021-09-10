@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -16,14 +17,14 @@ namespace DSA450
             list.AddLast(new LinkedList<int>().AddLast(20));
 
             // List before reversal
-            Console.WriteLine("Given linked list:");
+            Debug.WriteLine("Given linked list:");
             //PrintList();
 
             // Reverse the list
             //SReverseList();
 
             // List after reversal
-            Console.WriteLine("Reversed linked list:");
+            Debug.WriteLine("Reversed linked list:");
             //list.PrintList();
         }
 
@@ -99,7 +100,7 @@ namespace DSA450
         //        Console.Write(temp.data + " ");
         //        temp = temp.next;
         //    }
-        //    Console.WriteLine();
+        //    Debug.WriteLine();
         //}
 
         ///* Driver code*/
@@ -119,12 +120,12 @@ namespace DSA450
         //    llist.push(2);
         //    llist.push(1);
 
-        //    Console.WriteLine("Given Linked List");
+        //    Debug.WriteLine("Given Linked List");
         //    llist.printList();
 
         //    llist.head = llist.reverse(llist.head, 3);
 
-        //    Console.WriteLine("Reversed list");
+        //    Debug.WriteLine("Reversed list");
         //    llist.printList();
         //}
         #endregion
@@ -230,7 +231,7 @@ namespace DSA450
         //        Console.Write(head.key + " ");
         //        head = head.next;
         //    }
-        //    Console.WriteLine();
+        //    Debug.WriteLine();
         //}
 
         //// Function to detect and remove loop

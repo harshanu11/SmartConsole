@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Xunit;
@@ -122,7 +123,7 @@ namespace DSA450
                 {
                     Console.Write(jb + " ");
                 }
-                Console.WriteLine();
+                Debug.WriteLine();
             }
 
             [Fact]
@@ -138,7 +139,7 @@ namespace DSA450
                 arr.Add(new Job('e', 3, 15));
 
                 // Function call
-                Console.WriteLine("Following is maximum "
+                Debug.WriteLine("Following is maximum "
                                 + "profit sequence of jobs");
 
                 Job job = new Job();
@@ -227,10 +228,10 @@ namespace DSA450
                     c.Add(ans);
                 }
 
-            Console.WriteLine(a.Count);
+            Debug.WriteLine(a.Count);
 
             for (int j = 0; j < a.Count; ++j)
-                Console.WriteLine(a[j] + " "
+                Debug.WriteLine(a[j] + " "
                     + b[j] + " " + c[j]);
         }
 
@@ -332,7 +333,7 @@ namespace DSA450
                 new item(100, 20),
                 new item(120, 30) };
 
-            Console.WriteLine("Maximum value we can obtain = " +
+            Debug.WriteLine("Maximum value we can obtain = " +
                                 FracKnapSack(arr, 50));
         }
         #endregion

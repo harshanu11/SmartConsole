@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Diagnostics;
 using Xunit;
 
 namespace DSA450
 {
     public class string450 {
         #region Reverse a String
-        public void ReverseString(char[] s)
+        string ReverseString(char[] s)
         {
             int a_pointer = 0;
             int b_pointer = s.Length - 1;
@@ -18,63 +19,58 @@ namespace DSA450
                 a_pointer++;
                 b_pointer--;
             }
-            Console.WriteLine(new String(s));
+            return new String(s);
+        }
+        [Fact]
+        public void ReverseStringTest() 
+        {
+            string input = "Eds";
+            var op = ReverseString(input.ToCharArray());
         }
         #endregion
         #region Check whether a String is Palindrome or not
-        //public void isPalindrome(char str[])
-        //{
-        //    // Start from leftmost and rightmost corners of str
-        //    int l = 0;
-        //    int h = strlen(str) - 1;
+        public bool isPalindrome(string str)
+        {
+            int l = 0;
+            int h = str.Length - 1;
 
-        //    // Keep comparing characters while they are same
-        //    while (h > l)
-        //    {
-        //        if (str[l++] != str[h--])
-        //        {
-        //            printf("%s is not a palindrome\n", str);
-        //            return;
-        //        }
-        //    }
-        //    //printf("%s is a palindrome\n", str);
-        //}
-
-        // Driver program to test above function
-        //int main()
-        //{
-        //    isPalindrome("abba");
-        //    isPalindrome("abbccbba");
-        //    isPalindrome("geeks");
-        //    return 0;
-        //}
+            while (h > l)
+            {
+                if (str[l++] != str[h--])
+                {
+                    //printf("%s is not a palindrome\n", str);
+                    return false;
+                }
+            }
+            //printf("%s is a palindrome\n", str);
+            return true;
+        }
+        [Fact]
+        public void isPalindromeTest()
+        {
+            var ans = false;
+           ans=isPalindrome("abba");
+           ans=isPalindrome("abbccbba");
+           ans=isPalindrome("geeks");
+            
+        }
         #endregion
         #region Find Duplicate characters in a string
         static int NO_OF_CHARS = 256;
-
-        /* Fills count array with
-        frequency of characters */
-        static void fillCharCounts(String str,
-                                    int[] count)
+        static void fillCharCounts(String str,int[] count)
         {
             for (int i = 0; i < str.Length; i++)
                 count[str[i]]++;
         }
 
-        /* Print duplicates present in
-        the passed string */
         static void printDups(String str)
         {
-
-            // Create an array of size 256 and
-            // fill count of every character in it
             int[] count = new int[NO_OF_CHARS];
             fillCharCounts(str, count);
-
             for (int i = 0; i < NO_OF_CHARS; i++)
                 if (count[i] > 1)
-                    Console.WriteLine((char)i + ", " +
-                                "count = " + count[i]);
+                    Debug.WriteLine((char)i + ", " + "count = " + count[i]);
+
         }
 
         [Fact]
