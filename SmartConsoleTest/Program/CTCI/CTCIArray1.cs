@@ -378,7 +378,7 @@ namespace CTCINs
                 new int[] {6, 7, 8, 9, 0}
             };
             Printer.printArray(rotate(a));
-            Debug.WriteLine();
+            Debug.WriteLine("");
             rotateInPlace(a);
             Printer.printArray(a);
         }
@@ -507,7 +507,7 @@ namespace CTCINs
                 {
                     Console.Write(col + " ");
                 }
-                Debug.WriteLine();
+                Debug.WriteLine("");
             }
         }
         [Fact]

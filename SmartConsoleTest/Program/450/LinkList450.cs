@@ -100,7 +100,7 @@ namespace DSA450
         //        Console.Write(temp.data + " ");
         //        temp = temp.next;
         //    }
-        //    Debug.WriteLine();
+        //    Debug.WriteLine("");
         //}
 
         ///* Driver code*/
@@ -231,7 +231,7 @@ namespace DSA450
         //        Console.Write(head.key + " ");
         //        head = head.next;
         //    }
-        //    Debug.WriteLine();
+        //    Debug.WriteLine("");
         //}
 
         //// Function to detect and remove loop

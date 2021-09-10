@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
-
+using System.Diagnostics;
 namespace CollectionTest
 {
     public class ArrayTest

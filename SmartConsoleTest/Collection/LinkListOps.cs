@@ -124,7 +124,7 @@ namespace CollectionTest
                 if (node != null)
                     Console.Write(",");
             }
-            Debug.WriteLine();
+            Debug.WriteLine("");
         }
 
         public void appendToTail(LLNode nd, int d)
@@ -187,8 +187,8 @@ namespace CollectionTest
             {
                 Console.Write(word + " ");
             }
-            Debug.WriteLine();
-            Debug.WriteLine();
+            Debug.WriteLine("");
+            Debug.WriteLine("");
         }
 
         public  void IndicateNode(LinkedListNode<string> node, string test)
@@ -218,7 +218,7 @@ namespace CollectionTest
             }
 
             Debug.WriteLine(result);
-            Debug.WriteLine();
+            Debug.WriteLine("");
         }
         #endregion
     }

@@ -54,7 +54,7 @@ namespace DSA450
                 for (int i = 0; i < n; ++i)
                     Console.Write(arr[i] + " ");
 
-                Debug.WriteLine();
+                Debug.WriteLine("");
             }
             [Fact]
             public static void BuildHeapTest()

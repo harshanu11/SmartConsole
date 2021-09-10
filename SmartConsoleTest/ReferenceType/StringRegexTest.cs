@@ -35,7 +35,7 @@ namespace ReferenceTypeTest
             Assert.False(ReferenceEquals(MyFirstString, MySecondString));
             // here .equals or == both check content inside srting 
 
-            System.Debug.WriteLine(string.IsNullOrEmpty("dgdgf"));
+            Debug.WriteLine(string.IsNullOrEmpty("dgdgf"));
             Assert.True(ReferenceEquals(MyFirstStringObj, MySecondStringObj));
             Assert.False(ReferenceEquals(MyFirstStringObj, MyThirdStringObj));// not smae reference bcz used new
             Assert.True(MyFirstStringObj.Equals(MySecondStringObj));

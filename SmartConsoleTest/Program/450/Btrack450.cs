@@ -477,7 +477,7 @@ namespace DSA450
             {
                 for (int j = 0; j < N; j++)
                     Console.Write(grid[i, j] + " ");
-                Debug.WriteLine();
+                Debug.WriteLine("");
             }
         }
 

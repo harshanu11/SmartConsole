@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Xunit;
-
+using System.Diagnostics;
 namespace DSA450
 {
     public class Trie450
@@ -361,7 +361,7 @@ namespace DSA450
                 {
                     for (int j = 0; j < COL; j++)
                         Console.Write(M[i, j] + " ");
-                    Debug.WriteLine();
+                    Debug.WriteLine("");
                 }
             }
         }

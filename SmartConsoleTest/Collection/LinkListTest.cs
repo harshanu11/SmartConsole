@@ -76,7 +76,7 @@ namespace CollectionTest
             {
                 Debug.WriteLine("Exception message: {0}", ex.Message);
             }
-            Debug.WriteLine();
+            Debug.WriteLine("");
 
             // Remove the node referred to by mark1, and then add it
             // before the node referred to by current.
@@ -119,7 +119,7 @@ namespace CollectionTest
             // Release all the nodes.
             ll.Clear();
 
-            Debug.WriteLine();
+            Debug.WriteLine("");
             Debug.WriteLine("Test 17: Clear linked list. Contains 'jumps' = {0}",
                 ll.Contains("jumps"));
         }

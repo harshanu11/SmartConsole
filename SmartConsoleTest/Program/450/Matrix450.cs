@@ -115,7 +115,7 @@ namespace DSA450
             {
                 for (int j = 0; j < n; j++)
                     Console.Write(mat[i, j] + " ");
-                Debug.WriteLine();
+                Debug.WriteLine("");
             }
         }
 

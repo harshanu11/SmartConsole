@@ -123,7 +123,7 @@ namespace DSA450
                 {
                     Console.Write(jb + " ");
                 }
-                Debug.WriteLine();
+                Debug.WriteLine("");
             }
 
             [Fact]
