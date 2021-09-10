@@ -152,7 +152,7 @@ namespace CollectionTest
             while (queue.Count != 0)
             {
                 TreeNode tempNode = queue.Dequeue();
-                Console.Write(tempNode.Data + " ");
+                Debug.Write(tempNode.Data + " ");
                 if (tempNode.Left != null)
                 {
                     queue.Enqueue(tempNode.Left);

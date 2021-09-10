@@ -119,10 +119,10 @@ namespace CollectionTest
         {
             while (node != null)
             {
-                Console.Write(node.data);
+                Debug.Write(node.data);
                 node = node.nextNode;
                 if (node != null)
-                    Console.Write(",");
+                    Debug.Write(",");
             }
             Debug.WriteLine("");
         }
@@ -185,7 +185,7 @@ namespace CollectionTest
             Debug.WriteLine(test);
             foreach (string word in words)
             {
-                Console.Write(word + " ");
+                Debug.Write(word + " ");
             }
             Debug.WriteLine("");
             Debug.WriteLine("");

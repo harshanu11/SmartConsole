@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
@@ -25,7 +26,7 @@ namespace DSA450
         {
             int[] arr = { 1, 2, 3, 4, 5, 6 };
             rvereseArray(arr, 0, 5);
-            Console.Write("Reversed array is \n");
+            Debug.Write("Reversed array is \n");
         }
         #endregion
         #region Find the maximum and minimum element in an array
@@ -75,10 +76,8 @@ namespace DSA450
             int[] arr = { 1000, 11, 445, 1, 330, 3000 };
             int arr_size = 6;
             PairArray minmax = getMinMaxArray(arr, arr_size);
-            Console.Write("Minimum element is {0}",
-                                    minmax.min);
-            Console.Write("\nMaximum element is {0}",
-                                        minmax.max);
+            Debug.Write(minmax.min);
+            Debug.Write(minmax.max);
         }
         #endregion
         #region Find the "Kth" max and min element of an array 

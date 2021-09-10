@@ -12,12 +12,12 @@ namespace Program
         public void BitManipulationTest()
         {
             int N = 1201, M = 8, i = 3, j = 6;
-            Console.Write("N = " + N + "(");
+            Debug.Write("N = " + N + "(");
             BitMani.bin(N);
             Debug.WriteLine(")");
 
             // print original bitset
-            Console.Write("M = " + M + "(");
+            Debug.Write("M = " + M + "(");
             BitMani.bin(M);
             Debug.WriteLine(")");
 
@@ -28,7 +28,7 @@ namespace Program
                               "into N from 3 to 6");
 
             // Print the inserted bitset
-            Console.Write("N = " + N + "(");
+            Debug.Write("N = " + N + "(");
             BitMani.bin(N);
             Debug.WriteLine(")");
         }
@@ -62,7 +62,7 @@ namespace Program
             Debug.WriteLine(NextNumberWithSame1.getNext(n));
 
             n = 8; // input 2
-            Console.Write(NextNumberWithSame1.getNext(n));
+            Debug.Write(NextNumberWithSame1.getNext(n));
         }
         [Fact]
         public void FlipIntAtoBTest()
@@ -77,7 +77,7 @@ namespace Program
             int x = 23; // 00010111
 
             // Output is 43 (00101011)
-            Console.Write(PairwiseSwap.swapBits(x));
+            Debug.Write(PairwiseSwap.swapBits(x));
         }
     }
 
@@ -185,7 +185,7 @@ namespace Program
         {
             if (n > 1)
                 bin(n / 2);
-            Console.Write(n % 2);
+            Debug.Write(n % 2);
         }
 
         // Insert m into n

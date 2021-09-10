@@ -97,7 +97,7 @@ namespace DSA450
         //    Node temp = head;
         //    while (temp != null)
         //    {
-        //        Console.Write(temp.data + " ");
+        //        Debug.Write(temp.data + " ");
         //        temp = temp.next;
         //    }
         //    Debug.WriteLine("");
@@ -228,7 +228,7 @@ namespace DSA450
         //{
         //    while (head != null)
         //    {
-        //        Console.Write(head.key + " ");
+        //        Debug.Write(head.key + " ");
         //        head = head.next;
         //    }
         //    Debug.WriteLine("");
@@ -294,9 +294,9 @@ namespace DSA450
         //    Node res = detectAndRemoveLoop(head);
 
         //    if (res == null)
-        //        Console.Write("Loop does not exist");
+        //        Debug.Write("Loop does not exist");
         //    else
-        //        Console.Write("Loop starting node is " +
+        //        Debug.Write("Loop starting node is " +
         //                    res.key);
         //}
         #endregion

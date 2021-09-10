@@ -48,7 +48,7 @@ namespace DSA450
             while (queue.Count != 0)
             {
                 TreeNode tempNode = queue.Dequeue();
-                Console.Write(tempNode.Data + " ");
+                Debug.Write(tempNode.Data + " ");
 
                 if (tempNode.Left != null)
                 {
@@ -69,7 +69,7 @@ namespace DSA450
             }
             if (level == 1)
             {
-                Console.Write(root.Data + " ");
+                Debug.Write(root.Data + " ");
             }
             else if (level > 1)
             {
@@ -114,7 +114,7 @@ namespace DSA450
                 if (node == null)
                     return;
                 if (level == 1)
-                    Console.Write(node.Data + " ");
+                    Debug.Write(node.Data + " ");
                 else if (level > 1)
                 {
                     printGivenLevel(node.Left, level - 1);
@@ -241,7 +241,7 @@ namespace DSA450
                 return;
             }
             inorder(root.Left);
-            Console.Write("{0:D} ", root.Data);
+            Debug.Write(root.Data);
             inorder(root.Right);
         }
 
@@ -269,13 +269,13 @@ namespace DSA450
             tree.Left.Right = createNode(4);
 
             // Print inorder traversal of the input tree
-            Console.Write("Inorder of original tree: ");
+            Debug.Write("Inorder of original tree: ");
             inorder(tree);
             TreeNode mirror = null;
             mirror = mirrorify(tree);
 
             // Print inorder traversal of the mirror tree
-            Console.Write("\nInorder of mirror tree: ");
+            Debug.Write("\nInorder of mirror tree: ");
             inorder(mirror);
         }
         #endregion

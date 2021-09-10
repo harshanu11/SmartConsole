@@ -108,7 +108,7 @@ namespace DSA450
 
             // Print all possible paths
             for (int i = 0; i < possiblePaths.Count; i++)
-                Console.Write(possiblePaths[i] + " ");
+                Debug.Write(possiblePaths[i] + " ");
         }
 
         [Fact]
@@ -228,12 +228,12 @@ namespace DSA450
             List<List<int>> res = solveNQ(n);
             for (int i = 0; i < res.Count; i++)
             {
-                Console.Write("[");
+                Debug.Write("[");
                 for (int j = 0; j < res[i].Count; j++)
                 {
-                    Console.Write(res[i][j] + " ");
+                    Debug.Write(res[i][j] + " ");
                 }
-                Console.Write("]");
+                Debug.Write("]");
             }
         }
         #endregion
@@ -476,7 +476,7 @@ namespace DSA450
             for (int i = 0; i < N; i++)
             {
                 for (int j = 0; j < N; j++)
-                    Console.Write(grid[i, j] + " ");
+                    Debug.Write(grid[i, j] + " ");
                 Debug.WriteLine("");
             }
         }

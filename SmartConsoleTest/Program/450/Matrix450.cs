@@ -114,7 +114,7 @@ namespace DSA450
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
-                    Console.Write(mat[i, j] + " ");
+                    Debug.Write(mat[i, j] + " ");
                 Debug.WriteLine("");
             }
         }
@@ -153,7 +153,7 @@ namespace DSA450
                 // from the remaining rows
                 for (i = l; i < n; ++i)
                 {
-                    Console.Write(a[k, i] + " ");
+                    Debug.Write(a[k, i] + " ");
                 }
                 k++;
 
@@ -161,7 +161,7 @@ namespace DSA450
                 // remaining columns
                 for (i = k; i < m; ++i)
                 {
-                    Console.Write(a[i, n - 1] + " ");
+                    Debug.Write(a[i, n - 1] + " ");
                 }
                 n--;
 
@@ -171,7 +171,7 @@ namespace DSA450
                 {
                     for (i = n - 1; i >= l; --i)
                     {
-                        Console.Write(a[m - 1, i] + " ");
+                        Debug.Write(a[m - 1, i] + " ");
                     }
                     m--;
                 }
@@ -182,7 +182,7 @@ namespace DSA450
                 {
                     for (i = m - 1; i >= k; --i)
                     {
-                        Console.Write(a[i, l] + " ");
+                        Debug.Write(a[i, l] + " ");
                     }
                     l++;
                 }

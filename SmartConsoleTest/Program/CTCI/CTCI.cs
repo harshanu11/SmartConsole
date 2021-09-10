@@ -220,7 +220,7 @@ namespace CTCINs
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    Console.Write(imgArr[i, j]);
+                    Debug.Write(imgArr[i, j]);
                 }
                 Debug.WriteLine("");
             }
@@ -248,7 +248,7 @@ namespace CTCINs
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    Console.Write(imgArr[i, j]);
+                    Debug.Write(imgArr[i, j]);
                 }
                 Debug.WriteLine("");
 

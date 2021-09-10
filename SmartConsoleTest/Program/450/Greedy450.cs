@@ -14,11 +14,11 @@ namespace DSA450
         {
             int i, j;
 
-            Console.Write("Following activities are selected : ");
+            Debug.Write("Following activities are selected : ");
 
             // The first activity always gets selected
             i = 0;
-            Console.Write(i + " ");
+            Debug.Write(i + " ");
 
             // Consider rest of the activities
             for (j = 1; j < n; j++)
@@ -28,7 +28,7 @@ namespace DSA450
                 // activity, then select it
                 if (s[j] >= f[i])
                 {
-                    Console.Write(j + " ");
+                    Debug.Write(j + " ");
                     i = j;
                 }
             }
@@ -121,7 +121,7 @@ namespace DSA450
                 // Print the sequence
                 foreach (char jb in job)
                 {
-                    Console.Write(jb + " ");
+                    Debug.Write(jb + " ");
                 }
                 Debug.WriteLine("");
             }

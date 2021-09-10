@@ -45,8 +45,8 @@ namespace CollectionTest
         [Fact]
         public void QuickTest()
         {
-            Console.Write("\nProgram for sorting a numeric array using Quick Sorting");
-            Console.Write("\n\nEnter number of elements: ");
+            Debug.Write("\nProgram for sorting a numeric array using Quick Sorting");
+            Debug.Write("\n\nEnter number of elements: ");
             int max = Convert.ToInt32(5);
             int[] numbers = new int[] { 4, 1, 3, 9, 7 };
 

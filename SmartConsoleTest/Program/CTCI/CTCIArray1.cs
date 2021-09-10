@@ -505,7 +505,7 @@ namespace CTCINs
             {
                 foreach (int col in row)
                 {
-                    Console.Write(col + " ");
+                    Debug.Write(col + " ");
                 }
                 Debug.WriteLine("");
             }

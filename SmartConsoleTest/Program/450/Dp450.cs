@@ -98,7 +98,7 @@ namespace DSA450
         public void binomialCoeffTest()
         {
             int n = 5, k = 2;
-            Console.Write("Value of C(" + n + "," + k + ") is "
+            Debug.Write("Value of C(" + n + "," + k + ") is "
                         + binomialCoeff(n, k));
         }
         #endregion
@@ -167,7 +167,7 @@ namespace DSA450
         public void catalanTest()
         {
             for (int i = 0; i < 10; i++)
-                Console.Write(catalan(i) + " ");
+                Debug.Write(catalan(i) + " ");
         }
         #endregion
     }

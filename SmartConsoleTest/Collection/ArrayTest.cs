@@ -31,7 +31,7 @@ namespace CollectionTest
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    Console.Write(twoDarr[i, j] + " ");
+                    Debug.Write(twoDarr[i, j] + " ");
                 }
                 Debug.WriteLine("");
             }
@@ -66,7 +66,7 @@ namespace CollectionTest
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    Console.Write(jaggedArray[i][j] + " ");
+                    Debug.Write(jaggedArray[i][j] + " ");
                 }
                 Debug.WriteLine(" ");
             }

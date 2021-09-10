@@ -25,7 +25,7 @@ namespace Program
             {
                 for (int j1 = 0; j1 < 3; j1++)
                 {
-                    Console.Write(arr[i1][j1] + " ");
+                    Debug.Write(arr[i1][j1] + " ");
                 }
 
                 Debug.WriteLine("\n");
@@ -129,7 +129,7 @@ namespace Program
                 long currentAbs = Math.Abs(arr[i] - arr[i + 1]);
                 minAbs = Math.Min(minAbs, currentAbs);
             }
-            Console.Write(minAbs);
+            Debug.Write(minAbs);
             Assert.Equal(1, minAbs);
 
         }

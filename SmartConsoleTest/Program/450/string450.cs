@@ -92,9 +92,9 @@ namespace DSA450
             String str1 = "FGABCDE";
             String str2 = "ABCDEFG";
 
-            if (areRotations(str1, str2)) Console.Write("Strings are" + " rotation s of each other");
+            if (areRotations(str1, str2)) Debug.Write("Strings are" + " rotation s of each other");
             else
-                Console.Write("Strings are " + "not rotations of each other");
+                Debug.Write("Strings are " + "not rotations of each other");
         }
         #endregion
         #region Write a Program to check whether a string is a valid shuffle of two strings or not

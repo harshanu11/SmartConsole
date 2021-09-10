@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 
 namespace CTCINs
 {
@@ -7,7 +8,7 @@ namespace CTCINs
 
         public static void print(object o)
         {
-            Console.Write(o);
+            Debug.Write(o);
         }
 
         public static void println()

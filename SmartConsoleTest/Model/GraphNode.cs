@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Collections.Generic;
 
 namespace CollectionTest
@@ -55,7 +56,7 @@ namespace CollectionTest
 
 			while (parent[cur] != -1)
 			{
-				Console.Write(cur + " -> ");
+				Debug.Write(cur + " -> ");
 				cur = parent[cur];
 				distance++;
 			}

@@ -92,7 +92,7 @@ namespace CollectionTest
 
             while (tmpStack.Count > 0)
             {
-                Console.Write(tmpStack.Pop() + " ");
+                Debug.Write(tmpStack.Pop() + " ");
             }
 
         }
@@ -211,7 +211,7 @@ namespace CollectionTest
                 return;
             }
             int t = (int)s.Peek(); 
-            Console.Write("Top Most Element is: ");
+            Debug.Write("Top Most Element is: ");
             if (t < minEle)
                 Debug.WriteLine(minEle);
             else
@@ -225,7 +225,7 @@ namespace CollectionTest
                 return;
             }
 
-            Console.Write("Top Most Element Removed: ");
+            Debug.Write("Top Most Element Removed: ");
             int t = (int)s.Pop();
             if (t < minEle)
             {
@@ -403,7 +403,7 @@ namespace CollectionTest
             }
             else
             {
-                Console.Write("The stack is already empty  ");
+                Debug.Write("The stack is already empty  ");
                 return -1;
             }
         }

@@ -56,7 +56,7 @@ namespace DSA450
                     // Dequeue a vertex from queue
                     // and print it
                     s = queue.First();
-                    Console.Write(s + " ");
+                    Debug.Write(s + " ");
                     queue.RemoveFirst();
 
                     // Get all adjacent vertices of the
@@ -80,7 +80,7 @@ namespace DSA450
                 // Mark the current node as visited
                 // and print it
                 visited[v] = true;
-                Console.Write(v + " ");
+                Debug.Write(v + " ");
 
                 // Recur for all the vertices
                 // adjacent to this vertex
@@ -115,7 +115,7 @@ namespace DSA450
             g.AddEdge(2, 3);
             g.AddEdge(3, 3);
 
-            Console.Write("Following is Breadth First " +
+            Debug.Write("Following is Breadth First " +
                         "Traversal(starting from " +
                         "vertex 2)\n");
             g.BFS(2);

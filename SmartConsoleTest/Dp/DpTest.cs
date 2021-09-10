@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -121,7 +122,7 @@ namespace SmartConsoleTest.Dp
                     // return minSum;
                 }
             }
-            Console.Write("Not Possible");
+            Debug.Write("Not Possible");
             return minSum;
         }
         static List<int> HowMumNumberOfCoins(int[] coins, int numberOfCoins, int value)
@@ -138,7 +139,7 @@ namespace SmartConsoleTest.Dp
                     return isAllowed;
                 }
             }
-            Console.Write("Not Possible");
+            Debug.Write("Not Possible");
             return null;
         }
         static bool isminimumNumberOfCoins(int[] coins, int numberOfCoins, int value)
@@ -154,7 +155,7 @@ namespace SmartConsoleTest.Dp
                     return true;
                 }
             }
-            Console.Write("Not Possible");
+            Debug.Write("Not Possible");
             return false;
         }
 

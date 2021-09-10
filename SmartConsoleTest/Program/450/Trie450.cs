@@ -109,8 +109,8 @@ namespace DSA450
                     prefix[ind] = '\0';
                     int i = 0;
                     while (prefix[i] != '\0')
-                        Console.Write(prefix[i++]);
-                    Console.Write(" ");
+                        Debug.Write(prefix[i++]);
+                    Debug.Write(" ");
                     return;
                 }
                 for (int i = 0; i < MAX; i++)
@@ -207,12 +207,12 @@ namespace DSA450
                 insert(root, dictionary[i]);
             }
 
-            Console.Write(wordBreak("ilikesamsung", root) ? "Yes\n" : "No\n");
-            Console.Write(wordBreak("iiiiiiii", root) ? "Yes\n" : "No\n");
-            Console.Write(wordBreak("", root) ? "Yes\n" : "No\n");
-            Console.Write(wordBreak("ilikelikeimangoiii", root) ? "Yes\n" : "No\n");
-            Console.Write(wordBreak("samsungandmango", root) ? "Yes\n" : "No\n");
-            Console.Write(wordBreak("samsungandmangok", root) ? "Yes\n" : "No\n");
+            Debug.Write(wordBreak("ilikesamsung", root) ? "Yes\n" : "No\n");
+            Debug.Write(wordBreak("iiiiiiii", root) ? "Yes\n" : "No\n");
+            Debug.Write(wordBreak("", root) ? "Yes\n" : "No\n");
+            Debug.Write(wordBreak("ilikelikeimangoiii", root) ? "Yes\n" : "No\n");
+            Debug.Write(wordBreak("samsungandmango", root) ? "Yes\n" : "No\n");
+            Debug.Write(wordBreak("samsungandmangok", root) ? "Yes\n" : "No\n");
         }
 
         #endregion
@@ -360,7 +360,7 @@ namespace DSA450
                 if (flag == 0)
                 {
                     for (int j = 0; j < COL; j++)
-                        Console.Write(M[i, j] + " ");
+                        Debug.Write(M[i, j] + " ");
                     Debug.WriteLine("");
                 }
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
+using System;
 using Xunit;
 
 namespace Program
@@ -33,12 +34,12 @@ namespace Program
                 {
                     for (int k = 1; k <= i; k++)
                     {
-                        Console.Write(j + " ");
+                        Debug.Write(j + " ");
                         str = str + j + " ";
                     }
                 }
 
-                Console.Write("$");
+                Debug.Write("$");
                 str = str + "$";
             }
             Assert.Equal("3 3 3 2 2 2 1 1 1 $3 3 2 2 1 1 $3 2 1 $", str);

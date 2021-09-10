@@ -15,7 +15,7 @@ namespace Etc
             Debug.WriteLine("");
             //Console.ReadLine().Split(' ');
 
-            Console.Write("Decimal".PadRight(10));//Padding
+            Debug.Write("Decimal".PadRight(10));//Padding
             int p1 = 0;
             Debug.WriteLine(nameof(p1));
             Debug.WriteLine("my answer".PadRight(10) + "data");

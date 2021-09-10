@@ -52,7 +52,7 @@ namespace DSA450
                 Debug.WriteLine("Array representation of Heap is:");
 
                 for (int i = 0; i < n; ++i)
-                    Console.Write(arr[i] + " ");
+                    Debug.Write(arr[i] + " ");
 
                 Debug.WriteLine("");
             }
@@ -95,7 +95,7 @@ namespace DSA450
                     if (arr[i + j] > max)
                         max = arr[i + j];
                 }
-                Console.Write(max + " ");
+                Debug.Write(max + " ");
             }
         }
         [Fact]
@@ -129,7 +129,7 @@ namespace DSA450
 
             // Print the first kth largest elements
             for (int i = 0; i < k; i++)
-                Console.Write(arr[i] + " ");
+                Debug.Write(arr[i] + " ");
         }
 
         [Fact]
@@ -161,7 +161,7 @@ namespace DSA450
             int[] arr = new int[] { 12, 3, 5,
                                 7, 19 };
             int k = 2;
-            Console.Write("K'th smallest element"
+            Debug.Write("K'th smallest element"
                         + " is " + kthSmallest(arr, k));
         }
         #endregion

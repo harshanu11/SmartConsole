@@ -46,9 +46,9 @@ namespace Program
 
             //Array.Copy(a, 0, aNew, 0, 3);
             if (aNewStart.Length > 0)
-                Console.Write(String.Join(" ", aNewStart) + " ");
+                Debug.Write(String.Join(" ", aNewStart) + " ");
             if (aNewEnd.Length > 0)
-                Console.Write(String.Join(" ", aNewEnd));
+                Debug.Write(String.Join(" ", aNewEnd));
             Debug.WriteLine("");
         }
         //https://www.hackerearth.com/practice/codemonk/

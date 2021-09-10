@@ -31,11 +31,11 @@ namespace DSA450
             {
                 Debug.WriteLine("First "
                                 + "Occurrence = " + first);
-                Console.Write("Last "
+                Debug.Write("Last "
                             + "Occurrence = " + last);
             }
             else
-                Console.Write("Not Found");
+                Debug.Write("Not Found");
         }
 
         // Driver code
@@ -67,7 +67,7 @@ namespace DSA450
         {
             int[] arr = { -10, -1, 0, 3, 10, 11, 30, 50, 100 };
             int n = arr.Length;
-            Console.Write("Fixed Point is " + linearSearch(arr, n));
+            Debug.Write("Fixed Point is " + linearSearch(arr, n));
         }
         #endregion
         #region Search in a rotated sorted array
@@ -177,10 +177,8 @@ namespace DSA450
             int[] arr = { 1000, 11, 445, 1, 330, 3000 };
             int arr_size = 6;
             PairSearchSort minmax = getMinMax(arr, arr_size);
-            Console.Write("Minimum element is {0}",
-                                    minmax.min);
-            Console.Write("\nMaximum element is {0}",
-                                        minmax.max);
+            Debug.Write(minmax.min);
+            Debug.Write(minmax.max);
         }
         #endregion
         #region Merge 2 sorted arrays without using Extra space.
