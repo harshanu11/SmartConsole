@@ -47,6 +47,7 @@ namespace CollectionTest
         {
             QueueArrayNode q = new QueueArrayNode(20);
             q.queueEnqueue(10);
+            var peek = q.Peek1();
             q.queueEnqueue(20);
             q.queueDequeue();
             q.queueDequeue();

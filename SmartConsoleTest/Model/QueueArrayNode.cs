@@ -3,8 +3,8 @@
     public class QueueArrayNode
     {
         public static int front, rear, capacity;
-        private static int[] queue;
-
+        public static int[] queue;
+        public int Length = 0;
         public QueueArrayNode(int c)
         {
             front = rear = 0;
@@ -24,6 +24,7 @@
             {
                 queue[rear] = data;
                 rear++;
+                Length++;
             }
             return;
         }
@@ -41,7 +42,7 @@
                 }
                 if (rear < capacity)
                     queue[rear] = 0;
-
+                Length--;
                 rear--;
             }
             return;
@@ -50,13 +51,29 @@
         // print queue elements
 
         // print front of queue
-        public void queueFront()
+        public int Peek1()
         {
             if (front == rear)
             {
-                return;
+                return 0;
             }
-            return;
+            return queue[front];
+        }
+        public int Peek2()
+        {
+            if (front == rear || Length < 3)
+            {
+                return 0;
+            }
+            return queue[front+1];
+        }
+        public int Peek3()
+        {
+            if (front == rear || Length < 3)
+            {
+                return 0;
+            }
+            return queue[front+2];
         }
     }
 }
