@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Xunit;
 
-namespace SmartConsoleTest.Program._450
+namespace DSA450
 {
     public class Greedy450 
     {
@@ -125,8 +125,8 @@ namespace SmartConsoleTest.Program._450
                 Console.WriteLine();
             }
 
-            // Driver code
-            static public void Main()
+            [Fact]
+            static public void SequencingProblemTest()
             {
 
                 List<Job> arr = new List<Job>();

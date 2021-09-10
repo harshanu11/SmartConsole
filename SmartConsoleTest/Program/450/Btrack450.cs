@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Xunit;
 
-namespace SmartConsoleTest.Program._450
+namespace DSA450
 {
     public class Btrack450 {
         #region Rat in a maze Problem
@@ -110,8 +110,8 @@ namespace SmartConsoleTest.Program._450
                 Console.Write(possiblePaths[i] + " ");
         }
 
-        // Driver code
-        public static void Main(String[] args)
+        [Fact]
+        public void RatInamzeTest()
         {
             int[,] m = { { 1, 0, 0, 0, 0 },
                   { 1, 1, 1, 1, 1 },

@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace SmartConsoleTest.Program._450
+namespace DSA450
 {
     public class Heap450 {
         #region Implement a Maxheap/MinHeap using arrays and recursion.

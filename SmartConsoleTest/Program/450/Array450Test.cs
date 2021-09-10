@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 
-namespace SmartConsoleTest.Program._450
+namespace DSA450
 {
     public class Array450Test
     {

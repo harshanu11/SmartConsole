@@ -1,4 +1,6 @@
-﻿namespace CollectionTest
+﻿using System.Collections.Generic;
+
+namespace CollectionTest
 {
     public class TrieNode
     {
@@ -11,5 +13,17 @@
             for (int i = 0; i < ALPHABET_SIZE; i++)
                 children[i] = null;
         }
-    };
+    }
+    public class TrieNode1
+    {
+        public Dictionary<char, TrieNode1> child;
+        public bool isLast;
+        public TrieNode1()
+        {
+            child = new Dictionary<char, TrieNode1>();
+            for (char i = 'a'; i <= 'z'; i++)
+                child.Add(i, null);
+            isLast = false;
+        }
+    }
 }

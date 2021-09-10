@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xunit;
 
-namespace SmartConsoleTest.Program._450
+namespace DSA450
 {
     public class LinkList450 {
         #region Write a Program to reverse the Linked List. (Both Iterative and recursive)
