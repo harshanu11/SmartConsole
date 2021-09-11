@@ -3,142 +3,85 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
+using CollectionTest;
 
 namespace DSA450
 {
-    public class Graph450 {
+    public class Graph450
+    {
         #region Create a Graph, print it
+        //via matrix
+        // via ll
+        void CreateGraphMatrix()
+        {
+            int ver = 6, e = 5;
+            int[][] graph = new int[ver + 1][];
+            for (int v = 0; v <= ver; v++)
+            {
+                var arr = new int[ver + 1];
+                Array.Fill(arr, 0);
+                graph[v] = arr;
+            }
+            graph[6][5] = 1;
+            graph[1][2] = 1;
+            graph[1][5] = 1;
+            graph[2][3] = 1;
+            graph[3][4] = 1;
+            graph[3][6] = 1;
 
+            for (int row = 0; row < 7; row++)
+            {
+                for (int col = 0; col < 7; col++)
+                {
+                    Debug.Write(graph[row][col]);
+                }
+                Debug.WriteLine("");
+            }
+        }
+        [Fact]
+        public void GraphInsertTest() 
+        {
+            CreateGraphMatrix();
+        }
         #endregion
         #region Implement BFS algorithm 
-        public class GraphNode1
-        {
-            // No. of vertices	
-            private int _V;
-
-            //Adjacency Lists
-            LinkedList<int>[] _adj;
-
-            public GraphNode1(int V)
-            {
-                _adj = new LinkedList<int>[V];
-                for (int i = 0; i < _adj.Length; i++)
-                {
-                    _adj[i] = new LinkedList<int>();
-                }
-                _V = V;
-            }
-            public void AddEdge(int v, int w)
-            {
-                _adj[v].AddLast(w);
-
-            }
-            public void BFS(int s)
-            {
-
-                // Mark all the vertices as not
-                // visited(By default set as false)
-                bool[] visited = new bool[_V];
-                for (int i = 0; i < _V; i++)
-                    visited[i] = false;
-
-                // Create a queue for BFS
-                LinkedList<int> queue = new LinkedList<int>();
-
-                // Mark the current node as
-                // visited and enqueue it
-                visited[s] = true;
-                queue.AddLast(s);
-
-                while (queue.Any())
-                {
-
-                    // Dequeue a vertex from queue
-                    // and print it
-                    s = queue.First();
-                    Debug.Write(s + " ");
-                    queue.RemoveFirst();
-
-                    // Get all adjacent vertices of the
-                    // dequeued vertex s. If a adjacent
-                    // has not been visited, then mark it
-                    // visited and enqueue it
-                    LinkedList<int> list = _adj[s];
-
-                    foreach (var val in list)
-                    {
-                        if (!visited[val])
-                        {
-                            visited[val] = true;
-                            queue.AddLast(val);
-                        }
-                    }
-                }
-            }
-            void DFSUtil(int v, bool[] visited)
-            {
-                // Mark the current node as visited
-                // and print it
-                visited[v] = true;
-                Debug.Write(v + " ");
-
-                // Recur for all the vertices
-                // adjacent to this vertex
-                //List<int> vList = adj[v];
-                //foreach (var n in vList)
-                //{
-                //    if (!visited[n])
-                //        DFSUtil(n, visited);
-                //}
-            }
-            public void DFS(int v)
-            {
-                // Mark all the vertices as not visited
-                //// (set as false by default in c#)
-                //bool[] visited = new bool[V];
-
-                //// Call the recursive helper function
-                //// to print DFS traversal
-                //DFSUtil(v, visited);
-            }
-
-        }
+        
         [Fact]
         public void BfsGraphTest()
         {
-            GraphNode1 g = new GraphNode1(4);
+            GraphNode g = new GraphNode(4);
 
-            g.AddEdge(0, 1);
-            g.AddEdge(0, 2);
-            g.AddEdge(1, 2);
-            g.AddEdge(2, 0);
-            g.AddEdge(2, 3);
-            g.AddEdge(3, 3);
+            g.addEdge(0, 1);
+            g.addEdge(0, 2);
+            g.addEdge(1, 2);
+            g.addEdge(2, 0);
+            g.addEdge(2, 3);
+            g.addEdge(3, 3);
 
             Debug.Write("Following is Breadth First " +
                         "Traversal(starting from " +
                         "vertex 2)\n");
-            g.BFS(2);
+            g.bfs(0,3);
         }
         #endregion
         #region Implement DFS Algo 
         [Fact]
         public static void DfsGraphTest()
         {
-            GraphNode1 g = new GraphNode1(4);
+            GraphNode g = new GraphNode(4);
 
-            g.AddEdge(0, 1);
-            g.AddEdge(0, 2);
-            g.AddEdge(1, 2);
-            g.AddEdge(2, 0);
-            g.AddEdge(2, 3);
-            g.AddEdge(3, 3);
+            g.addEdge(0, 1);
+            g.addEdge(0, 2);
+            g.addEdge(1, 2);
+            g.addEdge(2, 0);
+            g.addEdge(2, 3);
+            g.addEdge(3, 3);
 
             Debug.WriteLine(
                 "Following is Depth First Traversal "
                 + "(starting from vertex 2)");
 
-            g.DFS(2);
+            g.dfsR(0,3);
             Console.ReadKey();
         }
         #endregion
@@ -198,13 +141,13 @@ namespace DSA450
         [Fact]
         public void isCyclicTest()
         {
-            GraphNode1 g = new GraphNode1(4);
-            //graph.addEdge(0, 1);
-            //graph.addEdge(0, 2);
-            //graph.addEdge(1, 2);
-            //graph.addEdge(2, 0);
-            //graph.addEdge(2, 3);
-            //graph.addEdge(3, 3);
+            GraphNode graph = new GraphNode(4);
+            graph.addEdge(0, 1);
+            graph.addEdge(0, 2);
+            graph.addEdge(1, 2);
+            graph.addEdge(2, 0);
+            graph.addEdge(2, 3);
+            graph.addEdge(3, 3);
 
             //if (graph.isCyclic())
             //    Debug.WriteLine("Graph contains cycle");
@@ -219,24 +162,24 @@ namespace DSA450
         public static void UnDirectedCyclicTeat(String[] args)
         {
             // Create a graph given in the above diagram
-            GraphNode1 g = new GraphNode1(5);
-            //g1.addEdge(1, 0);
-            //g1.addEdge(0, 2);
-            //g1.addEdge(2, 1);
-            //g1.addEdge(0, 3);
-            //g1.addEdge(3, 4);
+            GraphNode g1 = new GraphNode(5);
+            g1.addEdge(1, 0);
+            g1.addEdge(0, 2);
+            g1.addEdge(2, 1);
+            g1.addEdge(0, 3);
+            g1.addEdge(3, 4);
             //if (g1.isCyclic())
             //    Debug.WriteLine("Graph contains cycle");
             //else
             //    Debug.WriteLine("Graph doesn't contains cycle");
 
-            //GraphNode1 g = new GraphNode1(3);
-            //g2.addEdge(0, 1);
-            //g2.addEdge(1, 2);
-            //if (g2.isCyclic())
-            //Debug.WriteLine("Graph contains cycle");
-            //else
-            //    Debug.WriteLine("Graph doesn't contains cycle");
+                //GraphNode1 g = new GraphNode1(3);
+                //g2.addEdge(0, 1);
+                //g2.addEdge(1, 2);
+                //if (g2.isCyclic())
+                //Debug.WriteLine("Graph contains cycle");
+                //else
+                //    Debug.WriteLine("Graph doesn't contains cycle");
         }
         #endregion
     }

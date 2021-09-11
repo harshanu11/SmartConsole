@@ -65,32 +65,19 @@ namespace CollectionTest
 		}
         public List<int> bfsOfGraph(int V, List<List<int>> adj)
         {
-            //boolean list to mark all the vertices as not visited.
             bool[] visited = new bool[V];
-
             int s = 0;
-            //initially we mark first vertex as visited(true).
             visited[s] = true;
-
             List<int> res = new List<int>();
-
-            //creating a queue for BFS and pushing first vertex in queue.
             Queue<int> q = new Queue<int>();
             q.Enqueue(s);
-
             while (q.Count != 0)
             {
-                //adding front element in output list and popping it from queue.
                 s = q.Peek();
                 q.Dequeue();
                 res.Add(s);
-
-                //traversing over all the connected components of front element.
-
                 foreach (var v in adj[s])
                 {
-
-                    //if they aren't visited, we mark them visited and add to queue.
                     if (!visited[v])
                     {
                         visited[v] = true;
@@ -98,7 +85,6 @@ namespace CollectionTest
                     }
                 }
             }
-            //returning the output list.
             return res;
         }
         private void dfs(int ch, ref bool[] vis, ref List<int> ans, ref List<List<int>> adj)
