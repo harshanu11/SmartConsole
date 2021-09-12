@@ -11,14 +11,10 @@ namespace DSA450
     }
     public class SearchingSorting {
         #region Find first and last positions of an element in a sorted array
-        // Function for finding first and
-        // last occurrence of an elements
-        static void findFirstAndLast(int[] arr,
-                                    int x)
+        static void findFirstAndLast(int[] arr, int x)
         {
             int n = arr.Length;
             int first = -1, last = -1;
-
             for (int i = 0; i < n; i++)
             {
                 if (x != arr[i])
@@ -29,16 +25,12 @@ namespace DSA450
             }
             if (first != -1)
             {
-                Debug.WriteLine("First "
-                                + "Occurrence = " + first);
-                Debug.Write("Last "
-                            + "Occurrence = " + last);
+                Debug.WriteLine("First " + "Occurrence = " + first);
+                Debug.Write("Last " + "Occurrence = " + last);
             }
             else
                 Debug.Write("Not Found");
         }
-
-        // Driver code
         [Fact]
         public void FindfirstandlastpositionsTest()
         {
