@@ -46,6 +46,12 @@ namespace CollectionTest
         {
             Debug.WriteLine("now start to jagged array");
             int[][] jaggedArray = new int[4][];
+            int[][] maze = new int[5][] { new int[] { 1, 0, 0, 0, 0 }
+                                        , new int[] { 1, 1, 1, 1, 1 }
+                                        , new int[] { 1, 1, 1, 0, 1 }
+                                        , new int[] { 0, 0, 0, 0, 1 }
+                                        , new int[] { 0, 0, 0, 0, 1 }
+                                    };
             int row = jaggedArray.GetLength(0);
             for (int i = 0; i < 4; i++)
             {
@@ -95,6 +101,12 @@ namespace CollectionTest
                             { 9, 10, 11, 12 },
                             { 13, 14, 15, 16 }
                          };
+            int[][] maze = new int[5][] { new int[] { 1, 0, 0, 0, 0 }
+                                        , new int[] { 1, 1, 1, 1, 1 }
+                                        , new int[] { 1, 1, 1, 0, 1 }
+                                        , new int[] { 0, 0, 0, 0, 1 }
+                                        , new int[] { 0, 0, 0, 0, 1 }
+                                    };
 
             #endregion
 
