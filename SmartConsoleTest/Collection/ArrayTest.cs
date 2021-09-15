@@ -46,16 +46,18 @@ namespace CollectionTest
         {
             Debug.WriteLine("now start to jagged array");
             int[][] jaggedArray = new int[4][];
-
+            int row = jaggedArray.GetLength(0);
             for (int i = 0; i < 4; i++)
             {
                 jaggedArray[i] = new int[5];
+                int column = jaggedArray[0].GetLength(0);
+
                 for (int j = 0; j < 5; j++)
                 {
                     jaggedArray[i][j] = -1 * (i + j);
                 }
             }
-            var len0 =jaggedArray.GetLength(0);
+            var len0 = jaggedArray.GetLength(0);
 
             //Array.Sort(jaggedArray);
             Debug.WriteLine("Jagged Array loaded now");
@@ -86,7 +88,7 @@ namespace CollectionTest
             //string[] lenAndShift = Console.ReadLine().Split(' ');
             stringArray.SetValue("Mango", 0);
             stringArray.GetValue(0);
-			char[][] board = new char[4][];
+            char[][] board = new char[4][];
             int[,] mat = {
                             { 1, 2, 3, 4 },
                             { 5, 6, 7, 8 },
@@ -97,6 +99,11 @@ namespace CollectionTest
             #endregion
 
             #region SortReverse
+            // sort in desc
+            Array.Sort(arr, (d1, d2) => {
+                var s = d2.CompareTo(d1);
+                return s;
+            });
             Array.Sort(arr);
             Array.Sort(arr, 2, 6);
             Array.Reverse(arr);
@@ -106,7 +113,7 @@ namespace CollectionTest
             int serchIndex = Array.IndexOf(marks, 97);
             int index = Array.BinarySearch(arr, 0, arr.Length, -96);
             string[] arr_Find = new string[] { "cam", "camcam" };
-            string v1 = Array.Find(arr_Find,element => element.StartsWith("cam", StringComparison.Ordinal));
+            string v1 = Array.Find(arr_Find, element => element.StartsWith("cam", StringComparison.Ordinal));
             var element = marks.ElementAt(2);
             SortingAlgo.BubbleSort(arr);
 
@@ -138,10 +145,10 @@ namespace CollectionTest
             #region Compare
             #endregion
             #region Find
-            var data= Array.Find(test, x=>x== "Hello");// return Hello
+            var data = Array.Find(test, x => x == "Hello");// return Hello
             #endregion
         }
 
-        
+
     }
 }

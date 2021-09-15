@@ -8,6 +8,7 @@ namespace CollectionTest
         [Fact]
         public void BasicDictionaryTest()
         {
+            Dictionary<char, int> dc = new Dictionary<char, int>() { { 'x', 5 } };
             Dictionary<int, int> d = new Dictionary<int, int>() ;
             d.Add(4, 3);
             d.TryAdd(4, 3);
