@@ -8,8 +8,6 @@ using System.Collections.Generic;
 
 namespace CollectionTest
 {
-    
-
     public class GraphOps
     {
         private int V;
@@ -26,7 +24,6 @@ namespace CollectionTest
             adj[v].AddLast(w);
         }
 
-        // prints BFS traversal from a given source s
         public bool isReachable(int s, int d)
         {
             bool[] visited = new bool[V];
@@ -119,6 +116,5 @@ namespace CollectionTest
             //returning mother vertex.
             return v;
         }
-
     }
 }
