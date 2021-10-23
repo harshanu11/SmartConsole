@@ -81,7 +81,16 @@ namespace CollectionTest
 
             Debug.WriteLine("Jagged arr reading is done now");
         }
-
+        internal class pair
+        {
+            internal int first, second;
+            public pair(int start, int finish){this.first = start;this.second = finish; }
+        }
+        // class should be internal
+        class ComparatorAnonymousInnerClass : IComparer<pair>
+        {
+            public int Compare(pair s1, pair s2){return s1.second - s2.second;}
+        }
         [Fact]
         public void MethodArr()
         {
@@ -155,6 +164,12 @@ namespace CollectionTest
             #endregion
 
             #region Compare
+            int len = 6;
+            var start = new int[] { 1, 3, 0, 5, 8, 5 };var end=  new int[] { 2, 4, 6, 7, 9, 9 };
+            pair[] meetings = new pair[len];
+            for (int i = 0; i < len; i++)
+                meetings[i] = new pair(start[i], end[i]);
+            Array.Sort(meetings, new ComparatorAnonymousInnerClass());
             #endregion
             #region Find
             var data = Array.Find(test, x => x == "Hello");// return Hello

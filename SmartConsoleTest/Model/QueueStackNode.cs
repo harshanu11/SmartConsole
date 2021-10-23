@@ -44,5 +44,5 @@ namespace CollectionTest
             s1.Pop();
             return x;
         }
-    };
+    }
 }
